@@ -8,13 +8,13 @@
 ### Pipeline Foundation
 
 - [ ] **PIPE-01**: User can initialize a new curriculum project with structured intake conversation
-- [ ] **PIPE-02**: Pipeline enforces backward design sequence — outcomes before assessments, assessments before content, content before marketing
-- [ ] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
+- [x] **PIPE-02**: Pipeline enforces backward design sequence — outcomes before assessments, assessments before content, content before marketing
+- [x] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
 - [ ] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
 - [ ] **PIPE-05**: Human review gate pauses pipeline after assessment design for user confirmation
 - [ ] **PIPE-06**: Human review gate pauses pipeline at final validation for user approval of complete package
 - [ ] **PIPE-07**: Pipeline stages 4-8 (module structure through marketing) run autonomously without human intervention after assessment gate
-- [ ] **PIPE-08**: Pipeline handles programs from 90 minutes to full semester without architectural changes — duration is an intake parameter
+- [x] **PIPE-08**: Pipeline handles programs from 90 minutes to full semester without architectural changes — duration is an intake parameter
 
 ### Structured Intake (Stage 1)
 
@@ -150,13 +150,13 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | PIPE-01 | Phase 2 | Pending |
-| PIPE-02 | Phase 1 | Pending |
-| PIPE-03 | Phase 1 | Pending |
+| PIPE-02 | Phase 1 | Complete |
+| PIPE-03 | Phase 1 | Complete |
 | PIPE-04 | Phase 2 | Pending |
 | PIPE-05 | Phase 3 | Pending |
 | PIPE-06 | Phase 7 | Pending |
 | PIPE-07 | Phase 7 | Pending |
-| PIPE-08 | Phase 1 | Pending |
+| PIPE-08 | Phase 1 | Complete |
 | INTK-01 | Phase 2 | Pending |
 | INTK-02 | Phase 2 | Pending |
 | INTK-03 | Phase 2 | Pending |
