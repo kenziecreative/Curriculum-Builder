@@ -94,8 +94,9 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 | Guided interview for intake (not form-based) | SMEs need conversational discovery, not a questionnaire. Pedagogical translation happens behind the scenes | — Pending |
 | Gate intake, assessment, and final validation; auto-run middle stages | Middle stages (4-8) are mechanical transformation of upstream decisions. Schema enforcement handles quality. Human judgment needed at intake, assessment design, and final review | — Pending |
 | Full V1 scope (no truncated MVP) | AI handles structural overhead — truncated MVP still leaves admin burden that defeats the purpose. Transfer ecosystem, marketing, facilitator guides are core, not extras | — Pending |
-| Markdown + formatted output | Markdown as source of truth for flexibility. HTML/PDF for delivery-ready handoff to facilitators | — Pending |
+| Markdown + HTML output (no PDF) | Markdown as source of truth for flexibility. HTML for delivery-ready handoff to facilitators. PDF deferred — HTML is sufficient | — Pending |
 | Evaluation mode deferred | Not enough existing curriculum to compare against. Validation architecture exists for self-checking; standalone evaluation workflow is future | — Pending |
+| Cross-program consistency | Schema enforcement and shared doctrine produce structural consistency across programs. Organizational brand/voice consistency (e.g., Hello Alice conventions) may need an org-context file — evaluate after second program runs through pipeline | — Pending |
 
 ---
 *Last updated: 2026-03-15 after initialization*
