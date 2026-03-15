@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Completed 01-01: Pipeline stage schemas 1-5"
-last_updated: "2026-03-15T20:32:12.808Z"
+stopped_at: Completed 01-02-PLAN.md (stages 6-9 schemas)
+last_updated: "2026-03-15T20:32:47.662Z"
 last_activity: 2026-03-15 — Roadmap created; 61 requirements mapped to 7 phases
 progress:
   total_phases: 7
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-schema-and-foundation P03 | 3 | 2 tasks | 4 files |
 | Phase 01-schema-and-foundation P01 | 18 | 2 tasks | 5 files |
+| Phase 01-schema-and-foundation P02 | 28 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -67,6 +68,9 @@ Recent decisions affecting current work:
 - [Phase 01-03]: Project CLAUDE.md constraint hierarchy encoded as both visual chain and numbered list for dual readability
 - [Phase 01-03]: INFR-10 silent state rule encoded in both project CLAUDE.md and session-start hook with explicit prohibited phrases
 - [Phase 01-schema-and-foundation]: Session output at 04-sessions/ (top-level); schema enforcement is schema-in-prompt only (runtime validation deferred to Phase 6); session template enum: gagne/5e_7e/merrill/wippea/universal_tma_arc; metaskill enum uses 6 values pending 7th decision
+- [Phase 01-02]: Tier 2 validation produces confidence scores (0.0-1.0), not pass/fail — qualitative dimensions require human judgment not blocking gates
+- [Phase 01-02]: Marketing claims use curriculum_traceability.strength enum (direct/inferred/adjacent) to distinguish robust from tenuous evidence
+- [Phase 01-02]: Imagining metaskill gets evidence_gap_acknowledgment boolean — acknowledges it will be used while flagging evidence gap
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-15T20:32:12.805Z
-Stopped at: Completed 01-01: Pipeline stage schemas 1-5
+Last session: 2026-03-15T20:32:47.660Z
+Stopped at: Completed 01-02-PLAN.md (stages 6-9 schemas)
 Resume file: None
