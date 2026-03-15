@@ -149,78 +149,78 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PIPE-01 | — | Pending |
-| PIPE-02 | — | Pending |
-| PIPE-03 | — | Pending |
-| PIPE-04 | — | Pending |
-| PIPE-05 | — | Pending |
-| PIPE-06 | — | Pending |
-| PIPE-07 | — | Pending |
-| PIPE-08 | — | Pending |
-| INTK-01 | — | Pending |
-| INTK-02 | — | Pending |
-| INTK-03 | — | Pending |
-| INTK-04 | — | Pending |
-| INTK-05 | — | Pending |
-| INTK-06 | — | Pending |
-| OUTC-01 | — | Pending |
-| OUTC-02 | — | Pending |
-| OUTC-03 | — | Pending |
-| OUTC-04 | — | Pending |
-| ASMT-01 | — | Pending |
-| ASMT-02 | — | Pending |
-| ASMT-03 | — | Pending |
-| ASMT-04 | — | Pending |
-| MODS-01 | — | Pending |
-| MODS-02 | — | Pending |
-| MODS-03 | — | Pending |
-| MODS-04 | — | Pending |
-| SESS-01 | — | Pending |
-| SESS-02 | — | Pending |
-| SESS-03 | — | Pending |
-| SESS-04 | — | Pending |
-| SESS-05 | — | Pending |
-| SESS-06 | — | Pending |
-| SESS-07 | — | Pending |
-| META-01 | — | Pending |
-| META-02 | — | Pending |
-| META-03 | — | Pending |
-| TRNS-01 | — | Pending |
-| TRNS-02 | — | Pending |
-| TRNS-03 | — | Pending |
-| TRNS-04 | — | Pending |
-| MKTG-01 | — | Pending |
-| MKTG-02 | — | Pending |
-| MKTG-03 | — | Pending |
-| MKTG-04 | — | Pending |
-| VALD-01 | — | Pending |
-| VALD-02 | — | Pending |
-| VALD-03 | — | Pending |
-| VALD-04 | — | Pending |
-| VALD-05 | — | Pending |
-| VALD-06 | — | Pending |
-| INFR-01 | — | Pending |
-| INFR-02 | — | Pending |
-| INFR-03 | — | Pending |
-| INFR-04 | — | Pending |
-| INFR-05 | — | Pending |
-| INFR-06 | — | Pending |
-| INFR-07 | — | Pending |
-| INFR-08 | — | Pending |
-| INFR-09 | — | Pending |
-| INFR-10 | — | Pending |
-| INFR-11 | — | Pending |
-| DASH-01 | — | Pending |
-| DASH-02 | — | Pending |
-| DASH-03 | — | Pending |
-| DASH-04 | — | Pending |
-| DASH-05 | — | Pending |
+| PIPE-01 | Phase 2 | Pending |
+| PIPE-02 | Phase 1 | Pending |
+| PIPE-03 | Phase 1 | Pending |
+| PIPE-04 | Phase 2 | Pending |
+| PIPE-05 | Phase 3 | Pending |
+| PIPE-06 | Phase 7 | Pending |
+| PIPE-07 | Phase 7 | Pending |
+| PIPE-08 | Phase 1 | Pending |
+| INTK-01 | Phase 2 | Pending |
+| INTK-02 | Phase 2 | Pending |
+| INTK-03 | Phase 2 | Pending |
+| INTK-04 | Phase 2 | Pending |
+| INTK-05 | Phase 2 | Pending |
+| INTK-06 | Phase 2 | Pending |
+| OUTC-01 | Phase 3 | Pending |
+| OUTC-02 | Phase 3 | Pending |
+| OUTC-03 | Phase 3 | Pending |
+| OUTC-04 | Phase 3 | Pending |
+| ASMT-01 | Phase 3 | Pending |
+| ASMT-02 | Phase 3 | Pending |
+| ASMT-03 | Phase 3 | Pending |
+| ASMT-04 | Phase 3 | Pending |
+| MODS-01 | Phase 5 | Pending |
+| MODS-02 | Phase 5 | Pending |
+| MODS-03 | Phase 5 | Pending |
+| MODS-04 | Phase 5 | Pending |
+| SESS-01 | Phase 5 | Pending |
+| SESS-02 | Phase 5 | Pending |
+| SESS-03 | Phase 5 | Pending |
+| SESS-04 | Phase 5 | Pending |
+| SESS-05 | Phase 5 | Pending |
+| SESS-06 | Phase 5 | Pending |
+| SESS-07 | Phase 5 | Pending |
+| META-01 | Phase 7 | Pending |
+| META-02 | Phase 7 | Pending |
+| META-03 | Phase 7 | Pending |
+| TRNS-01 | Phase 7 | Pending |
+| TRNS-02 | Phase 7 | Pending |
+| TRNS-03 | Phase 7 | Pending |
+| TRNS-04 | Phase 7 | Pending |
+| MKTG-01 | Phase 7 | Pending |
+| MKTG-02 | Phase 7 | Pending |
+| MKTG-03 | Phase 7 | Pending |
+| MKTG-04 | Phase 7 | Pending |
+| VALD-01 | Phase 6 | Pending |
+| VALD-02 | Phase 6 | Pending |
+| VALD-03 | Phase 6 | Pending |
+| VALD-04 | Phase 6 | Pending |
+| VALD-05 | Phase 6 | Pending |
+| VALD-06 | Phase 6 | Pending |
+| INFR-01 | Phase 1 | Pending |
+| INFR-02 | Phase 1 | Pending |
+| INFR-03 | Phase 2 | Pending |
+| INFR-04 | Phase 2 | Pending |
+| INFR-05 | Phase 2 | Pending |
+| INFR-06 | Phase 2 | Pending |
+| INFR-07 | Phase 7 | Pending |
+| INFR-08 | Phase 5 | Pending |
+| INFR-09 | Phase 5 | Pending |
+| INFR-10 | Phase 1 | Pending |
+| INFR-11 | Phase 2 | Pending |
+| DASH-01 | Phase 4 | Pending |
+| DASH-02 | Phase 4 | Pending |
+| DASH-03 | Phase 4 | Pending |
+| DASH-04 | Phase 4 | Pending |
+| DASH-05 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 61 total
-- Mapped to phases: 0
-- Unmapped: 61 ⚠️
+- Mapped to phases: 61
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-15*
-*Last updated: 2026-03-15 after initial definition*
+*Last updated: 2026-03-15 after roadmap creation — all 61 requirements mapped to 7 phases*
