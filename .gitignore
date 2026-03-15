@@ -1,0 +1,26 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor/IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Planning artifacts (security reports may contain sensitive paths)
+.planning/security/
+
+# Claude Code plugin — add framework-specific ignores as the build progresses
+# This is primarily a markdown-based plugin, but if JS/TS tooling is added:
+# node_modules/
+# dist/
+# build/
