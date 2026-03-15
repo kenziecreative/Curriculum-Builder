@@ -48,7 +48,10 @@ Plans:
   3. After intake, STATE.md contains current stage, completed stages, key decisions from intake, and next action — a fresh session can restore context without re-explanation
   4. A simulated session interruption mid-intake can be resumed via the session-start hook, which surfaces the last completed action and blocks advancing without resolution
   5. The resume command (`/knz-resume`) shows current stage, last session summary, and next action in a scannable format
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Init, resume, and approve commands (project scaffolding, session recovery, gate approval)
+- [ ] 02-02-PLAN.md — Intake conversational command (guided interview with thematic batching and expert pushback)
 
 ### Phase 3: Backward Design Core
 **Goal**: A user can generate learning outcomes and assessments that are structurally enforced to be aligned — every objective has a Bloom's level, a transfer specification, and a paired assessment at or above that Bloom's level — with a human review gate that pauses the pipeline after assessment design
@@ -123,7 +126,7 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Schema and Foundation | 3/3 | Complete   | 2026-03-15 |
-| 2. Core Plugin Infrastructure | 0/TBD | Not started | - |
+| 2. Core Plugin Infrastructure | 0/2 | Not started | - |
 | 3. Backward Design Core | 0/TBD | Not started | - |
 | 4. Dashboard MVP | 0/TBD | Not started | - |
 | 5. Module and Session Generation | 0/TBD | Not started | - |
