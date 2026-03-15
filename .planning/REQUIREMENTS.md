@@ -87,8 +87,8 @@
 
 ### Plugin Infrastructure
 
-- [ ] **INFR-01**: STATE.md tracks current stage, completed stages, key decisions, and next action across sessions
-- [ ] **INFR-02**: Session-start hook automatically reads STATE.md and restores context
+- [x] **INFR-01**: STATE.md tracks current stage, completed stages, key decisions, and next action across sessions
+- [x] **INFR-02**: Session-start hook automatically reads STATE.md and restores context
 - [ ] **INFR-03**: One command per pipeline stage as clear entry points
 - [ ] **INFR-04**: Resume command shows current stage, last session summary, completed work, and next action
 - [ ] **INFR-05**: Confirmation gate at every stage transition — user confirms before advancing
@@ -96,7 +96,7 @@
 - [ ] **INFR-07**: PreToolUse hook prevents accidental stage skipping
 - [ ] **INFR-08**: Subagent orchestration for parallel module generation
 - [ ] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
-- [ ] **INFR-10**: State updates are silent — never announce "updating STATE.md"
+- [x] **INFR-10**: State updates are silent — never announce "updating STATE.md"
 - [ ] **INFR-11**: Expert instructional designer persona maintained in conversational tone
 
 ### Dashboard
@@ -199,8 +199,8 @@
 | VALD-04 | Phase 6 | Pending |
 | VALD-05 | Phase 6 | Pending |
 | VALD-06 | Phase 6 | Pending |
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 2 | Pending |
 | INFR-04 | Phase 2 | Pending |
 | INFR-05 | Phase 2 | Pending |
@@ -208,7 +208,7 @@
 | INFR-07 | Phase 7 | Pending |
 | INFR-08 | Phase 5 | Pending |
 | INFR-09 | Phase 5 | Pending |
-| INFR-10 | Phase 1 | Pending |
+| INFR-10 | Phase 1 | Complete |
 | INFR-11 | Phase 2 | Pending |
 | DASH-01 | Phase 4 | Pending |
 | DASH-02 | Phase 4 | Pending |
