@@ -1,0 +1,44 @@
+# Workspace Directory Structure
+
+This file documents the directory structure that /knz-init creates when scaffolding
+a new curriculum project. It is a reference for the init command — not actual
+directories in the template.
+
+## Directories Created by /knz-init
+
+```
+workspace/{project-name}/
+  00-project-brief/
+  01-outcomes/
+  02-assessments/
+  03-modules/
+  04-sessions/
+  05-metaskills/
+  06-transfer/
+  07-marketing/
+  08-validation/
+  delivery/
+```
+
+## Directory Purpose
+
+| Directory         | Pipeline Stage | Content                                          |
+|-------------------|---------------|--------------------------------------------------|
+| 00-project-brief/ | Stage 1       | Intake brief and key decision record             |
+| 01-outcomes/      | Stage 2       | Learning outcomes (competency + performance)     |
+| 02-assessments/   | Stage 3       | Assessment designs aligned to outcomes           |
+| 03-modules/       | Stage 4       | Module-level structure and learning arcs         |
+| 04-sessions/      | Stage 5       | Session-level content with TMA arc               |
+| 05-metaskills/    | Stage 6       | Metaskill mapping per module                     |
+| 06-transfer/      | Stage 7       | Transfer ecosystem (pre/in/post-program)         |
+| 07-marketing/     | Stage 8       | Marketing copy derived from outcomes             |
+| 08-validation/    | Stage 9       | Validation report and gap analysis               |
+| delivery/         | Output        | Formatted HTML output (markdown is source truth) |
+
+## Notes
+
+- Stage-numbered directories match the `output_dir` from each pipeline schema
+- `delivery/` is for formatted HTML output — markdown in stage dirs is source of truth
+- No placeholder files or template stubs in any directory
+- Each pipeline command creates its output files when it runs
+- /knz-init creates STATE.md and CLAUDE.md alongside these directories
