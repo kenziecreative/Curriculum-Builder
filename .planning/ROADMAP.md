@@ -32,7 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. STATE.md has a defined structure that any command can write to and the session-start hook can parse without ambiguity
   4. CLAUDE.md establishes the constraint hierarchy (schema > template > checklist > directive > naming > framing) and pipeline sequencing rules in under 300 lines
   5. The backward design sequence is encoded as a dependency rule — schema files for outcomes exist before assessment schema, assessment schema before module schema
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Core backward design schemas (intake through sessions, stages 1-5)
+- [ ] 01-02-PLAN.md — Extended pipeline schemas (metaskills through validation, stages 6-9)
+- [ ] 01-03-PLAN.md — Workspace scaffold template, STATE.md, project CLAUDE.md, session-start hook
 
 ### Phase 2: Core Plugin Infrastructure
 **Goal**: A user can run `/knz-init` to start a new curriculum project and `/knz-intake` to complete Stage 1 with a guided conversational interview, with STATE.md correctly written at each transition and recoverable across session interruptions
@@ -112,13 +116,13 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 
 Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase 5 (Module and Session Generation) also depends on Phase 3 — phases 4 and 5 can run in parallel after Phase 3 completes if desired.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Schema and Foundation | 0/TBD | Not started | - |
+| 1. Schema and Foundation | 0/3 | Planning complete | - |
 | 2. Core Plugin Infrastructure | 0/TBD | Not started | - |
 | 3. Backward Design Core | 0/TBD | Not started | - |
 | 4. Dashboard MVP | 0/TBD | Not started | - |
