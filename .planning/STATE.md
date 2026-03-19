@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-15T21:20:58.362Z"
+stopped_at: Completed 02-01-PLAN.md — knz-init, knz-resume, knz-approve commands
+last_updated: "2026-03-19T03:56:39.286Z"
 last_activity: 2026-03-15 — Roadmap created; 61 requirements mapped to 7 phases
 progress:
   total_phases: 7
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 5
+  completed_plans: 4
   percent: 0
 ---
 
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-schema-and-foundation P03 | 3 | 2 tasks | 4 files |
 | Phase 01-schema-and-foundation P01 | 18 | 2 tasks | 5 files |
 | Phase 01-schema-and-foundation P02 | 28 | 2 tasks | 4 files |
+| Phase 02-core-plugin-infrastructure P01 | 10 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,9 @@ Recent decisions affecting current work:
 - [Phase 01-02]: Tier 2 validation produces confidence scores (0.0-1.0), not pass/fail — qualitative dimensions require human judgment not blocking gates
 - [Phase 01-02]: Marketing claims use curriculum_traceability.strength enum (direct/inferred/adjacent) to distinguish robust from tenuous evidence
 - [Phase 01-02]: Imagining metaskill gets evidence_gap_acknowledgment boolean — acknowledges it will be used while flagging evidence gap
+- [Phase 02-01]: Post-intake gate handled inline by /knz-intake (not /knz-approve) — approve command scope is post-assessment and final validation only
+- [Phase 02-01]: knz-approve three-option pattern: approve/concern/start-over with destructive confirmation for start-over
+- [Phase 02-01]: Unavailable stage commands show forward-looking message rather than error to preserve user orientation
 
 ### Pending Todos
 
@@ -85,6 +89,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-15T21:20:58.352Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-core-plugin-infrastructure/02-CONTEXT.md
+Last session: 2026-03-19T03:56:39.283Z
+Stopped at: Completed 02-01-PLAN.md — knz-init, knz-resume, knz-approve commands
+Resume file: None

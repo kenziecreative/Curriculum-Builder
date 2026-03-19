@@ -7,7 +7,7 @@
 
 ### Pipeline Foundation
 
-- [ ] **PIPE-01**: User can initialize a new curriculum project with structured intake conversation
+- [x] **PIPE-01**: User can initialize a new curriculum project with structured intake conversation
 - [x] **PIPE-02**: Pipeline enforces backward design sequence — outcomes before assessments, assessments before content, content before marketing
 - [x] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
 - [ ] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
@@ -89,10 +89,10 @@
 
 - [x] **INFR-01**: STATE.md tracks current stage, completed stages, key decisions, and next action across sessions
 - [x] **INFR-02**: Session-start hook automatically reads STATE.md and restores context
-- [ ] **INFR-03**: One command per pipeline stage as clear entry points
-- [ ] **INFR-04**: Resume command shows current stage, last session summary, completed work, and next action
-- [ ] **INFR-05**: Confirmation gate at every stage transition — user confirms before advancing
-- [ ] **INFR-06**: AskUserQuestion used for all categorical/binary decision points
+- [x] **INFR-03**: One command per pipeline stage as clear entry points
+- [x] **INFR-04**: Resume command shows current stage, last session summary, completed work, and next action
+- [x] **INFR-05**: Confirmation gate at every stage transition — user confirms before advancing
+- [x] **INFR-06**: AskUserQuestion used for all categorical/binary decision points
 - [ ] **INFR-07**: PreToolUse hook prevents accidental stage skipping
 - [ ] **INFR-08**: Subagent orchestration for parallel module generation
 - [ ] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
@@ -149,7 +149,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PIPE-01 | Phase 2 | Pending |
+| PIPE-01 | Phase 2 | Complete |
 | PIPE-02 | Phase 1 | Complete |
 | PIPE-03 | Phase 1 | Complete |
 | PIPE-04 | Phase 2 | Pending |
@@ -201,10 +201,10 @@
 | VALD-06 | Phase 6 | Pending |
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
-| INFR-03 | Phase 2 | Pending |
-| INFR-04 | Phase 2 | Pending |
-| INFR-05 | Phase 2 | Pending |
-| INFR-06 | Phase 2 | Pending |
+| INFR-03 | Phase 2 | Complete |
+| INFR-04 | Phase 2 | Complete |
+| INFR-05 | Phase 2 | Complete |
+| INFR-06 | Phase 2 | Complete |
 | INFR-07 | Phase 7 | Pending |
 | INFR-08 | Phase 5 | Pending |
 | INFR-09 | Phase 5 | Pending |
