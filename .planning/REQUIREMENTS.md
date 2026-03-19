@@ -10,7 +10,7 @@
 - [x] **PIPE-01**: User can initialize a new curriculum project with structured intake conversation
 - [x] **PIPE-02**: Pipeline enforces backward design sequence — outcomes before assessments, assessments before content, content before marketing
 - [x] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
-- [ ] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
+- [x] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
 - [ ] **PIPE-05**: Human review gate pauses pipeline after assessment design for user confirmation
 - [ ] **PIPE-06**: Human review gate pauses pipeline at final validation for user approval of complete package
 - [ ] **PIPE-07**: Pipeline stages 4-8 (module structure through marketing) run autonomously without human intervention after assessment gate
@@ -18,12 +18,12 @@
 
 ### Structured Intake (Stage 1)
 
-- [ ] **INTK-01**: Intake uses guided conversational interview — questions in batches of 2-3, not a form dump
-- [ ] **INTK-02**: All intake questions are answerable by subject matter experts without instructional design vocabulary
-- [ ] **INTK-03**: Intake captures learner expertise level via behavioral description ("can do X, cannot yet do Y"), not self-report
-- [ ] **INTK-04**: Intake captures program duration, delivery context, and audience demographics
-- [ ] **INTK-05**: Intake reflects back captured information and confirms with user before advancing
-- [ ] **INTK-06**: Intake pushes back on vague inputs as an expert instructional designer would — not as a form validator
+- [x] **INTK-01**: Intake uses guided conversational interview — questions in batches of 2-3, not a form dump
+- [x] **INTK-02**: All intake questions are answerable by subject matter experts without instructional design vocabulary
+- [x] **INTK-03**: Intake captures learner expertise level via behavioral description ("can do X, cannot yet do Y"), not self-report
+- [x] **INTK-04**: Intake captures program duration, delivery context, and audience demographics
+- [x] **INTK-05**: Intake reflects back captured information and confirms with user before advancing
+- [x] **INTK-06**: Intake pushes back on vague inputs as an expert instructional designer would — not as a form validator
 
 ### Outcome Design (Stage 2)
 
@@ -97,7 +97,7 @@
 - [ ] **INFR-08**: Subagent orchestration for parallel module generation
 - [ ] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
 - [x] **INFR-10**: State updates are silent — never announce "updating STATE.md"
-- [ ] **INFR-11**: Expert instructional designer persona maintained in conversational tone
+- [x] **INFR-11**: Expert instructional designer persona maintained in conversational tone
 
 ### Dashboard
 
@@ -152,17 +152,17 @@
 | PIPE-01 | Phase 2 | Complete |
 | PIPE-02 | Phase 1 | Complete |
 | PIPE-03 | Phase 1 | Complete |
-| PIPE-04 | Phase 2 | Pending |
+| PIPE-04 | Phase 2 | Complete |
 | PIPE-05 | Phase 3 | Pending |
 | PIPE-06 | Phase 7 | Pending |
 | PIPE-07 | Phase 7 | Pending |
 | PIPE-08 | Phase 1 | Complete |
-| INTK-01 | Phase 2 | Pending |
-| INTK-02 | Phase 2 | Pending |
-| INTK-03 | Phase 2 | Pending |
-| INTK-04 | Phase 2 | Pending |
-| INTK-05 | Phase 2 | Pending |
-| INTK-06 | Phase 2 | Pending |
+| INTK-01 | Phase 2 | Complete |
+| INTK-02 | Phase 2 | Complete |
+| INTK-03 | Phase 2 | Complete |
+| INTK-04 | Phase 2 | Complete |
+| INTK-05 | Phase 2 | Complete |
+| INTK-06 | Phase 2 | Complete |
 | OUTC-01 | Phase 3 | Pending |
 | OUTC-02 | Phase 3 | Pending |
 | OUTC-03 | Phase 3 | Pending |
@@ -209,7 +209,7 @@
 | INFR-08 | Phase 5 | Pending |
 | INFR-09 | Phase 5 | Pending |
 | INFR-10 | Phase 1 | Complete |
-| INFR-11 | Phase 2 | Pending |
+| INFR-11 | Phase 2 | Complete |
 | DASH-01 | Phase 4 | Pending |
 | DASH-02 | Phase 4 | Pending |
 | DASH-03 | Phase 4 | Pending |

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-01-PLAN.md — knz-init, knz-resume, knz-approve commands
-last_updated: "2026-03-19T03:56:39.286Z"
+stopped_at: Completed 02-02-PLAN.md Task 1 — /knz-intake command (Task 2 awaiting human-verify checkpoint)
+last_updated: "2026-03-19T04:01:55.630Z"
 last_activity: 2026-03-15 — Roadmap created; 61 requirements mapped to 7 phases
 progress:
   total_phases: 7
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
   percent: 0
 ---
 
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-schema-and-foundation P01 | 18 | 2 tasks | 5 files |
 | Phase 01-schema-and-foundation P02 | 28 | 2 tasks | 4 files |
 | Phase 02-core-plugin-infrastructure P01 | 10 | 2 tasks | 3 files |
+| Phase 02-core-plugin-infrastructure P02 | 5 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,9 @@ Recent decisions affecting current work:
 - [Phase 02-01]: Post-intake gate handled inline by /knz-intake (not /knz-approve) — approve command scope is post-assessment and final validation only
 - [Phase 02-01]: knz-approve three-option pattern: approve/concern/start-over with destructive confirmation for start-over
 - [Phase 02-01]: Unavailable stage commands show forward-looking message rather than error to preserve user orientation
+- [Phase 02-core-plugin-infrastructure]: Intake questions ordered by conversational logic (learners → program → success), not schema field order — mirrors real instructional design consultation flow
+- [Phase 02-core-plugin-infrastructure]: Grow model self-direction enum mapped internally from conversational signal — enum values never exposed to user to prevent vocabulary confusion
+- [Phase 02-core-plugin-infrastructure]: context_of_use is derived from transfer_context + audience without a separate question — eliminates redundant ask
 
 ### Pending Todos
 
@@ -89,6 +93,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-19T03:56:39.283Z
-Stopped at: Completed 02-01-PLAN.md — knz-init, knz-resume, knz-approve commands
+Last session: 2026-03-19T04:01:55.627Z
+Stopped at: Completed 02-02-PLAN.md Task 1 — /knz-intake command (Task 2 awaiting human-verify checkpoint)
 Resume file: None
