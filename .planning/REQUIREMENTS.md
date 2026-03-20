@@ -48,13 +48,13 @@
 
 ### Session Content (Stage 5)
 
-- [ ] **SESS-01**: Each session follows the TMA content arc (ACTIVATE → THEORY → CHECK → METHOD → PRACTICE → APPLICATION → REFLECT → TRANSFER)
-- [ ] **SESS-02**: DCR analytical method is applied within sessions with scaffolding for novice audiences
+- [x] **SESS-01**: Each session follows the TMA content arc (ACTIVATE → THEORY → CHECK → METHOD → PRACTICE → APPLICATION → REFLECT → TRANSFER)
+- [x] **SESS-02**: DCR analytical method is applied within sessions with scaffolding for novice audiences
 - [x] **SESS-03**: Social learning layer is required per module with all four sub-fields: activity type, interdependence structure, accountability mechanism, group processing prompt
-- [ ] **SESS-04**: Facilitator guides include timing cues, facilitation notes, common stumbling points, and transition guidance
-- [ ] **SESS-05**: Participant-facing materials are generated: pre-work assignments, handouts, activity worksheets
-- [ ] **SESS-06**: Presentation/slide framework outlines are generated (structural, not visual design)
-- [ ] **SESS-07**: Parallel module generation via subagents for programs with multiple modules
+- [x] **SESS-04**: Facilitator guides include timing cues, facilitation notes, common stumbling points, and transition guidance
+- [x] **SESS-05**: Participant-facing materials are generated: pre-work assignments, handouts, activity worksheets
+- [x] **SESS-06**: Presentation/slide framework outlines are generated (structural, not visual design)
+- [x] **SESS-07**: Parallel module generation via subagents for programs with multiple modules
 
 ### Metaskill Mapping (Stage 6)
 
@@ -94,8 +94,8 @@
 - [x] **INFR-05**: Confirmation gate at every stage transition — user confirms before advancing
 - [x] **INFR-06**: AskUserQuestion used for all categorical/binary decision points
 - [ ] **INFR-07**: PreToolUse hook prevents accidental stage skipping
-- [ ] **INFR-08**: Subagent orchestration for parallel module generation
-- [ ] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
+- [x] **INFR-08**: Subagent orchestration for parallel module generation
+- [x] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
 - [x] **INFR-10**: State updates are silent — never announce "updating STATE.md"
 - [x] **INFR-11**: Expert instructional designer persona maintained in conversational tone
 
@@ -175,13 +175,13 @@
 | MODS-02 | Phase 5 | Complete |
 | MODS-03 | Phase 5 | Complete |
 | MODS-04 | Phase 5 | Complete |
-| SESS-01 | Phase 5 | Pending |
-| SESS-02 | Phase 5 | Pending |
+| SESS-01 | Phase 5 | Complete |
+| SESS-02 | Phase 5 | Complete |
 | SESS-03 | Phase 5 | Complete |
-| SESS-04 | Phase 5 | Pending |
-| SESS-05 | Phase 5 | Pending |
-| SESS-06 | Phase 5 | Pending |
-| SESS-07 | Phase 5 | Pending |
+| SESS-04 | Phase 5 | Complete |
+| SESS-05 | Phase 5 | Complete |
+| SESS-06 | Phase 5 | Complete |
+| SESS-07 | Phase 5 | Complete |
 | META-01 | Phase 7 | Pending |
 | META-02 | Phase 7 | Pending |
 | META-03 | Phase 7 | Pending |
@@ -206,8 +206,8 @@
 | INFR-05 | Phase 2 | Complete |
 | INFR-06 | Phase 2 | Complete |
 | INFR-07 | Phase 7 | Pending |
-| INFR-08 | Phase 5 | Pending |
-| INFR-09 | Phase 5 | Pending |
+| INFR-08 | Phase 5 | Complete |
+| INFR-09 | Phase 5 | Complete |
 | INFR-10 | Phase 1 | Complete |
 | INFR-11 | Phase 2 | Complete |
 | DASH-01 | Phase 4 | Complete |
