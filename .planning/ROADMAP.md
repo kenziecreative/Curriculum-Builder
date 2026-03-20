@@ -79,7 +79,13 @@ Plans:
   3. A user can navigate to any generated output file through the dashboard's deliverable view and read its rendered content (markdown rendered as HTML, not raw text)
   4. The dashboard auto-refreshes when workspace files change, so a user watching the dashboard during autonomous generation sees progress without reloading
   5. Formatted HTML output files exist alongside markdown source, making curriculum documents delivery-ready from the dashboard
-**Plans**: TBD
+**Plans:** 5 plans
+Plans:
+- [ ] 04-01-PLAN.md — Project scaffold and Wave 0 test stubs (new knz-curriculum-dashboard project)
+- [ ] 04-02-PLAN.md — Vite infrastructure: serveWorkspace middleware, JSON endpoints, generateHtml startup plugin
+- [ ] 04-03-PLAN.md — Data layer: TypeScript types, STATE.md parser, workspace loader, polling hook
+- [ ] 04-04-PLAN.md — UI components: StatusBadge, StageRow, GateRow, PipelineStepper, FileExpander, DeliverableSection
+- [ ] 04-05-PLAN.md — App wiring and human verification of complete dashboard
 
 ### Phase 5: Module and Session Generation
 **Goal**: A user can run `/knz-modules` to generate a sequenced module structure from their outcomes and assessments, then watch parallel subagents generate complete session content — including TMA arc, DCR scaffolding, social learning layer, facilitator guides, participant materials, and slide framework outlines — without the main session context collapsing
