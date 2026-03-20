@@ -59,7 +59,7 @@ Load `.claude/reference/schemas/stage-03-assessments.md` as generation context b
 
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids and their bloom_level values.
 
-Read from `workspace/*/00-project-brief/project-brief.md`: `skill_type`, `contact_hours`.
+Read from `workspace/*/00-project-brief/project-brief.md`: `skill_type`, `contact_hours`, `modality`.
 
 Generate assessments silently — no running commentary during generation. Generate:
 
@@ -115,7 +115,11 @@ Verify every `success_criteria_for_assessment` uses observable verbs. If any con
 
 If `skill_type` = `open`: verify at least one `performance-based` or `simulation` assessment among all assessments. If missing, add one. If `skill_type` = `closed`: verify at least one `procedural` or `demonstration` assessment. If missing, add one. Record any additions.
 
-**Step 6 — Record changes:**
+**Step 6 — Delivery format compatibility check:**
+
+Read `modality` from Stage 01 intake. If `modality` = `virtual`: check every assessment format against the exclusion list in `stage-03-assessments.md` Delivery Format Constraints. For any assessment using `oral` or `demonstration`: auto-substitute using the substitution map, keeping the same bloom_level and paired_objective. Record the substitution (e.g., "Substituted `oral` → `performance-based` for FA-3 — oral format is not practical for virtual delivery"). If `modality` = `blended`: flag (do not auto-substitute) any `oral` or `demonstration` assessments without a module_placement that can be confirmed as an in-person session — include a note in the transparency section asking the user to confirm placement.
+
+**Step 7 — Record changes:**
 
 Track: how many assessments were auto-generated, how many were elevated, what was changed in success criteria. This feeds the transparency note.
 
@@ -265,6 +269,7 @@ Before writing any output file, verify internally:
 - [ ] At least one formative per module
 - [ ] At least one summative at program level (unless contact_hours < 2)
 - [ ] `skill_type` constraint honored: open skills have `performance-based` or `simulation`; closed skills have `procedural` or `demonstration`
+- [ ] `modality` constraint honored: no `oral` or `demonstration` formats for `virtual` programs (substituted if needed)
 - [ ] `success_criteria_for_assessment` uses observable verbs — never "understands," "knows," or "appreciates"
 - [ ] Post-Assessment gate written to STATE.md as `approved` in the approval branch only
 - [ ] Files written to `02-assessments/` directory under the correct project workspace folder

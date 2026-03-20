@@ -17,6 +17,15 @@ A Claude Code plugin that encodes pedagogical doctrine as structural constraints
 - **PRD:** `.planning/PRD.md`
 - **Design brief:** See research outputs `12-tool-design-recommendations.md` for architecture details
 
+## Foundational Doctrine
+
+Read `.claude/reference/doctrine-how-i-teach-how-i-learn.md` when working on any content-facing stage (sessions, modules, transfer design, metaskills). This is Kelsey's personal pedagogical doctrine — the six metaskills, Theory→Method→Application teaching model, Deconstruct→Compare→Rebuild learning model, and the flipped classroom rationale. It is the philosophical foundation the entire pipeline is built on, not a research artifact. Key implications:
+
+- **Theory→Method→Application** governs session structure (Stage 5): theory delivered before sessions, live time reserved for application
+- **Flipped classroom** means pre-work is not optional — it is the structural mechanism that makes application sessions possible
+- **Six metaskills** (Exploring, Creating, Feeling, Imagining, Innovating, Adapting) are the transfer layer — Stage 6 builds directly from this
+- **Deconstruct→Compare→Rebuild** is the learner's model for wicked domains — informs how transfer tasks should be designed
+
 ## Core Principles
 
 - **Schema over instruction.** Encode pedagogical requirements as required output fields, not generation instructions. Constraint hierarchy: schema > template > checklist > inline directive > framework naming > role framing.

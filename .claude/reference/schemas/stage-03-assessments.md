@@ -139,6 +139,24 @@
 
 ---
 
+## Delivery Format Constraints
+
+Based on `modality` from Stage 01 intake, certain assessment formats are impractical or excluded:
+
+| modality | Excluded formats | Notes |
+|----------|-----------------|-------|
+| `virtual` | `oral`, `demonstration` | Oral assessments require synchronous verbal exchange not practical in async/online delivery; demonstrations require an evaluator physically present |
+| `in-person` | *(none)* | All formats available |
+| `blended` | *(none)* | All formats available; `oral` and `demonstration` must be placed in in-person sessions |
+
+**When a format would be excluded:** auto-substitute the closest practical equivalent and record the substitution in the transparency note.
+
+Substitution map for `virtual`:
+- `oral` → `written` (for knowledge/comprehension outcomes) or `performance-based` (for Apply and above)
+- `demonstration` → `simulation` (for open skills) or `procedural` written submission (for closed skills)
+
+---
+
 ## Skill-Type Constraints
 
 Based on `skill_type` from Stage 01 intake:
