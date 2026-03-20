@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-dashboard-mvp-04-PLAN.md
-last_updated: "2026-03-20T12:59:13.786Z"
+stopped_at: Completed 04-dashboard-mvp Phase 4 complete — all 5 DASH requirements verified
+last_updated: "2026-03-20T18:27:08.565Z"
 last_activity: 2026-03-20 — Plan 04-02 complete — Vite plugins serve workspace files, JSON directory listings, and generate delivery/ HTML on startup
 progress:
   total_phases: 7
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 13
-  completed_plans: 12
+  completed_plans: 13
   percent: 77
 ---
 
@@ -63,6 +63,7 @@ Progress: [████████░░] 77%
 | Phase 04-dashboard-mvp P02 | 2 | 2 tasks | 4 files |
 | Phase 04-dashboard-mvp P03 | 12 | 2 tasks | 8 files |
 | Phase 04-dashboard-mvp P04 | 2 | 2 tasks | 7 files |
+| Phase 04-dashboard-mvp P05 | continuation | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -110,6 +111,8 @@ Recent decisions affecting current work:
 - [Phase 04-dashboard-mvp]: All 7 dashboard components are pure display with no state mutations — data binding deferred to App.tsx (Plan 05)
 - [Phase 04-dashboard-mvp]: FileExpander caches content in local state (content !== null guard) — no refetch on re-expand
 - [Phase 04-dashboard-mvp]: StageRow onSelect + isSelected props enable stepper-to-deliverables linking without lifting state beyond App.tsx
+- [Phase 04-dashboard-mvp]: Workspace file path resolved relative to WORKSPACE_DIR (not __dirname) — fixes path mismatch between dev server and Vite plugin context
+- [Phase 04-dashboard-mvp]: Stage labels renamed to learner-journey language across dashboard — removes pipeline jargon for SME users
 
 ### Pending Todos
 
@@ -124,6 +127,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20T12:59:13.783Z
-Stopped at: Completed 04-dashboard-mvp-04-PLAN.md
+Last session: 2026-03-20T18:27:08.562Z
+Stopped at: Completed 04-dashboard-mvp Phase 4 complete — all 5 DASH requirements verified
 Resume file: None
