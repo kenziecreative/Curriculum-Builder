@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Completed 03-01-PLAN.md"
-last_updated: "2026-03-19T00:00:00Z"
-last_activity: 2026-03-19 — Phase 3 Plan 01 complete — test workspace + /knz-outcomes command built
+stopped_at: "Completed 03-02-PLAN.md"
+last_updated: "2026-03-20T00:00:00Z"
+last_activity: 2026-03-20 — Phase 3 Plan 02 complete — /knz-assessments command built and Stage 2→3 pipeline verified
 progress:
   total_phases: 7
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 8
-  completed_plans: 6
-  percent: 10
+  completed_plans: 7
+  percent: 43
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 3 of 7 (Backward Design Core)
-Plan: 1 of 2 complete in current phase
-Status: In progress — Plan 01 complete, Plan 02 (/knz-assessments) next
-Last activity: 2026-03-19 — Phase 3 Plan 01 complete — test workspace + /knz-outcomes command built
+Phase: 3 of 7 (Backward Design Core) — COMPLETE
+Plan: 2 of 2 complete in current phase
+Status: Phase 3 complete — ready for Phase 4 (Dashboard) or Phase 5 (Module/Session)
+Last activity: 2026-03-20 — Phase 3 Plan 02 complete — /knz-assessments command built, Stage 2→3 pipeline verified
 
-Progress: [█░░░░░░░░░] 10%
+Progress: [████░░░░░░] 43%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [█░░░░░░░░░] 10%
 | Phase 02-core-plugin-infrastructure P02 | 5 | 1 tasks | 1 files |
 | Phase 02-core-plugin-infrastructure P02 | 5 | 2 tasks | 1 files |
 | Phase 03-backward-design-core P01 | 20 | 2 tasks | 3 files |
+| Phase 03-backward-design-core P02 | 25 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,10 @@ Recent decisions affecting current work:
 - [Phase 03-01]: AskUserQuestion gate controls file writes — 01-outcomes/ files written only on approval; generation lives in conversation context only
 - [Phase 03-01]: "Flag an issue" triggers full regeneration (not patching) with all five constraint steps re-run — prevents hierarchy integrity errors
 - [Phase 03-01]: Plain language throughout /knz-outcomes — "thinking level" not "Bloom's taxonomy"; Recall/Understand/Apply/Analyze/Evaluate/Create not enum names
+- [Phase 03-02]: PIPE-05 gate timing — Post-Assessment status moves to pending when alignment map shown; moves to approved only on explicit "Approve and continue"; concern and start-over branches never advance status
+- [Phase 03-02]: Five-step silent constraint enforcement in /knz-assessments: (1) coverage, (2) Bloom auto-elevation, (3) formative coverage, (4) observable verbs, (5) skill-type compliance — all run before display
+- [Phase 03-02]: Plain language alignment map — "formative check"/"final assessment" for type; Bloom Match shows relational expression (Apply >= Apply) not enum values
+- [Phase 03-02]: Destructive confirmation gate (nested AskUserQuestion) on "Start this stage over" — prevents accidental data loss
 
 ### Pending Todos
 
@@ -101,6 +106,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-19T00:00:00Z
-Stopped at: Completed 03-01-PLAN.md
-Resume file: .planning/phases/03-backward-design-core/03-02-PLAN.md
+Last session: 2026-03-20T00:00:00Z
+Stopped at: Completed 03-02-PLAN.md
+Resume file: Phase 4 (Dashboard) or Phase 5 (Module/Session) — see ROADMAP.md for next plan

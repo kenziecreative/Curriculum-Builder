@@ -11,7 +11,7 @@
 - [x] **PIPE-02**: Pipeline enforces backward design sequence — outcomes before assessments, assessments before content, content before marketing
 - [x] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
 - [x] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
-- [ ] **PIPE-05**: Human review gate pauses pipeline after assessment design for user confirmation
+- [x] **PIPE-05**: Human review gate pauses pipeline after assessment design for user confirmation
 - [ ] **PIPE-06**: Human review gate pauses pipeline at final validation for user approval of complete package
 - [ ] **PIPE-07**: Pipeline stages 4-8 (module structure through marketing) run autonomously without human intervention after assessment gate
 - [x] **PIPE-08**: Pipeline handles programs from 90 minutes to full semester without architectural changes — duration is an intake parameter
@@ -34,10 +34,10 @@
 
 ### Assessment Design (Stage 3)
 
-- [ ] **ASMT-01**: Every learning objective has a paired assessment — 100% objective-assessment alignment
-- [ ] **ASMT-02**: Assessment Bloom's level matches or exceeds the paired objective's level
-- [ ] **ASMT-03**: Assessments include formative checks (during learning) not just summative (end of learning)
-- [ ] **ASMT-04**: Assessment rubric criteria are generated for each assessment
+- [x] **ASMT-01**: Every learning objective has a paired assessment — 100% objective-assessment alignment
+- [x] **ASMT-02**: Assessment Bloom's level matches or exceeds the paired objective's level
+- [x] **ASMT-03**: Assessments include formative checks (during learning) not just summative (end of learning)
+- [x] **ASMT-04**: Assessment rubric criteria are generated for each assessment
 
 ### Module Structure (Stage 4)
 
@@ -153,7 +153,7 @@
 | PIPE-02 | Phase 1 | Complete |
 | PIPE-03 | Phase 1 | Complete |
 | PIPE-04 | Phase 2 | Complete |
-| PIPE-05 | Phase 3 | Pending |
+| PIPE-05 | Phase 3 | Complete |
 | PIPE-06 | Phase 7 | Pending |
 | PIPE-07 | Phase 7 | Pending |
 | PIPE-08 | Phase 1 | Complete |
@@ -167,10 +167,10 @@
 | OUTC-02 | Phase 3 | Complete |
 | OUTC-03 | Phase 3 | Complete |
 | OUTC-04 | Phase 3 | Complete |
-| ASMT-01 | Phase 3 | Pending |
-| ASMT-02 | Phase 3 | Pending |
-| ASMT-03 | Phase 3 | Pending |
-| ASMT-04 | Phase 3 | Pending |
+| ASMT-01 | Phase 3 | Complete |
+| ASMT-02 | Phase 3 | Complete |
+| ASMT-03 | Phase 3 | Complete |
+| ASMT-04 | Phase 3 | Complete |
 | MODS-01 | Phase 5 | Pending |
 | MODS-02 | Phase 5 | Pending |
 | MODS-03 | Phase 5 | Pending |

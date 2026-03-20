@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Schema and Foundation** - All nine-stage schemas with enumerated field values, CLAUDE.md pipeline rules, workspace scaffold, and STATE.md template (completed 2026-03-15)
 - [x] **Phase 2: Core Plugin Infrastructure** - Session bridge, init and intake commands, stage gate hooks, and proven subagent chaining pattern (completed 2026-03-19)
-- [ ] **Phase 3: Backward Design Core** - Outcome and assessment commands with schema enforcement and human review gates
+- [x] **Phase 3: Backward Design Core** - Outcome and assessment commands with schema enforcement and human review gates (completed 2026-03-20)
 - [ ] **Phase 4: Dashboard MVP** - React dashboard providing full pipeline status visibility and early deliverable navigation
 - [ ] **Phase 5: Module and Session Generation** - Parallel subagent module and session generation with TMA arc, DCR, social learning, and facilitator materials
 - [ ] **Phase 6: Validation Layer** - Separate validation agent with three-tier validation and field-level failure reporting
@@ -63,10 +63,10 @@ Plans:
   3. Every learning objective has a transfer specification — how the skill transfers to real work — and the stage cannot complete if any objective is missing this field
   4. Running `/knz-assessments` produces assessments where every objective has exactly one paired assessment and every assessment's Bloom's level matches or exceeds its objective — mismatches are flagged before the stage completes
   5. The human review gate after assessment design pauses the pipeline and requires explicit user confirmation before Stage 4 can begin — no accidental advancement
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 03-01-PLAN.md — Test workspace + /knz-outcomes command (outcome hierarchy, Bloom enforcement, inline review gate)
-- [ ] 03-02-PLAN.md — /knz-assessments command with PIPE-05 gate (assessment generation, alignment enforcement, pipeline unlock)
+- [x] 03-01-PLAN.md — Test workspace + /knz-outcomes command (outcome hierarchy, Bloom enforcement, inline review gate)
+- [x] 03-02-PLAN.md — /knz-assessments command with PIPE-05 gate (assessment generation, alignment enforcement, pipeline unlock)
 
 ### Phase 4: Dashboard MVP
 **Goal**: A user can open the React dashboard and see accurate pipeline stage status (done / in-progress / not started) for their current curriculum project, read generated output files in the dashboard, and trust that the display reflects the actual workspace state
@@ -130,7 +130,7 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 |-------|----------------|--------|-----------|
 | 1. Schema and Foundation | 3/3 | Complete   | 2026-03-15 |
 | 2. Core Plugin Infrastructure | 2/2 | Complete   | 2026-03-20 |
-| 3. Backward Design Core | 1/2 | In Progress|  |
+| 3. Backward Design Core | 2/2 | Complete   | 2026-03-20 |
 | 4. Dashboard MVP | 0/TBD | Not started | - |
 | 5. Module and Session Generation | 0/TBD | Not started | - |
 | 6. Validation Layer | 0/TBD | Not started | - |
