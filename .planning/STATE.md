@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 3 planned
-last_updated: "2026-03-20T03:29:15.203Z"
-last_activity: 2026-03-15 — Roadmap created; 61 requirements mapped to 7 phases
+stopped_at: "Completed 03-01-PLAN.md"
+last_updated: "2026-03-19T00:00:00Z"
+last_activity: 2026-03-19 — Phase 3 Plan 01 complete — test workspace + /knz-outcomes command built
 progress:
   total_phases: 7
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 5
-  percent: 0
+  total_plans: 8
+  completed_plans: 6
+  percent: 10
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Every curriculum package produces genuine behavioral change through structurally enforced pedagogy that no user can accidentally skip
-**Current focus:** Phase 1 — Schema and Foundation
+**Current focus:** Phase 3 — Backward Design Core
 
 ## Current Position
 
-Phase: 1 of 7 (Schema and Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-15 — Roadmap created; 61 requirements mapped to 7 phases
+Phase: 3 of 7 (Backward Design Core)
+Plan: 1 of 2 complete in current phase
+Status: In progress — Plan 01 complete, Plan 02 (/knz-assessments) next
+Last activity: 2026-03-19 — Phase 3 Plan 01 complete — test workspace + /knz-outcomes command built
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 10%
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-core-plugin-infrastructure P01 | 10 | 2 tasks | 3 files |
 | Phase 02-core-plugin-infrastructure P02 | 5 | 1 tasks | 1 files |
 | Phase 02-core-plugin-infrastructure P02 | 5 | 2 tasks | 1 files |
+| Phase 03-backward-design-core P01 | 20 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,10 @@ Recent decisions affecting current work:
 - [Phase 02-core-plugin-infrastructure]: context_of_use is derived from transfer_context + audience without a separate question — eliminates redundant ask
 - [Phase 02-core-plugin-infrastructure]: Post-intake gate is inline — AskUserQuestion confirmation IS gate approval, no separate /knz-approve needed for Stage 1
 - [Phase 02-core-plugin-infrastructure]: context_of_use derived from transfer_context + audience without a separate question — eliminates redundant ask
+- [Phase 03-01]: Constraint enforcement runs before display — user only sees corrected outcomes; prohibited verbs auto-replaced at same cognitive level
+- [Phase 03-01]: AskUserQuestion gate controls file writes — 01-outcomes/ files written only on approval; generation lives in conversation context only
+- [Phase 03-01]: "Flag an issue" triggers full regeneration (not patching) with all five constraint steps re-run — prevents hierarchy integrity errors
+- [Phase 03-01]: Plain language throughout /knz-outcomes — "thinking level" not "Bloom's taxonomy"; Recall/Understand/Apply/Analyze/Evaluate/Create not enum names
 
 ### Pending Todos
 
@@ -96,6 +101,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20T03:29:15.200Z
-Stopped at: Phase 3 planned
-Resume file: .planning/phases/03-backward-design-core/03-01-PLAN.md
+Last session: 2026-03-19T00:00:00Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-backward-design-core/03-02-PLAN.md

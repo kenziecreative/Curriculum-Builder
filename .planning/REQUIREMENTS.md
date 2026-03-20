@@ -27,10 +27,10 @@
 
 ### Outcome Design (Stage 2)
 
-- [ ] **OUTC-01**: Learning objectives are automatically tagged with Bloom's taxonomy level based on intake
-- [ ] **OUTC-02**: Outcome hierarchy structures objectives from program-level down to session-level
-- [ ] **OUTC-03**: Transfer specification is required for every objective — how the skill transfers to real work
-- [ ] **OUTC-04**: Bloom's distribution spans 4+ taxonomy levels per program
+- [x] **OUTC-01**: Learning objectives are automatically tagged with Bloom's taxonomy level based on intake
+- [x] **OUTC-02**: Outcome hierarchy structures objectives from program-level down to session-level
+- [x] **OUTC-03**: Transfer specification is required for every objective — how the skill transfers to real work
+- [x] **OUTC-04**: Bloom's distribution spans 4+ taxonomy levels per program
 
 ### Assessment Design (Stage 3)
 
@@ -163,10 +163,10 @@
 | INTK-04 | Phase 2 | Complete |
 | INTK-05 | Phase 2 | Complete |
 | INTK-06 | Phase 2 | Complete |
-| OUTC-01 | Phase 3 | Pending |
-| OUTC-02 | Phase 3 | Pending |
-| OUTC-03 | Phase 3 | Pending |
-| OUTC-04 | Phase 3 | Pending |
+| OUTC-01 | Phase 3 | Complete |
+| OUTC-02 | Phase 3 | Complete |
+| OUTC-03 | Phase 3 | Complete |
+| OUTC-04 | Phase 3 | Complete |
 | ASMT-01 | Phase 3 | Pending |
 | ASMT-02 | Phase 3 | Pending |
 | ASMT-03 | Phase 3 | Pending |

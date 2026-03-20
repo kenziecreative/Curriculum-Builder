@@ -63,7 +63,7 @@ Plans:
   3. Every learning objective has a transfer specification — how the skill transfers to real work — and the stage cannot complete if any objective is missing this field
   4. Running `/knz-assessments` produces assessments where every objective has exactly one paired assessment and every assessment's Bloom's level matches or exceeds its objective — mismatches are flagged before the stage completes
   5. The human review gate after assessment design pauses the pipeline and requires explicit user confirmation before Stage 4 can begin — no accidental advancement
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 03-01-PLAN.md — Test workspace + /knz-outcomes command (outcome hierarchy, Bloom enforcement, inline review gate)
 - [ ] 03-02-PLAN.md — /knz-assessments command with PIPE-05 gate (assessment generation, alignment enforcement, pipeline unlock)
@@ -130,7 +130,7 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 |-------|----------------|--------|-----------|
 | 1. Schema and Foundation | 3/3 | Complete   | 2026-03-15 |
 | 2. Core Plugin Infrastructure | 2/2 | Complete   | 2026-03-20 |
-| 3. Backward Design Core | 0/TBD | Not started | - |
+| 3. Backward Design Core | 1/2 | In Progress|  |
 | 4. Dashboard MVP | 0/TBD | Not started | - |
 | 5. Module and Session Generation | 0/TBD | Not started | - |
 | 6. Validation Layer | 0/TBD | Not started | - |
