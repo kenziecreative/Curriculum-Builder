@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-dashboard-mvp-03-PLAN.md
-last_updated: "2026-03-20T12:55:16.813Z"
+stopped_at: Completed 04-dashboard-mvp-04-PLAN.md
+last_updated: "2026-03-20T12:59:13.786Z"
 last_activity: 2026-03-20 — Plan 04-02 complete — Vite plugins serve workspace files, JSON directory listings, and generate delivery/ HTML on startup
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 13
-  completed_plans: 11
+  completed_plans: 12
   percent: 77
 ---
 
@@ -62,6 +62,7 @@ Progress: [████████░░] 77%
 | Phase 04-dashboard-mvp P01 | 2 | 2 tasks | 14 files |
 | Phase 04-dashboard-mvp P02 | 2 | 2 tasks | 4 files |
 | Phase 04-dashboard-mvp P03 | 12 | 2 tasks | 8 files |
+| Phase 04-dashboard-mvp P04 | 2 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -106,6 +107,9 @@ Recent decisions affecting current work:
 - [Phase 04-dashboard-mvp]: Path security check in serveWorkspace(): resolved file path validated against WORKSPACE_DIR before serving to prevent directory traversal
 - [Phase 04-dashboard-mvp]: act()+runAllTicks() replaces runAllTimersAsync() for setInterval hooks — runAllTimersAsync hits 10k timer limit
 - [Phase 04-dashboard-mvp]: STAGE_DIRS exported from workspace-loader.ts as canonical stage-number-to-directory map for UI components
+- [Phase 04-dashboard-mvp]: All 7 dashboard components are pure display with no state mutations — data binding deferred to App.tsx (Plan 05)
+- [Phase 04-dashboard-mvp]: FileExpander caches content in local state (content !== null guard) — no refetch on re-expand
+- [Phase 04-dashboard-mvp]: StageRow onSelect + isSelected props enable stepper-to-deliverables linking without lifting state beyond App.tsx
 
 ### Pending Todos
 
@@ -120,6 +124,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20T12:55:16.810Z
-Stopped at: Completed 04-dashboard-mvp-03-PLAN.md
+Last session: 2026-03-20T12:59:13.783Z
+Stopped at: Completed 04-dashboard-mvp-04-PLAN.md
 Resume file: None
