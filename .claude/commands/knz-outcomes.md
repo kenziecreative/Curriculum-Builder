@@ -81,9 +81,11 @@ Generate the full outcome hierarchy silently — no running commentary during ge
 
 | Program Size | Minimum unique thinking levels |
 |---|---|
-| Short (< 2 hr) | 2 |
-| Medium (2–16 hr) | 3 |
+| Short (< 2 hr) | 4 (global floor — schema requirement) |
+| Medium (2–16 hr) | 4 (global floor — schema requirement) |
 | Long (> 16 hr) | 4 |
+
+Note: The global minimum of 4 thinking levels applies to all program sizes. Short and medium programs must still span 4 levels even if fewer sessions might suggest otherwise — this requires deliberate distribution of objectives across levels at design time.
 
 Thinking levels in order: Remember → Understand → Apply → Analyze → Evaluate → Create
 
@@ -120,7 +122,16 @@ The user never sees the prohibited verb version.
 
 **Step 2 — Thinking-level distribution check:**
 
-Count the number of unique `bloom_level` enum values used across all objectives. Compare against the duration-scaled minimum for this program's `contact_hours`.
+Count the number of unique `bloom_level` enum values used across all objectives. Determine the effective minimum: take the duration-scaled minimum for this program's `contact_hours` and apply a global floor of 4.
+
+Effective minimums:
+| Program Size | Duration-scaled | Global floor | Enforced minimum |
+|---|---|---|---|
+| Short (< 2 hr) | 2 | 4 | 4 |
+| Medium (2–16 hr) | 3 | 4 | 4 |
+| Long (> 16 hr) | 4 | 4 | 4 |
+
+Use the Enforced minimum column. The global floor of 4 is the schema requirement (stage-02-outcomes.md) — the duration-scaled values are starting guidance, not the ceiling.
 
 If unique levels < minimum: auto-add objectives at the missing levels. New objectives must be real and content-appropriate — no placeholder or generic objectives. They appear in the output with a note that they were added.
 
@@ -269,7 +280,7 @@ Before writing any output file, verify internally:
 - [ ] Every outcome has: `outcome_id` (correct format), `outcome_level` (exact enum), `outcome_statement` (observable verb, no prohibited verbs), `bloom_level` (exact enum), `prerequisite_knowledge` (behavioral format), `transfer_context` (specific, not generic)
 - [ ] All module and session outcomes have `parent_outcome_id` referencing a real `outcome_id`
 - [ ] `bloom_level` values are exact: `Remember`, `Understand`, `Apply`, `Analyze`, `Evaluate`, `Create`
-- [ ] Thinking-level span meets duration-scaled minimum (short=2, medium=3, long=4) — count unique levels
+- [ ] Thinking-level span meets the 4-level global minimum (enforced for all program sizes per schema requirement) — count unique bloom_level values across all objectives; must be >= 4
 - [ ] Expertise-adaptive sequencing visible: novice programs progress from lower to higher thinking levels across the session sequence
 - [ ] `contact_hours` read from intake to determine correct duration scaling tier
 - [ ] No prohibited verbs in any `outcome_statement`: understand, know, appreciate (or their conjugations)
