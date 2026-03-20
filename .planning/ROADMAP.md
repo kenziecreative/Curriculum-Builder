@@ -79,7 +79,7 @@ Plans:
   3. A user can navigate to any generated output file through the dashboard's deliverable view and read its rendered content (markdown rendered as HTML, not raw text)
   4. The dashboard auto-refreshes when workspace files change, so a user watching the dashboard during autonomous generation sees progress without reloading
   5. Formatted HTML output files exist alongside markdown source, making curriculum documents delivery-ready from the dashboard
-**Plans:** 2/5 plans executed
+**Plans:** 3/5 plans executed
 Plans:
 - [ ] 04-01-PLAN.md — Project scaffold and Wave 0 test stubs (new knz-curriculum-dashboard project)
 - [ ] 04-02-PLAN.md — Vite infrastructure: serveWorkspace middleware, JSON endpoints, generateHtml startup plugin
@@ -138,7 +138,7 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | 1. Schema and Foundation | 3/3 | Complete   | 2026-03-15 |
 | 2. Core Plugin Infrastructure | 2/2 | Complete   | 2026-03-20 |
 | 3. Backward Design Core | 2/3 | Gap closure in progress | 2026-03-20 |
-| 4. Dashboard MVP | 2/5 | In Progress|  |
+| 4. Dashboard MVP | 3/5 | In Progress|  |
 | 5. Module and Session Generation | 0/TBD | Not started | - |
 | 6. Validation Layer | 0/TBD | Not started | - |
 | 7. Full Pipeline Completion | 0/TBD | Not started | - |
