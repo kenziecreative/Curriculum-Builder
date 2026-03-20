@@ -8,8 +8,8 @@
 | Stage | Name | Status | Completed |
 |-------|------|--------|-----------|
 | 1 | Intake | complete | 2026-03-19 |
-| 2 | Outcome Design | not-started | - |
-| 3 | Assessment Design | not-started | - |
+| 2 | Outcome Design | complete | 2026-03-20 |
+| 3 | Assessment Design | complete | 2026-03-20 |
 | 4 | Module Structure | not-started | - |
 | 5 | Session Content | not-started | - |
 | 6 | Metaskill Mapping | not-started | - |
@@ -32,7 +32,7 @@
 | Gate | After Stage | Status | Approved |
 |------|-------------|--------|----------|
 | Post-Intake | 1 | approved | 2026-03-19 |
-| Post-Assessment | 3 | not-reached | - |
+| Post-Assessment | 3 | approved | 2026-03-20 |
 | Final Validation | 9 | not-reached | - |
 
 <!-- Gate status enums: not-reached | pending | approved -->
@@ -40,5 +40,5 @@
 ## Session Continuity
 - **Last Session:** 2026-03-19
 - **Stopped At:** Stage 1 complete
-- **Next Action:** Run /knz-outcomes to begin outcome design
+- **Next Action:** Run /knz-modules to build module structure
 - **Resume Command:** /knz-resume
