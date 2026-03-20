@@ -8,13 +8,13 @@
 
 ---
 
-## FA-2: Profit vs. Cash Oral Explanation
+## FA-2: Profit vs. Cash Written Explanation
 - **paired_objective:** SO-1-1-2
 - **bloom_level:** Understand
-- **format:** oral
+- **format:** written
 - **module_placement:** Module 1 / Session 1 (mid)
-- **instructions_for_learner:** You'll be given a one-paragraph scenario about a fictional business: they had a profitable quarter but their bank account is dangerously low. Explain to your partner — in plain language — why that can happen. You have 3 minutes to explain; your partner has 2 minutes to ask clarifying questions.
-- **success_criteria:** Explanation correctly identifies that timing differences between invoicing and collection can create a gap between profit and cash; uses at least one specific mechanism from the scenario (e.g., unpaid invoices, early expenses); partner can paraphrase the explanation back accurately.
+- **instructions_for_learner:** You'll be given a one-paragraph scenario about a fictional business: they had a profitable quarter but their bank account is dangerously low. Write 2–3 sentences in plain language explaining why that can happen. Focus on the mechanism — not just that "cash and profit are different" but why the gap occurs.
+- **success_criteria:** Written response correctly identifies that timing differences between invoicing and collection can create a gap between profit and cash; uses at least one specific mechanism from the scenario (e.g., unpaid invoices, early expenses); explanation is legible to someone without accounting vocabulary.
 
 ---
 
