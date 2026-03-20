@@ -98,7 +98,10 @@ Plans:
   4. The social learning layer is fully populated for every module with all four sub-fields (activity type, interdependence structure, accountability mechanism, group processing prompt) — partial social learning entries are blocked by schema validation
   5. A multi-module program generates session content in parallel via subagents — the main session spawns workers and waits, rather than generating all session content sequentially in the primary context window
   6. Facilitator guides, participant handouts, and slide framework outlines are produced as separate files for each session
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
+- [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
 
 ### Phase 6: Validation Layer
 **Goal**: A dedicated validation agent — separate from all generation agents — can evaluate a partially or fully generated curriculum package, produce a schema-report with field-level failures and specific locations, block completion when required fields are missing, and surface specific human review items with actionable descriptions
@@ -110,7 +113,10 @@ Plans:
   3. Tier 1 validation blocks stage completion when required fields are absent — a curriculum with any missing required field cannot be marked complete regardless of overall quality
   4. Tier 2 rubric scoring produces confidence scores (not pass/fail) for qualitative dimensions — a session that technically satisfies all required fields but has thin transfer prompts receives a lower confidence score, not a pass
   5. The ValidationReport dashboard component surfaces specific human review items with enough description that the user knows exactly what to fix without reading the raw schema-report file
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
+- [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
 
 ### Phase 7: Full Pipeline Completion
 **Goal**: The complete nine-stage pipeline is operational — metaskill activation routines, transfer ecosystem, and marketing materials all generate from curriculum substance with schema enforcement — and the PreToolUse hook fully prevents stage skipping across all nine stages
@@ -124,7 +130,10 @@ Plans:
   5. The marketing-to-pedagogy ratio in total output is below 25% — the schema enforces this ceiling, not prose instructions
   6. The PreToolUse hook blocks writes to any future-stage directory when the preceding stage is not marked complete in STATE.md — attempting to run Stage 7 without Stage 6 complete is blocked, not warned
   7. The final human review gate presents a complete curriculum summary and requires explicit approval before the package is marked delivery-ready
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
+- [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
 
 ## Progress
 
