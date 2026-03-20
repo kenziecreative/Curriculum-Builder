@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Core Plugin Infrastructure** - Session bridge, init and intake commands, stage gate hooks, and proven subagent chaining pattern (completed 2026-03-19)
 - [x] **Phase 3: Backward Design Core** - Outcome and assessment commands with schema enforcement and human review gates (completed 2026-03-20)
 - [x] **Phase 4: Dashboard MVP** - React dashboard providing full pipeline status visibility and early deliverable navigation (completed 2026-03-20)
-- [ ] **Phase 5: Module and Session Generation** - Parallel subagent module and session generation with TMA arc, DCR, social learning, and facilitator materials
+- [x] **Phase 5: Module and Session Generation** - Parallel subagent module and session generation with TMA arc, DCR, social learning, and facilitator materials (completed 2026-03-20)
 - [ ] **Phase 6: Validation Layer** - Separate validation agent with three-tier validation and field-level failure reporting
 - [ ] **Phase 7: Full Pipeline Completion** - Metaskill mapping, transfer ecosystem, marketing derivation, and full stage gate enforcement
 
@@ -98,7 +98,7 @@ Plans:
   4. The social learning layer is fully populated for every module with all four sub-fields (activity type, interdependence structure, accountability mechanism, group processing prompt) — partial social learning entries are blocked by schema validation
   5. A multi-module program generates session content in parallel via subagents — the main session spawns workers and waits, rather than generating all session content sequentially in the primary context window
   6. Facilitator guides, participant handouts, and slide framework outlines are produced as separate files for each session
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
 - [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
@@ -148,6 +148,6 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | 2. Core Plugin Infrastructure | 2/2 | Complete   | 2026-03-20 |
 | 3. Backward Design Core | 2/3 | Gap closure in progress | 2026-03-20 |
 | 4. Dashboard MVP | 5/5 | Complete   | 2026-03-20 |
-| 5. Module and Session Generation | 0/TBD | Not started | - |
+| 5. Module and Session Generation | 2/2 | Complete   | 2026-03-20 |
 | 6. Validation Layer | 0/TBD | Not started | - |
 | 7. Full Pipeline Completion | 0/TBD | Not started | - |

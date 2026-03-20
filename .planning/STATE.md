@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in-progress
-stopped_at: Phase 5 planned — ready to execute
-last_updated: "2026-03-20T23:55:00.000Z"
-last_activity: 2026-03-20 — Phase 5 fully planned (research + validation + 2 plans verified) — ready to execute /knz-modules and /knz-sessions commands
+status: verifying
+stopped_at: "Completed 05-01-PLAN.md — awaiting human verification of /knz-modules end-to-end (checkpoint:human-verify)"
+last_updated: "2026-03-20T23:56:12.536Z"
+last_activity: 2026-03-20 — 05-01 complete — /knz-modules command authored with 6-step constraint enforcement, DAG validation, plain-language gate summary, and simultaneous file writes on approval
 progress:
   total_phases: 7
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 15
-  completed_plans: 13
-  percent: 77
+  completed_plans: 15
+  percent: 80
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 5 of 7 (Module and Session Generation) — PLANNED, not yet executed
-Plan: 0 of 2 complete in current phase
-Status: Phase 5 fully planned — 05-01 (knz-modules command) and 05-02 (session-generator subagent + knz-sessions orchestrator) both verified and ready
-Last activity: 2026-03-20 — Plan 04-02 complete — Vite plugins serve workspace files, JSON directory listings, and generate delivery/ HTML on startup
+Phase: 5 of 7 (Module and Session Generation)
+Plan: 1 of 2 complete in current phase
+Status: 05-01 complete (awaiting human verification of /knz-modules end-to-end) — 05-02 (session-generator subagent + knz-sessions orchestrator) is next
+Last activity: 2026-03-20 — 05-01 complete — /knz-modules command authored with 6-step constraint enforcement, DAG validation, plain-language gate summary, and simultaneous file writes on approval
 
-Progress: [████████░░] 77%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -64,6 +64,7 @@ Progress: [████████░░] 77%
 | Phase 04-dashboard-mvp P03 | 12 | 2 tasks | 8 files |
 | Phase 04-dashboard-mvp P04 | 2 | 2 tasks | 7 files |
 | Phase 04-dashboard-mvp P05 | continuation | 2 tasks | 1 files |
+| Phase 05 P02 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -113,6 +114,11 @@ Recent decisions affecting current work:
 - [Phase 04-dashboard-mvp]: StageRow onSelect + isSelected props enable stepper-to-deliverables linking without lifting state beyond App.tsx
 - [Phase 04-dashboard-mvp]: Workspace file path resolved relative to WORKSPACE_DIR (not __dirname) — fixes path mismatch between dev server and Vite plugin context
 - [Phase 04-dashboard-mvp]: Stage labels renamed to learner-journey language across dashboard — removes pipeline jargon for SME users
+- [Phase 05-01]: /knz-modules gate summary table shows module_name (not module_id) — "Module" column never exposes M-1 format to users
+- [Phase 05-01]: All 03-modules/ files written simultaneously on approval — never progressively to prevent partial state
+- [Phase 05-01]: group_processing_prompt specificity enforced with 4 named prohibited patterns as explicit examples (not regex) — makes constraint unambiguous to executing model
+- [Phase 05-01]: thinking routine specificity enforced in Step 4 — named routines required; "discussion" and "reflection" blocked by example list
+- [Phase 05-01]: in-progress branch checks for existing 03-modules/ files before deciding to re-display vs. regenerate — handles interrupted sessions gracefully
 
 ### Pending Todos
 
@@ -127,6 +133,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20T23:26:25.866Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-module-and-session-generation/05-CONTEXT.md
+Last session: 2026-03-20T00:20:00.000Z
+Stopped at: Completed 05-01-PLAN.md — awaiting human verification of /knz-modules end-to-end (checkpoint:human-verify)
+Resume file: .planning/phases/05-module-and-session-generation/05-01-SUMMARY.md
+Next action: After user verifies /knz-modules runs end-to-end, execute 05-02-PLAN.md (/knz-sessions orchestrator + session-generator subagent)

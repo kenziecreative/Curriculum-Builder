@@ -41,16 +41,16 @@
 
 ### Module Structure (Stage 4)
 
-- [ ] **MODS-01**: Modules are decomposed from outcomes and assessments — not from topic lists
-- [ ] **MODS-02**: Module sequencing respects prerequisite dependencies between objectives
-- [ ] **MODS-03**: Session template is automatically selected per module based on intake data (Gagné, 5E/7E, Merrill, WIPPEA, Universal TMA Arc)
-- [ ] **MODS-04**: Module count and session distribution scale with program duration
+- [x] **MODS-01**: Modules are decomposed from outcomes and assessments — not from topic lists
+- [x] **MODS-02**: Module sequencing respects prerequisite dependencies between objectives
+- [x] **MODS-03**: Session template is automatically selected per module based on intake data (Gagné, 5E/7E, Merrill, WIPPEA, Universal TMA Arc)
+- [x] **MODS-04**: Module count and session distribution scale with program duration
 
 ### Session Content (Stage 5)
 
 - [ ] **SESS-01**: Each session follows the TMA content arc (ACTIVATE → THEORY → CHECK → METHOD → PRACTICE → APPLICATION → REFLECT → TRANSFER)
 - [ ] **SESS-02**: DCR analytical method is applied within sessions with scaffolding for novice audiences
-- [ ] **SESS-03**: Social learning layer is required per module with all four sub-fields: activity type, interdependence structure, accountability mechanism, group processing prompt
+- [x] **SESS-03**: Social learning layer is required per module with all four sub-fields: activity type, interdependence structure, accountability mechanism, group processing prompt
 - [ ] **SESS-04**: Facilitator guides include timing cues, facilitation notes, common stumbling points, and transition guidance
 - [ ] **SESS-05**: Participant-facing materials are generated: pre-work assignments, handouts, activity worksheets
 - [ ] **SESS-06**: Presentation/slide framework outlines are generated (structural, not visual design)
@@ -171,13 +171,13 @@
 | ASMT-02 | Phase 3 | Complete |
 | ASMT-03 | Phase 3 | Complete |
 | ASMT-04 | Phase 3 | Complete |
-| MODS-01 | Phase 5 | Pending |
-| MODS-02 | Phase 5 | Pending |
-| MODS-03 | Phase 5 | Pending |
-| MODS-04 | Phase 5 | Pending |
+| MODS-01 | Phase 5 | Complete |
+| MODS-02 | Phase 5 | Complete |
+| MODS-03 | Phase 5 | Complete |
+| MODS-04 | Phase 5 | Complete |
 | SESS-01 | Phase 5 | Pending |
 | SESS-02 | Phase 5 | Pending |
-| SESS-03 | Phase 5 | Pending |
+| SESS-03 | Phase 5 | Complete |
 | SESS-04 | Phase 5 | Pending |
 | SESS-05 | Phase 5 | Pending |
 | SESS-06 | Phase 5 | Pending |
