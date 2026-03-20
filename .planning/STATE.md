@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 4 planned — ready to execute
-last_updated: "2026-03-20"
-last_activity: 2026-03-20 — Phase 4 planned — 5 plans in 4 waves, research + validation + verification all complete
+status: planning
+stopped_at: Completed 04-dashboard-mvp-01-PLAN.md
+last_updated: "2026-03-20T12:45:56.834Z"
+last_activity: 2026-03-20 — Phase 4 planning complete — research, validation strategy, 5 plans, and plan-checker verification all passed
 progress:
   total_phases: 7
   completed_phases: 3
-  total_plans: 8
-  completed_plans: 8
-  percent: 43
+  total_plans: 13
+  completed_plans: 9
+  percent: 69
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Every curriculum package produces genuine behavioral change through structurally enforced pedagogy that no user can accidentally skip
-**Current focus:** Phase 3 — Backward Design Core
+**Current focus:** Phase 4 — Dashboard MVP
 
 ## Current Position
 
-Phase: 4 of 7 (Dashboard MVP) — PLANNED, ready to execute
-Plan: 0 of 5 complete in current phase
-Status: Phase 4 planning complete — 5 plans across 4 waves ready for /gsd:execute-phase 4
-Last activity: 2026-03-20 — Phase 4 planning complete — research, validation strategy, 5 plans, and plan-checker verification all passed
+Phase: 4 of 7 (Dashboard MVP) — IN PROGRESS
+Plan: 1 of 5 complete in current phase
+Status: Plan 04-01 complete — project scaffolded, vitest wired, Wave 0 stubs passing; ready to execute 04-02
+Last activity: 2026-03-20 — Plan 04-01 complete — knz-curriculum-dashboard scaffolded with React 19/Vite 7/Tailwind 4, vitest 3 finds 4 test files, 15 stubs pass
 
-Progress: [████░░░░░░] 43%
+Progress: [███████░░░] 69%
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [████░░░░░░] 43%
 | Phase 03-backward-design-core P01 | 20 | 2 tasks | 3 files |
 | Phase 03-backward-design-core P02 | 25 | 2 tasks | 8 files |
 | Phase 03-backward-design-core P03 | 5 | 2 tasks | 3 files |
+| Phase 04-dashboard-mvp P01 | 2 | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,9 @@ Recent decisions affecting current work:
 - [Phase 03-backward-design-core]: Step 6 modality read uses exact file path to eliminate ambiguity that caused silent skip in verification
 - [Phase 03-backward-design-core]: Missing modality field defaults to virtual (fail-safe direction) — prevents oral assessments from slipping through
 - [Phase 03-backward-design-core]: Bloom span enforced as max(duration_scaled_minimum, 4) — short and medium programs must span 4 levels per schema global floor
+- [Phase 04-dashboard-mvp]: Dashboard is its own git repo at knz-curriculum-dashboard/ (sibling to knz-builder-src/) — keeps concerns cleanly separated
+- [Phase 04-dashboard-mvp]: Test stubs use empty it() bodies (not it.todo) so vitest run exits 0 before any implementation
+- [Phase 04-dashboard-mvp]: Port 3002 reserved for dashboard (Brand Compass uses 3001)
 
 ### Pending Todos
 
@@ -110,6 +114,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-20
-Stopped at: Phase 4 planned — ready to execute
-Resume file: .planning/phases/04-dashboard-mvp/ (all 5 plans ready)
+Last session: 2026-03-20T12:45:56.831Z
+Stopped at: Completed 04-dashboard-mvp-01-PLAN.md
+Resume file: .planning/phases/04-dashboard-mvp/ (04-02 through 04-05 remaining)

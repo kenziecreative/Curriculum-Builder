@@ -101,11 +101,11 @@
 
 ### Dashboard
 
-- [ ] **DASH-01**: React dashboard displays pipeline progress — stage completion status (done/in-progress/not started)
-- [ ] **DASH-02**: Dashboard provides deliverable navigation for all generated output files
-- [ ] **DASH-03**: Dashboard reads from workspace directory via filesystem — no API needed
-- [ ] **DASH-04**: Formatted HTML output alongside markdown for delivery-ready documents
-- [ ] **DASH-05**: Dashboard auto-refreshes when workspace files change
+- [x] **DASH-01**: React dashboard displays pipeline progress — stage completion status (done/in-progress/not started)
+- [x] **DASH-02**: Dashboard provides deliverable navigation for all generated output files
+- [x] **DASH-03**: Dashboard reads from workspace directory via filesystem — no API needed
+- [x] **DASH-04**: Formatted HTML output alongside markdown for delivery-ready documents
+- [x] **DASH-05**: Dashboard auto-refreshes when workspace files change
 
 ## v2 Requirements
 
@@ -210,11 +210,11 @@
 | INFR-09 | Phase 5 | Pending |
 | INFR-10 | Phase 1 | Complete |
 | INFR-11 | Phase 2 | Complete |
-| DASH-01 | Phase 4 | Pending |
-| DASH-02 | Phase 4 | Pending |
-| DASH-03 | Phase 4 | Pending |
-| DASH-04 | Phase 4 | Pending |
-| DASH-05 | Phase 4 | Pending |
+| DASH-01 | Phase 4 | Complete |
+| DASH-02 | Phase 4 | Complete |
+| DASH-03 | Phase 4 | Complete |
+| DASH-04 | Phase 4 | Complete |
+| DASH-05 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 61 total
