@@ -138,6 +138,18 @@ Do not announce these state changes.
 
 ---
 
+## Auto-Trigger Validation
+
+After writing all STATE.md updates, automatically invoke the validation command:
+
+> Running validation on your completed curriculum — this checks all required fields and scores quality dimensions.
+
+Invoke `/knz-validate` as a Skill.
+
+Do not wait for user input. This is the same auto-advance pattern used between discussion and planning phases.
+
+---
+
 ## State Management Rules
 
 All STATE.md reads and writes are silent. Never say:
