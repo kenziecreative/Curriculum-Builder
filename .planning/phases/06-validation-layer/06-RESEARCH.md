@@ -118,7 +118,7 @@ New files to create:
 └── commands/
     └── knz-validate.md           # Orchestrator command (new)
 
-knz-curriculum-dashboard/src/
+dashboard/src/
 └── components/
     └── ValidationReport.tsx      # Dashboard component (new)
 ```
@@ -126,7 +126,7 @@ knz-curriculum-dashboard/src/
 Existing files to modify:
 ```
 .claude/commands/knz-sessions.md  # Add auto-trigger of /knz-validate at end
-knz-curriculum-dashboard/src/App.tsx  # Wire ValidationReport below DeliverableSection
+dashboard/src/App.tsx  # Wire ValidationReport below DeliverableSection
 ```
 
 Output location (already in STAGE_DIRS as entry 9):
@@ -463,9 +463,9 @@ import { ValidationReport } from '@/components/ValidationReport'
 | Property | Value |
 |----------|-------|
 | Framework | Vitest 3.x |
-| Config file | `knz-curriculum-dashboard/vitest.config.ts` |
-| Quick run command | `cd knz-curriculum-dashboard && npm test` |
-| Full suite command | `cd knz-curriculum-dashboard && npm test` |
+| Config file | `dashboard/vitest.config.ts` |
+| Quick run command | `cd dashboard && npm test` |
+| Full suite command | `cd dashboard && npm test` |
 
 ### Phase Requirements → Test Map
 
@@ -477,17 +477,17 @@ import { ValidationReport } from '@/components/ValidationReport'
 | VALD-04 | Tier 3 items include location + actionable description | unit (agent file) | Manual — agent file is markdown | N/A (markdown agent) |
 | VALD-05 | Validation agent is invoked as separate Task | integration (knz-validate.md structure) | Manual — command files are markdown | N/A (markdown command) |
 | VALD-06 | Failure messages include stage + file + field | unit (agent file) | Manual — agent file is markdown | N/A (markdown agent) |
-| ValidationReport render | Component renders "not yet run" on 404 | unit | `cd knz-curriculum-dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
-| ValidationReport render | Component shows only failures (not passing checks) | unit | `cd knz-curriculum-dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
-| ValidationReport render | Component renders neutral state when no files | unit | `cd knz-curriculum-dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
+| ValidationReport render | Component renders "not yet run" on 404 | unit | `cd dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
+| ValidationReport render | Component shows only failures (not passing checks) | unit | `cd dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
+| ValidationReport render | Component renders neutral state when no files | unit | `cd dashboard && npm test -- ValidationReport` | ❌ Wave 0 |
 
 ### Sampling Rate
-- **Per task commit:** `cd knz-curriculum-dashboard && npm test`
-- **Per wave merge:** `cd knz-curriculum-dashboard && npm test`
+- **Per task commit:** `cd dashboard && npm test`
+- **Per wave merge:** `cd dashboard && npm test`
 - **Phase gate:** Full suite green before `/gsd:verify-work`
 
 ### Wave 0 Gaps
-- [ ] `knz-curriculum-dashboard/src/components/ValidationReport.test.tsx` — covers VALD-05 (component isolation), null state, 404 state, failure-only render
+- [ ] `dashboard/src/components/ValidationReport.test.tsx` — covers VALD-05 (component isolation), null state, 404 state, failure-only render
 
 *(Note: agent and command files are markdown and not executable — their correctness is validated by human review of the spec against the schema, not automated tests. Only the React component and any utility functions have automated test coverage.)*
 
@@ -497,15 +497,15 @@ import { ValidationReport } from '@/components/ValidationReport'
 - `.claude/reference/schemas/stage-09-validation.md` — Complete Tier 1/2/3 check definitions, failure reporting standard, duration scaling rules, output file specifications
 - `.claude/agents/session-generator.md` — Reference implementation for separate agent pattern
 - `.claude/commands/knz-sessions.md` — Auto-trigger insertion point; established command structure
-- `knz-curriculum-dashboard/src/components/DeliverableSection.tsx` — Peer component pattern for ValidationReport
-- `knz-curriculum-dashboard/src/components/FileExpander.tsx` — Fetch-on-demand + caching pattern
-- `knz-curriculum-dashboard/src/lib/workspace-loader.ts` — STAGE_DIRS already includes `08-validation/` as entry 9
-- `knz-curriculum-dashboard/src/types/pipeline.ts` — Existing type contracts; no new types needed for validation
+- `dashboard/src/components/DeliverableSection.tsx` — Peer component pattern for ValidationReport
+- `dashboard/src/components/FileExpander.tsx` — Fetch-on-demand + caching pattern
+- `dashboard/src/lib/workspace-loader.ts` — STAGE_DIRS already includes `08-validation/` as entry 9
+- `dashboard/src/types/pipeline.ts` — Existing type contracts; no new types needed for validation
 
 ### Secondary (MEDIUM confidence)
 - `.planning/STATE.md` accumulated context — Tier 2 confidence score decision (0.0–1.0) recorded as Phase 1 decision
 - `.planning/REQUIREMENTS.md` — VALD-01 through VALD-06 definitions and traceability
-- `knz-curriculum-dashboard/vitest.config.ts` + `workspace-loader.test.ts` — Test infrastructure pattern for new component tests
+- `dashboard/vitest.config.ts` + `workspace-loader.test.ts` — Test infrastructure pattern for new component tests
 
 ### Tertiary (LOW confidence)
 - None — all findings are from primary project source files

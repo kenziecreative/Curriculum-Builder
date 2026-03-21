@@ -7,7 +7,7 @@ tags: [typescript, react, vitest, testing-library, vite, polling, fetch]
 # Dependency graph
 requires:
   - phase: 04-dashboard-mvp
-    provides: knz-curriculum-dashboard scaffold with Vite plugins, test fixtures, and stub test files from Plans 01 and 02
+    provides: dashboard scaffold with Vite plugins, test fixtures, and stub test files from Plans 01 and 02
 
 provides:
   - TypeScript interfaces: StageRecord, GateRecord, KnzPipelineState, ProjectIndex (src/types/pipeline.ts)
@@ -32,15 +32,15 @@ tech-stack:
 
 key-files:
   created:
-    - ../knz-curriculum-dashboard/src/types/pipeline.ts
-    - ../knz-curriculum-dashboard/src/lib/state-loader.ts
-    - ../knz-curriculum-dashboard/src/lib/workspace-loader.ts
-    - ../knz-curriculum-dashboard/src/lib/use-workspace-poll.ts
+    - ../dashboard/src/types/pipeline.ts
+    - ../dashboard/src/lib/state-loader.ts
+    - ../dashboard/src/lib/workspace-loader.ts
+    - ../dashboard/src/lib/use-workspace-poll.ts
   modified:
-    - ../knz-curriculum-dashboard/src/lib/state-loader.test.ts
-    - ../knz-curriculum-dashboard/src/lib/workspace-loader.test.ts
-    - ../knz-curriculum-dashboard/src/lib/use-workspace-poll.test.ts
-    - ../knz-curriculum-dashboard/package.json
+    - ../dashboard/src/lib/state-loader.test.ts
+    - ../dashboard/src/lib/workspace-loader.test.ts
+    - ../dashboard/src/lib/use-workspace-poll.test.ts
+    - ../dashboard/package.json
 
 key-decisions:
   - "act()+runAllTicks() replaces runAllTimersAsync() for setInterval hooks — runAllTimersAsync hits 10k timer limit and aborts"

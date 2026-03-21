@@ -6,7 +6,7 @@ tags: [react, vite, tailwindcss, typescript, vitest, dashboard]
 
 requires: []
 provides:
-  - knz-curriculum-dashboard project scaffolded at sibling level to knz-builder-src/
+  - dashboard project scaffolded at sibling level to knz-builder-src/
   - package.json with exact Brand Compass dependency versions (react 19.2, vite 7.2, tailwind 4.1, ts 5.9)
   - vitest test framework with 4 test files, 15 passing stubs
   - STATE.md fixture at src/test/fixtures/STATE.md for parser tests
@@ -35,24 +35,24 @@ tech-stack:
 
 key-files:
   created:
-    - ../knz-curriculum-dashboard/package.json
-    - ../knz-curriculum-dashboard/tsconfig.json
-    - ../knz-curriculum-dashboard/tsconfig.node.json
-    - ../knz-curriculum-dashboard/vite.config.ts
-    - ../knz-curriculum-dashboard/index.html
-    - ../knz-curriculum-dashboard/src/main.tsx
-    - ../knz-curriculum-dashboard/src/App.tsx
-    - ../knz-curriculum-dashboard/src/index.css
-    - ../knz-curriculum-dashboard/vitest.config.ts
-    - ../knz-curriculum-dashboard/src/test/fixtures/STATE.md
-    - ../knz-curriculum-dashboard/src/lib/state-loader.test.ts
-    - ../knz-curriculum-dashboard/src/lib/workspace-loader.test.ts
-    - ../knz-curriculum-dashboard/src/lib/use-workspace-poll.test.ts
-    - ../knz-curriculum-dashboard/vite-plugins/generate-html.test.ts
+    - ../dashboard/package.json
+    - ../dashboard/tsconfig.json
+    - ../dashboard/tsconfig.node.json
+    - ../dashboard/vite.config.ts
+    - ../dashboard/index.html
+    - ../dashboard/src/main.tsx
+    - ../dashboard/src/App.tsx
+    - ../dashboard/src/index.css
+    - ../dashboard/vitest.config.ts
+    - ../dashboard/src/test/fixtures/STATE.md
+    - ../dashboard/src/lib/state-loader.test.ts
+    - ../dashboard/src/lib/workspace-loader.test.ts
+    - ../dashboard/src/lib/use-workspace-poll.test.ts
+    - ../dashboard/vite-plugins/generate-html.test.ts
   modified: []
 
 key-decisions:
-  - "Dashboard project lives at /knz-learner-builder/knz-curriculum-dashboard/ (sibling to knz-builder-src/), initialized as its own git repo"
+  - "Dashboard project lives at /knz-learner-builder/dashboard/ (sibling to knz-builder-src/), initialized as its own git repo"
   - "tsconfig.node.json added to cover vite.config.ts and vitest.config.ts — required by Vite 7 TypeScript project references"
   - "Vitest config kept separate from vite.config.ts to avoid environment conflicts (node env for tests, browser for app)"
   - "Test stubs use empty it() bodies (not it.todo) so vitest run exits 0 — avoids false failures before implementation"
@@ -81,7 +81,7 @@ completed: 2026-03-20
 
 ## Accomplishments
 
-- knz-curriculum-dashboard/ created as sibling project with exact Brand Compass dependency versions
+- dashboard/ created as sibling project with exact Brand Compass dependency versions
 - npm install succeeded (222 packages), dev server confirmed running on port 3002
 - vitest finds 4 test files, 15 stubs pass with zero failures — Wave 0 Nyquist requirement satisfied
 - src/test/fixtures/STATE.md is exact copy of workspace/test-program/STATE.md for deterministic parser tests
@@ -93,14 +93,14 @@ completed: 2026-03-20
 
 ## Files Created/Modified
 
-- `/knz-curriculum-dashboard/package.json` - All Brand Compass versions + marked 15, vitest 3
-- `/knz-curriculum-dashboard/vite.config.ts` - React + Tailwind 4 plugins, port 3002, workspace comment
-- `/knz-curriculum-dashboard/vitest.config.ts` - Node env, includes src/**/*.test.ts and vite-plugins/**/*.test.ts
-- `/knz-curriculum-dashboard/src/test/fixtures/STATE.md` - Exact copy of test-program STATE.md
-- `/knz-curriculum-dashboard/src/lib/state-loader.test.ts` - Stubs: parseStageProgress, parseReviewGates, parseNextAction
-- `/knz-curriculum-dashboard/src/lib/workspace-loader.test.ts` - Stubs: discoverActiveProject, listStageFiles
-- `/knz-curriculum-dashboard/src/lib/use-workspace-poll.test.ts` - Stubs: useWorkspacePoll (3 behaviors)
-- `/knz-curriculum-dashboard/vite-plugins/generate-html.test.ts` - Stubs: generateHtmlFromWorkspace (3 behaviors)
+- `/dashboard/package.json` - All Brand Compass versions + marked 15, vitest 3
+- `/dashboard/vite.config.ts` - React + Tailwind 4 plugins, port 3002, workspace comment
+- `/dashboard/vitest.config.ts` - Node env, includes src/**/*.test.ts and vite-plugins/**/*.test.ts
+- `/dashboard/src/test/fixtures/STATE.md` - Exact copy of test-program STATE.md
+- `/dashboard/src/lib/state-loader.test.ts` - Stubs: parseStageProgress, parseReviewGates, parseNextAction
+- `/dashboard/src/lib/workspace-loader.test.ts` - Stubs: discoverActiveProject, listStageFiles
+- `/dashboard/src/lib/use-workspace-poll.test.ts` - Stubs: useWorkspacePoll (3 behaviors)
+- `/dashboard/vite-plugins/generate-html.test.ts` - Stubs: generateHtmlFromWorkspace (3 behaviors)
 
 ## Decisions Made
 
@@ -154,8 +154,18 @@ None - no external service configuration required.
 
 - Plan 04-02 can begin immediately: serves workspace files via Vite dev middleware, implements workspace-index endpoint
 - All test stubs are in place — Plan 04-03 will add implementations to make them pass
-- Dashboard project is at /Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-curriculum-dashboard/
+- Dashboard project is at /Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/dashboard/
 
 ---
 *Phase: 04-dashboard-mvp*
 *Completed: 2026-03-20*
+
+## Self-Check: PASSED
+
+- FOUND: /dashboard/package.json
+- FOUND: /dashboard/vitest.config.ts
+- FOUND: /dashboard/src/test/fixtures/STATE.md
+- FOUND: .planning/phases/04-dashboard-mvp/04-01-SUMMARY.md
+- FOUND: commit 9454032 (feat: scaffold)
+- FOUND: commit 92cd619 (test: stubs)
+- vitest run: 4 files, 15 tests, 0 failures

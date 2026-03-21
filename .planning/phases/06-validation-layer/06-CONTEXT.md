@@ -65,8 +65,8 @@ Build a dedicated `/knz-validate` command and separate validation agent that eva
 - `.claude/reference/schemas/stage-09-validation.md` — Complete validation schema: all 33 Tier 1 checks defined, Tier 2 dimensions with scoring guidance, Tier 3 required checks, failure reporting standard, duration scaling rules, output file specs
 - `.claude/agents/session-generator.md` — Established separate-agent pattern; validation agent follows same structure (separate file, read-only access, invoked via Skill or Agent tool)
 - `.claude/commands/knz-sessions.md` — Entry point for Skill invocation trigger; validation auto-fires from here after Stage 5 complete
-- `knz-curriculum-dashboard/src/components/` — Existing: StatusBadge, StageRow, GateRow, PipelineStepper, FileExpander, DeliverableSection — ValidationReport is a new peer component
-- `knz-curriculum-dashboard/src/lib/workspace-loader.ts` — STAGE_DIRS export maps stage numbers to directories; ValidationReport reads from `STAGE_DIRS[9]` = `08-validation/`
+- `dashboard/src/components/` — Existing: StatusBadge, StageRow, GateRow, PipelineStepper, FileExpander, DeliverableSection — ValidationReport is a new peer component
+- `dashboard/src/lib/workspace-loader.ts` — STAGE_DIRS export maps stage numbers to directories; ValidationReport reads from `STAGE_DIRS[9]` = `08-validation/`
 
 ### Established Patterns
 - Schema-in-prompt enforcement: validation agent must receive stage-09-validation.md schema as context
@@ -82,8 +82,8 @@ Build a dedicated `/knz-validate` command and separate validation agent that eva
 - `workspace/{project-name}/STATE.md` — Validation reads stage completion status; writes Stage 9 status after run
 - `.claude/agents/knz-validator.md` — New validation agent file (read-only, separate from all generation agents)
 - `.claude/commands/knz-validate.md` — New command file (orchestrates the validation agent call)
-- `knz-curriculum-dashboard/src/components/ValidationReport.tsx` — New dashboard component
-- `knz-curriculum-dashboard/src/App.tsx` — Wiring point: ValidationReport added alongside existing DeliverableSection
+- `dashboard/src/components/ValidationReport.tsx` — New dashboard component
+- `dashboard/src/App.tsx` — Wiring point: ValidationReport added alongside existing DeliverableSection
 
 </code_context>
 

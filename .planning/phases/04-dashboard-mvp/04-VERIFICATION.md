@@ -57,27 +57,27 @@ human_verification:
 
 | Artifact | Plan | Status | Details |
 |----------|------|--------|---------|
-| `../knz-curriculum-dashboard/package.json` | 04-01 | VERIFIED | react ^19.2.0, vite ^7.2.0, tailwindcss ^4.1.0, vitest ^3.0.0, react-markdown ^10.1.0, marked ^15.0.0 — all match Brand Compass spec |
-| `../knz-curriculum-dashboard/vitest.config.ts` | 04-01 | VERIFIED | include globs cover src/**/*.test.ts and vite-plugins/**/*.test.ts |
-| `../knz-curriculum-dashboard/src/test/fixtures/STATE.md` | 04-01 | VERIFIED | STATE.md fixture present; 9 stages and 3 gates; used by state-loader.test.ts |
-| `../knz-curriculum-dashboard/src/lib/state-loader.test.ts` | 04-01/03 | VERIFIED | 8 real passing tests (not stubs); imports and asserts against state-loader.ts |
-| `../knz-curriculum-dashboard/src/lib/workspace-loader.test.ts` | 04-01/03 | VERIFIED | 4 passing tests using vi.stubGlobal fetch mocks |
-| `../knz-curriculum-dashboard/src/lib/use-workspace-poll.test.ts` | 04-01/03 | VERIFIED | 3 passing tests with jsdom environment; clearInterval spy confirmed |
-| `../knz-curriculum-dashboard/vite-plugins/generate-html.test.ts` | 04-01/02 | VERIFIED | 4 passing tests using tmp directory; frontmatter strip, heading, DOCTYPE all asserted |
-| `../knz-curriculum-dashboard/vite-plugins/generate-html.ts` | 04-02 | VERIFIED | exports wrapHtml and generateHtmlForWorkspace; uses marked; YAML frontmatter regex strip |
-| `../knz-curriculum-dashboard/vite.config.ts` | 04-02 | VERIFIED | serveWorkspace() and generateHtml() plugins present; WORKSPACE_DIR = path.resolve(__dirname, '../knz-builder-src/workspace'); security path check included |
-| `../knz-curriculum-dashboard/src/types/pipeline.ts` | 04-03 | VERIFIED | exports StageRecord, GateRecord, KnzPipelineState, ProjectIndex, StageStatus, GateStatus |
-| `../knz-curriculum-dashboard/src/lib/state-loader.ts` | 04-03 | VERIFIED | exports parseStageProgress, parseReviewGates, parseNextAction, buildPipelineState, loadStateFromUrl |
-| `../knz-curriculum-dashboard/src/lib/workspace-loader.ts` | 04-03 | VERIFIED | exports discoverActiveProject, listStageFiles, STAGE_DIRS; learner-journey stage names applied |
-| `../knz-curriculum-dashboard/src/lib/use-workspace-poll.ts` | 04-03 | VERIFIED | exports useWorkspacePoll; clearInterval cleanup in useEffect return |
-| `../knz-curriculum-dashboard/src/components/StatusBadge.tsx` | 04-04 | VERIFIED | three-color status chip; emerald/amber/gray Tailwind classes |
-| `../knz-curriculum-dashboard/src/components/PipelineStepper.tsx` | 04-04 | VERIFIED | maps all stages; gate lookup by afterStage; StageRow + GateRow composition |
-| `../knz-curriculum-dashboard/src/components/DeliverableSection.tsx` | 04-04 | VERIFIED | hides stages with no files; id=stage-{N} anchors; fetches via listStageFiles |
-| `../knz-curriculum-dashboard/src/components/FileExpander.tsx` | 04-04 | VERIFIED | HEAD-first HTML check; iframe with sandbox; react-markdown fallback |
-| `../knz-curriculum-dashboard/src/components/EmptyState.tsx` | 04-04 | VERIFIED | renders setup prompt for /knz-init |
-| `../knz-curriculum-dashboard/src/components/StageRow.tsx` | 04-04 | VERIFIED | renders stage number, name, StatusBadge, file count, completion date, nextAction |
-| `../knz-curriculum-dashboard/src/components/GateRow.tsx` | 04-04 | VERIFIED | renders gate inline with status color classes |
-| `../knz-curriculum-dashboard/src/App.tsx` | 04-05 | VERIFIED | discoverActiveProject on mount; useWorkspacePoll polling; fileCounts batch fetch; handleSelectStage with scrollIntoView |
+| `../dashboard/package.json` | 04-01 | VERIFIED | react ^19.2.0, vite ^7.2.0, tailwindcss ^4.1.0, vitest ^3.0.0, react-markdown ^10.1.0, marked ^15.0.0 — all match Brand Compass spec |
+| `../dashboard/vitest.config.ts` | 04-01 | VERIFIED | include globs cover src/**/*.test.ts and vite-plugins/**/*.test.ts |
+| `../dashboard/src/test/fixtures/STATE.md` | 04-01 | VERIFIED | STATE.md fixture present; 9 stages and 3 gates; used by state-loader.test.ts |
+| `../dashboard/src/lib/state-loader.test.ts` | 04-01/03 | VERIFIED | 8 real passing tests (not stubs); imports and asserts against state-loader.ts |
+| `../dashboard/src/lib/workspace-loader.test.ts` | 04-01/03 | VERIFIED | 4 passing tests using vi.stubGlobal fetch mocks |
+| `../dashboard/src/lib/use-workspace-poll.test.ts` | 04-01/03 | VERIFIED | 3 passing tests with jsdom environment; clearInterval spy confirmed |
+| `../dashboard/vite-plugins/generate-html.test.ts` | 04-01/02 | VERIFIED | 4 passing tests using tmp directory; frontmatter strip, heading, DOCTYPE all asserted |
+| `../dashboard/vite-plugins/generate-html.ts` | 04-02 | VERIFIED | exports wrapHtml and generateHtmlForWorkspace; uses marked; YAML frontmatter regex strip |
+| `../dashboard/vite.config.ts` | 04-02 | VERIFIED | serveWorkspace() and generateHtml() plugins present; WORKSPACE_DIR = path.resolve(__dirname, '../knz-builder-src/workspace'); security path check included |
+| `../dashboard/src/types/pipeline.ts` | 04-03 | VERIFIED | exports StageRecord, GateRecord, KnzPipelineState, ProjectIndex, StageStatus, GateStatus |
+| `../dashboard/src/lib/state-loader.ts` | 04-03 | VERIFIED | exports parseStageProgress, parseReviewGates, parseNextAction, buildPipelineState, loadStateFromUrl |
+| `../dashboard/src/lib/workspace-loader.ts` | 04-03 | VERIFIED | exports discoverActiveProject, listStageFiles, STAGE_DIRS; learner-journey stage names applied |
+| `../dashboard/src/lib/use-workspace-poll.ts` | 04-03 | VERIFIED | exports useWorkspacePoll; clearInterval cleanup in useEffect return |
+| `../dashboard/src/components/StatusBadge.tsx` | 04-04 | VERIFIED | three-color status chip; emerald/amber/gray Tailwind classes |
+| `../dashboard/src/components/PipelineStepper.tsx` | 04-04 | VERIFIED | maps all stages; gate lookup by afterStage; StageRow + GateRow composition |
+| `../dashboard/src/components/DeliverableSection.tsx` | 04-04 | VERIFIED | hides stages with no files; id=stage-{N} anchors; fetches via listStageFiles |
+| `../dashboard/src/components/FileExpander.tsx` | 04-04 | VERIFIED | HEAD-first HTML check; iframe with sandbox; react-markdown fallback |
+| `../dashboard/src/components/EmptyState.tsx` | 04-04 | VERIFIED | renders setup prompt for /knz-init |
+| `../dashboard/src/components/StageRow.tsx` | 04-04 | VERIFIED | renders stage number, name, StatusBadge, file count, completion date, nextAction |
+| `../dashboard/src/components/GateRow.tsx` | 04-04 | VERIFIED | renders gate inline with status color classes |
+| `../dashboard/src/App.tsx` | 04-05 | VERIFIED | discoverActiveProject on mount; useWorkspacePoll polling; fileCounts batch fetch; handleSelectStage with scrollIntoView |
 
 ---
 

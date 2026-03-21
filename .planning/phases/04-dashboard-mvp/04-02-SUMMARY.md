@@ -7,7 +7,7 @@ tags: [vite, typescript, marked, vitest, node, filesystem]
 # Dependency graph
 requires:
   - phase: 04-dashboard-mvp/04-01
-    provides: knz-curriculum-dashboard project scaffold with React/Vite/Tailwind and vitest wired
+    provides: dashboard project scaffold with React/Vite/Tailwind and vitest wired
 provides:
   - serveWorkspace() Vite plugin serving /workspace/* files, /workspace-index JSON, /workspace-files/{project}/{stage} JSON
   - generateHtml() Vite plugin generating delivery/ HTML on dev server startup
@@ -28,11 +28,11 @@ tech-stack:
 
 key-files:
   created:
-    - ../knz-curriculum-dashboard/vite-plugins/generate-html.ts
+    - ../dashboard/vite-plugins/generate-html.ts
   modified:
-    - ../knz-curriculum-dashboard/vite.config.ts
-    - ../knz-curriculum-dashboard/vite-plugins/generate-html.test.ts
-    - ../knz-curriculum-dashboard/tsconfig.node.json
+    - ../dashboard/vite.config.ts
+    - ../dashboard/vite-plugins/generate-html.test.ts
+    - ../dashboard/tsconfig.node.json
 
 key-decisions:
   - "Vite plugin logic extracted to standalone Node.js module (generate-html.ts) so it can be unit-tested without a running Vite server"
@@ -76,14 +76,14 @@ Each task was committed atomically:
 1. **Task 1: Extract generateHtml logic to testable module and write passing tests** - `a9bb413` (feat)
 2. **Task 2: Build vite.config.ts with serveWorkspace + JSON endpoints + generateHtml plugin** - `e040b69` (feat)
 
-**Plan metadata:** `(pending docs commit)`
+**Plan metadata:** `654f1e5` (docs: complete plan)
 
 ## Files Created/Modified
 
-- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-curriculum-dashboard/vite-plugins/generate-html.ts` - Standalone HTML generation module: wrapHtml() and generateHtmlForWorkspace()
-- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-curriculum-dashboard/vite-plugins/generate-html.test.ts` - 4 real vitest tests with tmp dir fixture
-- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-curriculum-dashboard/vite.config.ts` - Full implementation with serveWorkspace() and generateHtml() plugins
-- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-curriculum-dashboard/tsconfig.node.json` - Added composite + emitDeclarationOnly (pre-existing config error fixed)
+- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/dashboard/vite-plugins/generate-html.ts` - Standalone HTML generation module: wrapHtml() and generateHtmlForWorkspace()
+- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/dashboard/vite-plugins/generate-html.test.ts` - 4 real vitest tests with tmp dir fixture
+- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/dashboard/vite.config.ts` - Full implementation with serveWorkspace() and generateHtml() plugins
+- `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/dashboard/tsconfig.node.json` - Added composite + emitDeclarationOnly (pre-existing config error fixed)
 
 ## Decisions Made
 

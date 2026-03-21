@@ -35,7 +35,7 @@ tech-stack:
 key-files:
   created: []
   modified:
-    - ../knz-curriculum-dashboard/src/App.tsx
+    - ../dashboard/src/App.tsx
 
 key-decisions:
   - "UX rename: pipeline jargon replaced with learner-journey stage names across all stage labels — approved during human verify"
@@ -84,7 +84,7 @@ Each task was committed atomically:
 
 ## Files Created/Modified
 
-- `../knz-curriculum-dashboard/src/App.tsx` — Complete dashboard entry point: project discovery, polling hook, file counts, stepper + deliverables layout, empty state, error state
+- `../dashboard/src/App.tsx` — Complete dashboard entry point: project discovery, polling hook, file counts, stepper + deliverables layout, empty state, error state
 
 ## Decisions Made
 
@@ -99,7 +99,7 @@ Each task was committed atomically:
 - **Found during:** Task 1 verification (dev server startup)
 - **Issue:** `serveWorkspace()` plugin was resolving file paths relative to `__dirname` (Vite plugin location), causing all `/workspace/*` fetches to return 404
 - **Fix:** Changed resolution base to `process.env.WORKSPACE_DIR` or `process.cwd()` — paths now resolve correctly from project root
-- **Files modified:** `../knz-curriculum-dashboard/vite.config.ts` (or plugin module)
+- **Files modified:** `../dashboard/vite.config.ts` (or plugin module)
 - **Verification:** Dev server started, all workspace fetch requests returned 200
 - **Committed in:** `3ebea62`
 
@@ -122,7 +122,7 @@ Each task was committed atomically:
 
 ## User Setup Required
 
-None - no external service configuration required. Dev server runs at localhost:3002 with `npm run dev` from `knz-curriculum-dashboard/`.
+None - no external service configuration required. Dev server runs at localhost:3002 with `npm run dev` from `dashboard/`.
 
 ## Next Phase Readiness
 

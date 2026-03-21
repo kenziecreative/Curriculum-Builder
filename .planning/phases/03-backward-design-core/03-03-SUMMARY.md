@@ -102,3 +102,13 @@ None — no external service configuration required.
 ---
 *Phase: 03-backward-design-core*
 *Completed: 2026-03-20*
+
+## Self-Check: PASSED
+
+- FOUND: .planning/phases/03-backward-design-core/03-03-SUMMARY.md
+- FOUND: .claude/commands/knz-assessments.md (modified)
+- FOUND: .claude/commands/knz-outcomes.md (modified)
+- FOUND: workspace/test-program/02-assessments/formative-assessments.md (modified)
+- FOUND commit e47760b: fix(03-03): harden Step 6 modality path + correct FA-2 oral→written substitution
+- FOUND commit f8c0e42: fix(03-03): enforce max(duration_scaled, 4) Bloom span floor in knz-outcomes
+- FOUND commit ac8cb3d: docs(03-03): complete gap-closure plan

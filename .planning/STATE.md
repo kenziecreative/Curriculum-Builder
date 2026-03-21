@@ -103,7 +103,7 @@ Recent decisions affecting current work:
 - [Phase 03-backward-design-core]: Step 6 modality read uses exact file path to eliminate ambiguity that caused silent skip in verification
 - [Phase 03-backward-design-core]: Missing modality field defaults to virtual (fail-safe direction) — prevents oral assessments from slipping through
 - [Phase 03-backward-design-core]: Bloom span enforced as max(duration_scaled_minimum, 4) — short and medium programs must span 4 levels per schema global floor
-- [Phase 04-dashboard-mvp]: Dashboard is its own git repo at knz-curriculum-dashboard/ (sibling to knz-builder-src/) — keeps concerns cleanly separated
+- [Phase 04-dashboard-mvp]: Dashboard is its own git repo at dashboard/ (sibling to knz-builder-src/) — keeps concerns cleanly separated
 - [Phase 04-dashboard-mvp]: Test stubs use empty it() bodies (not it.todo) so vitest run exits 0 before any implementation
 - [Phase 04-dashboard-mvp]: Port 3002 reserved for dashboard (Brand Compass uses 3001)
 - [Phase 04-dashboard-mvp]: Vite plugin logic extracted to standalone testable Node.js module — plugin wrappers are thin shells

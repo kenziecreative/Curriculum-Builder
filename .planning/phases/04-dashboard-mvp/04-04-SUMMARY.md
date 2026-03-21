@@ -77,7 +77,7 @@ completed: 2026-03-20
 
 ## Task Commits
 
-Each task was committed atomically (in knz-curriculum-dashboard repo):
+Each task was committed atomically (in dashboard repo):
 
 1. **Task 1: Atomic display components** - `0c628a4` (feat)
 2. **Task 2: Composite components** - `6392428` (feat)
@@ -104,7 +104,7 @@ None — plan executed exactly as written. The dashboard repo commit model requi
 
 ## Issues Encountered
 
-The knz-curriculum-dashboard directory is a separate git repository from knz-builder-src. Task commits were made to the dashboard repo directly rather than the builder-src repo. This is correct behavior per the Phase 04 decision recorded in STATE.md: "Dashboard is its own git repo."
+The dashboard directory is a separate git repository from knz-builder-src. Task commits were made to the dashboard repo directly rather than the builder-src repo. This is correct behavior per the Phase 04 decision recorded in STATE.md: "Dashboard is its own git repo."
 
 ## Next Phase Readiness
 

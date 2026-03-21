@@ -81,7 +81,7 @@ Plans:
   5. Formatted HTML output files exist alongside markdown source, making curriculum documents delivery-ready from the dashboard
 **Plans:** 5/5 plans complete
 Plans:
-- [ ] 04-01-PLAN.md — Project scaffold and Wave 0 test stubs (new knz-curriculum-dashboard project)
+- [ ] 04-01-PLAN.md — Project scaffold and Wave 0 test stubs (new dashboard project)
 - [ ] 04-02-PLAN.md — Vite infrastructure: serveWorkspace middleware, JSON endpoints, generateHtml startup plugin
 - [ ] 04-03-PLAN.md — Data layer: TypeScript types, STATE.md parser, workspace loader, polling hook
 - [ ] 04-04-PLAN.md — UI components: StatusBadge, StageRow, GateRow, PipelineStepper, FileExpander, DeliverableSection

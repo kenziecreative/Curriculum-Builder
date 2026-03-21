@@ -120,8 +120,8 @@ The Vite startup plugin runs in Node.js context (not the browser), so the conver
 
 **Installation:**
 ```bash
-npm create vite@latest knz-curriculum-dashboard -- --template react-ts
-cd knz-curriculum-dashboard
+npm create vite@latest dashboard -- --template react-ts
+cd dashboard
 npm install react-markdown remark-gfm lucide-react tailwindcss @tailwindcss/vite marked
 npm install -D @types/node
 ```
@@ -132,7 +132,7 @@ npm install -D @types/node
 
 ### Recommended Project Structure
 ```
-knz-curriculum-dashboard/
+dashboard/
 ├── src/
 │   ├── components/
 │   │   ├── PipelineStepper.tsx    # Vertical stage list with status badges
