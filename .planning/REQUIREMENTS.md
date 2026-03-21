@@ -78,12 +78,12 @@
 
 ### Validation (Stage 9)
 
-- [ ] **VALD-01**: Tier 1 automated schema validation checks all required fields are populated (> 95% completion rate)
-- [ ] **VALD-02**: Tier 1 validation blocks completion if required fields are missing
-- [ ] **VALD-03**: Tier 2 rubric-based scoring produces confidence scores, not pass/fail, for qualitative dimensions
-- [ ] **VALD-04**: Tier 3 surfaces specific items for human review with actionable descriptions and locations
-- [ ] **VALD-05**: Generation and validation use separate subagents — never generate and validate in a single call
-- [ ] **VALD-06**: Validation report identifies specific field-level failures with locations
+- [x] **VALD-01**: Tier 1 automated schema validation checks all required fields are populated (> 95% completion rate)
+- [x] **VALD-02**: Tier 1 validation blocks completion if required fields are missing
+- [x] **VALD-03**: Tier 2 rubric-based scoring produces confidence scores, not pass/fail, for qualitative dimensions
+- [x] **VALD-04**: Tier 3 surfaces specific items for human review with actionable descriptions and locations
+- [x] **VALD-05**: Generation and validation use separate subagents — never generate and validate in a single call
+- [x] **VALD-06**: Validation report identifies specific field-level failures with locations
 
 ### Plugin Infrastructure
 
@@ -193,12 +193,12 @@
 | MKTG-02 | Phase 7 | Pending |
 | MKTG-03 | Phase 7 | Pending |
 | MKTG-04 | Phase 7 | Pending |
-| VALD-01 | Phase 6 | Pending |
-| VALD-02 | Phase 6 | Pending |
-| VALD-03 | Phase 6 | Pending |
-| VALD-04 | Phase 6 | Pending |
-| VALD-05 | Phase 6 | Pending |
-| VALD-06 | Phase 6 | Pending |
+| VALD-01 | Phase 6 | Complete |
+| VALD-02 | Phase 6 | Complete |
+| VALD-03 | Phase 6 | Complete |
+| VALD-04 | Phase 6 | Complete |
+| VALD-05 | Phase 6 | Complete |
+| VALD-06 | Phase 6 | Complete |
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 2 | Complete |

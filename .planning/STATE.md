@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-21T20:21:42.641Z"
+stopped_at: Completed 06-01-PLAN.md — validation layer (knz-validator.md + knz-validate.md + knz-sessions.md auto-trigger)
+last_updated: "2026-03-21T20:51:40.720Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 7
   completed_phases: 5
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 17
+  completed_plans: 16
   percent: 80
 ---
 
@@ -65,6 +65,7 @@ Progress: [████████░░] 80%
 | Phase 04-dashboard-mvp P04 | 2 | 2 tasks | 7 files |
 | Phase 04-dashboard-mvp P05 | continuation | 2 tasks | 1 files |
 | Phase 05 P02 | 3 | 2 tasks | 2 files |
+| Phase 06-validation-layer P01 | 4 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -122,6 +123,9 @@ Recent decisions affecting current work:
 - [Phase 05]: One Task subagent per module (not per session) keeps Task count bounded and simplifies error handling
 - [Phase 05]: DCR trigger is explicit boolean check (skill_type==open AND bloom>=Analyze) not inference — prevents silent omission
 - [Phase 05]: Stage 5 status stays in-progress on partial verification failure — retry re-dispatches only incomplete modules
+- [Phase 06-01]: Validation agent is a separate file (knz-validator.md) from all generation commands — structural separation enforced by file boundaries
+- [Phase 06-01]: knz-validate.md dispatches via Task tool — validation runs in a separate agent context, satisfying the separation rule in stage-09-validation.md
+- [Phase 06-01]: Stage 9 status driven by tier_1_failures count: complete if 0, in-progress if >0 — state reflects curriculum quality not mere invocation
 
 ### Pending Todos
 
@@ -136,7 +140,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-21T20:21:42.636Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-validation-layer/06-CONTEXT.md
+Last session: 2026-03-21T20:51:40.716Z
+Stopped at: Completed 06-01-PLAN.md — validation layer (knz-validator.md + knz-validate.md + knz-sessions.md auto-trigger)
+Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)

@@ -113,7 +113,7 @@ Plans:
   3. Tier 1 validation blocks stage completion when required fields are absent — a curriculum with any missing required field cannot be marked complete regardless of overall quality
   4. Tier 2 rubric scoring produces confidence scores (not pass/fail) for qualitative dimensions — a session that technically satisfies all required fields but has thin transfer prompts receives a lower confidence score, not a pass
   5. The ValidationReport dashboard component surfaces specific human review items with enough description that the user knows exactly what to fix without reading the raw schema-report file
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 06-01-PLAN.md — knz-validator.md agent + knz-validate.md command + auto-trigger in knz-sessions.md
 - [ ] 06-02-PLAN.md — ValidationReport React component + test suite + App.tsx wiring
@@ -149,5 +149,5 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | 3. Backward Design Core | 2/3 | Gap closure in progress | 2026-03-20 |
 | 4. Dashboard MVP | 5/5 | Complete   | 2026-03-20 |
 | 5. Module and Session Generation | 2/2 | Complete   | 2026-03-21 |
-| 6. Validation Layer | 0/2 | Planning complete | - |
+| 6. Validation Layer | 1/2 | In Progress|  |
 | 7. Full Pipeline Completion | 0/TBD | Not started | - |
