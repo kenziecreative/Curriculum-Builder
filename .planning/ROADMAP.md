@@ -115,8 +115,8 @@ Plans:
   5. The ValidationReport dashboard component surfaces specific human review items with enough description that the user knows exactly what to fix without reading the raw schema-report file
 **Plans:** 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
-- [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
+- [ ] 06-01-PLAN.md — knz-validator.md agent + knz-validate.md command + auto-trigger in knz-sessions.md
+- [ ] 06-02-PLAN.md — ValidationReport React component + test suite + App.tsx wiring
 
 ### Phase 7: Full Pipeline Completion
 **Goal**: The complete nine-stage pipeline is operational — metaskill activation routines, transfer ecosystem, and marketing materials all generate from curriculum substance with schema enforcement — and the PreToolUse hook fully prevents stage skipping across all nine stages
@@ -132,8 +132,8 @@ Plans:
   7. The final human review gate presents a complete curriculum summary and requires explicit approval before the package is marked delivery-ready
 **Plans:** 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — /knz-modules command (infer-and-review gate with schema enforcement, writes 03-modules/ on approval)
-- [ ] 05-02-PLAN.md — session-generator subagent + /knz-sessions orchestrator (parallel Task dispatch, 4 files per session)
+- [ ] 07-01-PLAN.md — /knz-metaskills command + /knz-transfer command + /knz-marketing command
+- [ ] 07-02-PLAN.md — PreToolUse hook enforcement + /knz-approve final gate + PIPE-06/07 pipeline completion
 
 ## Progress
 
@@ -149,5 +149,5 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | 3. Backward Design Core | 2/3 | Gap closure in progress | 2026-03-20 |
 | 4. Dashboard MVP | 5/5 | Complete   | 2026-03-20 |
 | 5. Module and Session Generation | 2/2 | Complete   | 2026-03-21 |
-| 6. Validation Layer | 0/TBD | Not started | - |
+| 6. Validation Layer | 0/2 | Planning complete | - |
 | 7. Full Pipeline Completion | 0/TBD | Not started | - |
