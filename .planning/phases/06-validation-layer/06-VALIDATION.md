@@ -2,8 +2,8 @@
 phase: 6
 slug: validation-layer
 status: draft
-nyquist_compliant: false
-wave_0_complete: false
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-03-21
 ---
 
@@ -38,11 +38,11 @@ created: 2026-03-21
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 6-01-01 | 01 | 1 | VALD-01 | structural | `ls .claude/agents/knz-validator.md` | ❌ W0 | ⬜ pending |
-| 6-01-02 | 01 | 1 | VALD-02 | structural | `ls .claude/commands/knz-validate.md` | ❌ W0 | ⬜ pending |
+| 6-01-01 | 01 | 1 | VALD-01 | structural | `ls .claude/agents/knz-validator.md && echo 'file exists'` | ✅ W0 | ⬜ pending |
+| 6-01-02 | 01 | 1 | VALD-02 | structural | `ls .claude/commands/knz-validate.md && ls .claude/commands/knz-sessions.md && echo 'files exist'` | ✅ W0 | ⬜ pending |
 | 6-01-03 | 01 | 2 | VALD-03 | manual | Run `/knz-validate` on test-program with missing field | — | ⬜ pending |
 | 6-01-04 | 01 | 2 | VALD-04 | manual | Run `/knz-validate` and confirm Tier 2 confidence scores appear | — | ⬜ pending |
-| 6-02-01 | 02 | 1 | VALD-05 | structural | `ls src/components/ValidationReport.tsx` | ❌ W0 | ⬜ pending |
+| 6-02-01 | 02 | 1 | VALD-05 | structural | `ls src/components/ValidationReport.tsx` | ✅ W0 | ⬜ pending |
 | 6-02-02 | 02 | 2 | VALD-06 | manual | Check dashboard renders ValidationReport with human-review items | — | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
@@ -73,11 +73,11 @@ created: 2026-03-21
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
 - [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
+- [x] Wave 0 covers all MISSING references
 - [ ] No watch-mode flags
 - [ ] Feedback latency < 60s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] `nyquist_compliant: true` set in frontmatter
 
 **Approval:** pending
