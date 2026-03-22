@@ -497,7 +497,179 @@ If the user says "both are partially true": accept the nuance. Ask one synthesiz
 **After all follow-up questions are resolved:** Proceed immediately to Step 5. Do not show a summary yet.
 
 ### Step 5: Confirmation Gate
-<!-- Authored in 08-03-PLAN.md -->
+
+Present a clean summary in the same "Your Program at a Glance" format as clean intake — using the user's own words, no schema field names:
+
+---
+
+**Your Program at a Glance**
+
+- **Topic:** {program_topic}
+- **Learners:** {target_audience.description}
+- **Current skill level:** {prior_knowledge in plain language — "can do X, cannot yet do Y"}
+- **Program format:** {session_count} sessions × {session_length_minutes} minutes — {modality}, {delivery_mode in plain language}
+- **Where they'll use it:** {transfer_context}
+- **Success looks like:** {success_criteria}
+
+---
+
+Then add a brief gap summary:
+
+> **Your curriculum gap report is ready.** {X of 7} pipeline stages have content to build from; {Y} will be built from scratch.
+
+Use `AskUserQuestion` with these three options:
+
+- **"Looks good — let's keep going"**
+- **"I want to edit something"**
+- **"Start over from scratch"**
+
+---
+
+**On "I want to edit something":**
+Ask what they want to change. Take their answer, update the relevant captured field, re-present the summary, and use `AskUserQuestion` again with the same three options.
+
+**On "Start over from scratch":**
+Use `AskUserQuestion` to confirm:
+> Are you sure? This will clear everything we just extracted and start from the beginning.
+
+Options: **"Yes, start over"** / **"Actually, keep what we have"**
+
+On "Yes, start over": reset STATE.md Stage 1 status to `not-started`, reset Key Decisions to `—`, restart from the Opening section.
+On "Actually, keep what we have": return to the summary and re-present `AskUserQuestion`.
 
 ### Step 6: Write Output Files
-<!-- Authored in 08-03-PLAN.md -->
+
+On "Looks good — let's keep going":
+
+**1. Derive `context_of_use`** from `transfer_context` + `target_audience.description` without asking. Synthesize where these specific learners will apply this specific skill in their specific work context.
+
+**2. Load `.claude/reference/schemas/stage-01-intake.md`** as generation context.
+
+**3. Write `project-brief.md`** to `workspace/{project}/00-project-brief/project-brief.md`.
+
+Use the exact same structure as clean intake (see Schema Compliance Checklist at the bottom of this command). All required fields with exact enum values per the schema.
+
+**4. Write `curriculum-gap-report.md`** to `workspace/{project}/00-project-brief/curriculum-gap-report.md`.
+
+Before writing, assess each pipeline stage against its schema. Load `.claude/reference/schemas/stage-02-outcomes.md` through `stage-08-marketing.md` to confirm threshold criteria per stage. Apply this assessment structure:
+
+- **Exists** = source materials contain content for this stage that meets schema-field-completeness requirements
+- **Shallow** = content exists but fails specific schema requirements (name the specific missing field — do not use quality language like "limited" or "underdeveloped")
+- **Missing** = no relevant content found in any source document
+
+Use this file structure:
+
+```markdown
+# Curriculum Gap Report
+
+**Project:** {project-name}
+**Generated:** {date}
+**Source documents reviewed:** {list of filenames}
+
+---
+
+## How to Read This Report
+
+This report compares your existing materials against what the full curriculum pipeline needs. For each stage:
+- **Exists** = your materials have this; the pipeline will build from it
+- **Shallow** = something is here, but it doesn't yet meet the structural requirements; the pipeline will fill it out
+- **Missing** = nothing found; the pipeline will build this from scratch
+
+---
+
+## Stage 2: Learning Outcomes
+
+### Exists
+{What outcome-level content was found, if any}
+
+### Shallow
+{Specific schema requirements not met — e.g., "Outcomes present but don't span 4 Bloom's levels; session-level outcomes absent; transfer_context missing per outcome." If nothing is shallow, write: None.}
+
+### Missing
+{Stage 2 schema fields not represented at all. If nothing is missing, write: None.}
+
+---
+
+## Stage 3: Assessment Design
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Stage 4: Module Structure
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Stage 5: Session Content
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Stage 6: Metaskill Mapping
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Stage 7: Transfer Ecosystem
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Stage 8: Marketing
+
+### Exists
+### Shallow
+### Missing
+
+---
+
+## Summary
+
+| Stage | Status |
+|-------|--------|
+| 2: Learning Outcomes | {Exists / Shallow / Missing — with one-line description if Shallow} |
+| 3: Assessment Design | {Exists / Shallow / Missing} |
+| 4: Module Structure | {Exists / Shallow / Missing} |
+| 5: Session Content | {Exists / Shallow / Missing} |
+| 6: Metaskill Mapping | {Exists / Shallow / Missing} |
+| 7: Transfer Ecosystem | {Exists / Shallow / Missing} |
+| 8: Marketing | {Exists / Shallow / Missing} |
+
+**Next step:** Run `/knz-outcomes` to continue — the pipeline will use your existing materials where they meet requirements and generate what's missing.
+```
+
+**Shallow assessment rules per stage:**
+
+- **Stage 2 (Outcomes):** Shallow if outcomes exist but don't span minimum Bloom's levels required by program length (long: 4, medium: 3, short: 2) OR use prohibited verbs ("understand", "know", "appreciate") OR session-level outcomes absent OR transfer_context missing per outcome
+- **Stage 3 (Assessments):** Shallow if assessments exist but lack paired_objective linkage OR formative assessments absent (summative-only) OR assessment type doesn't match skill_type
+- **Stage 4 (Modules):** Shallow if module groupings exist but aren't named OR group processing prompt absent or generic OR DCR trigger not addressed when skill_type=open and bloom>=Analyze
+- **Stage 5 (Sessions):** Shallow if session content exists but not organized by session_template OR pre-work not tagged to sessions OR reflection prompts absent OR theory exists without application activities
+- **Stage 6 (Metaskills):** Shallow if thinking routines mentioned but not named specifically (generic "discussion" or "reflection" is insufficient) OR metaskills referenced without session mapping
+- **Stage 7 (Transfer Ecosystem):** Shallow if pre-program readiness assessment absent OR lacks minimum 3 questions OR implementation intentions absent OR manager briefing absent when contact_hours > 4
+- **Stage 8 (Marketing):** Treat as Missing unless source documents contain explicit audience-facing promotional copy with documented rationale
+
+Write both files simultaneously before announcing anything to the user.
+
+**5. Update STATE.md silently:**
+- `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
+- `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
+- `Session Continuity` → **Next Action:** Run /knz-outcomes to begin outcome design
+
+**6. End with a forward-looking message:**
+
+> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. The gap report shows what the pipeline will build from your existing materials and what it'll generate from scratch. Run `/knz-outcomes` when you're ready to continue.
