@@ -186,6 +186,22 @@ Write the updated STATE.md. Do not announce the write.
 
 ---
 
+## Auto-Trigger Metaskills
+
+This section runs ONLY when `tier_1_failures == 0` (same condition as the all-pass state update path above).
+
+Do NOT trigger when `tier_1_failures > 0`. The chain stops at the failure message. User must fix and rerun.
+
+After the state update completes (Stage 9 set to complete, Session Continuity updated), show:
+
+> All required checks passed — mapping thinking skills now.
+
+Then invoke `/knz-metaskills` as a Skill.
+
+Do not wait for user input before invoking. This is the same auto-advance pattern used between `/knz-sessions` and `/knz-validate`.
+
+---
+
 ## State Management Rules
 
 All STATE.md reads and writes are silent. Never say:

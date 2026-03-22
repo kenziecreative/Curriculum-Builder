@@ -46,12 +46,49 @@ Summarize what was produced in plain language. Do not use schema field names or 
 - What the main performance tasks look like (one-line description each)
 - Any notable decisions made during assessment design
 
-**For Final Validation gate, include:**
-- Overall validation result
-- Any gaps or concerns the validation found
-- Whether the program is ready for delivery or needs revision
+**For Final Validation gate, show the complete pipeline summary:**
 
-Keep the summary under 10 lines. If outputs are complex, highlight the most important 3–5 points.
+Read each stage directory ONLY if that stage's status is `complete` in STATE.md. For any stage not yet complete, show "Not yet generated" for that section.
+
+Display in this format:
+
+---
+## Your Complete Curriculum Package
+
+**[Program Name]** — [Duration] program for [audience description from Stage 1 in plain language]
+
+**What participants learn:**
+[Outcome count from 01-outcomes/] learning objectives spanning [Bloom span in plain language, e.g., "recall through create"] thinking levels
+
+**How you'll know they learned it:**
+[Assessment count from 02-assessments/] assessments — [formative count] during-program checks, [summative count] end-of-program assessments
+
+**Program structure:**
+[Module count from 03-modules/] modules, [session count from 04-sessions/] sessions
+
+**Thinking skills activated:**
+[If Stage 6 complete: list each metaskill with its named activation activity, e.g., "Exploring: See-Think-Wonder"]
+[If Stage 6 not complete: Not yet generated]
+
+**Transfer support:**
+[If Stage 7 complete:]
+Before: [readiness check format from 06-transfer/]
+During: [real-work application count] real-work applications
+After: Spaced follow-up at [intervals], [accountability structure type]
+Measuring: [plain-language Kirkpatrick level] — [what's being measured]
+[If Stage 7 not complete: Not yet generated]
+
+**Marketing materials:**
+[If Stage 8 complete: count of marketing elements — list element types, e.g., "program description, 3 learning promises, audience positioning"]
+[If Stage 8 not complete: Not yet generated]
+
+**Validation:**
+[If Stage 9 complete and tier_1_failures == 0: All required checks passed]
+[If Stage 9 complete and tier_1_failures > 0: N issues pending — list plain-language descriptions]
+[If Stage 9 not complete: Not yet run]
+
+---
+This is your complete curriculum package. Is it ready to deliver?
 
 ### 4. Gate decision
 
@@ -65,10 +102,10 @@ Use `AskUserQuestion` with three options:
 > **Option 3: Start this stage over** — The assessment design missed the mark. Restart Stage 3 from scratch.
 
 **For Final Validation gate:**
-> Here's the validation summary for your program. How would you like to proceed?
+> Review the summary above — this is everything that will be in your delivered curriculum package.
 >
-> **Option 1: Approve and continue** — The validation looks good. Mark this program as ready for delivery.
-> **Option 2: I have concerns** — Something needs fixing. Describe the issue and I'll revise before final approval.
+> **Option 1: Approve — mark as delivery-ready** — Everything looks right. Mark this curriculum package as delivery-ready.
+> **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
 > **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
 
 ### 5. Handle the decision
