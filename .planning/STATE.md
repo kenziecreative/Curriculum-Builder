@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-22T21:52:12.399Z"
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-03-22T21:55:30.789Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 3
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 80
 ---
 
@@ -70,6 +70,7 @@ Progress: [████████░░] 80%
 | Phase 07-full-pipeline-completion P02 | 2 | 2 tasks | 4 files |
 | Phase 07-full-pipeline-completion P01 | 12 | 3 tasks | 3 files |
 | Phase 08-audit-mode-intake P01 | 5 | 2 tasks | 2 files |
+| Phase 08-audit-mode-intake P02 | 8 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -143,6 +144,9 @@ Recent decisions affecting current work:
 - [Phase 08-01]: Routing question replaces Opening framing paragraph entirely — AskUserQuestion IS the opening; framing was redundant scaffolding
 - [Phase 08-01]: Audit Mode section uses comment-tagged placeholders so Plans 02 and 03 can fill steps independently
 - [Phase 08-01]: source-material/ positioned between 08-validation/ and delivery/ in knz-init scaffold
+- [Phase 08-02]: Step 1 announces progress per file during reading (not batch) — keeps user oriented during long ingestion
+- [Phase 08-02]: Conflict definition excludes format differences (slide count vs. session length) — format conversion is Claude's job, not a conflict to surface
+- [Phase 08-02]: Step 4 'both partially true' handler: synthesizing follow-up required rather than binary forced choice when nuance is real
 
 ### Pending Todos
 
@@ -157,7 +161,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T21:52:12.396Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-22T21:55:30.785Z
+Stopped at: Completed 08-02-PLAN.md
 Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
