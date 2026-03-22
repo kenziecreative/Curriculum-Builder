@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Backward Design Core** - Outcome and assessment commands with schema enforcement and human review gates (completed 2026-03-20)
 - [x] **Phase 4: Dashboard MVP** - React dashboard providing full pipeline status visibility and early deliverable navigation (completed 2026-03-20)
 - [x] **Phase 5: Module and Session Generation** - Parallel subagent module and session generation with TMA arc, DCR, social learning, and facilitator materials (completed 2026-03-20)
-- [ ] **Phase 6: Validation Layer** - Separate validation agent with three-tier validation and field-level failure reporting
+- [x] **Phase 6: Validation Layer** - Separate validation agent with three-tier validation and field-level failure reporting (completed 2026-03-22)
 - [ ] **Phase 7: Full Pipeline Completion** - Metaskill mapping, transfer ecosystem, marketing derivation, and full stage gate enforcement
 
 ## Phase Details
@@ -113,7 +113,7 @@ Plans:
   3. Tier 1 validation blocks stage completion when required fields are absent — a curriculum with any missing required field cannot be marked complete regardless of overall quality
   4. Tier 2 rubric scoring produces confidence scores (not pass/fail) for qualitative dimensions — a session that technically satisfies all required fields but has thin transfer prompts receives a lower confidence score, not a pass
   5. The ValidationReport dashboard component surfaces specific human review items with enough description that the user knows exactly what to fix without reading the raw schema-report file
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 06-01-PLAN.md — knz-validator.md agent + knz-validate.md command + auto-trigger in knz-sessions.md
 - [ ] 06-02-PLAN.md — ValidationReport React component + test suite + App.tsx wiring
@@ -149,5 +149,5 @@ Note: Phase 4 (Dashboard MVP) depends on Phase 3 completing the full loop. Phase
 | 3. Backward Design Core | 2/3 | Gap closure in progress | 2026-03-20 |
 | 4. Dashboard MVP | 5/5 | Complete   | 2026-03-20 |
 | 5. Module and Session Generation | 2/2 | Complete   | 2026-03-21 |
-| 6. Validation Layer | 1/2 | In Progress|  |
+| 6. Validation Layer | 2/2 | Complete   | 2026-03-22 |
 | 7. Full Pipeline Completion | 0/TBD | Not started | - |

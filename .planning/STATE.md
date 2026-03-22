@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 06-01-PLAN.md — validation layer (knz-validator.md + knz-validate.md + knz-sessions.md auto-trigger)
-last_updated: "2026-03-21T20:51:40.720Z"
+stopped_at: Completed 06-02-PLAN.md — ValidationReport dashboard component, Stage 9 panel wired
+last_updated: "2026-03-22T01:14:28.029Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 7
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 17
-  completed_plans: 16
+  completed_plans: 17
   percent: 80
 ---
 
@@ -66,6 +66,7 @@ Progress: [████████░░] 80%
 | Phase 04-dashboard-mvp P05 | continuation | 2 tasks | 1 files |
 | Phase 05 P02 | 3 | 2 tasks | 2 files |
 | Phase 06-validation-layer P01 | 4 | 2 tasks | 3 files |
+| Phase 06-validation-layer P02 | 45 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -126,6 +127,9 @@ Recent decisions affecting current work:
 - [Phase 06-01]: Validation agent is a separate file (knz-validator.md) from all generation commands — structural separation enforced by file boundaries
 - [Phase 06-01]: knz-validate.md dispatches via Task tool — validation runs in a separate agent context, satisfying the separation rule in stage-09-validation.md
 - [Phase 06-01]: Stage 9 status driven by tier_1_failures count: complete if 0, in-progress if >0 — state reflects curriculum quality not mere invocation
+- [Phase 06-02]: ValidationReport shows FAIL rows only — PASS rows parsed but never rendered; reduces cognitive load for SME users
+- [Phase 06-02]: 404 on schema-report.md treated as neutral informational state, not error — Stage 9 files don't exist until /knz-validate is run
+- [Phase 06-02]: Tier 2 scores displayed as N/10 integer (Math.round), not float — cleaner for non-technical SME users
 
 ### Pending Todos
 
@@ -140,7 +144,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-21T20:51:40.716Z
-Stopped at: Completed 06-01-PLAN.md — validation layer (knz-validator.md + knz-validate.md + knz-sessions.md auto-trigger)
+Last session: 2026-03-22T01:14:28.027Z
+Stopped at: Completed 06-02-PLAN.md — ValidationReport dashboard component, Stage 9 panel wired
 Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
