@@ -376,10 +376,65 @@ Before writing `project-brief.md`, verify internally:
 > This section is entered when the user selects "I have existing materials to bring in" at the Opening above.
 
 ### Step 1: Document Ingestion
-<!-- Authored in 08-02-PLAN.md -->
+
+**If ARGUMENTS were provided with the command** (e.g., `/knz-intake path/to/guide.md path/to/slides.md`):
+
+Read each file at the provided paths. As each file is read, announce exactly one line:
+> Reading [filename]...
+
+Do not wait until all files are read to announce — announce as each file is processed. Do not describe what you find in each file during reading.
+
+**If no ARGUMENTS were provided:**
+
+Check `workspace/{project}/source-material/` for any files.
+
+If files are found, list them:
+> I found these files in your source-material folder:
+> - [filename 1]
+> - [filename 2]
+>
+> Should I read these? (Or drop more files into source-material/ and re-run `/knz-intake`.)
+
+Use `AskUserQuestion`:
+- **"Yes, read these files"**
+- **"Let me add more files first"**
+
+On "Yes, read these files": read all listed files, announcing each as above.
+On "Let me add more files first": stop here. Do not proceed.
+
+If no files are found in source-material/:
+> I didn't find any files in your source-material folder. You can either:
+> - Drop files there and re-run `/knz-intake`
+> - Run `/knz-intake` with file paths directly: `/knz-intake path/to/guide.md path/to/slides.md`
+
+Stop here. Do not proceed.
+
+**After all files are read:** Do not ask any questions. Synthesize internally and proceed immediately to Step 2.
 
 ### Step 2: Synthesis and Extraction Table
-<!-- Authored in 08-02-PLAN.md -->
+
+After reading all documents, synthesize internally — the user never sees intermediate extraction notes. Display the completed extraction table:
+
+**What I found in your materials:**
+
+| Field | What the documents say | Confidence |
+|-------|------------------------|------------|
+| Program topic | [extracted value or "—"] | High / Medium / Low / None |
+| Who it's for | [extracted value or "—"] | High / Medium / Low / None |
+| Current skill level | [extracted value or "—"] | High / Medium / Low / None |
+| Program format | [extracted value or "—"] | High / Medium / Low / None |
+| Where it's delivered | [extracted value or "—"] | High / Medium / Low / None |
+| Skill type | [extracted value or "—"] | High / Medium / Low / None |
+| Cultural context | [extracted value or "—"] | High / Medium / Low / None |
+| Where they'll use it | [extracted value or "—"] | High / Medium / Low / None |
+| What success looks like | [extracted value or "—"] | High / Medium / Low / None |
+
+Include "How learners prefer to learn" row when inferable. Include "Group size" row when program format indicates contact_hours >= 16. Omit conditional rows when not applicable.
+
+After the table, add one line:
+> High confidence fields are accepted as-is. I'll ask about the rest.
+
+**Do not ask any follow-up questions yet.** Display the table, pause, then proceed to Step 3.
 
 ### Step 3: Confidence Rubric
 <!-- Authored in 08-02-PLAN.md -->
