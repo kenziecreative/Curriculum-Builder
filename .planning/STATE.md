@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 7 context gathered
-last_updated: "2026-03-22T06:22:18.939Z"
+stopped_at: Completed 07-02-PLAN.md — hook + chain wiring + final gate
+last_updated: "2026-03-22T13:38:03.124Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 7
   completed_phases: 6
-  total_plans: 17
-  completed_plans: 17
+  total_plans: 19
+  completed_plans: 18
   percent: 80
 ---
 
@@ -67,6 +67,7 @@ Progress: [████████░░] 80%
 | Phase 05 P02 | 3 | 2 tasks | 2 files |
 | Phase 06-validation-layer P01 | 4 | 2 tasks | 3 files |
 | Phase 06-validation-layer P02 | 45 | 3 tasks | 3 files |
+| Phase 07-full-pipeline-completion P02 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -130,6 +131,10 @@ Recent decisions affecting current work:
 - [Phase 06-02]: ValidationReport shows FAIL rows only — PASS rows parsed but never rendered; reduces cognitive load for SME users
 - [Phase 06-02]: 404 on schema-report.md treated as neutral informational state, not error — Stage 9 files don't exist until /knz-validate is run
 - [Phase 06-02]: Tier 2 scores displayed as N/10 integer (Math.round), not float — cleaner for non-technical SME users
+- [Phase 07-02]: 05-metaskills directory maps to Stage 6 (PREREQ_NUM=5) via explicit case statement — not derived from directory number to avoid off-by-one error
+- [Phase 07-02]: PreToolUse hook exits 0 when STATE.md not found — graceful absence, hook is safety net not primary gate
+- [Phase 07-02]: Auto-chain from knz-validate fires only on tier_1_failures == 0 — chain stops at failure message, wired in validate not sessions
+- [Phase 07-02]: knz-approve final gate reads each stage directory only if status is complete in STATE.md — no broken reads for partial pipelines
 
 ### Pending Todos
 
@@ -144,7 +149,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T06:22:18.927Z
-Stopped at: Phase 7 context gathered
-Resume file: .planning/phases/07-full-pipeline-completion/07-CONTEXT.md
+Last session: 2026-03-22T13:38:03.121Z
+Stopped at: Completed 07-02-PLAN.md — hook + chain wiring + final gate
+Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)

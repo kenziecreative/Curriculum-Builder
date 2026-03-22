@@ -12,8 +12,8 @@
 - [x] **PIPE-03**: Each pipeline stage enforces schema-required output fields — missing fields block stage completion
 - [x] **PIPE-04**: Human review gate pauses pipeline after intake for user confirmation before proceeding
 - [x] **PIPE-05**: Human review gate pauses pipeline after assessment design for user confirmation
-- [ ] **PIPE-06**: Human review gate pauses pipeline at final validation for user approval of complete package
-- [ ] **PIPE-07**: Pipeline stages 4-8 (module structure through marketing) run autonomously without human intervention after assessment gate
+- [x] **PIPE-06**: Human review gate pauses pipeline at final validation for user approval of complete package
+- [x] **PIPE-07**: Pipeline stages 4-8 (module structure through marketing) run autonomously without human intervention after assessment gate
 - [x] **PIPE-08**: Pipeline handles programs from 90 minutes to full semester without architectural changes — duration is an intake parameter
 
 ### Structured Intake (Stage 1)
@@ -93,7 +93,7 @@
 - [x] **INFR-04**: Resume command shows current stage, last session summary, completed work, and next action
 - [x] **INFR-05**: Confirmation gate at every stage transition — user confirms before advancing
 - [x] **INFR-06**: AskUserQuestion used for all categorical/binary decision points
-- [ ] **INFR-07**: PreToolUse hook prevents accidental stage skipping
+- [x] **INFR-07**: PreToolUse hook prevents accidental stage skipping
 - [x] **INFR-08**: Subagent orchestration for parallel module generation
 - [x] **INFR-09**: Subagent chaining enables autonomous middle stages (4-8) without manual intervention
 - [x] **INFR-10**: State updates are silent — never announce "updating STATE.md"
@@ -154,8 +154,8 @@
 | PIPE-03 | Phase 1 | Complete |
 | PIPE-04 | Phase 2 | Complete |
 | PIPE-05 | Phase 3 | Complete |
-| PIPE-06 | Phase 7 | Pending |
-| PIPE-07 | Phase 7 | Pending |
+| PIPE-06 | Phase 7 | Complete |
+| PIPE-07 | Phase 7 | Complete |
 | PIPE-08 | Phase 1 | Complete |
 | INTK-01 | Phase 2 | Complete |
 | INTK-02 | Phase 2 | Complete |
@@ -205,7 +205,7 @@
 | INFR-04 | Phase 2 | Complete |
 | INFR-05 | Phase 2 | Complete |
 | INFR-06 | Phase 2 | Complete |
-| INFR-07 | Phase 7 | Pending |
+| INFR-07 | Phase 7 | Complete |
 | INFR-08 | Phase 5 | Complete |
 | INFR-09 | Phase 5 | Complete |
 | INFR-10 | Phase 1 | Complete |
