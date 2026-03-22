@@ -29,6 +29,13 @@ See [v1.0 archive](.planning/milestones/v1.0-ROADMAP.md) for full phase details.
 
 ### Phase 8: Audit Mode Intake
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — /knz-init scaffold + /knz-intake routing question (INTK-07)
+- [ ] 08-02-PLAN.md — Audit Mode Steps 1-4: ingestion, extraction table, confidence rubric, follow-up questions (INTK-08, INTK-09, INTK-10)
+- [ ] 08-03-PLAN.md — Audit Mode Steps 5-6: confirmation gate, file writing, curriculum gap report (INTK-11)
+
 **Goal:** `/knz-intake` accepts existing curriculum documents, synthesizes across all of them, surfaces gaps and conflicts, and produces a project-brief.md plus curriculum gap report — so the pipeline starts from what exists rather than generating cold.
 
 **Depends on:** Phase 7 (v1.0 complete)
@@ -73,6 +80,6 @@ See [v1.0 archive](.planning/milestones/v1.0-ROADMAP.md) for full phase details.
 | Phase | Milestone | Plans | Status | Completed |
 |-------|-----------|-------|--------|-----------|
 | 1–7 (archived) | v1.0 | 19/19 | Complete | 2026-03-22 |
-| 8. Audit Mode Intake | v2.0 | 0 | Not started | — |
+| 8. Audit Mode Intake | v2.0 | 3 | Not started | — |
 | 9. Stage Pre-population | v2.0 | 0 | Not started | — |
 | 10. Evaluation Mode | v2.0 | 0 | Not started | — |
