@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 07-02-PLAN.md — hook + chain wiring + final gate
-last_updated: "2026-03-22T13:38:03.124Z"
+stopped_at: Completed 07-01-PLAN.md — knz-metaskills, knz-transfer, knz-marketing authored
+last_updated: "2026-03-22T13:40:12.239Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 7
-  completed_phases: 6
+  completed_phases: 7
   total_plans: 19
-  completed_plans: 18
+  completed_plans: 19
   percent: 80
 ---
 
@@ -68,6 +68,7 @@ Progress: [████████░░] 80%
 | Phase 06-validation-layer P01 | 4 | 2 tasks | 3 files |
 | Phase 06-validation-layer P02 | 45 | 3 tasks | 3 files |
 | Phase 07-full-pipeline-completion P02 | 2 | 2 tasks | 4 files |
+| Phase 07-full-pipeline-completion P01 | 12 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -135,6 +136,9 @@ Recent decisions affecting current work:
 - [Phase 07-02]: PreToolUse hook exits 0 when STATE.md not found — graceful absence, hook is safety net not primary gate
 - [Phase 07-02]: Auto-chain from knz-validate fires only on tier_1_failures == 0 — chain stops at failure message, wired in validate not sessions
 - [Phase 07-02]: knz-approve final gate reads each stage directory only if status is complete in STATE.md — no broken reads for partial pipelines
+- [Phase 07-full-pipeline-completion]: knz-marketing writes files immediately (no mid-pipeline gate) — /knz-approve is the final review gate covering the full package
+- [Phase 07-full-pipeline-completion]: Community of Practice continuation design is always present at every program length — 90-min programs get simplified three-activity plan, not absence of the field
+- [Phase 07-full-pipeline-completion]: Kirkpatrick level shown to users only as plain-language translation (Level 3 → Behavior change on the job); schema vocabulary never exposed in user-facing output
 
 ### Pending Todos
 
@@ -149,7 +153,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T13:38:03.121Z
-Stopped at: Completed 07-02-PLAN.md — hook + chain wiring + final gate
+Last session: 2026-03-22T13:40:12.236Z
+Stopped at: Completed 07-01-PLAN.md — knz-metaskills, knz-transfer, knz-marketing authored
 Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)

@@ -58,23 +58,23 @@
 
 ### Metaskill Mapping (Stage 6)
 
-- [ ] **META-01**: All six metaskills are mapped with activation activities — specific thinking routines, not labels
-- [ ] **META-02**: Developability hierarchy is respected: Exploring/Creating (high evidence) before Innovating/Adapting
-- [ ] **META-03**: Each metaskill activation includes a transfer prompt connecting to real-work application
+- [x] **META-01**: All six metaskills are mapped with activation activities — specific thinking routines, not labels
+- [x] **META-02**: Developability hierarchy is respected: Exploring/Creating (high evidence) before Innovating/Adapting
+- [x] **META-03**: Each metaskill activation includes a transfer prompt connecting to real-work application
 
 ### Transfer Ecosystem (Stage 7)
 
-- [ ] **TRNS-01**: Pre-program design includes readiness assessment, manager briefing, and baseline measurement
-- [ ] **TRNS-02**: In-program design includes implementation intentions and real-work application exercises
-- [ ] **TRNS-03**: Post-program design includes spaced retrieval at 1/4/12 weeks, peer accountability, community continuation, and evaluation design
-- [ ] **TRNS-04**: Transfer elements are attached to specific sessions and modules — not generic appendices
+- [x] **TRNS-01**: Pre-program design includes readiness assessment, manager briefing, and baseline measurement
+- [x] **TRNS-02**: In-program design includes implementation intentions and real-work application exercises
+- [x] **TRNS-03**: Post-program design includes spaced retrieval at 1/4/12 weeks, peer accountability, community continuation, and evaluation design
+- [x] **TRNS-04**: Transfer elements are attached to specific sessions and modules — not generic appendices
 
 ### Marketing Derivation (Stage 8)
 
-- [ ] **MKTG-01**: Program descriptions are derived from curriculum substance — every claim traces to a specific curriculum element
-- [ ] **MKTG-02**: Learning promises reflect actual outcomes, not aspirational language
-- [ ] **MKTG-03**: Audience positioning is grounded in intake demographics and expertise data
-- [ ] **MKTG-04**: Marketing-to-pedagogy ratio is < 25% of total output
+- [x] **MKTG-01**: Program descriptions are derived from curriculum substance — every claim traces to a specific curriculum element
+- [x] **MKTG-02**: Learning promises reflect actual outcomes, not aspirational language
+- [x] **MKTG-03**: Audience positioning is grounded in intake demographics and expertise data
+- [x] **MKTG-04**: Marketing-to-pedagogy ratio is < 25% of total output
 
 ### Validation (Stage 9)
 
@@ -182,17 +182,17 @@
 | SESS-05 | Phase 5 | Complete |
 | SESS-06 | Phase 5 | Complete |
 | SESS-07 | Phase 5 | Complete |
-| META-01 | Phase 7 | Pending |
-| META-02 | Phase 7 | Pending |
-| META-03 | Phase 7 | Pending |
-| TRNS-01 | Phase 7 | Pending |
-| TRNS-02 | Phase 7 | Pending |
-| TRNS-03 | Phase 7 | Pending |
-| TRNS-04 | Phase 7 | Pending |
-| MKTG-01 | Phase 7 | Pending |
-| MKTG-02 | Phase 7 | Pending |
-| MKTG-03 | Phase 7 | Pending |
-| MKTG-04 | Phase 7 | Pending |
+| META-01 | Phase 7 | Complete |
+| META-02 | Phase 7 | Complete |
+| META-03 | Phase 7 | Complete |
+| TRNS-01 | Phase 7 | Complete |
+| TRNS-02 | Phase 7 | Complete |
+| TRNS-03 | Phase 7 | Complete |
+| TRNS-04 | Phase 7 | Complete |
+| MKTG-01 | Phase 7 | Complete |
+| MKTG-02 | Phase 7 | Complete |
+| MKTG-03 | Phase 7 | Complete |
+| MKTG-04 | Phase 7 | Complete |
 | VALD-01 | Phase 6 | Complete |
 | VALD-02 | Phase 6 | Complete |
 | VALD-03 | Phase 6 | Complete |
