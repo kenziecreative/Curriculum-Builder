@@ -437,10 +437,64 @@ After the table, add one line:
 **Do not ask any follow-up questions yet.** Display the table, pause, then proceed to Step 3.
 
 ### Step 3: Confidence Rubric
-<!-- Authored in 08-02-PLAN.md -->
+
+Apply this rubric when assigning confidence levels in Step 2. The rubric must be applied before display — users only see the completed table.
+
+| Level | Criterion | Example |
+|-------|-----------|---------|
+| **High** | Field value is directly readable from source text — no inference, conversion, or interpretation required | "This is a 6-session, 90-minute workshop" → Program format: 6 sessions × 90 min |
+| **Medium** | Field is present but requires interpretation, behavioral reformatting, or unit conversion | "Participants are beginners" → must be converted to behavioral format ("can do X, cannot yet do Y") |
+| **Low** | Field is partially implied across documents with thin or conflicting signals | Two documents imply different audiences without explicit statement |
+| **None** | No relevant information found in any source document | Transfer design, reflection structure, social learning — rarely in facilitator guides |
+
+**Critical rule:** Format conversion (slide count → session length estimate, section headings → module count) is Claude's job, not a conflict or a gap. When Claude can derive a schema value from document structure without inference about content, that is Medium confidence extraction — not a missing field.
+
+**High requires:** The exact schema value is present in the source text. Any inference = Medium at most.
+
+**Vocabulary quarantine applies in the table and in all follow-up questions.** Never use: Bloom's taxonomy, learning objectives, schema, prior_knowledge, self_direction_level, Grow model, formative assessment, summative assessment, skill type, cultural orientation, closed skill, open skill, enum, contact_hours, modality.
 
 ### Step 4: Follow-up Questions
-<!-- Authored in 08-02-PLAN.md -->
+
+All follow-up interactions happen in a single pass after the confidence table is shown. The ordering of questions within this pass is Claude's discretion — batch or sequential, conflicts and gaps interleaved or grouped, whichever produces the clearest conversation.
+
+**For High fields:** Accept as-is. Never ask about them.
+
+**For Medium fields:** Show what was extracted and ask for confirmation or correction.
+> I found this for [plain-language field name]: "[extracted value]"
+>
+> Does that capture it accurately, or would you like to adjust it?
+
+**For Low fields:** Show what was found (if anything) and ask for clarification.
+> Your materials touch on [plain-language field name] but I couldn't pin down a clear answer. [What was found, briefly.] What's the clearest way to put this?
+
+**For None fields:** Ask a targeted question using the same plain-language framing as clean intake — no schema jargon, no instructional design vocabulary.
+
+Reference the clean intake question for each field when authoring None-field follow-up questions:
+- Program topic → "What's the core topic or skill this program teaches?"
+- Who it's for → "Who are the people taking this program? What do they do day-to-day?"
+- Current skill level → "What can they already do related to this topic, and what can't they do yet?" (require behavioral format: "can do X, cannot yet do Y")
+- Program format → "How long is the program, and how is it delivered?"
+- Where it's delivered → "Is that delivered in person, online, or a mix of both?"
+- Skill type → "Is there a right way to do this skill, or does it depend on the situation and the person's judgment?"
+- Cultural context → "Will your learners mostly be from backgrounds that value individual achievement, group harmony, or a real mix?"
+- Where they'll use it → "After this program, where will learners actually use what they learned? Give me a specific work situation."
+- What success looks like → "How will you know this program worked? What would you see people doing differently?"
+
+**For conflicts (substantive contradictions):**
+
+A conflict is a substantive contradiction about what the program IS — who the audience is, what the skill type is, what success looks like. Format differences (slide count vs. stated session length, section count vs. module grouping) are NOT conflicts — Claude converts these silently.
+
+When a genuine conflict is found, surface it during the follow-up pass:
+> I noticed a conflict between your documents on [topic]:
+>
+> - **[Document A title]** says: "[excerpt]"
+> - **[Document B title]** says: "[excerpt]"
+>
+> Which is the accurate picture — or are both partially true?
+
+If the user says "both are partially true": accept the nuance. Ask one synthesizing follow-up to get the canonical answer. Do not force a binary choice.
+
+**After all follow-up questions are resolved:** Proceed immediately to Step 5. Do not show a summary yet.
 
 ### Step 5: Confirmation Gate
 <!-- Authored in 08-03-PLAN.md -->
