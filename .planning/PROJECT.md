@@ -4,42 +4,46 @@
 
 A Claude Code plugin with a React dashboard that produces delivery-ready curriculum packages for adult learners. It encodes pedagogical doctrine — TMA, DCR, Six Metaskills, Flipped Classroom — as structural constraints enforced through schemas, so that subject matter experts without instructional design training can produce curriculum that meets rigorous pedagogical standards. The tool handles the scaffold; the human handles the soul.
 
+**Current state (v1.0):** Nine-stage pipeline is fully operational. A user can run `/knz-init` through `/knz-approve` and receive a complete curriculum package — outcomes, assessments, module structure, session content, metaskill activations, transfer ecosystem, and marketing materials — with schema enforcement throughout. React dashboard shows pipeline progress and renders all deliverables.
+
 ## Core Value
 
 Every curriculum package that comes out of this tool produces genuine behavioral change — not just a pleasant learning experience — through structurally enforced pedagogy that no user can accidentally skip.
 
 ## Requirements
 
-### Validated
+### Validated (v1.0)
 
-(None yet — ship to validate)
+- ✓ Nine-stage generation pipeline (Intake → Outcome Design → Assessment Design → Module Structure → Session Content → Metaskill Mapping → Transfer Ecosystem → Marketing Derivation → Full Validation) — v1.0
+- ✓ Guided conversational intake answerable by SMEs without instructional design vocabulary — v1.0
+- ✓ Schema-enforced constraints at every stage (required output fields, not suggestions) — v1.0
+- ✓ Backward design as generation sequence (outcomes → assessments → content → marketing) — v1.0
+- ✓ TMA content arc within sessions (all 8 phases required) — v1.0
+- ✓ DCR analytical method with scaffolding for novices — v1.0
+- ✓ Six Metaskills operationalized as thinking routines with developability hierarchy — v1.0
+- ✓ Social learning layer required per module (all 4 sub-fields) — v1.0
+- ✓ Facilitator guides, participant materials, slide outlines per session — v1.0
+- ✓ Transfer ecosystem: pre/in/post-program with spaced retrieval, CoP, evaluation design — v1.0
+- ✓ Three-tier validation: automated schema checks, rubric scoring, human review — v1.0
+- ✓ Marketing materials derived from curriculum substance with full traceability — v1.0
+- ✓ React dashboard for pipeline progress and deliverable navigation — v1.0
+- ✓ Parallel module generation via subagents — v1.0
+- ✓ Programs from 90 minutes to full semester without architectural changes — v1.0
+- ✓ Human review gates at intake, assessment design, and final validation — v1.0
+- ✓ Autonomous generation for middle pipeline stages (module structure through marketing) — v1.0
+- ✓ State management across sessions (STATE.md protocol) — v1.0
+- ✓ PreToolUse hook prevents accidental stage skipping — v1.0
 
-### Active
+### Active (v2.0)
 
-- [ ] Nine-stage generation pipeline (Intake → Outcome Design → Assessment Design → Module Structure → Session Content → Metaskill Mapping → Transfer Ecosystem → Marketing Derivation → Full Validation)
-- [ ] Guided conversational intake answerable by SMEs without instructional design vocabulary
-- [ ] Schema-enforced constraints at every stage (required output fields, not suggestions)
-- [ ] Backward design as generation sequence (outcomes → assessments → content → marketing)
-- [ ] TMA content arc within sessions (ACTIVATE → THEORY → CHECK → METHOD → PRACTICE → APPLICATION → REFLECT → TRANSFER)
-- [ ] DCR analytical method with scaffolding for novices and validation for wicked domains
-- [ ] Six Metaskills operationalized as thinking routines with developability hierarchy
-- [ ] Social learning layer required per module (activity type, interdependence, accountability, group processing)
-- [ ] Expertise-adaptive design keyed off intake (strategy, template selection, TMA ordering)
-- [ ] Session template library (Gagné-derived, 5E/7E, Merrill, WIPPEA, Universal Arc with TMA)
-- [ ] Facilitator guides with timing, facilitation notes, stumbling points, transitions
-- [ ] Participant materials: pre-work, handouts, activity worksheets
-- [ ] Presentation/slide framework outlines (structural, not final design)
-- [ ] Transfer ecosystem: pre-program (readiness, manager briefing, baseline), in-program (implementation intentions, real-work application), post-program (spaced retrieval 1/4/12 weeks, peer accountability, community continuation, evaluation)
-- [ ] Three-tier validation: automated schema checks, rubric-based scoring with confidence, human review surfacing
-- [ ] Marketing materials derived from curriculum substance
-- [ ] React dashboard for pipeline progress tracking and deliverable navigation
-- [ ] Markdown as source of truth with formatted output (HTML/PDF) for delivery
-- [ ] State management across sessions (STATE.md protocol)
-- [ ] Parallel module generation via subagents
-- [ ] Platform-agnostic output (no LMS lock-in)
-- [ ] Programs from 90 minutes to full semester without architectural changes
-- [ ] Human review gates at intake, after assessment design, and at final validation
-- [ ] Autonomous generation for middle pipeline stages (module structure through marketing)
+- [ ] `/knz-intake` opens by asking fresh vs. existing — routes to clean intake or audit mode
+- [ ] Audit mode accepts multiple source documents simultaneously and synthesizes before asking questions
+- [ ] Audit mode extracts intake schema fields from documents with confidence levels; asks only about gaps
+- [ ] Audit mode surfaces cross-document conflicts as named contradictions requiring resolution
+- [ ] Audit mode produces curriculum gap report alongside project-brief.md
+- [ ] Audit mode pre-populates stage files from existing content; downstream treats as drafts to enforce compliance
+- [ ] Evaluation mode: run external curriculum through validation rubrics without full pipeline
+- [ ] Evaluation mode produces scored report with specific improvement recommendations
 
 ### Out of Scope
 
@@ -50,39 +54,31 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 - Automated learner assessment scoring — facilitator handles this
 - Multi-language curriculum generation — English only for V1
 - Video or multimedia content production — document-based output
-- Standalone curriculum evaluation mode — validation architecture exists for self-checking, but evaluating external curriculum is a future workflow
 - Integration with PM or CMS tools — no external tool dependencies
+- Export/packaging, advanced dashboard, rubric calibration, longitudinal tracking — v3 (requires usage data)
 
 ## Context
 
-**Research foundation:** 11-phase research project (22 sources) completed prior to build. Validated constraint architecture as the correct approach. Research found existing template was biased 60-65% marketing / 20-25% pedagogy. Design recommendations, schema specifications, validation protocols, and architecture decisions are documented in the research outputs.
-
-**Research location:** `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-builder-research/`
-
-**Interaction model reference:** Brand Compass plugin (`/Users/kelseyruger/Projects/a-emporium-working/knz-brand-guidance/`) demonstrates the conversational walkthrough + React dashboard pattern. Curriculum builder uses the same architectural approach: phase commands drive conversation, background agents do concurrent work, AskUserQuestion for discrete decisions, STATE.md bridges sessions, React dashboard shows progress and deliverables.
-
-**Pipeline flow model:** Deep human involvement at intake → review checkpoint after outcome + assessment design (stages 2-3) → stages 4-8 run autonomously with schema enforcement → gate at final validation (stage 9). For short programs (90 min), this may flow in one session. For semester-length programs, natural session breaks occur between stage groups.
+**Research foundation:** 11-phase research project (22 sources) completed prior to build. Research location: `/Users/kelseyruger/Projects/a-emporium-working/knz-learner-builder/knz-builder-research/`
 
 **Users:**
 - Kelsey (Kenzie Creative) — deep pedagogical knowledge, builds and delivers training. Bottleneck is time, not knowledge.
-- Hello Alice program team — SMEs who know their domains but are not instructional designers. Intake must be answerable without instructional design vocabulary.
+- Hello Alice program team — SMEs who know their domains but are not instructional designers.
 
-**Validation target:** AccessU day-long training, May 2026. Content is outlined but not developed in depth. First real-world test of the full pipeline.
+**Validation target:** Run the AI agent workflows workshop (6 × 90 min) through the pipeline as first real-world test. Existing materials: facilitator guide + slide deck outline. v2.0 audit mode is designed directly from this use case.
 
 **Known research gaps:**
-- Imagining as teachable metaskill: no consolidated evidence base; activated through adjacent practices
+- Imagining as teachable metaskill: no consolidated evidence base
 - DCR as integrated sequence: components validate separately, no studies test the named framework
 - Cooperative learning at compressed durations: meta-analytic evidence from multi-week courses, untested at 90-min
-- Minimum viable CoP formation time unknown for compressed formats
-- Integrated nine-stage pipeline untested as a system (AccessU is first test)
+- Integrated nine-stage pipeline untested as a system (first real program is the test)
 
 ## Constraints
 
 - **Platform:** Claude Code plugin + React dashboard (Vite + React + TypeScript + Tailwind)
 - **Builder:** Kelsey, building with Claude Code — not a traditional software developer
 - **Budget:** Self-built; no external development cost beyond Claude Code usage
-- **Timeline:** No hard deadline. AccessU validation target May 2026
-- **Output format:** Markdown source of truth + formatted HTML/PDF for delivery. Platform-agnostic
+- **Output format:** Markdown source of truth + formatted HTML for delivery. Platform-agnostic
 - **Duration range:** 90 minutes to full semester. Architecture handles this without modification
 - **Context management:** Full curriculum can exceed 100k tokens. Subagent composition prevents context exhaustion
 
@@ -90,13 +86,14 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Plugin + React dashboard (not pure plugin) | Brand Compass experience showed dashboard value for tracking progress and organizing deliverables. Curriculum output volume is even higher — dashboard prevents "scroll to find it" problem | — Pending |
-| Guided interview for intake (not form-based) | SMEs need conversational discovery, not a questionnaire. Pedagogical translation happens behind the scenes | — Pending |
-| Gate intake, assessment, and final validation; auto-run middle stages | Middle stages (4-8) are mechanical transformation of upstream decisions. Schema enforcement handles quality. Human judgment needed at intake, assessment design, and final review | — Pending |
-| Full V1 scope (no truncated MVP) | AI handles structural overhead — truncated MVP still leaves admin burden that defeats the purpose. Transfer ecosystem, marketing, facilitator guides are core, not extras | — Pending |
-| Markdown + HTML output (no PDF) | Markdown as source of truth for flexibility. HTML for delivery-ready handoff to facilitators. PDF deferred — HTML is sufficient | — Pending |
-| Evaluation mode deferred | Not enough existing curriculum to compare against. Validation architecture exists for self-checking; standalone evaluation workflow is future | — Pending |
-| Cross-program consistency | Schema enforcement and shared doctrine produce structural consistency across programs. Organizational brand/voice consistency (e.g., Hello Alice conventions) may need an org-context file — evaluate after second program runs through pipeline | — Pending |
+| Plugin + React dashboard (not pure plugin) | Dashboard value for tracking progress and navigating deliverables — curriculum output volume is high | ✓ Good — dashboard verified useful in v1.0 |
+| Guided interview for intake (not form-based) | SMEs need conversational discovery, not a questionnaire | ✓ Good — vocabulary quarantine verified in command design |
+| Gate intake, assessment, and final validation; auto-run middle stages | Middle stages are mechanical transformation. Human judgment needed at intake, design, and final review | ✓ Good — autonomous chain verified working |
+| Full V1 scope (no truncated MVP) | Transfer ecosystem, marketing, facilitator guides are core, not extras | ✓ Good — complete pipeline shipped |
+| Markdown + HTML output (no PDF) | Markdown as source of truth. HTML for delivery-ready handoff | ✓ Good — deferred PDF to v3 |
+| Schema before skills | Every schema change cascades into every skill — schemas must be final before skill authoring | ✓ Good — no schema rework needed after Phase 1 |
+| Unified /knz-intake with fresh/audit branch (v2.0) | Real-world use case: existing materials need enrichment, not replacement. One command asks the routing question | — Pending |
+| Audit mode as document synthesis + gap report (v2.0) | Most value comes from surfacing what's missing, not just ingesting what exists | — Pending |
 
 ---
-*Last updated: 2026-03-15 after initialization*
+*Last updated: 2026-03-22 after v1.0 milestone completion*

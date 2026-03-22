@@ -43,11 +43,11 @@ function parseFailRows(markdown: string): FailRow[] {
 }
 
 const SCORE_LABEL_MAP: Record<string, string> = {
-  transfer_realism: 'Transfer realism',
-  social_learning_quality: 'Social learning',
-  cognitive_load: 'Cognitive load',
-  scaffolding: 'Scaffolding',
-  belief_challenging: 'Belief-challenging',
+  'Transfer realism': 'Transfer realism',
+  'Social learning': 'Social learning',
+  'Cognitive load': 'Cognitive load',
+  'Scaffolding': 'Scaffolding',
+  'Belief-challenging': 'Belief-challenging',
 }
 
 function parseTier2Scores(markdown: string): ScoreRow[] {
@@ -55,7 +55,7 @@ function parseTier2Scores(markdown: string): ScoreRow[] {
   let inSection = false
   for (const line of markdown.split('\n')) {
     const trimmed = line.trim()
-    if (/tier 2 rubric scores/i.test(trimmed)) {
+    if (/tier 2 results/i.test(trimmed)) {
       inSection = true
       continue
     }

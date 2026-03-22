@@ -97,7 +97,7 @@ Write all 3 report files on every run, overwriting any existing versions from a 
 Read stage files in this order:
 
 1. `{workspace_path}01-outcomes/` — Read `learning-objectives.md`. If missing → mark all T1-01 through T1-05 as FAIL with "STAGE NOT FOUND".
-2. `{workspace_path}02-assessments/` — Read `assessment-plan.md`. If missing → mark all T1-06 through T1-10 as FAIL with "STAGE NOT FOUND".
+2. `{workspace_path}02-assessments/` — Read `assessment-map.md`, `formative-assessments.md`, and `summative-assessments.md`. If directory missing or all three files missing → mark all T1-06 through T1-10 as FAIL with "STAGE NOT FOUND".
 3. `{workspace_path}03-modules/` — Read each `M-N/module-spec.md`. If directory missing or empty → mark all T1-11 through T1-15 as FAIL with "STAGE NOT FOUND".
 4. `{workspace_path}04-sessions/` — Read each `M-N-S-N/session.md`. If directory missing or empty → mark all T1-16 through T1-18 as FAIL with "STAGE NOT FOUND".
 

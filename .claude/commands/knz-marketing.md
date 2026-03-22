@@ -54,7 +54,7 @@ Load `.claude/reference/schemas/stage-08-marketing.md` as generation context bef
 Read all prior stage outputs:
 - `workspace/{project}/00-project-brief/project-brief.md`: audience description, `transfer_context`, program duration, program name
 - `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives (source for learning promises)
-- `workspace/{project}/02-assessments/assessment-design.md`: performance task descriptions (source for outcome evidence)
+- `workspace/{project}/02-assessments/assessment-map.md`: objective-assessment alignment table (source for outcome evidence and performance task descriptions)
 - `workspace/{project}/03-modules/`: module topics (source for program description content areas)
 - `workspace/{project}/06-transfer/transfer-ecosystem.md`: real-work application elements (source for learning promise grounding)
 
