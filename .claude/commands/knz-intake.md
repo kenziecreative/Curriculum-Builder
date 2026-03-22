@@ -44,9 +44,14 @@ You are internally mapping every answer to schema fields. Externally, you are ju
 
 ## Opening
 
-Begin with this brief framing (adapt naturally, don't read verbatim):
+Use `AskUserQuestion` with two options:
 
-> I'll ask a few questions to understand your program and the people you're building it for. We'll go in three short rounds: first your learners, then your program structure, then what success looks like. Ready when you are.
+- **"I'm starting from scratch"**
+- **"I have existing materials to bring in"**
+
+On **"I'm starting from scratch"**: proceed to Thematic Group 1 below (clean intake, unchanged).
+
+On **"I have existing materials to bring in"**: skip to the Audit Mode section at the bottom of this command.
 
 ---
 
@@ -363,3 +368,27 @@ Before writing `project-brief.md`, verify internally:
 - [ ] `cohort_size` and `prerequisite_programs` are present when `contact_hours >= 16`
 - [ ] `transfer_context` names a specific real-work moment, not a domain
 - [ ] `context_of_use` is synthesized (not a direct question answer)
+
+---
+
+## Audit Mode
+
+> This section is entered when the user selects "I have existing materials to bring in" at the Opening above.
+
+### Step 1: Document Ingestion
+<!-- Authored in 08-02-PLAN.md -->
+
+### Step 2: Synthesis and Extraction Table
+<!-- Authored in 08-02-PLAN.md -->
+
+### Step 3: Confidence Rubric
+<!-- Authored in 08-02-PLAN.md -->
+
+### Step 4: Follow-up Questions
+<!-- Authored in 08-02-PLAN.md -->
+
+### Step 5: Confirmation Gate
+<!-- Authored in 08-03-PLAN.md -->
+
+### Step 6: Write Output Files
+<!-- Authored in 08-03-PLAN.md -->
