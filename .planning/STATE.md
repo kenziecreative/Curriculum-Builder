@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Phase 8 context gathered
-last_updated: "2026-03-22T21:10:54.749Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-22T21:52:12.399Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 3
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 3
+  completed_plans: 1
   percent: 80
 ---
 
@@ -69,6 +69,7 @@ Progress: [████████░░] 80%
 | Phase 06-validation-layer P02 | 45 | 3 tasks | 3 files |
 | Phase 07-full-pipeline-completion P02 | 2 | 2 tasks | 4 files |
 | Phase 07-full-pipeline-completion P01 | 12 | 3 tasks | 3 files |
+| Phase 08-audit-mode-intake P01 | 5 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -139,6 +140,9 @@ Recent decisions affecting current work:
 - [Phase 07-full-pipeline-completion]: knz-marketing writes files immediately (no mid-pipeline gate) — /knz-approve is the final review gate covering the full package
 - [Phase 07-full-pipeline-completion]: Community of Practice continuation design is always present at every program length — 90-min programs get simplified three-activity plan, not absence of the field
 - [Phase 07-full-pipeline-completion]: Kirkpatrick level shown to users only as plain-language translation (Level 3 → Behavior change on the job); schema vocabulary never exposed in user-facing output
+- [Phase 08-01]: Routing question replaces Opening framing paragraph entirely — AskUserQuestion IS the opening; framing was redundant scaffolding
+- [Phase 08-01]: Audit Mode section uses comment-tagged placeholders so Plans 02 and 03 can fill steps independently
+- [Phase 08-01]: source-material/ positioned between 08-validation/ and delivery/ in knz-init scaffold
 
 ### Pending Todos
 
@@ -153,7 +157,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T21:10:54.738Z
-Stopped at: Phase 8 context gathered
-Resume file: .planning/phases/08-audit-mode-intake/08-CONTEXT.md
+Last session: 2026-03-22T21:52:12.396Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
