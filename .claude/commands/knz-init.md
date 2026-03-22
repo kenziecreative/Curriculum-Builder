@@ -42,6 +42,7 @@ workspace/{project-name}/
   06-transfer/
   07-marketing/
   08-validation/
+  source-material/
   delivery/
 ```
 
