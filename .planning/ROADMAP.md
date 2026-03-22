@@ -29,7 +29,7 @@ See [v1.0 archive](.planning/milestones/v1.0-ROADMAP.md) for full phase details.
 
 ### Phase 8: Audit Mode Intake
 
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 - [ ] 08-01-PLAN.md — /knz-init scaffold + /knz-intake routing question (INTK-07)
@@ -80,6 +80,6 @@ Plans:
 | Phase | Milestone | Plans | Status | Completed |
 |-------|-----------|-------|--------|-----------|
 | 1–7 (archived) | v1.0 | 19/19 | Complete | 2026-03-22 |
-| 8. Audit Mode Intake | 2/3 | In Progress|  | — |
+| 8. Audit Mode Intake | 3/3 | Complete   | 2026-03-22 | — |
 | 9. Stage Pre-population | v2.0 | 0 | Not started | — |
 | 10. Evaluation Mode | v2.0 | 0 | Not started | — |

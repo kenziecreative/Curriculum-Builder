@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Completed 08-02-PLAN.md
-last_updated: "2026-03-22T21:55:30.789Z"
+stopped_at: Completed 08-03-PLAN.md — awaiting human verification checkpoint
+last_updated: "2026-03-22T21:58:39.154Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 3
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 80
 ---
 
@@ -71,6 +71,7 @@ Progress: [████████░░] 80%
 | Phase 07-full-pipeline-completion P01 | 12 | 3 tasks | 3 files |
 | Phase 08-audit-mode-intake P01 | 5 | 2 tasks | 2 files |
 | Phase 08-audit-mode-intake P02 | 8 | 2 tasks | 1 files |
+| Phase 08-audit-mode-intake P03 | 5 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -147,6 +148,9 @@ Recent decisions affecting current work:
 - [Phase 08-02]: Step 1 announces progress per file during reading (not batch) — keeps user oriented during long ingestion
 - [Phase 08-02]: Conflict definition excludes format differences (slide count vs. session length) — format conversion is Claude's job, not a conflict to surface
 - [Phase 08-02]: Step 4 'both partially true' handler: synthesizing follow-up required rather than binary forced choice when nuance is real
+- [Phase 08-03]: Step 5 confirmation gate is identical to clean intake — same three AskUserQuestion options, same summary format, no audit-specific UX divergence
+- [Phase 08-03]: Shallow defined exclusively by schema-field-completeness — each stage lists exact required fields that trigger Shallow, not quality language
+- [Phase 08-03]: Stage 8 defaults to Missing — source materials almost never contain explicit audience-facing promotional copy; false Shallow would create unfounded confidence
 
 ### Pending Todos
 
@@ -161,7 +165,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T21:55:30.785Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-22T21:58:39.151Z
+Stopped at: Completed 08-03-PLAN.md — awaiting human verification checkpoint
 Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
