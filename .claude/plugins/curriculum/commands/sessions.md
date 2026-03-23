@@ -31,6 +31,19 @@ Stop here. Do not proceed.
 Read Stage 5 status from the workspace STATE.md:
 
 - `not-started` → Proceed to Module Reading section
+- `pre-populated` → Read `workspace/*/04-sessions/session-manifest.md`. Run structure enforcement
+  silently: verify each session has named outcomes mapped, flag sessions with NEEDS: template
+  marker. Remove any `# NEEDS:` lines from the display (markers stay in raw file until full
+  generation replaces them). Display the session manifest summary: session names, mapped outcomes,
+  template TBD indicators. Present the review gate (three options below). Do not dispatch
+  generation subagents — full session content generation happens only after the user approves or
+  flags an issue.
+  On "Looks good": proceed to Module Reading section and dispatch subagent Tasks as normal
+  (session manifest provides context for each Task). Set Stage 5 status to `in-progress`.
+  On "Flag an issue": take feedback, regenerate the manifest from project brief plus feedback,
+  re-display. Do not dispatch full generation.
+  On "Start over": wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` (clearing
+  the `pre-populated` status), restart from Module Reading section as if `not-started`.
 - `in-progress` → Check which session directories already exist in `workspace/{project-name}/04-sessions/`. Identify which modules are missing complete session files (all 4 files per session). Re-dispatch Tasks only for incomplete modules. Proceed to Parallel Generation with the incomplete module list only.
 - `complete` → Respond: "Sessions are already generated for this program. All session content is in `04-sessions/`." Stop here.
 

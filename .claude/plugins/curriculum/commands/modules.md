@@ -29,6 +29,15 @@ Stop here.
 Read the Stage 4 row from STATE.md `Stage Progress` table:
 
 - **`not-started`** — proceed to Generation section
+- **`pre-populated`** — Read all files from `workspace/*/03-modules/`. Run all module structure
+  enforcement checks silently against the existing content (named group processing prompts, DCR
+  trigger check when skill_type=open and bloom>=Analyze, sequence coherence). Remove any `# NEEDS:`
+  marker lines from the corrected output before displaying. Display the corrected module structure
+  summary and gate table. Proceed directly to the Module Structure Gate section.
+  Do not regenerate — the content source is the extracted draft, not the project brief.
+  On "Start over" at the Module Structure Gate: wipe all files in `workspace/*/03-modules/`, set
+  Stage 4 status to `not-started` in STATE.md (clearing the `pre-populated` status), restart from
+  the Generation section.
 - **`in-progress`** — if `03-modules/` files exist from a previous partial run, re-display the gate summary and proceed directly to the Module Structure Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Module-Structure gate = `approved` — respond:
   > Module structure is complete. Run `/curriculum:sessions` to generate session content.
