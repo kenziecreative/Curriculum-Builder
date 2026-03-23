@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Completed 08.1-01-PLAN.md
-last_updated: "2026-03-23T03:21:26.992Z"
+stopped_at: Completed 08.1-02-PLAN.md
+last_updated: "2026-03-23T03:27:07.891Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
   percent: 80
 ---
 
@@ -74,6 +74,7 @@ Progress: [████████░░] 80%
 | Phase 08-audit-mode-intake P03 | 5 | 1 tasks | 1 files |
 | Phase 08-audit-mode-intake P03 | 75 | 2 tasks | 1 files |
 | Phase 08.1-restructure-curriculum-commands-into-plugin-namespace P01 | 8 | 2 tasks | 16 files |
+| Phase 08.1-restructure-curriculum-commands-into-plugin-namespace P02 | 4 | 2 tasks | 19 files |
 
 ## Accumulated Context
 
@@ -163,6 +164,7 @@ Recent decisions affecting current work:
 - [Phase 08.1-01]: enabledPlugins must be in settings.json not settings.local.json — Claude Code silently ignores local variant (GitHub #27247, #25086)
 - [Phase 08.1-01]: Plugin container: commands/ and agents/ at plugin root; only plugin.json inside .claude-plugin/
 - [Phase 08.1-01]: File content unmodified in Plan 01 — reference updates deferred to Plan 02
+- [Phase 08.1-02]: Reference schema Command: fields updated alongside command and hook files — completing the /knz-* sweep across all user-visible references in .claude/
 
 ### Pending Todos
 
@@ -177,7 +179,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-23T03:21:26.990Z
-Stopped at: Completed 08.1-01-PLAN.md
+Last session: 2026-03-23T03:27:02.955Z
+Stopped at: Completed 08.1-02-PLAN.md
 Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
