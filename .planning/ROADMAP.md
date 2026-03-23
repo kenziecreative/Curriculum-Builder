@@ -92,6 +92,6 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–7 (archived) | v1.0 | 19/19 | Complete | 2026-03-22 |
 | 8. Audit Mode Intake | v2.0 | 3/3 | Complete | 2026-03-22 |
-| 8.1. Plugin Namespace Migration | 2/2 | Complete   | 2026-03-23 | — |
+| 8.1. Plugin Namespace Migration | 2/2 | Complete    | 2026-03-23 | — |
 | 9. Stage Pre-population | v2.0 | 0 | Not started | — |
 | 10. Evaluation Mode | v2.0 | 0 | Not started | — |
