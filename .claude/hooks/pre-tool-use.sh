@@ -49,14 +49,18 @@ fi
 
 # Parse preceding stage status from STATE.md Stage Progress table.
 # Rows look like: | 5 | Session Content | complete |
-PREREQ_STATUS=$(grep -A1 "| $PREREQ_NUM " "$STATE_FILE" | grep -oE 'not-started|in-progress|complete' | head -1)
+PREREQ_STATUS=$(grep -A1 "| $PREREQ_NUM " "$STATE_FILE" | grep -oE 'not-started|in-progress|pre-populated|complete' | head -1)
 
 if [ "$PREREQ_STATUS" = "complete" ]; then
   exit 0  # Prerequisite complete — allow write
 fi
 
 # Block with actionable message naming the missing stage and command to run
-REASON="Stage $STAGE_NUM ($STAGE_NAME) requires Stage $PREREQ_NUM ($PREREQ_NAME) to be complete. Stage $PREREQ_NUM is currently ${PREREQ_STATUS:-not-started}. Run $PREREQ_CMD to finish it first."
+if [ "$PREREQ_STATUS" = "pre-populated" ]; then
+  REASON="Stage $STAGE_NUM ($STAGE_NAME) requires Stage $PREREQ_NUM ($PREREQ_NAME) to be approved first. Stage $PREREQ_NUM has a draft ready — run $PREREQ_CMD to review and approve it."
+else
+  REASON="Stage $STAGE_NUM ($STAGE_NAME) requires Stage $PREREQ_NUM ($PREREQ_NAME) to be complete. Stage $PREREQ_NUM is currently ${PREREQ_STATUS:-not-started}. Run $PREREQ_CMD to finish it first."
+fi
 
 python3 -c "
 import json, sys
