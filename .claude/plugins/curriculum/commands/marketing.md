@@ -2,7 +2,7 @@
 description: Generate program marketing materials from curriculum substance — every claim traces to a specific curriculum element, copy is written to make people want to enroll
 ---
 
-# /knz-marketing
+# /curriculum:marketing
 
 Generate enrollment-ready marketing copy for your program — every claim grounded in what the curriculum actually teaches, every promise traceable to a specific learning objective, assessment, or transfer activity.
 
@@ -12,7 +12,7 @@ Generate enrollment-ready marketing copy for your program — every claim ground
 
 Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -20,7 +20,7 @@ Stop here.
 
 Read Stage 7 status from the workspace STATE.md. If Stage 7 status is not `complete`:
 
-> Marketing materials are generated after the transfer design is finalized. Run `/knz-transfer` first.
+> Marketing materials are generated after the transfer design is finalized. Run `/curriculum:transfer` first.
 
 Stop here.
 
@@ -30,7 +30,7 @@ Read Stage 8 status from the workspace STATE.md:
 
 - **`not-started`** — proceed to Generation section
 - **`complete`** — respond:
-  > Marketing materials are ready. Run `/knz-approve` to review your complete package.
+  > Marketing materials are ready. Run `/curriculum:approve` to review your complete package.
   Stop here.
 
 ---
@@ -108,7 +108,7 @@ The total word count of all marketing elements must be less than 25% of total cu
 
 Write `workspace/{project}/07-marketing/marketing-package.md` with complete schema-compliant YAML content. All elements written simultaneously.
 
-Do not wait for user review before writing. The final review gate is `/knz-approve` — that command covers the complete package including marketing materials.
+Do not wait for user review before writing. The final review gate is `/curriculum:approve` — that command covers the complete package including marketing materials.
 
 ---
 
@@ -139,7 +139,7 @@ Include only the element types generated for this program's duration tier. Omit 
 Then show:
 
 ```
-Your marketing materials are ready. Run /knz-approve to review your complete curriculum package and mark it delivery-ready.
+Your marketing materials are ready. Run /curriculum:approve to review your complete curriculum package and mark it delivery-ready.
 ```
 
 ---
@@ -148,7 +148,7 @@ Your marketing materials are ready. Run /knz-approve to review your complete cur
 
 Update `workspace/{project}/STATE.md`:
 - Stage 8 status: `complete`, Completed: {today's date}
-- Session Continuity → Next Action: `Run /knz-approve to review complete package and mark delivery-ready`
+- Session Continuity → Next Action: `Run /curriculum:approve to review complete package and mark delivery-ready`
 
 Do not announce this update.
 
@@ -156,7 +156,7 @@ Do not announce this update.
 
 ## Important: No Auto-Trigger
 
-This command ends after the traceability display and the "Run /knz-approve" prompt. There is no auto-trigger from /knz-marketing. The user must explicitly run `/knz-approve` — that is the final review gate and requires intentional user action to mark the curriculum delivery-ready.
+This command ends after the traceability display and the "Run /curriculum:approve" prompt. There is no auto-trigger from /curriculum:marketing. The user must explicitly run `/curriculum:approve` — that is the final review gate and requires intentional user action to mark the curriculum delivery-ready.
 
 ---
 

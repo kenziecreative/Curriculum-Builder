@@ -2,7 +2,7 @@
 description: Generate learning outcomes from intake data — program, module, and session levels with thinking-level distribution enforcement and inline review gate
 ---
 
-# /knz-outcomes
+# /curriculum:outcomes
 
 Generate a full outcome hierarchy from your program brief — program outcomes, module outcomes, and session outcomes — with automatic quality checks run before anything is shown to you.
 
@@ -12,7 +12,7 @@ Generate a full outcome hierarchy from your program brief — program outcomes, 
 
 Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -24,7 +24,7 @@ Read the Stage 2 row from STATE.md `Stage Progress` table.
 - **`in-progress`** — check whether `workspace/*/01-outcomes/` files exist from a previous partial run; if yes, re-display them and proceed directly to the Review Gate section; if no files exist, regenerate from scratch starting from the Generation section
 - **`complete`** — respond:
 
-> Outcomes are already designed for this program. Run `/knz-assessments` to continue.
+> Outcomes are already designed for this program. Run `/curriculum:assessments` to continue.
 
 Stop here.
 
@@ -32,7 +32,7 @@ Stop here.
 
 Read the Stage 1 row from STATE.md `Stage Progress` table. If Stage 1 status is not `complete`, respond:
 
-> Outcome design starts after the program brief is complete. Run `/knz-intake` first.
+> Outcome design starts after the program brief is complete. Run `/curriculum:intake` first.
 
 Stop here.
 
@@ -252,11 +252,11 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
 
 2. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 2 status: `complete`, Completed: {today's date}
-   - `Session Continuity` → **Next Action:** Run /knz-assessments to design assessments
+   - `Session Continuity` → **Next Action:** Run /curriculum:assessments to design assessments
 
 3. End with a brief forward-looking message:
 
-   > Your learning outcomes are locked in. Next is designing the assessments — I'll pair each outcome with an assessment that measures it at or above its complexity level. Run `/knz-assessments` when you're ready.
+   > Your learning outcomes are locked in. Next is designing the assessments — I'll pair each outcome with an assessment that measures it at or above its complexity level. Run `/curriculum:assessments` when you're ready.
 
 ---
 

@@ -2,7 +2,7 @@
 description: Design the full transfer ecosystem — pre-program readiness, in-program application, post-program spaced follow-up, community continuation, and measurement design — from your curriculum substance
 ---
 
-# /knz-transfer
+# /curriculum:transfer
 
 Design the complete follow-through system for your program — what happens before, during, and after — so participants arrive ready, practice on real work, and have a structure to keep going when the program ends.
 
@@ -12,7 +12,7 @@ Design the complete follow-through system for your program — what happens befo
 
 Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -20,7 +20,7 @@ Stop here.
 
 Read Stage 6 status from the workspace STATE.md. If Stage 6 status is not `complete`:
 
-> Transfer design follows thinking skill activation. Run `/knz-metaskills` first.
+> Transfer design follows thinking skill activation. Run `/curriculum:metaskills` first.
 
 Stop here.
 
@@ -32,7 +32,7 @@ Read Stage 7 status from the workspace STATE.md:
 - **`in-progress`** AND `06-transfer/transfer-ecosystem.md` exists — re-display the gate summary and proceed directly to the Transfer Design Gate section
 - **`in-progress`** AND no file exists — regenerate from scratch
 - **`complete`** — respond:
-  > Transfer design is done. Run `/knz-marketing` next.
+  > Transfer design is done. Run `/curriculum:marketing` next.
   Stop here.
 
 ---
@@ -158,7 +158,7 @@ After displaying the gate summary, silently update `workspace/{project}/STATE.md
 
 Then use `AskUserQuestion` with three options:
 
-- **"Approve and continue"** — write files, update STATE.md, auto-trigger /knz-marketing
+- **"Approve and continue"** — write files, update STATE.md, auto-trigger /curriculum:marketing
 - **"Flag an issue"** — ask what's wrong, full regeneration with all rules re-applied, re-display gate summary
 - **"Start this stage over"** — destructive confirmation gate
 
@@ -184,7 +184,7 @@ Then use `AskUserQuestion` with three options:
 
    > Transfer design locked — generating your marketing materials now.
 
-4. Invoke `/knz-marketing` as a Skill. No user prompt before triggering.
+4. Invoke `/curriculum:marketing` as a Skill. No user prompt before triggering.
 
 ---
 

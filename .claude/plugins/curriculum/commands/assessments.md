@@ -2,7 +2,7 @@
 description: Generate assessments paired to every learning outcome — Bloom's alignment enforced, formative coverage required, inline PIPE-05 review gate before Stage 4 can begin
 ---
 
-# /knz-assessments
+# /curriculum:assessments
 
 Generate a complete set of assessments from your approved learning outcomes — every outcome paired with an assessment, complexity levels aligned, and formative checks built into every module.
 
@@ -12,7 +12,7 @@ Generate a complete set of assessments from your approved learning outcomes — 
 
 Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -20,7 +20,7 @@ Stop here.
 
 Read the Stage 2 row from STATE.md `Stage Progress` table. If Stage 2 status is not `complete`, respond:
 
-> Assessment design starts after outcomes are finalized. Run `/knz-outcomes` first.
+> Assessment design starts after outcomes are finalized. Run `/curriculum:outcomes` first.
 
 Stop here.
 
@@ -31,7 +31,7 @@ Read the Stage 3 row from STATE.md `Stage Progress` table:
 - **`not-started`** — proceed to Generation section
 - **`in-progress`** — re-display alignment map if `02-assessments/` files exist from a previous partial run; if yes, proceed directly to the PIPE-05 Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Post-Assessment gate = `approved` — respond:
-  > Assessments are approved. Stage 4 is next — run `/knz-modules` to build the module structure.
+  > Assessments are approved. Stage 4 is next — run `/curriculum:modules` to build the module structure.
   Stop here.
 - **`complete`** but Post-Assessment gate ≠ `approved` — surface the pending gate:
   > Your assessments are ready for review.
@@ -202,11 +202,11 @@ Then use `AskUserQuestion` with three options:
 2. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 3 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Assessment: `approved`, Approved: {today's date}
-   - `Session Continuity` → **Next Action:** Run /knz-modules to build module structure
+   - `Session Continuity` → **Next Action:** Run /curriculum:modules to build module structure
 
 3. End with brief confirmation:
 
-   > Assessments approved. Your program now has a complete outcome-to-assessment map. Next: `/knz-modules` to build the module structure.
+   > Assessments approved. Your program now has a complete outcome-to-assessment map. Next: `/curriculum:modules` to build the module structure.
 
 ---
 

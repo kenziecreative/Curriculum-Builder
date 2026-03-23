@@ -2,7 +2,7 @@
 description: Resume an active curriculum project — shows current position and what to do next
 ---
 
-# /knz-resume
+# /curriculum:resume
 
 Pick up where you left off. Shows where the project stands and routes you to the right next step.
 
@@ -13,7 +13,7 @@ Pick up where you left off. Shows where the project stands and routes you to the
 Look for `workspace/*/STATE.md`.
 
 **No projects found:**
-> No curriculum projects found. Run `/knz-init` to start one.
+> No curriculum projects found. Run `/curriculum:init` to start one.
 
 Stop here.
 
@@ -57,7 +57,7 @@ Program: {Duration} for {Audience} ({Expertise Level})
 If a Review Gate has status `pending`, surface it prominently:
 
 ```
-> Review gate pending: {Gate Name}. Use /knz-approve to continue.
+> Review gate pending: {Gate Name}. Use /curriculum:approve to continue.
 ```
 
 **Do not show:**
@@ -71,18 +71,18 @@ Based on current position, end with the recommended command:
 
 | Situation | Route |
 |---|---|
-| Stage 1 not-started | Run `/knz-intake` to begin |
-| Stage 1 in-progress | Run `/knz-intake` to continue |
-| Post-Intake gate pending | Run `/knz-approve` to review and continue |
+| Stage 1 not-started | Run `/curriculum:intake` to begin |
+| Stage 1 in-progress | Run `/curriculum:intake` to continue |
+| Post-Intake gate pending | Run `/curriculum:approve` to review and continue |
 | Stage 2 not-started or in-progress | Stage 2 (Outcome Design) — command available soon |
 | Stage 3 not-started or in-progress | Stage 3 (Assessment Design) — command available soon |
-| Post-Assessment gate pending | Run `/knz-approve` to review and continue |
+| Post-Assessment gate pending | Run `/curriculum:approve` to review and continue |
 | Stages 4–8 not-started or in-progress | Stage {N} ({Name}) — command available in a future update |
-| Final Validation gate pending | Run `/knz-approve` to review |
-| All stages complete | All stages complete. Run `/knz-approve` if Final Validation is pending, or your project is ready for delivery |
+| Final Validation gate pending | Run `/curriculum:approve` to review |
+| All stages complete | All stages complete. Run `/curriculum:approve` if Final Validation is pending, or your project is ready for delivery |
 
 For stages without commands yet, show:
-> Stage {N} ({Name}) — command available in a future update. Run `/knz-resume` to check back.
+> Stage {N} ({Name}) — command available in a future update. Run `/curriculum:resume` to check back.
 
 ## Silent State Rule
 

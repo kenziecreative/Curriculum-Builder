@@ -2,7 +2,7 @@
 description: Initialize a new curriculum project workspace
 ---
 
-# /knz-init
+# /curriculum:init
 
 Set up a fresh workspace for a new curriculum project. Creates the project directory structure, STATE.md, and CLAUDE.md, then starts the intake conversation.
 
@@ -10,7 +10,7 @@ Set up a fresh workspace for a new curriculum project. Creates the project direc
 
 ### 1. Get project name
 
-If the user ran `/knz-init {project name}`, use that as the project name.
+If the user ran `/curriculum:init {project name}`, use that as the project name.
 
 If no name was provided, ask:
 
@@ -23,7 +23,7 @@ Use `AskUserQuestion` with a text input for the project name. Normalize the inpu
 Check whether `workspace/{project-name}/` already exists.
 
 If it exists:
-> A project called **{Project Name}** already exists. To pick up where you left off, run `/knz-resume`.
+> A project called **{Project Name}** already exists. To pick up where you left off, run `/curriculum:resume`.
 
 Stop here — do not overwrite.
 
@@ -54,7 +54,7 @@ Copy the contents of `templates/project-scaffold/STATE.md` into `workspace/{proj
 
 After copying, update the Session Continuity section:
 - **Last Session:** today's date (ISO format, YYYY-MM-DD)
-- **Next Action:** Run /knz-intake to begin structured intake
+- **Next Action:** Run /curriculum:intake to begin structured intake
 
 Do this silently — no announcement.
 
@@ -70,9 +70,9 @@ Output exactly this confirmation (substituting the real project name):
 
 > **{Project Name}** is ready. Let's start with a few questions about your program and learners.
 
-Then immediately begin the intake conversation as described in `/knz-intake`. When `/knz-intake` is available as a command, chain to it directly. Until then, prompt the user with:
+Then immediately begin the intake conversation as described in `/curriculum:intake`. When `/curriculum:intake` is available as a command, chain to it directly. Until then, prompt the user with:
 
-> Run `/knz-intake` to continue.
+> Run `/curriculum:intake` to continue.
 
 ## Silent State Rule
 

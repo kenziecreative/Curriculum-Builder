@@ -2,7 +2,7 @@
 description: Map six core thinking skills to specific activation activities — enforces thinking routine specificity, developability sequence, and real-work transfer prompts
 ---
 
-# /knz-metaskills
+# /curriculum:metaskills
 
 Map the core thinking skills that run through your program to specific named activities and real-work connection prompts — so learners don't just acquire skills in training, they know exactly how to use them on the job.
 
@@ -12,7 +12,7 @@ Map the core thinking skills that run through your program to specific named act
 
 Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -20,7 +20,7 @@ Stop here.
 
 Read Stage 5 status from the workspace STATE.md. If Stage 5 status is not `complete`:
 
-> Thinking skill activation happens after session content is generated. Run `/knz-sessions` first.
+> Thinking skill activation happens after session content is generated. Run `/curriculum:sessions` first.
 
 Stop here.
 
@@ -32,7 +32,7 @@ Read Stage 6 status from the workspace STATE.md:
 - **`in-progress`** AND `05-metaskills/metaskill-map.md` exists — re-display the activation map gate and proceed directly to the Gate section
 - **`in-progress`** AND no file exists — regenerate from scratch
 - **`complete`** — respond:
-  > Thinking skills are already mapped. Run `/knz-transfer` next.
+  > Thinking skills are already mapped. Run `/curriculum:transfer` next.
   Stop here.
 
 ---
@@ -150,7 +150,7 @@ After displaying the gate, silently update `workspace/{project}/STATE.md`:
 
 Then use `AskUserQuestion` with three options:
 
-- **"Approve and continue"** — write files, update STATE.md, auto-trigger /knz-transfer
+- **"Approve and continue"** — write files, update STATE.md, auto-trigger /curriculum:transfer
 - **"Flag an issue"** — ask what's wrong, full regeneration with all five steps re-run, re-display
 - **"Start this stage over"** — destructive confirmation gate
 
@@ -179,7 +179,7 @@ Then use `AskUserQuestion` with three options:
 
    > Thinking skills mapped — building your transfer design now.
 
-4. Invoke `/knz-transfer` as a Skill. No user prompt before triggering.
+4. Invoke `/curriculum:transfer` as a Skill. No user prompt before triggering.
 
 ---
 

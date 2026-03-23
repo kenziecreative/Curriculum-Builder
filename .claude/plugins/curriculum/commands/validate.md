@@ -2,7 +2,7 @@
 description: Run three-tier validation on a completed curriculum package — dispatches validation agent, presents plain-language results, updates validation gate status
 ---
 
-# /knz-validate — Curriculum Validation Orchestrator
+# /curriculum:validate — Curriculum Validation Orchestrator
 
 You are the validation orchestrator. You check prerequisites, dispatch the validation agent as a Task, verify the output files were written, show a plain-language summary to the user, and silently update STATE.md. You do NOT run validation checks yourself — all checking happens in the validation worker.
 
@@ -14,7 +14,7 @@ You are the validation orchestrator. You check prerequisites, dispatch the valid
 
 Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here. Do not proceed.
 
@@ -22,7 +22,7 @@ Stop here. Do not proceed.
 
 Read Stage 5 status from the workspace STATE.md. If Stage 5 status is not `complete`:
 
-> Validation runs after session content is generated. Run `/knz-sessions` first to generate all sessions.
+> Validation runs after session content is generated. Run `/curriculum:sessions` first to generate all sessions.
 
 Stop here. Do not proceed.
 
@@ -64,7 +64,7 @@ Check:
 
 **If any required file is missing:**
 
-> Validation didn't complete fully — some report files are missing. Run `/knz-validate` again to retry.
+> Validation didn't complete fully — some report files are missing. Run `/curriculum:validate` again to retry.
 
 Do NOT update Stage 9 status. Do NOT show a results summary. Stop here.
 
@@ -104,7 +104,7 @@ Then show quality ratings (if Tier 2 ran — not for 90-min programs):
 Then show next step:
 
 ```
-Run `/knz-approve` to review the human checklist and mark your curriculum delivery-ready.
+Run `/curriculum:approve` to review the human checklist and mark your curriculum delivery-ready.
 ```
 
 **If tier_1_failures > 0:**
@@ -152,7 +152,7 @@ Show quality ratings after the missing fields section only if Tier 2 ran (not fo
 Then show next step:
 
 ```
-Fix the missing fields, then run `/knz-validate` again to recheck.
+Fix the missing fields, then run `/curriculum:validate` again to recheck.
 ```
 
 **Do NOT show:**
@@ -173,11 +173,11 @@ Read `workspace/{project}/STATE.md`. Update the following fields:
 
 **If file verification passed AND tier_1_failures == 0:**
 - Stage 9 status: `complete`
-- Session Continuity → Next Action: `Run /knz-approve to review human checklist and approve final package`
+- Session Continuity → Next Action: `Run /curriculum:approve to review human checklist and approve final package`
 
 **If file verification passed AND tier_1_failures > 0:**
 - Stage 9 status: `in-progress`
-- Session Continuity → Next Action: `Fix missing fields listed above, then run /knz-validate to recheck`
+- Session Continuity → Next Action: `Fix missing fields listed above, then run /curriculum:validate to recheck`
 
 **In all cases where file verification passed:**
 - Final Validation gate status: `pending`
@@ -196,9 +196,9 @@ After the state update completes (Stage 9 set to complete, Session Continuity up
 
 > All required checks passed — mapping thinking skills now.
 
-Then invoke `/knz-metaskills` as a Skill.
+Then invoke `/curriculum:metaskills` as a Skill.
 
-Do not wait for user input before invoking. This is the same auto-advance pattern used between `/knz-sessions` and `/knz-validate`.
+Do not wait for user input before invoking. This is the same auto-advance pattern used between `/curriculum:sessions` and `/curriculum:validate`.
 
 ---
 

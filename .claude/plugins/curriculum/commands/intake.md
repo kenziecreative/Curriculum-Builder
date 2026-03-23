@@ -2,7 +2,7 @@
 description: Guided intake interview to capture all Stage 1 data from a program sponsor — thematic question batching, expert pushback, incremental progress saves, and inline review gate
 ---
 
-# /knz-intake
+# /curriculum:intake
 
 Conduct a conversational intake interview with a program sponsor or subject matter expert. Capture all Stage 1 data in three thematic rounds, save progress incrementally, and confirm the brief before advancing.
 
@@ -12,7 +12,7 @@ Conduct a conversational intake interview with a program sponsor or subject matt
 
 Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -24,7 +24,7 @@ Read the Stage 1 row from STATE.md `Stage Progress` table.
 - **`in-progress`** — load previously captured `Key Decisions` fields from STATE.md, determine which thematic groups are already complete (based on `Stopped At` in Session Continuity), skip those groups, and resume from the next incomplete group
 - **`complete`** — respond:
 
-> Your Stage 1 intake is already complete. To review what was captured, look at `workspace/{project-name}/00-project-brief/project-brief.md`. To continue to the next stage, run `/knz-resume`.
+> Your Stage 1 intake is already complete. To review what was captured, look at `workspace/{project-name}/00-project-brief/project-brief.md`. To continue to the next stage, run `/curriculum:resume`.
 
 Stop here.
 
@@ -302,11 +302,11 @@ Use `AskUserQuestion` with these three options:
 3. **Update STATE.md silently:**
    - `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
-   - `Session Continuity` → **Next Action:** Run /knz-outcomes to begin outcome design
+   - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
 
 4. **End with a brief forward-looking message:**
 
-   > Your program brief is locked in. Next up is designing the learning outcomes — I'll build those from what you've just told me. Run `/knz-outcomes` when you're ready.
+   > Your program brief is locked in. Next up is designing the learning outcomes — I'll build those from what you've just told me. Run `/curriculum:outcomes` when you're ready.
 
 ---
 
@@ -349,7 +349,7 @@ All STATE.md reads and writes are silent. Never say:
 
 State management happens in the background between conversation turns. The user only sees the conversation.
 
-If the session is interrupted mid-group, the next run of `/knz-intake` will read `Stopped At` from STATE.md, reload the captured Key Decisions fields, and resume from the correct group.
+If the session is interrupted mid-group, the next run of `/curriculum:intake` will read `Stopped At` from STATE.md, reload the captured Key Decisions fields, and resume from the correct group.
 
 ---
 
@@ -377,7 +377,7 @@ Before writing `project-brief.md`, verify internally:
 
 ### Step 1: Document Ingestion
 
-**If ARGUMENTS were provided with the command** (e.g., `/knz-intake path/to/guide.md path/to/slides.md`):
+**If ARGUMENTS were provided with the command** (e.g., `/curriculum:intake path/to/guide.md path/to/slides.md`):
 
 Read each file at the provided paths. As each file is read, announce exactly one line:
 > Reading [filename]...
@@ -393,7 +393,7 @@ If files are found, list them:
 > - [filename 1]
 > - [filename 2]
 >
-> Should I read these? (Or drop more files into source-material/ and re-run `/knz-intake`.)
+> Should I read these? (Or drop more files into source-material/ and re-run `/curriculum:intake`.)
 
 Use `AskUserQuestion`:
 - **"Yes, read these files"**
@@ -404,8 +404,8 @@ On "Let me add more files first": stop here. Do not proceed.
 
 If no files are found in source-material/:
 > I didn't find any files in your source-material folder. You can either:
-> - Drop files there and re-run `/knz-intake`
-> - Run `/knz-intake` with file paths directly: `/knz-intake path/to/guide.md path/to/slides.md`
+> - Drop files there and re-run `/curriculum:intake`
+> - Run `/curriculum:intake` with file paths directly: `/curriculum:intake path/to/guide.md path/to/slides.md`
 
 Stop here. Do not proceed.
 
@@ -650,7 +650,7 @@ This report compares your existing materials against what the full curriculum pi
 | 7: Transfer Ecosystem | {Exists / Shallow / Missing} |
 | 8: Marketing | {Exists / Shallow / Missing} |
 
-**Next step:** Run `/knz-outcomes` to continue — the pipeline will use your existing materials where they meet requirements and generate what's missing.
+**Next step:** Run `/curriculum:outcomes` to continue — the pipeline will use your existing materials where they meet requirements and generate what's missing.
 ```
 
 **Shallow assessment rules per stage:**
@@ -668,8 +668,8 @@ Write both files simultaneously before announcing anything to the user.
 **5. Update STATE.md silently:**
 - `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
 - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
-- `Session Continuity` → **Next Action:** Run /knz-outcomes to begin outcome design
+- `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
 
 **6. End with a forward-looking message:**
 
-> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. The gap report shows what the pipeline will build from your existing materials and what it'll generate from scratch. Run `/knz-outcomes` when you're ready to continue.
+> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. The gap report shows what the pipeline will build from your existing materials and what it'll generate from scratch. Run `/curriculum:outcomes` when you're ready to continue.

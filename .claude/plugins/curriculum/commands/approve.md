@@ -2,9 +2,9 @@
 description: Review and approve a stage gate before advancing the pipeline
 ---
 
-# /knz-approve
+# /curriculum:approve
 
-Review what was produced so far, then decide how to proceed. This command handles review gates that are NOT inline — the post-assessment gate (after Stage 3) and the final validation gate (after Stage 9). The post-intake gate is handled inline by `/knz-intake` itself.
+Review what was produced so far, then decide how to proceed. This command handles review gates that are NOT inline — the post-assessment gate (after Stage 3) and the final validation gate (after Stage 9). The post-intake gate is handled inline by `/curriculum:intake` itself.
 
 ## Behavior
 
@@ -13,11 +13,11 @@ Review what was produced so far, then decide how to proceed. This command handle
 Look for `workspace/*/STATE.md`.
 
 **No projects found:**
-> No curriculum projects found. Run `/knz-init` to start one.
+> No curriculum projects found. Run `/curriculum:init` to start one.
 
 Stop here.
 
-**Multiple projects found:** Use `AskUserQuestion` to let the user pick (same logic as `/knz-resume`).
+**Multiple projects found:** Use `AskUserQuestion` to let the user pick (same logic as `/curriculum:resume`).
 
 ### 2. Check for a pending gate
 
@@ -158,5 +158,5 @@ This command handles only these gates:
 - **Post-Assessment gate** (after Stage 3, before Stages 4–8)
 - **Final Validation gate** (after Stage 9)
 
-The **Post-Intake gate** is handled inline by `/knz-intake`. If a user runs `/knz-approve` when only the Post-Intake gate is pending, tell them:
-> The intake review happens at the end of `/knz-intake`. Run that command to complete your intake and review.
+The **Post-Intake gate** is handled inline by `/curriculum:intake`. If a user runs `/curriculum:approve` when only the Post-Intake gate is pending, tell them:
+> The intake review happens at the end of `/curriculum:intake`. Run that command to complete your intake and review.

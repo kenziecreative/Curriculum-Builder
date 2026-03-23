@@ -2,7 +2,7 @@
 description: Generate session content for all modules in parallel — dispatches subagent workers per module, shows progress, verifies output, marks Stage 5 complete without manual intervention
 ---
 
-# /knz-sessions — Session Generation Orchestrator
+# /curriculum:sessions — Session Generation Orchestrator
 
 You are the session generation orchestrator. You read the module structure, dispatch one Task subagent per module in parallel, show progress as each module completes, verify all output files exist, and mark Stage 5 complete. You do NOT generate session content yourself — all generation happens in worker subagents.
 
@@ -14,7 +14,7 @@ You are the session generation orchestrator. You read the module structure, disp
 
 Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here. Do not proceed.
 
@@ -22,7 +22,7 @@ Stop here. Do not proceed.
 
 Read the Stage 4 status from the workspace STATE.md. If Stage 4 status is not `complete`:
 
-> Session generation starts after the module structure is approved. Run `/knz-modules` first.
+> Session generation starts after the module structure is approved. Run `/curriculum:modules` first.
 
 Stop here. Do not proceed.
 
@@ -103,7 +103,7 @@ Check that all 4 files exist:
 
 **If any files are missing:**
 
-> I wasn't able to write sessions for "[module_name]" — the files for that module are missing. Run `/knz-sessions` again to retry. (Your other modules are intact.)
+> I wasn't able to write sessions for "[module_name]" — the files for that module are missing. Run `/curriculum:sessions` again to retry. (Your other modules are intact.)
 
 Do NOT mark Stage 5 complete. Report each module that failed. Keep Stage 5 status as `in-progress`.
 
@@ -126,13 +126,13 @@ Session generation complete.
 
 [Total] sessions generated — all facilitator guides, participant materials, and slide outlines written.
 
-Next: `/knz-validate` to run quality validation on your curriculum.
+Next: `/curriculum:validate` to run quality validation on your curriculum.
 ```
 
 Silently update workspace STATE.md:
 - Stage 5 status: `complete`
 - Completed date: today's date in YYYY-MM-DD format
-- Session Continuity → Next Action: Run /knz-validate to validate curriculum
+- Session Continuity → Next Action: Run /curriculum:validate to validate curriculum
 
 Do not announce these state changes.
 
@@ -144,7 +144,7 @@ After writing all STATE.md updates, automatically invoke the validation command:
 
 > Running validation on your completed curriculum — this checks all required fields and scores quality dimensions.
 
-Invoke `/knz-validate` as a Skill.
+Invoke `/curriculum:validate` as a Skill.
 
 Do not wait for user input. This is the same auto-advance pattern used between discussion and planning phases.
 

@@ -2,7 +2,7 @@
 description: Generate module structure from outcomes and assessments — schema enforcement, DAG validation, inline review gate before session generation can begin
 ---
 
-# /knz-modules
+# /curriculum:modules
 
 Generate a sequenced module structure from your approved outcomes and assessments — every learning objective assigned to a module, collaborative activities built into every module, and the sequence validated before you move to session design.
 
@@ -12,7 +12,7 @@ Generate a sequenced module structure from your approved outcomes and assessment
 
 Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
 
-> It looks like you haven't set up a project workspace yet. Run `/knz-init` first to get started.
+> It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
 Stop here.
 
@@ -20,7 +20,7 @@ Stop here.
 
 Read the Stage 3 row from STATE.md `Stage Progress` table. If Stage 3 status is not `complete`, respond:
 
-> Module design starts after assessments are finalized. Run `/knz-assessments` first.
+> Module design starts after assessments are finalized. Run `/curriculum:assessments` first.
 
 Stop here.
 
@@ -31,7 +31,7 @@ Read the Stage 4 row from STATE.md `Stage Progress` table:
 - **`not-started`** — proceed to Generation section
 - **`in-progress`** — if `03-modules/` files exist from a previous partial run, re-display the gate summary and proceed directly to the Module Structure Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Module-Structure gate = `approved` — respond:
-  > Module structure is complete. Run `/knz-sessions` to generate session content.
+  > Module structure is complete. Run `/curriculum:sessions` to generate session content.
   Stop here.
 - **`complete`** but Module-Structure gate ≠ `approved` — surface the pending gate:
   > Your module structure is ready for review.
@@ -241,11 +241,11 @@ Then use `AskUserQuestion` with three options:
 2. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 4 status: `complete`, Completed: {today's date}
    - `Review Gates` → Module-Structure: `approved`, Approved: {today's date}
-   - `Session Continuity` → **Next Action:** Run /knz-sessions to generate session content
+   - `Session Continuity` → **Next Action:** Run /curriculum:sessions to generate session content
 
 3. End with brief confirmation:
 
-   > Module structure approved. Your program has [N] modules covering [X] learning objectives. Next: `/knz-sessions` to generate the session content.
+   > Module structure approved. Your program has [N] modules covering [X] learning objectives. Next: `/curriculum:sessions` to generate the session content.
 
 ---
 
