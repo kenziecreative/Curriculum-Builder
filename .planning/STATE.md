@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Phase 08.1 context gathered
-last_updated: "2026-03-23T02:48:59.519Z"
+stopped_at: Completed 08.1-01-PLAN.md
+last_updated: "2026-03-23T03:21:26.992Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 5
+  completed_plans: 4
   percent: 80
 ---
 
@@ -73,6 +73,7 @@ Progress: [████████░░] 80%
 | Phase 08-audit-mode-intake P02 | 8 | 2 tasks | 1 files |
 | Phase 08-audit-mode-intake P03 | 5 | 1 tasks | 1 files |
 | Phase 08-audit-mode-intake P03 | 75 | 2 tasks | 1 files |
+| Phase 08.1-restructure-curriculum-commands-into-plugin-namespace P01 | 8 | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -159,6 +160,9 @@ Recent decisions affecting current work:
 - [Phase Phase 08-03]: Step 5 confirmation gate identical to clean intake — same three AskUserQuestion options, same summary format, no audit-specific UX divergence
 - [Phase Phase 08-03]: Shallow defined exclusively by schema-field-completeness — each stage lists exact required fields that trigger Shallow, not quality language
 - [Phase Phase 08-03]: Stage 8 defaults to Missing — source materials almost never contain explicit audience-facing promotional copy; false Shallow would create unfounded confidence
+- [Phase 08.1-01]: enabledPlugins must be in settings.json not settings.local.json — Claude Code silently ignores local variant (GitHub #27247, #25086)
+- [Phase 08.1-01]: Plugin container: commands/ and agents/ at plugin root; only plugin.json inside .claude-plugin/
+- [Phase 08.1-01]: File content unmodified in Plan 01 — reference updates deferred to Plan 02
 
 ### Pending Todos
 
@@ -173,7 +177,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-23T02:48:59.509Z
-Stopped at: Phase 08.1 context gathered
-Resume file: .planning/phases/08.1-restructure-curriculum-commands-into-plugin-namespace/08.1-CONTEXT.md
+Last session: 2026-03-23T03:21:26.990Z
+Stopped at: Completed 08.1-01-PLAN.md
+Resume file: None
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)

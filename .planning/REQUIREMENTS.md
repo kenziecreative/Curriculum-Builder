@@ -7,7 +7,7 @@
 
 ### Plugin Namespace Migration
 
-- [ ] **PLG-01**: All 12 curriculum commands and 2 agents are moved into a proper Claude Code plugin at `.claude/plugins/curriculum/`, invocable as `/curriculum:*`, with no `/knz-*` references remaining anywhere in `.claude/`
+- [x] **PLG-01**: All 12 curriculum commands and 2 agents are moved into a proper Claude Code plugin at `.claude/plugins/curriculum/`, invocable as `/curriculum:*`, with no `/knz-*` references remaining anywhere in `.claude/`
 
 ### Existing Curriculum Intake (Audit Mode)
 

@@ -53,7 +53,7 @@ Plans:
 **Goal:** All 12 curriculum commands and 2 agents are moved into a proper Claude Code plugin at `.claude/plugins/curriculum/`, invocable as `/curriculum:*`, with zero `/knz-*` references remaining anywhere in `.claude/`.
 **Requirements:** PLG-01
 **Depends on:** Phase 8
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 08.1-01-PLAN.md — Create plugin scaffold, move 12 commands + 2 agents, activate in settings.json (PLG-01)
