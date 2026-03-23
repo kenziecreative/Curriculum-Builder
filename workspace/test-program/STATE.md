@@ -9,8 +9,8 @@
 |-------|------|--------|-----------|
 | 1 | Intake | complete | 2026-03-19 |
 | 2 | Outcome Design | pre-populated | - |
-| 3 | Assessment Design | complete | 2026-03-20 |
-| 4 | Module Structure | complete | 2026-03-21 |
+| 3 | Assessment Design | not-started | - |
+| 4 | Module Structure | not-started | - |
 | 5 | Session Content | not-started | - |
 | 6 | Metaskill Mapping | not-started | - |
 | 7 | Transfer Ecosystem | not-started | - |
