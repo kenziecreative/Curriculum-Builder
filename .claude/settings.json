@@ -1,4 +1,15 @@
 {
+  "extraKnownMarketplaces": {
+    "curriculum-local": {
+      "source": {
+        "source": "directory",
+        "path": ".claude/plugins/curriculum"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "curriculum@curriculum-local": true
+  },
   "hooks": {
     "PreCompact": [
       {
