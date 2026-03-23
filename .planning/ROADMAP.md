@@ -65,7 +65,7 @@ Plans:
 
 **Depends on:** Phase 8
 **Requirements:** INTK-12
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
 - [ ] 09-01-PLAN.md — Wave 0 test fixtures: test STATE.md with pre-populated rows + hook unit test script (INTK-12)
@@ -99,5 +99,5 @@ Plans:
 | 1–7 (archived) | v1.0 | 19/19 | Complete | 2026-03-22 |
 | 8. Audit Mode Intake | v2.0 | 3/3 | Complete | 2026-03-22 |
 | 8.1. Plugin Namespace Migration | 2/2 | Complete    | 2026-03-23 | — |
-| 9. Stage Pre-population | v2.0 | 3 | Not started | — |
+| 9. Stage Pre-population | 1/3 | In Progress|  | — |
 | 10. Evaluation Mode | v2.0 | 0 | Not started | — |

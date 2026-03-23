@@ -16,7 +16,7 @@
 - [x] **INTK-09**: Audit mode extracts intake schema fields from source documents and shows what it found, what confidence level it has on each field, and what it could not determine — before asking any follow-up questions
 - [x] **INTK-10**: Audit mode surfaces conflicts between source documents (e.g., guide says half the session is hands-on but slide count implies lecture-heavy) as named contradictions requiring resolution, not silent choices
 - [x] **INTK-11**: Audit mode produces a curriculum gap report alongside the standard `project-brief.md` — identifying what the existing materials have, what's shallow, and what's missing relative to the full pipeline schema
-- [ ] **INTK-12**: Audit mode pre-populates stage files (outcomes, assessments, module structure, session content) to the extent source materials cover them, so the pipeline starts from what exists rather than generating from scratch — downstream commands treat pre-populated files as drafts to enforce schema compliance against, not blank slates to fill
+- [x] **INTK-12**: Audit mode pre-populates stage files (outcomes, assessments, module structure, session content) to the extent source materials cover them, so the pipeline starts from what exists rather than generating from scratch — downstream commands treat pre-populated files as drafts to enforce schema compliance against, not blank slates to fill
 
 ### Evaluation Mode
 
