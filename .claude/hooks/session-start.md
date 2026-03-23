@@ -31,7 +31,7 @@ directly as ambient context. The user should feel oriented, not informed that a 
 **What to include:**
 
 If intake is not yet started (Stage 1: not-started):
-> This project hasn't started intake yet. Run /knz-intake to begin.
+> This project hasn't started intake yet. Run /curriculum:intake to begin.
 
 If a stage is in-progress (any stage: in-progress):
 > **[Project Name]** — Stage [N] ([Stage Name]) is in progress.
@@ -61,7 +61,7 @@ Do not block any commands — this is informational, not a gate. The user decide
 
 If any Review Gate has status `pending`, remind the user:
 
-> The [Gate Name] review gate is pending your approval. Use /knz-approve to continue.
+> The [Gate Name] review gate is pending your approval. Use /curriculum:approve to continue.
 
 If the gate is `not-reached`, do not mention it. Only surface gates the user needs to act on.
 
@@ -97,7 +97,7 @@ Do not log errors or explain the absence. The user will initialize when ready.
 ```
 **Hello Alice — Entrepreneurship Fundamentals** — Stage 4 (Module Structure) in progress.
 Stopped at: Draft module arc for Module 3 of 5
-Next: Run /knz-modules to continue module structure generation
+Next: Run /curriculum:modules to continue module structure generation
 
 Intake: 8-week program for early-stage entrepreneurs (novice, practical skill)
 ```

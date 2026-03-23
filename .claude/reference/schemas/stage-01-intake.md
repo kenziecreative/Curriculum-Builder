@@ -1,7 +1,7 @@
 # Stage 01: Intake Schema
 
 **Stage:** 01 - Intake
-**Command:** `/knz-intake`
+**Command:** `/curriculum:intake`
 **depends_on:** none (first stage)
 **output_dir:** `00-project-brief/`
 **output_files:** `project-brief.md`

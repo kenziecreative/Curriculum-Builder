@@ -1,7 +1,7 @@
 # Stage 03: Assessments Schema
 
 **Stage:** 03 - Assessments
-**Command:** `/knz-assessments`
+**Command:** `/curriculum:assessments`
 **depends_on:** stage-02-outcomes
 **output_dir:** `02-assessments/`
 **output_files:** `assessment-map.md`, `formative-assessments.md`, `summative-assessments.md`

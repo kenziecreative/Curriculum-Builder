@@ -1,7 +1,7 @@
 # Stage 05: Sessions Schema
 
 **Stage:** 05 - Sessions
-**Command:** `/knz-sessions`
+**Command:** `/curriculum:sessions`
 **depends_on:** stage-04-modules
 **output_dir:** `04-sessions/`
 **output_files:** `[module-id]-[session-id]-session.md` (one per session)

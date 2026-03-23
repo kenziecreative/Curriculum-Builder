@@ -1,7 +1,7 @@
 # Stage 04: Modules Schema
 
 **Stage:** 04 - Modules
-**Command:** `/knz-modules`
+**Command:** `/curriculum:modules`
 **depends_on:** stage-01-intake, stage-02-outcomes, stage-03-assessments
 **output_dir:** `03-modules/`
 **output_files:** `sequence-rationale.md`, `[module-id]/module-spec.md` (one per module)

@@ -28,13 +28,13 @@ STATE_FILE="$PROJECT_DIR/workspace/$PROJECT_NAME/STATE.md"
 # PREREQ_NUM=0 means no prerequisite (always allow).
 case "$STAGE_DIR" in
   00-*)  PREREQ_NUM=0; PREREQ_NAME="none"; STAGE_NUM=1; STAGE_NAME="Intake"; PREREQ_CMD="" ;;
-  01-*)  PREREQ_NUM=1; PREREQ_NAME="Intake"; STAGE_NUM=2; STAGE_NAME="Outcome Design"; PREREQ_CMD="/knz-intake" ;;
-  02-*)  PREREQ_NUM=2; PREREQ_NAME="Outcome Design"; STAGE_NUM=3; STAGE_NAME="Assessment Design"; PREREQ_CMD="/knz-outcomes" ;;
-  03-*)  PREREQ_NUM=3; PREREQ_NAME="Assessment Design"; STAGE_NUM=4; STAGE_NAME="Module Structure"; PREREQ_CMD="/knz-assessments" ;;
-  04-*)  PREREQ_NUM=4; PREREQ_NAME="Module Structure"; STAGE_NUM=5; STAGE_NAME="Session Content"; PREREQ_CMD="/knz-modules" ;;
-  05-*)  PREREQ_NUM=5; PREREQ_NAME="Session Content"; STAGE_NUM=6; STAGE_NAME="Metaskill Mapping"; PREREQ_CMD="/knz-sessions" ;;
-  06-*)  PREREQ_NUM=6; PREREQ_NAME="Metaskill Mapping"; STAGE_NUM=7; STAGE_NAME="Transfer Ecosystem"; PREREQ_CMD="/knz-metaskills" ;;
-  07-*)  PREREQ_NUM=7; PREREQ_NAME="Transfer Ecosystem"; STAGE_NUM=8; STAGE_NAME="Marketing Derivation"; PREREQ_CMD="/knz-transfer" ;;
+  01-*)  PREREQ_NUM=1; PREREQ_NAME="Intake"; STAGE_NUM=2; STAGE_NAME="Outcome Design"; PREREQ_CMD="/curriculum:intake" ;;
+  02-*)  PREREQ_NUM=2; PREREQ_NAME="Outcome Design"; STAGE_NUM=3; STAGE_NAME="Assessment Design"; PREREQ_CMD="/curriculum:outcomes" ;;
+  03-*)  PREREQ_NUM=3; PREREQ_NAME="Assessment Design"; STAGE_NUM=4; STAGE_NAME="Module Structure"; PREREQ_CMD="/curriculum:assessments" ;;
+  04-*)  PREREQ_NUM=4; PREREQ_NAME="Module Structure"; STAGE_NUM=5; STAGE_NAME="Session Content"; PREREQ_CMD="/curriculum:modules" ;;
+  05-*)  PREREQ_NUM=5; PREREQ_NAME="Session Content"; STAGE_NUM=6; STAGE_NAME="Metaskill Mapping"; PREREQ_CMD="/curriculum:sessions" ;;
+  06-*)  PREREQ_NUM=6; PREREQ_NAME="Metaskill Mapping"; STAGE_NUM=7; STAGE_NAME="Transfer Ecosystem"; PREREQ_CMD="/curriculum:metaskills" ;;
+  07-*)  PREREQ_NUM=7; PREREQ_NAME="Transfer Ecosystem"; STAGE_NUM=8; STAGE_NAME="Marketing Derivation"; PREREQ_CMD="/curriculum:transfer" ;;
   08-*)  exit 0 ;;  # Validation — allow writes anytime after Stage 5
   *)     exit 0 ;;  # Unknown directory — allow
 esac

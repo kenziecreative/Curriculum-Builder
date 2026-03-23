@@ -1,7 +1,7 @@
 # Stage 02: Outcomes Schema
 
 **Stage:** 02 - Outcomes
-**Command:** `/knz-outcomes`
+**Command:** `/curriculum:outcomes`
 **depends_on:** stage-01-intake
 **output_dir:** `01-outcomes/`
 **output_files:** `enduring-understandings.md`, `essential-questions.md`, `learning-objectives.md`
