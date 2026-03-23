@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
 status: planning
-stopped_at: Completed 08-03-PLAN.md — Phase 8 Audit Mode Intake complete
-last_updated: "2026-03-22T22:58:11.772Z"
+stopped_at: Phase 08.1 context gathered
+last_updated: "2026-03-23T02:48:59.519Z"
 last_activity: 2026-03-21 — 05-02 complete — session-generator subagent + /knz-sessions orchestrator authored and verified end-to-end by user
 progress:
-  total_phases: 3
+  total_phases: 4
   completed_phases: 1
   total_plans: 3
   completed_plans: 3
@@ -75,6 +75,10 @@ Progress: [████████░░] 80%
 | Phase 08-audit-mode-intake P03 | 75 | 2 tasks | 1 files |
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 08.1 inserted after Phase 8: Restructure curriculum commands into plugin namespace (URGENT)
 
 ### Decisions
 
@@ -169,7 +173,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-22T22:58:11.770Z
-Stopped at: Completed 08-03-PLAN.md — Phase 8 Audit Mode Intake complete
-Resume file: None
+Last session: 2026-03-23T02:48:59.509Z
+Stopped at: Phase 08.1 context gathered
+Resume file: .planning/phases/08.1-restructure-curriculum-commands-into-plugin-namespace/08.1-CONTEXT.md
 Next action: Execute Phase 6 — Validation Layer (/knz-validate command and validation agent)
