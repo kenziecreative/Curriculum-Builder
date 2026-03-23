@@ -29,6 +29,15 @@ Stop here.
 Read the Stage 3 row from STATE.md `Stage Progress` table:
 
 - **`not-started`** — proceed to Generation section
+- **`pre-populated`** — Read all files from `workspace/*/02-assessments/`. Run all constraint
+  enforcement steps silently against the existing content (coverage check, Bloom auto-elevation,
+  formative coverage, observable verbs, skill-type compliance). Remove any `# NEEDS:` marker
+  lines from the corrected output before displaying. Display the corrected assessment plan and
+  alignment map. Proceed directly to the PIPE-05 Gate section.
+  Do not regenerate — the content source is the extracted draft, not the project brief.
+  On "Start over" at the PIPE-05 Gate: wipe all files in `workspace/*/02-assessments/`, set
+  Stage 3 status to `not-started` in STATE.md (clearing the `pre-populated` status), restart
+  from the Generation section.
 - **`in-progress`** — re-display alignment map if `02-assessments/` files exist from a previous partial run; if yes, proceed directly to the PIPE-05 Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Post-Assessment gate = `approved` — respond:
   > Assessments are approved. Stage 4 is next — run `/curriculum:modules` to build the module structure.

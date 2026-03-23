@@ -21,6 +21,16 @@ Stop here.
 Read the Stage 2 row from STATE.md `Stage Progress` table.
 
 - **`not-started`** — proceed to Generation section below
+- **`pre-populated`** — Read all files from `workspace/*/01-outcomes/`. Run all five constraint
+  enforcement steps silently against the existing content (same steps as post-generation: Bloom
+  verb check, level distribution, transfer context completeness, hierarchy integrity, prohibited
+  verb replacement). Remove any `# NEEDS:` marker lines from the corrected output before
+  displaying. Display the corrected outcome set and thinking-level distribution summary.
+  Proceed directly to the Review Gate section.
+  Do not regenerate — the content source is the extracted draft, not the project brief.
+  On "Start over" at the Review Gate: wipe all files in `workspace/*/01-outcomes/`, set Stage 2
+  status to `not-started` in STATE.md (clearing the `pre-populated` status), restart from the
+  Generation section.
 - **`in-progress`** — check whether `workspace/*/01-outcomes/` files exist from a previous partial run; if yes, re-display them and proceed directly to the Review Gate section; if no files exist, regenerate from scratch starting from the Generation section
 - **`complete`** — respond:
 
