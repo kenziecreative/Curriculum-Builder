@@ -5,6 +5,10 @@
 
 ## v2 Requirements
 
+### Plugin Namespace Migration
+
+- [ ] **PLG-01**: All 12 curriculum commands and 2 agents are moved into a proper Claude Code plugin at `.claude/plugins/curriculum/`, invocable as `/curriculum:*`, with no `/knz-*` references remaining anywhere in `.claude/`
+
 ### Existing Curriculum Intake (Audit Mode)
 
 - [x] **INTK-07**: `/knz-intake` opens by asking whether the user is starting fresh or bringing in existing materials — this determines the intake path, not a separate command
@@ -23,19 +27,21 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INTK-07 | Phase 8 | Not started |
-| INTK-08 | Phase 8 | Not started |
-| INTK-09 | Phase 8 | Not started |
-| INTK-10 | Phase 8 | Not started |
-| INTK-11 | Phase 8 | Not started |
+| PLG-01 | Phase 8.1 | Not started |
+| INTK-07 | Phase 8 | Complete |
+| INTK-08 | Phase 8 | Complete |
+| INTK-09 | Phase 8 | Complete |
+| INTK-10 | Phase 8 | Complete |
+| INTK-11 | Phase 8 | Complete |
 | INTK-12 | Phase 9 | Not started |
 | EVAL-01 | Phase 10 | Not started |
 | EVAL-02 | Phase 10 | Not started |
 
 **Coverage:**
-- v2 requirements: 8 total
-- Mapped to phases: 8
+- v2 requirements: 9 total
+- Mapped to phases: 9
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-22*
+*Updated: 2026-03-23 — added PLG-01 for Phase 08.1 plugin namespace migration*
