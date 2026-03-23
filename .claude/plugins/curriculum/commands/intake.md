@@ -665,11 +665,56 @@ This report compares your existing materials against what the full curriculum pi
 
 Write both files simultaneously before announcing anything to the user.
 
-**5. Update STATE.md silently:**
+**5. Pre-populate stage files from gap report:**
+
+> **Edge case guard:** If `curriculum-gap-report.md` is absent — because this is clean intake, not audit mode — skip this entire step and proceed to the STATE.md update.
+
+**A. Read the gap report Summary table.** Parse which stages are `Exists`, `Shallow`, or `Missing`. Only Stages 2–5 are eligible for pre-population. Stages 6–8 (Metaskill Mapping, Transfer Ecosystem, Marketing) are never pre-populated — they require generation, not extraction.
+
+**B. For each eligible stage (2, 3, 4, 5) — if status is `Exists` or `Shallow`:**
+
+- Load the corresponding schema file as generation context:
+  - Stage 2: `.claude/reference/schemas/stage-02-outcomes.md`
+  - Stage 3: `.claude/reference/schemas/stage-03-assessments.md`
+  - Stage 4: `.claude/reference/schemas/stage-04-modules.md`
+  - Stage 5: `.claude/reference/schemas/stage-05-sessions.md`
+- Extract content from source documents already in context
+- Write extracted content faithfully to the stage directory — do not auto-correct violations during this write
+- For any field that fails schema, add an inline marker: `# NEEDS: [plain language description of what's missing] — /curriculum:[command] will fix this`
+- Track what was written and what violations were marked for the summary table
+
+**C. Stage-specific output targets:**
+- Stage 2 → `workspace/{project}/01-outcomes/` — write `enduring-understandings.md`, `essential-questions.md`, `learning-objectives.md`
+- Stage 3 → `workspace/{project}/02-assessments/` — write `assessment-plan.md`
+- Stage 4 → `workspace/{project}/03-modules/` — write `module-{N}.md` per module found in source materials
+- Stage 5 → `workspace/{project}/04-sessions/` — write `session-manifest.md` only (session names, mapped outcome IDs, session template placeholder with NEEDS: marker, pre-work if found in source materials). Hard limit: no facilitator guide content, no participant materials, no slide outlines.
+
+**D. Write all pre-populated files simultaneously in one pass.** Never write Stage 2 files, pause, then Stage 3 files. All writes happen together. Do not announce individual file writes — write silently and surface everything in the summary table below.
+
+**E. Anti-patterns to avoid:**
+- Do NOT auto-correct content during the pre-population write — write faithfully with `NEEDS:` markers
+- Do NOT announce each file individually as it writes
+- Do NOT write facilitator guide content for sessions
+- Do NOT treat `pre-populated` status as approved
+
+**6. Update STATE.md silently** (merge with Stage 1 completion — write all state changes in a single simultaneous update):
 - `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
+- `Stage Progress` → For each stage that received pre-populated files, set that stage's Status to `pre-populated`. Stages marked `Missing` remain `not-started`.
 - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
 - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
 
-**6. End with a forward-looking message:**
+**7. Display post-intake summary table** (immediately after all writes, before the forward-looking message):
 
-> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. The gap report shows what the pipeline will build from your existing materials and what it'll generate from scratch. Run `/curriculum:outcomes` when you're ready to continue.
+| Stage | What was written | Issues found |
+|-------|-----------------|--------------|
+| 2: Learning Outcomes | [files written, e.g., "learning-objectives.md, enduring-understandings.md, essential-questions.md"] | [plain-language count of NEEDS: markers, e.g., "2 verb violations, 1 missing transfer context" — or "None"] |
+| 3: Assessment Design | [files written, e.g., "assessment-plan.md"] | [issues or "None"] |
+| 4: Module Structure | [files written, e.g., "module-1.md, module-2.md"] | [issues or "None"] |
+| 5: Session Content | session-manifest.md (structure only) | [issues or "None"] |
+| 6: Metaskill Mapping | — (Missing — will generate fresh) | — |
+
+Include only stages 2–5 in the table. Stages that were `Missing` show "— (Missing — will generate fresh)". Stages 6–8 are not shown.
+
+**8. End with a forward-looking message:**
+
+> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. I've also pre-populated draft files for the stages that had existing content — see the summary above. Run `/curriculum:outcomes` to review and enforce schema on the first draft.
