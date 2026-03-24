@@ -167,6 +167,20 @@ CHECK-IN 1 — Failure Mode Classification  [Session 1]
 
 The constraint enforcement block should either be hidden entirely (silent, as designed) or summarized in one plain-language sentence: "I strengthened 3 objectives and filled in all session-level outcomes." The detail only needs to appear if something was changed that the user should know about.
 
+### Dashboard workspace path must be configurable, not hardcoded
+**Source:** First real-world test (2026-03-24) — dashboard never showed the AccessU project
+**Description:** The dashboard is hardcoded to `../workspace` relative to `dashboard/` inside the plugin source directory. This works when running from `knz-builder-src/`, but the plugin creates workspaces wherever the user runs it — which may be any project directory on the system. The AccessU curriculum was created at a completely different path and the dashboard never saw it.
+
+**The problem:** `WORKSPACE_DIR = path.resolve(__dirname, '../workspace')` in `vite.config.ts` — hardcoded, not configurable.
+
+**What's needed:**
+- Dashboard should accept a workspace path as an environment variable or config (e.g., `WORKSPACE_DIR=/path/to/project npm run dev`)
+- `/curriculum:init` should tell the user how to launch the dashboard pointed at their specific workspace: `WORKSPACE_DIR=$(pwd)/workspace/{project-name} npm run dev --prefix /path/to/plugin/dashboard`
+- Or: the dashboard runs globally and discovers all curriculum workspaces across the filesystem (more complex, but better UX)
+- Minimum viable fix: document the env var approach and have init mention it
+
+**Scope:** `dashboard/vite.config.ts` + `/curriculum:init` launch instructions.
+
 ### Pipeline must introduce and remind users about the dashboard
 **Source:** First real-world test (2026-03-24)
 **Description:** The dashboard at localhost:3002 shows real-time pipeline progress and renders all deliverable files inline — but the pipeline never tells the user it exists, how to launch it, or when it's useful to open it. The user ran the entire pipeline without knowing it was available.
