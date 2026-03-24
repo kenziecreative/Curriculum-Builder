@@ -373,6 +373,67 @@ For high-stakes structural decisions, offering 2-3 options with rationale gives 
 
 **Note:** Don't apply everywhere — it adds friction. Reserve for decisions that are genuinely consequential and hard to reverse.
 
+### Adopt Brand Compass conversational question pattern — groups of 2-3, reflect back, challenge
+**Source:** Brand Compass deep audit (2026-03-24)
+**Description:** Brand Compass never dumps all intake questions at once. It groups them in 2-3, transitions between groups with language like "Now let me understand...", reflects back what it heard, and challenges vague answers directly: "That's true, but what's YOUR version of that?"
+
+The curriculum intake currently runs as a longer sequential interview without this rhythm. The Brand Compass pattern makes the conversation feel like a consultation, not a questionnaire.
+
+**Key language patterns to borrow:**
+- "What's pulling you?" (invokes intuition, not judgment — better than "which do you prefer?")
+- "I'm noticing..." (consultative observation before a challenge)
+- "That's what you do. How is it DIFFERENT?" (challenge technique for vague answers)
+- Group transition: "Let me understand the learners now..." before shifting topic
+
+**Scope:** `/curriculum:intake` — clean intake path. Audit mode path has different constraints.
+
+### Adopt Brand Compass checkpoint structure — hard gates at strategic moments
+**Source:** Brand Compass deep audit (2026-03-24)
+**Description:** Brand Compass has two hard checkpoints (A after Phase 3, B after Phase 6) where it presents the full picture built so far and asks "Does this hold together?" — not just "approve/reject" but "does this feel like YOU?"
+
+The curriculum builder has gates at intake, assessments, and modules but they're transactional (approve/concern/start-over). Brand Compass checkpoint language is more evaluative and holistic.
+
+**Target language for curriculum checkpoints:**
+- Not: "Approve and continue / Flag an issue / Start over"
+- More like: "When you read these outcomes as a whole, do they capture what you want participants to actually be able to DO? Is anything missing, off, or not yours?"
+
+**Scope:** Approval gate language in outcomes, assessments, and `/curriculum:approve`.
+
+### Borrow Document Assembler pattern — compile from components into polished final output
+**Source:** Brand Compass deep audit (2026-03-24)
+**Description:** Brand Compass has a Document Assembler agent that compiles all approved stage outputs into 7 polished deliverables (markdown + HTML) as a final assembly step. The curriculum builder has no equivalent — stages write their own files independently, and there's no final packaging step.
+
+A curriculum assembler agent could:
+- Compile session files, module specs, assessments, transfer design into a complete facilitator package
+- Generate a learner-facing participant workbook
+- Produce a program overview document for stakeholders
+- Create HTML versions of key documents
+
+This is the difference between "files in a directory" and "a curriculum package."
+
+**Scope:** New command or final stage in `/curriculum:approve` — assemble and package.
+
+### Borrow Content Auditor agent pattern for existing materials analysis
+**Source:** Brand Compass deep audit (2026-03-24)
+**Description:** Brand Compass has a Content Auditor agent that analyzes existing writing samples for patterns — voice, themes, beliefs, inconsistencies. The curriculum audit mode does something similar but inline. Separating it into a specialist agent would make it more thorough and testable.
+
+**Curriculum equivalent:** A "Curriculum Auditor" agent that reads source materials and produces a structured analysis: what's there, what confidence level, what's inconsistent, what's missing — before any questions are asked. Currently this logic lives inside the intake command itself.
+
+**Scope:** Extract audit mode extraction logic into a dedicated agent for v3.0.
+
+### Borrow Brand Verifier pattern — curriculum completeness check before delivery
+**Source:** Brand Compass deep audit (2026-03-24)
+**Description:** Brand Compass has a `/brand-compass:verify` command that checks existence, substance (no placeholders), consistency (cross-document alignment), and coverage. The curriculum builder has validation (schema checks) but no completeness verification.
+
+A curriculum verifier would check:
+- All required stage files exist and have no NEEDS: markers
+- Outcome IDs referenced in sessions actually exist in the outcomes file
+- Assessments are linked to outcomes
+- No HTML comments or working notes visible in output files
+- Transfer design covers pre/in/post program
+
+**Scope:** Enhance `/curriculum:validate` or create a separate pre-delivery check.
+
 ### HTML output for facilitator guides and marketing
 **Source:** Brand Compass audit (2026-03-24)
 **Description:** Brand Compass generates both markdown (for version control) and polished HTML (for human use) simultaneously. A facilitator receiving an HTML guide with real typography and visual hierarchy can use it directly. The current markdown files with YAML metadata require significant interpretation.
