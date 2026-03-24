@@ -48,7 +48,17 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 
 ### Active (v3.0)
 
-(To be defined with `/gsd:new-milestone`)
+**Goal:** Every generated output reads like a skilled colleague built it — results visible, machinery hidden, voice consistent across all commands.
+
+**Target features:**
+- Output presentation: hide constraint machinery, plain language everywhere, structured formatting, warm handoffs, context-clear nudges
+- Output quality: slide outlines with production direction, facilitator notes with diagnostic moves, marketing as PAS/DOS prose, TMA labels removed, NEEDS: markers resolved
+- Curriculum voice system: shared voice/guardrails reference file used by all generation commands
+- Audit mode content handling: three-mode gap-fill/enrich/hands-off based on extraction confidence
+- Infrastructure: clone-and-run deployment, dashboard env var, release sync script
+- Delivery: document assembler, HTML output for marketing + facilitator guides, curriculum verifier
+
+**Requirements:** PRES-01–08, QUAL-01–09, VOICE-01–02, AUDIT-01–03, INFR-01–03, DLVR-01–03 (28 total)
 
 ### Out of Scope
 
@@ -104,4 +114,4 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 | Evaluation mode as standalone command (v2.0) | External curriculum evaluation is a distinct use case from pipeline execution — no STATE.md entanglement | ✓ Good — `/curriculum:evaluate` runs independently, no side effects |
 
 ---
-*Last updated: 2026-03-24 after v2.0 milestone completion*
+*Last updated: 2026-03-24 after v3.0 milestone start*
