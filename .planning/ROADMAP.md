@@ -84,7 +84,7 @@ Plans:
 
 **Depends on:** Phase 8
 **Requirements:** EVAL-01, EVAL-02
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 10-01-PLAN.md — curriculum-evaluator.md agent: semantic extraction, three-tier checks, evaluation-report.md output (EVAL-01, EVAL-02)
@@ -105,4 +105,4 @@ Plans:
 | 8. Audit Mode Intake | v2.0 | 3/3 | Complete | 2026-03-22 |
 | 8.1. Plugin Namespace Migration | 2/2 | Complete    | 2026-03-23 | — |
 | 9. Stage Pre-population | 3/3 | Complete   | 2026-03-24 | — |
-| 10. Evaluation Mode | v2.0 | 2/2 | Planned | — |
+| 10. Evaluation Mode | 1/2 | In Progress|  | — |

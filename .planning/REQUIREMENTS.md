@@ -20,8 +20,8 @@
 
 ### Evaluation Mode
 
-- [ ] **EVAL-01**: User can run external curriculum through the validation rubrics without going through the full generation pipeline
-- [ ] **EVAL-02**: Evaluation produces a scored report with specific improvement recommendations — field-level gaps, Tier 2 confidence scores, and Tier 3 human review items in the same format as post-generation validation
+- [x] **EVAL-01**: User can run external curriculum through the validation rubrics without going through the full generation pipeline
+- [x] **EVAL-02**: Evaluation produces a scored report with specific improvement recommendations — field-level gaps, Tier 2 confidence scores, and Tier 3 human review items in the same format as post-generation validation
 
 ## Traceability
 
