@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: — Existing Curriculum Support
-status: verifying
-stopped_at: checkpoint:human-verify — 10-02 Task 1 complete, awaiting end-to-end evaluation pipeline verification
-last_updated: "2026-03-24T02:32:00Z"
-last_activity: 2026-03-24 — evaluation-mode.md authored (4df7855); awaiting human verification of /curriculum:evaluate pipeline
+status: complete
+stopped_at: Phase 10 complete — all plans executed and verified
+last_updated: "2026-03-24T03:00:00Z"
+last_activity: 2026-03-24 — evaluation-mode.md verified end-to-end (4df7855); Phase 10 and v2.0 milestone complete
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
-  percent: 90
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 10 of 10 (Evaluation Mode) — PLANNED, ready to execute
-Plan: 0 of 2 complete in Phase 10
-Status: 10-01 and 10-02 PLAN.md authored and verification passed — execute next
-Last activity: 2026-03-23 — Phase 10 fully planned (research + validation strategy + 2 plans)
+Phase: 10 of 10 (Evaluation Mode) — COMPLETE
+Plan: 2 of 2 complete in Phase 10
+Status: All phases complete — v2.0 milestone delivered
+Last activity: 2026-03-24 — Phase 10 complete (evaluation-mode.md authored and end-to-end verified)
 
-Progress: [█████████░] 90%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -79,6 +79,7 @@ Progress: [█████████░] 90%
 | Phase 09-stage-pre-population P02 | 3 | 2 tasks | 2 files |
 | Phase 09-stage-pre-population P03 | 2 | 2 tasks | 4 files |
 | Phase 10-evaluation-mode P01 | 2 | 1 tasks | 1 files |
+| Phase 10-evaluation-mode P02 | checkpoint | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -180,6 +181,9 @@ Recent decisions affecting current work:
 - [Phase 10-evaluation-mode]: Duration inference adds confidence levels (HIGH/MEDIUM/LOW/assumed) to completion signal — Plan 02 command can display confidence to user
 - [Phase 10-evaluation-mode]: Thin-content fallback applied per check, not per report — specific sections can be thin while others have full evidence
 - [Phase 10-evaluation-mode]: Report opens with strengths section — negative-only reports create defensiveness; strengths ground the feedback
+- [Phase 10-evaluation-mode]: evaluation-report.md explicitly excluded from auto-detect candidate list — double-stated in command spec to prevent circular evaluation
+- [Phase 10-evaluation-mode]: Evaluation mode has no pipeline stage gate — runs independently, never writes to STATE.md
+- [Phase 10-evaluation-mode]: Tier 3 item count shown in conversation output, items in report — reduces noise while keeping human-judgment checklist accessible
 
 ### Pending Todos
 
@@ -194,7 +198,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-24T02:32:00Z
-Stopped at: checkpoint:human-verify — 10-02 Task 2 (end-to-end verification with real-world test candidate)
+Last session: 2026-03-24T03:00:00Z
+Stopped at: Completed 10-02 — Phase 10 and v2.0 milestone complete
 Resume file: None
-Next action: Run verification tests (see 10-02-PLAN.md Task 2 how-to-verify), then type "approved" to resume 10-02 continuation agent
+Next action: None — all phases complete. v2.0 delivers full pipeline plus evaluation mode for external documents.
