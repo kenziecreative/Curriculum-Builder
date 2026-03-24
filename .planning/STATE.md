@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Existing Curriculum Support
 status: milestone_complete
-stopped_at: v2.0 milestone archived — ready for /gsd:new-milestone
-last_updated: "2026-03-24T00:00:00.000Z"
-last_activity: 2026-03-24 — v2.0 milestone complete and archived
+stopped_at: Between milestones — first real-world test in progress, backlog being built
+last_updated: "2026-03-24T06:00:00.000Z"
+last_activity: 2026-03-24 — post-v2.0 housekeeping: sanity check, gitignore cleanup, repo split (private dev + public release), BACKLOG.md started from first real-world test feedback
 progress:
   total_phases: 4
   completed_phases: 4
@@ -26,8 +26,10 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Milestone v2.0 complete and archived.
-Status: Ready for `/gsd:new-milestone` to define v3.0
-Last activity: 2026-03-24 — v2.0 milestone archived, PROJECT.md evolved, git tag pending
+Status: Between milestones — collecting feedback from first real-world test (preconference workshop) before defining v3.0
+Last activity: 2026-03-24 — sanity check run, gitignore fixed, repos split (Curriculum-Builder private dev, curriculum-plugin public release), BACKLOG.md created
+
+Next action: Continue collecting test feedback → `/gsd:new-milestone` when ready to define v3.0
 
 Progress: [██████████] 100%
 
