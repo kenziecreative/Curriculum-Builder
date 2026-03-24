@@ -326,6 +326,66 @@ Key things it gets right:
 
 ---
 
+## Patterns from Brand Compass
+
+### Create curriculum-voice.md — single source of truth for tone and guardrails
+**Source:** Brand Compass audit (2026-03-24)
+**Description:** Brand Compass has a voice guide that every agent reads before generating. It includes concrete guardrails ("never say X, say Y instead"), signature moves with usage instructions, and a list of words/phrases to avoid with rationale. Curriculum builder has nothing equivalent — which is why schema vocabulary leaks inconsistently and voice varies across stages.
+
+**What to include:**
+- Who is speaking to whom in each output type (facilitator guide vs. participant materials vs. command output)
+- Tone for each context (coaching not commanding for facilitators; plain and direct for participants; colleague reporting back for command output)
+- Guardrails: schema terms and field names that never appear in any output (TMA arc, DCR, Bloom's level labels, outcome IDs, YAML field names, etc.)
+- Plain-language substitutions for common insider terms
+- Signature moves: how outcomes are phrased, how activities are introduced, how reflection is prompted
+
+Every command should reference this file before generating any user-facing content.
+
+**Reference:** Brand Compass `/phase-6-voice.md` and voice-guide.md pattern.
+
+### Warm, synthesizing handoffs between stages
+**Source:** Brand Compass audit (2026-03-24)
+**Description:** Brand Compass ends every stage with a synthesis paragraph that celebrates what was built and names the next step with personality. Curriculum builder ends with "Stage X complete. Run /curriculum:Y." — transactional, no acknowledgment of what was accomplished.
+
+**Target format:**
+```
+Your learning outcomes are set. You have 3 program outcomes, 6 module outcomes,
+and 14 session outcomes — spanning 5 thinking levels from recall to evaluation.
+The progression is built: recall and framing in Session 1, application through
+Sessions 2-5, and synthesis in Session 6.
+
+Clear your context before the next step — nothing is lost.
+Run /curriculum:assessments when you're ready.
+```
+
+**Scope:** All stage-completing commands — intake, outcomes, assessments, modules, sessions, validate, approve.
+
+### Generate options for major structural decisions
+**Source:** Brand Compass audit (2026-03-24)
+**Description:** Brand Compass generates 8-10 tagline options with rationale for each, letting the user choose and refine rather than approving a single generated output. Curriculum builder generates one module sequence, one outcome set, one structure — then asks for approval or rejection. No middle ground.
+
+For high-stakes structural decisions, offering 2-3 options with rationale gives users real agency and surfaces design tradeoffs they'd otherwise never see.
+
+**Where this applies:**
+- Module sequence: 2-3 alternative progressions with rationale ("this order prioritizes framework-first; this order prioritizes hands-on-first")
+- Learning objective framing: 2-3 ways to express the same outcome at different cognitive levels
+- Possibly session activity design: main activity + 1-2 alternatives for different group dynamics
+
+**Note:** Don't apply everywhere — it adds friction. Reserve for decisions that are genuinely consequential and hard to reverse.
+
+### HTML output for facilitator guides and marketing
+**Source:** Brand Compass audit (2026-03-24)
+**Description:** Brand Compass generates both markdown (for version control) and polished HTML (for human use) simultaneously. A facilitator receiving an HTML guide with real typography and visual hierarchy can use it directly. The current markdown files with YAML metadata require significant interpretation.
+
+**Priority order:**
+1. Marketing package — copy-paste ready HTML first
+2. Facilitator guides — the highest-use artifact
+3. Participant materials — already closest to usable format
+
+**Note:** This requires building HTML generation into the session and marketing commands. Medium complexity — worth scoping carefully for v3.0.
+
+---
+
 ## Core v3.0 Problem Statement
 
 **The pipeline produces structurally correct but mechanically voiced output — even from cold starts.**
