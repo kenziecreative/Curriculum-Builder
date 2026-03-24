@@ -1,4 +1,4 @@
-# KNZ Curriculum Builder
+# Curriculum Builder
 
 A Claude Code plugin that guides you through building delivery-ready curriculum, step by step. It asks the right questions, enforces design quality automatically, and keeps you from skipping the parts that actually make training work.
 
