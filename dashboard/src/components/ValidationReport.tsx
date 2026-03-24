@@ -55,7 +55,7 @@ function parseTier2Scores(markdown: string): ScoreRow[] {
   let inSection = false
   for (const line of markdown.split('\n')) {
     const trimmed = line.trim()
-    if (/tier 2 results/i.test(trimmed)) {
+    if (/tier 2/i.test(trimmed)) {
       inSection = true
       continue
     }

@@ -19,9 +19,14 @@ Thumbs.db
 # Planning artifacts (security reports may contain sensitive paths)
 .planning/security/
 
-# Claude Code plugin — add framework-specific ignores as the build progresses
-# This is primarily a markdown-based plugin, but if JS/TS tooling is added:
-# node_modules/
-# dist/
-# build/
+# Node
+node_modules/
 dashboard/node_modules/
+dashboard/dist/
+dashboard/build/
+
+# Claude Code runtime
+.claude/worktrees/
+
+# Curriculum workspace — runtime output, not source
+workspace/
