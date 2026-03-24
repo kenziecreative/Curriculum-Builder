@@ -167,6 +167,18 @@ CHECK-IN 1 — Failure Mode Classification  [Session 1]
 
 The constraint enforcement block should either be hidden entirely (silent, as designed) or summarized in one plain-language sentence: "I strengthened 3 objectives and filled in all session-level outcomes." The detail only needs to appear if something was changed that the user should know about.
 
+### Pipeline must introduce and remind users about the dashboard
+**Source:** First real-world test (2026-03-24)
+**Description:** The dashboard at localhost:3002 shows real-time pipeline progress and renders all deliverable files inline — but the pipeline never tells the user it exists, how to launch it, or when it's useful to open it. The user ran the entire pipeline without knowing it was available.
+
+**What's needed:**
+- `/curriculum:init` should mention the dashboard exists and how to launch it (`npm run dev` in the dashboard/ directory), framed as optional but useful
+- Key stage completions should remind the user the dashboard has updated — especially after sessions (when there's a lot to review) and after validate
+- The dashboard reminder should be brief and practical: "Your dashboard at localhost:3002 now shows all 6 sessions — open it to review the full output before approving"
+- Should not appear at every stage — that becomes noise. Trigger at: init (introduction), sessions complete (most content just generated), validate complete (review before approve)
+
+**Scope:** `/curriculum:init`, `/curriculum:sessions`, `/curriculum:validate` — and possibly the workspace CLAUDE.md template so it's documented per-project.
+
 ### Prompt user to clear context between pipeline stages
 **Source:** First real-world test (2026-03-24)
 **Description:** Each command should end with a nudge to clear context before running the next stage. Nothing is lost (everything is on disk), and fresh context produces better output — especially for generation-heavy stages like sessions.
