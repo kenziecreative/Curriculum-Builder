@@ -167,6 +167,35 @@ CHECK-IN 1 — Failure Mode Classification  [Session 1]
 
 The constraint enforcement block should either be hidden entirely (silent, as designed) or summarized in one plain-language sentence: "I strengthened 3 objectives and filled in all session-level outcomes." The detail only needs to appear if something was changed that the user should know about.
 
+### ARCHITECTURAL DECISION REQUIRED: Deployment model — global install vs. clone-and-run
+**Source:** First real-world test (2026-03-24) — dashboard never saw any curriculum content
+**Description:** The current deployment model is internally contradictory:
+- `install.sh` installs the plugin globally (available in any directory)
+- The dashboard is hardcoded to `../workspace` inside the repo
+- Once installed globally, users run `/curriculum:init` from any project directory — workspace is created there, outside the repo, invisible to the dashboard
+
+**Two valid models — must pick one:**
+
+**Option A: Clone-and-run (Brand Compass model)**
+- User clones `curriculum-plugin` repo once
+- Runs `npm install && npm run dev` in `dashboard/` — server starts, stays running
+- Opens Claude Code inside the cloned repo directory
+- All workspaces created inside `workspace/` inside the repo
+- Dashboard sees everything automatically
+- No global install — plugin is activated via the repo's `.claude/settings.json`
+- **Tradeoff:** User must always work from inside the cloned repo directory
+
+**Option B: Global install + configurable dashboard**
+- `install.sh` installs plugin globally (current behavior)
+- User runs Claude Code from any project directory
+- Dashboard launched with `WORKSPACE_DIR=/path/to/workspace npm run dev`
+- `/curriculum:init` tells user the exact launch command for their workspace
+- **Tradeoff:** More setup friction; user must know to launch dashboard per-project
+
+**Recommendation:** Option A — matches Brand Compass, simpler, no configuration needed, workspace always findable. The README and install.sh need to change significantly.
+
+**Impact:** Changes to `install.sh`, `README.md`, `CLAUDE.md`, and workspace creation approach. High impact but the right call before marketing the tool to Hello Alice users.
+
 ### Dashboard workspace path must be configurable, not hardcoded
 **Source:** First real-world test (2026-03-24) — dashboard never showed the AccessU project
 **Description:** The dashboard is hardcoded to `../workspace` relative to `dashboard/` inside the plugin source directory. This works when running from `knz-builder-src/`, but the plugin creates workspaces wherever the user runs it — which may be any project directory on the system. The AccessU curriculum was created at a completely different path and the dashboard never saw it.
