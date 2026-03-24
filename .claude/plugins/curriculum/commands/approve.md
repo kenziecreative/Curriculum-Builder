@@ -2,6 +2,10 @@
 description: Review and approve a stage gate before advancing the pipeline
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:approve
 
 Review what was produced so far, then decide how to proceed. This command handles review gates that are NOT inline — the post-assessment gate (after Stage 3) and the final validation gate (after Stage 9). The post-intake gate is handled inline by `/curriculum:intake` itself.

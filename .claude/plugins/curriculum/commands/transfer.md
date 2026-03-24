@@ -2,6 +2,10 @@
 description: Design the full transfer ecosystem — pre-program readiness, in-program application, post-program spaced follow-up, community continuation, and measurement design — from your curriculum substance
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:transfer
 
 Design the complete follow-through system for your program — what happens before, during, and after — so participants arrive ready, practice on real work, and have a structure to keep going when the program ends.

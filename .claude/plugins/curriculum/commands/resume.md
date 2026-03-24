@@ -2,6 +2,10 @@
 description: Resume an active curriculum project — shows current position and what to do next
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:resume
 
 Pick up where you left off. Shows where the project stands and routes you to the right next step.

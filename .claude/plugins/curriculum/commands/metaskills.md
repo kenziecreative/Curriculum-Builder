@@ -2,6 +2,10 @@
 description: Map six core thinking skills to specific activation activities — enforces thinking routine specificity, developability sequence, and real-work transfer prompts
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:metaskills
 
 Map the core thinking skills that run through your program to specific named activities and real-work connection prompts — so learners don't just acquire skills in training, they know exactly how to use them on the job.

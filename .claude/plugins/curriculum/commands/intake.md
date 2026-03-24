@@ -2,6 +2,10 @@
 description: Guided intake interview to capture all Stage 1 data from a program sponsor — thematic question batching, expert pushback, incremental progress saves, and inline review gate
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:intake
 
 Conduct a conversational intake interview with a program sponsor or subject matter expert. Capture all Stage 1 data in three thematic rounds, save progress incrementally, and confirm the brief before advancing.
@@ -666,6 +670,8 @@ This report compares your existing materials against what the full curriculum pi
 Write both files simultaneously before announcing anything to the user.
 
 **5. Pre-populate stage files from gap report:**
+
+> **Silent execution rule:** All reasoning, schema compliance checks, gap assessments, and file write decisions in this step are internal. Do not output any text to the user during this step — no progress updates, no reasoning, no file announcements. The only user-facing output from this entire step is the summary table in step 7.
 
 > **Edge case guard:** If `curriculum-gap-report.md` is absent — because this is clean intake, not audit mode — skip this entire step and proceed to the STATE.md update.
 

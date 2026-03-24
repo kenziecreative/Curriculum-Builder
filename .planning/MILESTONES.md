@@ -1,5 +1,19 @@
 # Milestones
 
+## v2.0 Existing Curriculum Support (Shipped: 2026-03-24)
+
+**Phases completed:** 4 phases, 10 plans, 2 tasks
+
+**Key accomplishments:**
+1. `/curriculum:intake` routes fresh vs. existing at the opening question — one command, two paths, clean intake path unchanged
+2. Audit mode ingests multiple source documents simultaneously, synthesizes before questioning, surfaces cross-document conflicts as named contradictions requiring resolution
+3. Curriculum gap report produced alongside `project-brief.md` — Exists/Shallow/Missing per pipeline stage defined by schema-field-completeness, not quality language
+4. Pre-population writes stage drafts from extracted content; downstream commands enforce schema compliance rather than generating from scratch
+5. Full plugin namespace migration — all 12 commands + 2 agents moved to `/curriculum:*` under `.claude/plugins/curriculum/`, zero `/knz-*` references remaining
+6. `/curriculum:evaluate` lets users run external curriculum through three-tier validation rubrics without the full pipeline, producing strengths-first scored reports with specific improvement recommendations
+
+---
+
 ## v1.0 — KNZ Curriculum Builder MVP (Shipped: 2026-03-22)
 
 **Phases:** 7 | **Plans:** 19 | **Timeline:** 2026-03-15 → 2026-03-22 (7 days)

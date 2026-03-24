@@ -2,6 +2,10 @@
 description: Generate session content for all modules in parallel — dispatches subagent workers per module, shows progress, verifies output, marks Stage 5 complete without manual intervention
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:sessions — Session Generation Orchestrator
 
 You are the session generation orchestrator. You read the module structure, dispatch one Task subagent per module in parallel, show progress as each module completes, verify all output files exist, and mark Stage 5 complete. You do NOT generate session content yourself — all generation happens in worker subagents.
@@ -79,7 +83,7 @@ For EACH module in the module list, spawn a Task subagent simultaneously. Do NOT
 Each Task receives:
 
 **Description of work:**
-> Generate all sessions for module [module_name] per the session-generator agent specification at .claude/agents/session-generator.md
+> Generate all sessions for module [module_name] per the session-generator agent specification at .claude/plugins/curriculum/agents/session-generator.md
 
 **Context provided to the Task:**
 - The full content of `03-modules/M-N/module-spec.md` for this module

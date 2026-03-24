@@ -2,6 +2,10 @@
 description: Generate learning outcomes from intake data — program, module, and session levels with thinking-level distribution enforcement and inline review gate
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:outcomes
 
 Generate a full outcome hierarchy from your program brief — program outcomes, module outcomes, and session outcomes — with automatic quality checks run before anything is shown to you.

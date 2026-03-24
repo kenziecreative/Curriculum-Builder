@@ -2,6 +2,10 @@
 description: Generate assessments paired to every learning outcome — Bloom's alignment enforced, formative coverage required, inline PIPE-05 review gate before Stage 4 can begin
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:assessments
 
 Generate a complete set of assessments from your approved learning outcomes — every outcome paired with an assessment, complexity levels aligned, and formative checks built into every module.

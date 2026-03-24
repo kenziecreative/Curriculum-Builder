@@ -2,6 +2,10 @@
 description: Generate module structure from outcomes and assessments — schema enforcement, DAG validation, inline review gate before session generation can begin
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:modules
 
 Generate a sequenced module structure from your approved outcomes and assessments — every learning objective assigned to a module, collaborative activities built into every module, and the sequence validated before you move to session design.

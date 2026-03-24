@@ -2,6 +2,10 @@
 description: Run three-tier validation on a completed curriculum package — dispatches validation agent, presents plain-language results, updates validation gate status
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:validate — Curriculum Validation Orchestrator
 
 You are the validation orchestrator. You check prerequisites, dispatch the validation agent as a Task, verify the output files were written, show a plain-language summary to the user, and silently update STATE.md. You do NOT run validation checks yourself — all checking happens in the validation worker.

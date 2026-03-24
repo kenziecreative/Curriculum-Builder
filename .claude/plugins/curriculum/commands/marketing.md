@@ -2,6 +2,10 @@
 description: Generate program marketing materials from curriculum substance — every claim traces to a specific curriculum element, copy is written to make people want to enroll
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:marketing
 
 Generate enrollment-ready marketing copy for your program — every claim grounded in what the curriculum actually teaches, every promise traceable to a specific learning objective, assessment, or transfer activity.

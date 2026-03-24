@@ -2,6 +2,10 @@
 description: Initialize a new curriculum project workspace
 ---
 
+## Output Formatting
+
+Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
+
 # /curriculum:init
 
 Set up a fresh workspace for a new curriculum project. Creates the project directory structure, STATE.md, and CLAUDE.md, then starts the intake conversation.
@@ -16,7 +20,7 @@ If no name was provided, ask:
 
 > **What should we call this project?** (This becomes your workspace folder name — use lowercase with hyphens, e.g., `entrepreneurship-fundamentals`)
 
-Use `AskUserQuestion` with a text input for the project name. Normalize the input: lowercase, spaces replaced with hyphens, strip special characters.
+Use `AskUserQuestion` as plain text — no options list, no examples as selectable choices. The user types their answer directly. Normalize the input: lowercase, spaces replaced with hyphens, strip special characters.
 
 ### 2. Check for existing workspace
 

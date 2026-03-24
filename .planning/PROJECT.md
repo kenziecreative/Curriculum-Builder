@@ -4,7 +4,7 @@
 
 A Claude Code plugin with a React dashboard that produces delivery-ready curriculum packages for adult learners. It encodes pedagogical doctrine — TMA, DCR, Six Metaskills, Flipped Classroom — as structural constraints enforced through schemas, so that subject matter experts without instructional design training can produce curriculum that meets rigorous pedagogical standards. The tool handles the scaffold; the human handles the soul.
 
-**Current state (v1.0):** Nine-stage pipeline is fully operational. A user can run `/knz-init` through `/knz-approve` and receive a complete curriculum package — outcomes, assessments, module structure, session content, metaskill activations, transfer ecosystem, and marketing materials — with schema enforcement throughout. React dashboard shows pipeline progress and renders all deliverables.
+**Current state (v2.0):** Full pipeline plus existing curriculum support. Users can bring existing facilitator guides, slide decks, and participant workbooks into the pipeline via audit mode — the system synthesizes across multiple documents, surfaces gaps and conflicts, and pre-populates stage files so downstream commands enrich rather than replace. A standalone `/curriculum:evaluate` command runs external curriculum through three-tier validation rubrics without going through the full pipeline. All 12 commands operate under a proper Claude Code plugin namespace (`/curriculum:*`).
 
 ## Core Value
 
@@ -34,16 +34,21 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 - ✓ State management across sessions (STATE.md protocol) — v1.0
 - ✓ PreToolUse hook prevents accidental stage skipping — v1.0
 
-### Active (v2.0)
+### Validated (v2.0)
 
-- [ ] `/knz-intake` opens by asking fresh vs. existing — routes to clean intake or audit mode
-- [ ] Audit mode accepts multiple source documents simultaneously and synthesizes before asking questions
-- [ ] Audit mode extracts intake schema fields from documents with confidence levels; asks only about gaps
-- [ ] Audit mode surfaces cross-document conflicts as named contradictions requiring resolution
-- [ ] Audit mode produces curriculum gap report alongside project-brief.md
-- [ ] Audit mode pre-populates stage files from existing content; downstream treats as drafts to enforce compliance
-- [ ] Evaluation mode: run external curriculum through validation rubrics without full pipeline
-- [ ] Evaluation mode produces scored report with specific improvement recommendations
+- ✓ `/curriculum:intake` opens by asking fresh vs. existing — routes to clean intake or audit mode — v2.0
+- ✓ Audit mode accepts multiple source documents simultaneously and synthesizes before asking questions — v2.0
+- ✓ Audit mode extracts intake schema fields from documents with confidence levels; asks only about gaps — v2.0
+- ✓ Audit mode surfaces cross-document conflicts as named contradictions requiring resolution — v2.0
+- ✓ Audit mode produces curriculum gap report alongside project-brief.md — v2.0
+- ✓ Audit mode pre-populates stage files from existing content; downstream treats as drafts to enforce compliance — v2.0
+- ✓ Evaluation mode: run external curriculum through validation rubrics without full pipeline — v2.0
+- ✓ Evaluation mode produces scored report with specific improvement recommendations — v2.0
+- ✓ All 12 commands + 2 agents under proper Claude Code plugin namespace (`/curriculum:*`) — v2.0
+
+### Active (v3.0)
+
+(To be defined with `/gsd:new-milestone`)
 
 ### Out of Scope
 
@@ -65,7 +70,7 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 - Kelsey (Kenzie Creative) — deep pedagogical knowledge, builds and delivers training. Bottleneck is time, not knowledge.
 - Hello Alice program team — SMEs who know their domains but are not instructional designers.
 
-**Validation target:** Run the AI agent workflows workshop (6 × 90 min) through the pipeline as first real-world test. Existing materials: facilitator guide + slide deck outline. v2.0 audit mode is designed directly from this use case.
+**Validation target:** Run the AI agent workflows workshop (6 × 90 min) through the pipeline as first real-world test. Existing materials: facilitator guide + slide deck outline. v2.0 audit mode was designed directly from this use case.
 
 **Known research gaps:**
 - Imagining as teachable metaskill: no consolidated evidence base
@@ -92,8 +97,11 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 | Full V1 scope (no truncated MVP) | Transfer ecosystem, marketing, facilitator guides are core, not extras | ✓ Good — complete pipeline shipped |
 | Markdown + HTML output (no PDF) | Markdown as source of truth. HTML for delivery-ready handoff | ✓ Good — deferred PDF to v3 |
 | Schema before skills | Every schema change cascades into every skill — schemas must be final before skill authoring | ✓ Good — no schema rework needed after Phase 1 |
-| Unified /knz-intake with fresh/audit branch (v2.0) | Real-world use case: existing materials need enrichment, not replacement. One command asks the routing question | — Pending |
-| Audit mode as document synthesis + gap report (v2.0) | Most value comes from surfacing what's missing, not just ingesting what exists | — Pending |
+| Unified `/curriculum:intake` with fresh/audit branch (v2.0) | Real-world use case: existing materials need enrichment, not replacement. One command asks the routing question | ✓ Good — single command handles both paths cleanly |
+| Audit mode as document synthesis + gap report (v2.0) | Most value comes from surfacing what's missing, not just ingesting what exists | ✓ Good — Exists/Shallow/Missing framework provides actionable signal |
+| Pre-population with enforcement (not replacement) (v2.0) | Existing content has value; pipeline should enrich it while still enforcing schema compliance | ✓ Good — NEEDS: marker pattern enables targeted enrichment |
+| Plugin namespace migration as urgent inserted phase (v2.0) | `/knz-*` naming violated Claude Code plugin conventions; fix required before v2.0 ship | ✓ Good — zero `/knz-*` references remain |
+| Evaluation mode as standalone command (v2.0) | External curriculum evaluation is a distinct use case from pipeline execution — no STATE.md entanglement | ✓ Good — `/curriculum:evaluate` runs independently, no side effects |
 
 ---
-*Last updated: 2026-03-22 after v1.0 milestone completion*
+*Last updated: 2026-03-24 after v2.0 milestone completion*
