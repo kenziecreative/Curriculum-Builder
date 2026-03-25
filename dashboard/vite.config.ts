@@ -5,9 +5,12 @@ import path from 'path'
 import fs from 'fs'
 import { generateHtmlForWorkspace } from './vite-plugins/generate-html'
 
-// WORKSPACE_PATH: ../workspace (relative to dashboard/ inside knz-builder-src/)
+// WORKSPACE_DIR: defaults to ../workspace (relative to dashboard/)
+// Override: WORKSPACE_DIR=/absolute/path npm run dev
 // RUNTIME FETCH ONLY — do not use import.meta.glob; see CONTEXT.md
-const WORKSPACE_DIR = path.resolve(__dirname, '../workspace')
+const WORKSPACE_DIR = process.env.WORKSPACE_DIR
+  ? path.resolve(process.env.WORKSPACE_DIR)
+  : path.resolve(__dirname, '../workspace')
 
 function serveWorkspace(): Plugin {
   return {

@@ -68,6 +68,21 @@ Copy `templates/project-scaffold/CLAUDE.md` into `workspace/{project-name}/CLAUD
 
 Do this silently — no announcement.
 
+### 5b. Show dashboard launch command
+
+Before outputting the step 6 confirmation, output this block:
+
+---
+**Your workspace is ready. To view it in the dashboard:**
+
+```
+cd dashboard && npm run dev
+```
+
+Open [http://localhost:3002](http://localhost:3002) in your browser.
+
+---
+
 ### 6. Confirm and chain into intake
 
 Output exactly this confirmation (substituting the real project name):
