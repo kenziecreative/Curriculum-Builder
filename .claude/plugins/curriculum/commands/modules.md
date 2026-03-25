@@ -33,15 +33,61 @@ Stop here.
 Read the Stage 4 row from STATE.md `Stage Progress` table:
 
 - **`not-started`** — proceed to Generation section
-- **`pre-populated`** — Read all files from `workspace/*/03-modules/`. Run all module structure
-  enforcement checks silently against the existing content (named group processing prompts, DCR
-  trigger check when skill_type=open and bloom>=Analyze, sequence coherence). Remove any `# NEEDS:`
-  marker lines from the corrected output before displaying. Display the corrected module structure
-  summary and gate table. Proceed directly to the Module Structure Gate section.
-  Do not regenerate — the content source is the extracted draft, not the project brief.
-  On "Start over" at the Module Structure Gate: wipe all files in `workspace/*/03-modules/`, set
-  Stage 4 status to `not-started` in STATE.md (clearing the `pre-populated` status), restart from
-  the Generation section.
+- **`pre-populated`** — Apply mode-routing logic:
+
+  **Step 1 — Read Mode Assignment:**
+  Read `workspace/*/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "4:" or "Module Structure".
+
+  **Step 2 — Determine path:**
+
+  - If Mode Assignment table is absent OR Stage 4 row not found → **gap-fill path**: proceed to Generation section. No diff. No error. Behavior is identical to pre-audit-mode operation — clean intake users are unaffected.
+  - If mode = `gap-fill` → **gap-fill path**: proceed to Generation section (same as above).
+  - If mode = `hands-off` → **hands-off path** (see below).
+  - If mode = `enrich` → **enrich path** (see below).
+
+  **Hands-off path:**
+  1. Read all files from `workspace/*/03-modules/`.
+  2. Run all enforcement checks silently (named group reflection questions, DCR trigger check when skill type is open and thinking level is Analyze or above, sequence coherence). Remove any `# NEEDS:` marker lines from working content.
+  3. If zero violations found: skip the diff table. Proceed directly to Module Structure Gate with this note: "Your module structure meets all requirements — no changes needed."
+  4. If violations found: show a side-by-side diff table — one row per module that has violations or missing required content. Modules with no violations do not appear in the table.
+
+     Diff table format:
+     ```
+     | Module | From your materials | What will be added/changed |
+     |--------|---------------------|---------------------------|
+     | [module plain name] | [what currently exists] | [what changes and one-line reason — plain language] |
+     ```
+
+     Plain language only in every cell. Never use field names like `group_processing_prompt`, `bloom_level`, `skill_type`, `transfer_context`, `belief_challenging_encounter`. Use instead: group reflection question, thinking level, type of skill, where they'll use it, challenging scenario.
+
+  5. Show diff gate (three options):
+     - **"Looks good"** → apply enforcement fixes, remove `# NEEDS:` markers, write corrected files to `workspace/*/03-modules/`, proceed to Module Structure Gate.
+     - **"Flag an issue"** → take specific concern before deciding; re-display diff with concern noted; re-present diff gate.
+     - **"Start over"** → wipe all files in `workspace/*/03-modules/`, set Stage 4 status to `not-started` in STATE.md (clearing the `pre-populated` status and removing the Mode Assignment row for Stage 4), restart from the Generation section.
+
+  **Enrich path:**
+  1. Read all files from `workspace/*/03-modules/`.
+  2. Run enforcement checks silently. Identify which fields are present and valid vs. missing or failing.
+  3. For missing or failing fields: generate content from the project brief — targeted generation only, not full regeneration of existing content.
+  4. Show a side-by-side diff table for ALL modules — every module gets a row showing what existed and what was added or changed. Mark added content NEW and changed content UPDATED in the "What will be added/changed" column (summary display only — written files contain no markers).
+
+     Diff table format:
+     ```
+     | Module | From your materials | What will be added/changed |
+     |--------|---------------------|---------------------------|
+     | [module plain name] | [what currently exists] | [NEW: ... / UPDATED: ... — one-line reason, plain language] |
+     ```
+
+     Plain language only. Apply same field name substitutions as hands-off path.
+
+  5. Show diff gate (three options):
+     - **"Looks good"** → write complete files to `workspace/*/03-modules/` (clean content, no NEW/UPDATED markers in written files), proceed to Module Structure Gate.
+     - **"Flag an issue"** → take specific concern; re-display diff with concern noted; re-present diff gate.
+     - **"Start over"** → wipe all files in `workspace/*/03-modules/`, set Stage 4 status to `not-started` in STATE.md (clearing `pre-populated` status and Mode Assignment row for Stage 4), restart from the Generation section.
+
+  Do not regenerate content unless in enrich path. The content source for hands-off is the extracted draft, not the project brief.
+
+  **File writes happen only after diff gate approval ("Looks good"). Never write `03-modules/` files before the gate passes.**
 - **`in-progress`** — if `03-modules/` files exist from a previous partial run, re-display the gate summary and proceed directly to the Module Structure Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Module-Structure gate = `approved` — respond:
   > Module structure is complete. Run `/curriculum:sessions` to generate session content.
