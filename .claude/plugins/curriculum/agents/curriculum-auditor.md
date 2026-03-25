@@ -117,6 +117,8 @@ Create the output directory if it does not exist before writing.
 
 ## Completion Signal
 
+**Do not summarize, paraphrase, or add prose.** Return only the block below — no introductory sentence, no paragraph summary, no reformatted table. The column names `extraction_confidence` and `content_quality` are exact contracts — do not shorten, rename, or reformat them.
+
 After writing `audit-results.md`, return the following exactly:
 
 ```
