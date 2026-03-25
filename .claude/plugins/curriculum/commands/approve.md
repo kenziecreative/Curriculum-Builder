@@ -44,6 +44,14 @@ Stop here.
 
 Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
+**For Final Validation gate only — run verify silently first:**
+
+Before reading stage directories or showing any summary, spawn ONE Task with the content of `.claude/plugins/curriculum/commands/verify.md` and `workspace/{project}/STATE.md`. Instruct it: "Run the verify checks defined in verify.md against workspace/{project}/. Return the issue list only — do not print anything to the user." Collect the returned issue list and store it as `verify_issues`. Do NOT display verify results yet. Proceed to building the summary below.
+
+(Post-Assessment gate: skip this step — no verify check needed.)
+
+---
+
 Read the relevant stage output directory for the pending gate:
 
 | Gate | Read from |
@@ -99,6 +107,20 @@ Measuring: [plain-language Kirkpatrick level] — [what's being measured]
 [If Stage 9 complete and tier_1_failures > 0: N issues pending — list plain-language descriptions]
 [If Stage 9 not complete: Not yet run]
 
+**Delivery readiness:** *(add after the Validation section above)*
+
+If `verify_issues` is empty:
+```
+**Delivery readiness:** Ready to deliver — all checks passed.
+```
+
+If `verify_issues` is not empty:
+```
+**Delivery readiness:** {N} item{s} need attention before delivery:
+- {file}: {plain-language description}. Run {fix command}.
+[one line per blocker]
+```
+
 ---
 This is your complete curriculum package. Is it ready to deliver?
 
@@ -115,8 +137,14 @@ Use `AskUserQuestion` with three options:
 
 **For final package review:**
 > Review the summary above — this is everything that will be in your delivered curriculum package.
->
+
+If `verify_issues` is empty (clean verify):
 > **Option 1: Approve — mark as delivery-ready** — Everything looks right. Mark this curriculum package as delivery-ready.
+> **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
+> **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
+
+If `verify_issues` is not empty (verify found blockers):
+> **Option 1: Fix issues before approving** — The items listed above need to be resolved before this curriculum can be marked delivery-ready. Run the commands listed to regenerate the affected files, then run `/curriculum:approve` again.
 > **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
 > **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
 
@@ -128,8 +156,16 @@ Update STATE.md silently:
 - Set the gate's status to `approved` with today's date (YYYY-MM-DD)
 - Update Session Continuity: Next Action points to the appropriate next stage command or step
 
-Confirm with a named handoff close — state what was approved and what command to run next:
+**For Post-Assessment gate:** Confirm with a named handoff close — state what was approved and what command to run next:
 > {What was approved — e.g., "Your assessments are approved and saved"}. Run `{next command}` to continue. Your work is saved — clear context before running the next command.
+
+**For Final Validation gate only:** After updating STATE.md, show:
+> Assembling your delivery package now...
+
+Then invoke `/curriculum:assemble` as a Skill (same auto-trigger pattern as validate.md uses for metaskills). Do not wait for user input before invoking.
+
+After assemble completes, show the confirmation message:
+> Your curriculum is marked as delivery-ready and your delivery package is assembled. Files are in `workspace/{project}/delivery/`.
 
 **Option 2: I have concerns**
 
