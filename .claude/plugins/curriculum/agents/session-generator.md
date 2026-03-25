@@ -255,11 +255,6 @@ Full schema output. All required fields with exact enum values.
 **Worksheets:**
 [activity_worksheets list — if none, write "None"]
 
-## Slide Framework
-
-| Section | TMA Phase | Slides | Purpose |
-|---------|-----------|--------|---------|
-[one row per slide_framework_outline entry]
 ```
 
 ---
@@ -273,9 +268,6 @@ Derived from session.md facilitator fields. Formatted for facilitators to use du
 
 **Session ID:** [M-N-S-N]
 **Total Duration:** [total_duration_minutes] minutes
-**Template:** [session_template]
-**TMA Phases:** ACTIVATE > THEORY > CHECK > METHOD > PRACTICE > REFLECT > TRANSFER
-
 ## Session at a Glance
 
 Brief description of what this session accomplishes and what learners will produce.
@@ -330,18 +322,47 @@ Derived from session.md participant fields. Formatted for learners.
 
 ### slide-outline.md
 
-Derived from session.md slide_framework_outline. Formatted for presentation builders.
+Production direction for presentation builders. Each slide is a named block with three fields that tell the builder what to put on screen, why the slide is there, and what to say while showing it.
 
 ```
-# Slide Framework: [session_name]
+# [session_name] — Slide Outline
 
-**Session:** [session_id] | **Template:** [session_template]
+## Opening
 
-| Section | TMA Phase | Slides | Purpose |
-|---------|-----------|--------|---------|
-[one row per slide_framework_outline entry]
-[section_name | tma_phase | estimated_slides | content_notes]
+**Slide 1 — [slide title]**
+- **On screen:** [what appears on the slide — title, key visual, bullets if any]
+- **Why it matters:** [pedagogical intent — what this slide is doing for the learner]
+- **Facilitator:** [what to say or do while this slide is showing]
+
+**Slide 2 — [slide title]**
+- **On screen:** [...]
+- **Why it matters:** [...]
+- **Facilitator:** [...]
+
+## Core Content
+
+[slides numbered sequentially, continuing from Opening]
+
+**Slide N — [slide title]**
+- **On screen:** [...]
+- **Why it matters:** [...]
+- **Facilitator:** [...]
+
+## Practice
+
+[...]
+
+## Close
+
+[...]
 ```
+
+**Generation instructions:**
+- Number slides sequentially across all sections (1, 2, 3... not restarting per section)
+- Section headings are plain descriptive labels (Opening / Core Content / Practice / Close, or equivalent — no TMA vocabulary)
+- Include timing per section only if it makes the outline more useful without adding noise
+- Every slide gets all three fields: On screen, Why it matters, Facilitator
+- "Why it matters" names the pedagogical function of the slide — why this slide appears at this moment in the session, not a restatement of the slide content
 
 ---
 
