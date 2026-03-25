@@ -1,327 +1,252 @@
-# Domain Pitfalls
+# Domain Pitfalls — v3.0 Retrofit
 
-**Domain:** Claude Code plugin with multi-stage pipeline — AI-assisted curriculum generation
-**Researched:** 2026-03-15
-**Sources:** 11-phase research project (knz-builder-research), Brand Compass reference implementation, Claude Code platform documentation (Phase 4 assessment), prompt architecture research (Phase 5)
+**Project:** KNZ Curriculum Builder v3.0
+**Researched:** 2026-03-24
+**Scope:** Pitfalls specific to retrofitting output quality constraints across existing commands, shared voice reference files, HTML generation, deployment model change, and agent extraction
 
 ---
 
 ## Critical Pitfalls
 
-Mistakes that cause rewrites, pipeline failures, or outputs that defeat the pedagogical thesis.
+### Pitfall 1: The Voice File Nobody Reads
+
+**Work area:** Shared `curriculum-voice.md` reference file
+
+**What goes wrong:** `curriculum-voice.md` is written and committed. All 12 commands get a single instruction to read it. Three commands follow it. Nine don't — because a single-line instruction to read an optional file competes with 200+ lines of generation logic already in the command file. The guardrails are in the reference file. The output still leaks "schema" and "bloom_level."
+
+**Why it happens:** Instructions to read a reference file are advisory in Claude Code commands. A voice file that lists rules competes with deeply embedded generation templates that already specify what output looks like.
+
+**Prevention:**
+- Inline the most critical guardrails directly into each command. The voice file is authoritative documentation; inline excerpts are the actual enforcement mechanism.
+- Voice file structure: (1) prohibited terms with exact replacements, (2) tone descriptors per output context, (3) signature move examples. Keep under 150 lines.
+- For commands where the problem was worst (marketing, transfer, metaskills, assessments), embed relevant voice prohibitions inline, not just a pointer.
+- Test after adding the reference: run each command and check whether prohibited terms appear. If they do, inline is the fix.
+
+**Detection:** Uneven improvement across commands after adding the voice file — some much better, some unchanged.
+
+**Phase:** Voice file creation and worst-offending command retrofits happen in the same phase.
 
 ---
 
-### Pitfall 1: Instructions Are Not Constraints — Schema Drift
+### Pitfall 2: Hiding Constraint Steps Without Hiding Constraint Vocabulary
 
-**What goes wrong:** Skills and agents receive instructions ("ensure each objective includes a Bloom's level") rather than schema-enforced required fields. The AI treats instructions as advisory. Bloom's levels get populated sometimes, skipped when generation is complex, or stated in prose rather than enum format. Validation catches some but not all. Output looks complete; pedagogical alignment is broken.
+**Work area:** Retrofitting all commands to hide enforcement steps
 
-**Why it happens:** Instructions feel explicit at authoring time. The difference between "MUST include Bloom's level" and a required schema field feels theoretical until generation produces a session with `bloom_level: "higher order"` that passes no automated check.
+**What goes wrong:** The numbered enforcement steps disappear. But the output still contains schema field names: "I updated the `bloom_level` distribution," "your `transfer_context` field needed a real-world scenario." Steps gone; vocabulary remains.
 
-**Consequences:** The tool's entire value proposition collapses. The thesis is that schema-enforced constraints produce structurally sound curriculum that instruction-based prompting cannot. If schemas are written as prose checklists inside skill prompts, the tool is the old template with extra steps.
+**Why it happens:** Output presentation and output vocabulary are separate problems. The transparency notes that replace the steps are written using the same field names the steps used.
 
 **Prevention:**
-- Every required pedagogical element becomes a required output field with defined type: enum, required string, boolean, or array with minimum length
-- Schema format must be machine-checkable: YAML or JSON with explicit field names — not markdown bullets
-- Validation agent reads schema first, checks output against it field-by-field — not open-ended "does this look complete?"
-- Reference: Phase 5 constraint hierarchy. Design at levels 1-2 (schema, template) not levels 4-6 (inline MUST, framework naming, role framing)
+- Treat each transparency note as user-facing copy, not a technical summary.
+- For every command receiving the retrofit, rewrite the transparency note template in the same pass as hiding steps.
+- Test by reading the transparency note aloud as if you are the SME. If any word requires ID or developer knowledge, rewrite it.
+- Search output for prohibited terms after each command retrofit: schema, bloom, linkage, enum, NEEDS:, MO-, SO-, PO-, stage-0, metaskill (as field name), DCR, TMA, WIPPEA.
 
-**Detection:** If you find yourself writing "The AI should always include..." in a skill file, that is the signal. Convert to a required schema field immediately.
+**Detection:** After retrofitting a command, any hit from the prohibited terms search means vocabulary leaked through the structural fix.
 
-**Phase:** Address in Phase 1 (Foundation & Schema Design). Every schema must be finalized before the skill that uses it is built.
+**Phase:** Both structural and vocabulary fixes happen in one pass per command.
 
 ---
 
-### Pitfall 2: Generate-and-Validate in the Same Call
+### Pitfall 3: Audit Mode Three-Mode Logic Repurposes the Confidence Scale
 
-**What goes wrong:** A skill generates module content and also validates it in the same agent call. The model flags its own problems and resolves them in the same pass — often by softening the concern or rationalizing the gap rather than actually fixing it. The validation report shows no issues. The output has the issues.
+**Work area:** Three-mode content handling in audit mode
 
-**Why it happens:** It is natural to want a single "generate good output" step. Splitting generation from validation feels like architectural overhead. But the research is explicit: LLMs asked to generate AND validate in one step "often validate away problems without solving them" (Phase 5, Phase 10).
+**What goes wrong:** Medium extraction confidence now triggers rewrite of content the user wanted preserved. The confidence level scale was calibrated for "does this field have a value?" — not "is this content strong enough to leave alone?"
 
-**Consequences:** Tier 1 schema validation produces false passes. Formative assessment fields get populated with placeholder content that passes string-length checks. Social learning layers reference "partner discussion" and pass as complete. The pipeline advances on hollow output.
+**Why it happens:** Extraction confidence (High/Medium/Low/None) and content quality (strong/partial/absent) are different questions. Repurposing the existing scale for content quality triggers destructive rewrites.
 
 **Prevention:**
-- Generation agents and validation agents are separate files with separate invocations
-- Validation agents are read-only (no write access to content directories) — this forces them to evaluate rather than correct
-- The validation agent receives the schema and the output as inputs; it does not have access to the generation prompt that produced the output
-- Generate → validate → return findings → human or orchestrator decides whether to regenerate
+- Add a second dimension: `content_quality` (strong/partial/absent) distinct from `extraction_confidence`.
+- Mode selection uses `content_quality`, not extraction confidence.
+- hands-off is the most conservative mode — default to it when in doubt.
+- Show mode assignment to user before processing: "I'll add the missing transfer design and leave the session structure intact — does that match what you wanted?"
 
-**Detection:** If a single skill file contains both a generation prompt and a validation checklist that it evaluates itself, this pitfall is present.
+**Detection:** Test with strong existing content (like AccessU workshop materials). If audit mode proposes to rewrite any complete, well-formed section, mode detection is wrong.
 
-**Phase:** Establish the generate/validate separation in Phase 1 architecture. Never collapse them later for "efficiency."
+**Phase:** Three-mode logic requires its own design pass before implementation. Do not add it inline as a condition without a clear spec.
 
 ---
 
-### Pitfall 3: Context Collapse in Long-Running Sessions
+### Pitfall 4: HTML Generation Only Runs at Dashboard Startup
 
-**What goes wrong:** The main orchestrating session accumulates context across pipeline stages. By Stage 5 (session generation), the session context includes full intake, outcomes, assessments, module overviews, and the current module being generated. For a 10-module semester-length program, this exceeds 100k tokens. Generation quality degrades silently — the model begins dropping constraints, losing track of earlier decisions, and producing output that doesn't align with upstream stages.
+**Work area:** HTML output generation
 
-**Why it happens:** The subagent composition pattern prevents this, but only if it is architected deliberately. It is tempting to keep everything in the main session for "coherence." That coherence becomes a liability at scale.
+**What goes wrong:** `generateHtml()` Vite plugin runs once at dev server startup. New files written by the pipeline never appear in HTML without restarting the server. The "copy-paste ready HTML" goal is defeated.
 
-**Consequences:** Late-stage outputs (session content, transfer ecosystem, marketing) contradict early-stage decisions (intake, outcomes). Schema enforcement degrades because the schema is now far back in context. Programs that worked at 90-minute scale fail at semester scale — creating an architectural change requirement that was supposed to be out of scope.
+**Why it happens:** This is the existing behavior in `vite-plugins/generate-html.ts` — called once at startup, no file watch wired to it.
 
 **Prevention:**
-- The main session is the orchestrator only. It reads state, launches subagents, incorporates outputs, advances STATE.md. It does not generate curriculum content.
-- Each subagent gets: (1) the specific schema for its task, (2) the relevant upstream outputs as constraint context (not the entire pipeline history), (3) its own fresh 200k context window
-- For parallel module generation: each module-generator subagent receives the intake brief, the outcome objectives relevant to that module, the assessment map for that module, and the module overview — not the full pipeline output
-- STATE.md bridges sessions; file system bridges subagents. Neither requires everything in one context.
+- Wire HTML generation to file-write events via Vite's `handleHotUpdate` API (fires on file changes).
+- Or: assembler command calls an explicit regeneration endpoint.
+- Test: write a markdown file to the workspace while dashboard is running. Check whether its HTML updates without restarting the server.
 
-**Detection:** If any skill file begins accumulating all prior stage outputs as context before doing its generation work, the session is becoming the bottleneck. Subagent composition should have been invoked.
+**Detection:** Run intake → sessions → assembler → open HTML. If the HTML is empty or stale, the wiring is not in place.
 
-**Phase:** Phase 1 architecture must specify which stages use subagents and what context each subagent receives. This is not a later optimization — it shapes the entire file structure.
+**Phase:** HTML output is not done when `generate-html.ts` produces files at startup. Done when new pipeline-written files appear in HTML without server restart.
 
 ---
 
-### Pitfall 4: STATE.md Drift — The Session Continuity Gap
+### Pitfall 5: Clone-and-Run Deployment Creates Contradictory State
 
-**What goes wrong:** STATE.md is written at the end of sessions but not updated atomically at transitions. An agent completes, writes output to a file, and session ends before STATE.md reflects the completion. Next session starts, STATE.md says the module is "in progress," agent runs again, generates a second version of the same output in a different format, and the curriculum now has two divergent module-03.md files.
+**Work area:** Deployment model change
 
-**Why it happens:** Writing state feels like overhead compared to the generation work. It gets deferred to "after I finish this module." Sessions end mid-task.
+**What goes wrong:** The deployment model changes. Old global install still works. New clone-and-run requires different invocation. Users who follow old setup find a working-ish setup that doesn't match the intended model. Dashboard still shows empty state.
 
-**Consequences:** Session restoration fails. The "next session picks up exactly where the last one left off" guarantee breaks. For a 90-minute program built in one session this is fine. For a semester-length program built across many sessions with pauses between, this is a project-ending problem.
+**Why it happens:** Deployment model change requires updating documentation, install tooling, and plugin activation path simultaneously. Any one out of sync creates a confusing middle state.
 
 **Prevention:**
-- STATE.md write protocol is defined before first code: write at stage start, write at stage completion, write when any agent output is incorporated. Not "before ending the session" — at each transition.
-- Running Agents table in STATE.md (borrowed from Brand Compass implementation) tracks what was launched and where its output lands. On session start, check this table before doing anything.
-- The session-start hook reads STATE.md first and surfaces any Running Agents whose output exists but is not incorporated
-- Treat an unincorporated agent output as a blocking condition — it must be resolved before advancing
+- Coordinated update of four artifacts in one commit: `install.sh` (remove or replace), `README.md`, `.claude/settings.json`, `/curriculum:init` workspace creation path.
+- If removing `install.sh`: remove it entirely. Don't leave it with a deprecation comment.
+- Verification: clone fresh, open Claude Code, run `/curriculum:init`, verify workspace appears inside the repo, verify dashboard finds it.
 
-**Detection:** If STATE.md is only written at session end, the protocol is inadequate. If the Running Agents table is absent, the protocol has a gap.
+**Detection:** If `install.sh` and clone-and-run instructions coexist, the deployment model is ambiguous.
 
-**Phase:** STATE.md protocol defined in Phase 1. Session-start hook implemented in Phase 2 (Core Plugin Infrastructure). Tested as part of Phase 2 validation — simulate a session interruption and verify clean recovery.
+**Phase:** Deployment model change is a prerequisite. Done first, verified, then dashboard env var work builds on stable foundation.
 
 ---
 
-### Pitfall 5: Schema Fields Without Enumerated Values Become Advisory
+### Pitfall 6: Curriculum Auditor Agent Interface Not Designed Before Extraction
 
-**What goes wrong:** The Bloom's level field is defined as a string rather than an enum. The social learning activity type is "required" but accepts any string. The model populates these fields with values that are technically non-empty but pedagogically meaningless: `bloom_level: "high"`, `activity_type: "collaborative exercise"`, `interdependence_structure: "working together."` Schema validation passes because the fields are populated. Validation quality is zero.
+**Work area:** Extracting audit mode logic into dedicated agent
 
-**Why it happens:** Defining enums requires explicit decisions about what values are valid. It is easier to say "fill in a Bloom's level" than to enumerate `[Remember, Understand, Apply, Analyze, Evaluate, Create]` and write validation logic that rejects `"high"`. The effort feels disproportionate to the schema design task.
+**What goes wrong:** The agent is written and the intake command is updated independently. The interface between agent output and intake command was never specified. The agent returns a well-structured analysis; intake doesn't know what to do with it and falls back to asking all intake questions. Audit mode advantage disappears.
 
-**Consequences:** Tier 1 validation loses meaning. The entire point of schema enforcement — making constraints binding rather than advisory — is undermined while appearing to work. Rubric validation must compensate, which requires human time on checks that should have been automated.
+**Why it happens:** Agent extraction requires designing the interface (what the agent returns, in what format) before writing either the agent or the updated orchestrator.
 
 **Prevention:**
-- Every schema field that maps to a learning science concept has an enumerated value set or minimum structural constraint:
-  - `bloom_level`: enum `[Remember, Understand, Apply, Analyze, Evaluate, Create]`
-  - `interdependence_structure`: must include at least one of `[positive goal interdependence, resource interdependence, role interdependence, reward interdependence]`
-  - `session_template`: enum `[Gagne, 5E, Merrill, WIPPEA, Universal-TMA]`
-  - `skill_type`: enum `[open, closed]`
-- Validation agent checks enum values against the allowed list, not just field presence
-- Free-text fields have minimum length requirements where length is a proxy for substantive content
+- Design the output format first: per-field result with `{value, extraction_confidence, content_quality}`. This is the contract.
+- Write the contract as a "Completion Signal" section in `curriculum-auditor.md` — same pattern as `session-generator.md`.
+- Test the agent in isolation before wiring to intake. Spawn it against a sample document set and verify it returns the contract format.
 
-**Detection:** Read any schema file. If any field could be satisfied by a single word or vague phrase without detection, it is not sufficiently constrained.
+**Detection:** If `curriculum-auditor.md` does not have an explicit Completion Signal section specifying the return structure, the interface is not designed. Do not wire to intake until it exists.
 
-**Phase:** Phase 1 (Foundation & Schema Design) must produce complete schema specifications with enum values before any generation code is written. Schema is the specification, not an implementation detail.
+**Phase:** Two sequential steps: (1) design and test agent in isolation; (2) update intake to consume agent output.
 
 ---
 
-### Pitfall 6: Skills Can't Call Skills — Pipeline Continuity Breaks
+### Pitfall 7: Curriculum Verifier Flags Issues It Cannot Prevent
 
-**What goes wrong:** A skill is designed to complete Stage 3 (Assessment Design) and then automatically invoke Stage 4 (Module Structure). Claude Code's architecture prevents this — skills cannot call skills directly. The user finishes Stage 3 and waits. Nothing happens. The pipeline has an invisible gap that the user must manually bridge by invoking the next command.
+**Work area:** Curriculum verifier command
 
-**Why it happens:** The automation expectation is that the pipeline flows automatically between stages. The platform constraint (skills cannot call skills) is known from Phase 4 research but easy to forget during implementation when the goal is seamless flow.
-
-**Consequences:** For autonomous middle stages (4-8 in the nine-stage pipeline), manual invocation defeats the automation value proposition. User must remember to run `/knz-sessions` after `/knz-modules` completes. If the user doesn't, STATE.md correctly shows module stage complete but session stage never starts.
+**What goes wrong:** The verifier runs and correctly identifies NEEDS: markers, TMA labels, HTML comments. But these were created by existing pipeline commands. Without upstream command fixes, the verifier produces a report that cannot be acted on. It becomes a manual review checklist rather than a quality gate.
 
 **Prevention:**
-- Subagent composition is the documented workaround: a skill completes its stage, then spawns a subagent with the next stage's skill content injected as its prompt
-- Design the pipeline flow explicitly: which stage transitions are automatic (subagent-to-subagent handoff) and which are intentional human gates (human invokes next command)
-- Per the PRD: Stages 4-8 run autonomously; human gates are at Intake (Stage 1), after Assessment Design (Stage 3), and at Final Validation (Stage 9). This means Stages 4-8 must use subagent chaining, not skill invocation.
-- Document this pattern in CLAUDE.md: "Stage transitions within autonomous phases use subagent composition. Human gate stages await explicit command invocation."
+- Each verifier check must be paired with a command fix that prevents the issue.
+- For v3.0, only add checks that correspond to v3.0 command fixes: NEEDS: markers (fixed in command retrofits), HTML comments (fixed in session-generator), TMA labels (fixed in session-generator).
+- Checks requiring new features (cross-document ID validation, assessment-outcome link checking) → deferred to future milestone.
 
-**Detection:** If a skill prompt ends with "now the user should run /knz-[next-stage]" for an autonomous stage, the pipeline flow is broken.
+**Detection:** For each verifier check: "is there a corresponding command update in v3.0 that prevents this issue?" If no, the check will produce unactionable findings.
 
-**Phase:** Phase 2 (Core Plugin Infrastructure) must implement and test the subagent chaining pattern before Stage 4-8 skills are built. The chain pattern is a prerequisite for autonomous pipeline operation.
+**Phase:** Verifier implementation comes after the command retrofits it validates.
 
 ---
 
 ## Moderate Pitfalls
 
-Mistakes that reduce output quality or create significant rework without causing architectural failure.
+### Pitfall 8: YAML Output Reappears After Marketing/Transfer Rewrites
 
----
+**Work area:** Plain language replacement in marketing and transfer commands
 
-### Pitfall 7: Naming Metaskills Without Enacting Them — The IB ATL Warning
-
-**What goes wrong:** The metaskill mapping stage generates a `primary_metaskill` field containing a label ("Exploring") and a thin `activation_activity` that describes what learners will do without specifying the pedagogical move that activates the metaskill. Example: `activation_activity: "learners will explore the topic through case discussion"`. This passes schema validation if the field is populated. It does not implement metaskill development.
-
-**Why it happens:** Metaskills are abstract. The difference between naming a metaskill and operationalizing it through a thinking routine requires specific pedagogical vocabulary that the generation agent may not apply without explicit constraint.
-
-**Consequences:** Phase 7 of the research identified this as "the IB ATL failure mode" — teachers embedded ATL skills in unit planners but did not make them visible in classroom activities; over time, implementation got worse, not better. A curriculum builder that produces metaskill labels without activation routines reproduces this failure at generation speed.
+**What goes wrong:** The marketing command is updated to produce clean markdown. But `stage-08-marketing.md` schema still specifies YAML output format. The schema wins because it is loaded as generation context with instruction to output all required fields. YAML returns.
 
 **Prevention:**
-- `activation_activity` field requires a named thinking routine from the Visible Thinking Routines library or an equivalent structured move — not a description of what learners do
-- The metaskill reference file maps each metaskill to its activation routines: `Exploring → [See-Think-Wonder, Question Starts, Headlines]`, `Adapting → [I Used to Think... Now I Think, Claim-Support-Question]`
-- Validation agent checks: does the activation activity reference a named routine or a structurally described move? A description of the content is not an activation routine.
-- `observable_indicator` field must describe a specific learner behavior (what you would see), not a learning outcome statement
+- Update both the command file AND its paired schema file when changing output format.
+- Schema must specify: "Output format: human-readable markdown. Field names do not appear as labels. Traceability data appears in a separate audit section at bottom."
+- After updating, check the written file (not conversation output) for YAML syntax.
 
-**Detection:** Read any generated metaskill-map.md. If the activation activity could be described by someone who doesn't know the metaskill framework, it is too thin.
-
-**Phase:** Phase 3 (Intake through Outcomes) builds the metaskill reference file. Phase 5 (Module and Session Generation) implements the mapping schema. The reference file must exist before the schema is used.
+**Detection:** After any marketing or transfer update, open the written markdown file directly. If it contains `element_type:`, `curriculum_traceability:`, or `claim_type:` as visible labels, the schema is still producing YAML.
 
 ---
 
-### Pitfall 8: Reflection and Transfer Fields as Afterthoughts
+### Pitfall 9: Voice File Conflicts With Existing Command Persona Sections
 
-**What goes wrong:** The session schema has 8 required fields. During generation, fields 1-5 (activation, objectives, content, formative check, guided practice) are substantive. Fields 6-8 (independent practice, reflection prompt, transfer connection) receive thin placeholder content: `reflection_prompt: "What did you learn today?"`, `transfer_connection: "Think about how you can apply this at work."` Both fields are populated, schema validation passes, pedagogical value is zero.
+**Work area:** Shared `curriculum-voice.md` reference
 
-**Why it happens:** Generation proceeds linearly through the schema. By field 6, the generation agent has expended most of its attention on earlier fields. The final fields receive less attention. This mirrors the documented human tendency — reflection and transfer are the most commonly skipped elements in instructional practice (Phase 5 research finding).
-
-**Consequences:** The transfer ecosystem design in Stage 7 depends on in-session transfer connections being substantive. Marketing derivation in Stage 8 depends on honest transfer claims. Generic reflection prompts and transfer connections undermine both. The tool produces the same structural weakness it was designed to prevent, inside fields that look populated.
+**What goes wrong:** Voice file says "colleague reporting back" tone; `intake.md` persona says "trusted consultant tone." Not contradictory but not harmonized. When both load, the command produces an averaged tone that matches neither.
 
 **Prevention:**
-- `reflection_prompt` has a minimum quality constraint: it must be a metacognitive question (about the learner's thinking process) not a content recall question. Validation agent checks: does the prompt ask about the learner's thinking, reasoning, or change in perspective? Or does it ask about content recall?
-- `transfer_connection` must reference the specific transfer context captured in intake: `transfer_context` from the project brief is injected into the session generation prompt. A generic "apply at work" without reference to the specific work context is a validation failure.
-- Generate the transfer connection first within the session schema (not last). Invert the field order in the generation prompt — transfer context is the anchor, earlier fields fill in toward it.
+- Audit every existing Persona section across all 12 commands before writing the voice file.
+- Voice file sets the cross-command baseline. Each command's Persona section adds only context-specific differences.
+- Persona audit is a prerequisite to voice file creation.
 
-**Detection:** Read any generated session file. If the reflection prompt could appear in any curriculum on any topic, it is generic. If the transfer connection doesn't reference the specific audience work context from intake, it is a placeholder.
-
-**Phase:** Phase 4 (Module and Session Generation). Session schema design must include validation logic for these fields, not just field presence.
+**Detection:** Read Persona sections of intake.md, assessments.md, marketing.md, and sessions.md in sequence. If tone descriptors are inconsistent and none reference the voice file, the audit has not been done.
 
 ---
 
-### Pitfall 9: Parallel Module Generation Without Sequence Constraints
+### Pitfall 10: HTML Inherits Source Content Problems
 
-**What goes wrong:** Module generation subagents are launched in parallel for efficiency. Each subagent receives the intake, outcomes, and assessment map. Module 3 is generated without knowledge of what Module 2 will cover. When modules are assembled, the prerequisite logic doesn't hold — Module 3 assumes concepts developed in Module 2 that Module 2's parallel generation didn't prioritize.
+**Work area:** Document assembler + HTML output
 
-**Why it happens:** Parallel generation is correct for session content within a module (each session has the module overview as constraint). It is incorrect for modules themselves, which must be sequenced first, then generated.
-
-**Consequences:** The `sequence-rationale.md` file says one thing; the module content does another. Prerequisite logic is stated but not implemented. A reviewer or the validation agent will catch this, but remediation requires regenerating multiple modules.
+**What goes wrong:** HTML generation converts markdown faithfully — including TMA labels, HTML comments, and outcome IDs that were supposed to be fixed in QUAL phase.
 
 **Prevention:**
-- Module structure and sequencing (Stage 4a) runs sequentially: module overviews are generated one at a time, each constrained by the prior module's output, producing the complete sequence with prerequisite rationale before any session content generation begins
-- Session content generation (Stage 4b / Stage 5) then runs in parallel within each module, with the module overview as a fixed constraint
-- STATE.md tracks: "module overviews complete" as a gate before "session generation begins"
-- This is the documented architecture from Phase 10: "Module sequencing must be generated first (with prerequisite rationale), then sessions generated per-module with module overview as constraint"
+- Command quality fixes (QUAL) precede HTML assembly. Order is not optional.
+- Add sanitization pass to `generate-html.ts`: strip HTML comment patterns, detect TMA phase labels as section headers. Safety net, not substitute for upstream fixes.
+- End-to-end test: open the HTML file as if you are a facilitator receiving it. If it contains "ACTIVATE:", "THEORY:", or outcome IDs, source content issues are bleeding through.
 
-**Detection:** If the pipeline launches parallel module generation before a complete sequence with prerequisite rationale exists, the sequencing will be inconsistent.
-
-**Phase:** Phase 4 (Module and Session Generation). The two-step within Stage 4 — sequence first, then parallel generation — must be specified in the skill design, not discovered during testing.
+**Phase:** HTML assembly comes after command retrofits. Building HTML before source is clean produces a false green.
 
 ---
 
-### Pitfall 10: React Dashboard as Decoration
+### Pitfall 11: Dashboard WORKSPACE_DIR Documented Where Users Won't Look
 
-**What goes wrong:** The React dashboard is built as a progress tracker that shows which pipeline stages are complete. It is not connected to the actual content pipeline. A user building a 10-module semester program cannot navigate to a specific module's session, compare the assessment map against the objectives, or review the validation report's findings while editing the curriculum. The dashboard is aesthetic, not functional.
+**Work area:** Dashboard env var + deployment model
 
-**Why it happens:** Dashboard development is separated from pipeline development. The dashboard is built from STATE.md (which stages are done) rather than from the curriculum content (what was produced). The deliverable navigation requirement — preventing the "scroll to find it" problem — requires content-aware views, not stage-status views.
-
-**Consequences:** The dashboard justification from the PRD ("curriculum output volume is even higher — dashboard prevents 'scroll to find it' problem") is not realized. Users navigate the file system directly. The dashboard adds build complexity without delivering the navigation value.
+**What goes wrong:** `WORKSPACE_DIR` is documented in README. Users who have trouble debug by looking at the dashboard itself, init output, or workspace CLAUDE.md — none of which mention it. Dashboard shows empty state. Users don't find the fix.
 
 **Prevention:**
-- Dashboard design begins from the user's navigation needs, not from the STATE.md structure
-- Required views: (1) pipeline stage status, (2) deliverable index with clickable navigation to actual files, (3) validation report surfacing with findings inline, (4) assessment-objective alignment matrix as a visual
-- File-based communication protocol is defined before dashboard build: which files the dashboard reads, in what format, with what refresh mechanism
-- The dashboard reads curriculum content files directly (markdown) — not a separate data layer. Parsing markdown for display is simpler than maintaining a parallel data structure.
+- `/curriculum:init` completion output must include the literal dashboard launch command.
+- Under clone-and-run: `cd dashboard && npm run dev` — include this in init output.
+- Dashboard empty state should display a diagnostic message, not a blank screen.
 
-**Detection:** If the dashboard prototype shows only stage completion status and not the actual curriculum deliverables it produces, it is not solving the problem it was built for.
-
-**Phase:** Phase 2 (Core Plugin Infrastructure) defines the file communication protocol. Dashboard Phase (whichever phase builds the React component) requires the protocol to be stable before UI work begins.
+**Detection:** Close dashboard, run init fresh, follow only init output instructions. If that results in a dashboard showing the new project, instructions are in the right place.
 
 ---
 
-### Pitfall 11: Enforcement Is Behavioral, Not Structural — Know the Ceiling
+### Pitfall 12: Box-Drawing Characters Break in Rendered Contexts
 
-**What goes wrong:** The plugin is built with the expectation that hooks and STATE.md gates will prevent users from bypassing pipeline stages. A user asks conversationally "can you just generate the marketing for me without the outcomes step?" and the system complies, because the enforcement is probabilistic (Claude will resist but can be convinced), not structural (a compiler that refuses to run).
+**Work area:** Structured ASCII output formatting
 
-**Why it happens:** The Platform Phase 4 assessment documented this explicitly: "Enforcement is behavioral, not structural. A user can always override through conversation." This constraint is known but its implications for UX and user communication are not always designed for.
-
-**Consequences:** A well-meaning user (especially the Hello Alice team without instructional design training) bypasses validation gates by accident or by asking for shortcuts. The pipeline produces partial curriculum that the user believes is complete because no hard error was thrown.
+**What goes wrong:** Box-drawing characters (`╔`, `║`, `╚`, `├─`, `└─`) look correct in Claude Code conversation. In the React dashboard markdown renderer, alignment breaks.
 
 **Prevention:**
-- Design the user experience around the constraint, not against it: make stage gates feel like natural conversation pauses, not bureaucratic stops
-- The skill prompts for gate stages (Intake, Assessment Review, Final Validation) explicitly frame why the gate exists and what breaks without it — the user should understand, not just comply
-- STATE.md gate checks surface as: "We're at the assessment review gate. Before sessions are generated, you need to confirm these assessments are right — here's why that matters" — not as an error message
-- CLAUDE.md includes the principle: "When a user requests a shortcut that would bypass a gate, explain what breaks. If they insist after understanding the tradeoff, document the bypass in STATE.md and proceed — but do not comply silently."
-- Accept that the system is probabilistically robust, not absolutely enforced. Design quality checks in downstream stages that would surface upstream gaps.
+- Test any new output format in three contexts: Claude Code conversation, React dashboard, plain text editor.
+- For content converted to HTML, prefer portable markdown formats: headers, tables, blockquotes, bullet lists.
+- Conversation output and file output can differ: conversation uses box-drawing; written files use standard markdown.
 
-**Detection:** If the hook system is designed as if it prevents all bypasses, the expectation is wrong. Design for user understanding, not tool-level blocking.
-
-**Phase:** Phase 1 (Foundation & Schema Design) — the behavioral enforcement ceiling must be understood before any gate design. Phase 3 (Intake and Outcomes) — gate UX design.
+**Detection:** After implementing new formatting, render in the dashboard. If box-drawing appears misaligned or garbled, the format does not survive rendering.
 
 ---
 
-## Minor Pitfalls
+### Pitfall 13: Transparency Notes Become the New Step Labels
 
----
+**Work area:** Hiding constraint enforcement steps
 
-### Pitfall 12: CLAUDE.md Overload
-
-**What goes wrong:** CLAUDE.md accumulates full doctrine text, schema specifications, session template library, and validation rubric. It becomes a 3,000-line file loaded on every session. Context is consumed before any work begins. The session-start hook that was supposed to restore project state is now competing with doctrine recitation for context budget.
-
-**Why it happens:** CLAUDE.md is the most accessible place to put operational guidance. Every new requirement goes there. It grows without a deletion policy.
+**What goes wrong:** The numbered steps are removed. The transparency note compensates with too much detail: "I adjusted 3 outcomes (Steps 1, 3, and 5 of my internal checks), rewrote 2 verbs flagged in the prohibited verb check..." The transparency note has become the new step log.
 
 **Prevention:**
-- CLAUDE.md contains: pipeline order (one sentence each), constraint hierarchy rule, state management protocol, and pointers to reference files — nothing else
-- Full doctrine lives in `reference/doctrine.md`, loaded on demand by skills that need it
-- Session templates live in `reference/session-templates.md`, loaded by the session generation skill
-- Schema specifications live in `reference/schemas/`, loaded by validation agents
-- CLAUDE.md should be readable in under 2 minutes. If it is not, it has grown past its purpose.
-
-**Phase:** Phase 1 defines CLAUDE.md scope. Enforce a review gate: if CLAUDE.md exceeds 300 lines, audit and migrate to reference files before adding anything new.
-
----
-
-### Pitfall 13: SME Intake Questions Require Instructional Design Vocabulary
-
-**What goes wrong:** The structured intake asks "What is the learner's self-direction level on Grow's SSDL scale?" The Hello Alice program team does not know what SSDL means. The intake is abandoned or answered with guesses that produce the wrong expertise-adaptive template selection.
-
-**Why it happens:** Intake is designed from the schema inward (what data does the pipeline need?) rather than from the user outward (what can an SME answer without training?).
-
-**Consequences:** The tool fails its secondary user. Hello Alice SMEs fall back to Kelsey to complete the intake, which recreates the bottleneck the tool was built to remove.
-
-**Prevention:**
-- Every intake question is phrased in terms of learner behavior and domain knowledge, not instructional design frameworks
-- "Self-direction level" becomes: "Think about learners arriving at this training. Circle the description that best fits: (A) They need step-by-step guidance and clear structure, (B) They can follow a structure but need motivation and encouragement, (C) They know what they need to learn but need help connecting concepts, (D) They could mostly learn this on their own but benefit from structure"
-- The intake skill maps SME-answerable descriptions to the underlying pedagogical variables internally — the SME never sees "Grow Stage 2"
-- Test the intake with at least one Hello Alice team member before committing to the schema. If they cannot answer every question using only their domain knowledge, revise.
-
-**Phase:** Phase 3 (Intake and Outcomes) intake design and testing.
-
----
-
-### Pitfall 14: Output Volume Without Navigation — The Scroll Problem
-
-**What goes wrong:** A 10-module program generates 40+ markdown files across 8 directories. The user finishes generation and immediately faces a file tree they cannot navigate efficiently. They cannot find the facilitator guide for Module 3, cannot compare the assessment map against the objectives, and cannot locate the validation report findings. The curriculum is complete but unusable.
-
-**Why it happens:** Generation is optimized. Navigation is not designed.
-
-**Prevention:**
-- `00-project-brief.md` includes a generated index: every file in the project with a one-line description and its path
-- The React dashboard's deliverable view is a navigable index — clicking any item opens it. This is the primary navigation mechanism, not the file explorer.
-- The document assembler (Stage 8 equivalent) generates a compiled facilitator package: a single file with all session guides assembled in sequence. Facilitators use this, not the directory structure.
-- File naming follows a sortable convention: `module-03-session-02-facilitator-guide.md` — alphabetical sort produces delivery order.
-
-**Phase:** Phase 4 (Module and Session Generation) establishes file naming conventions. Phase with React dashboard implements navigable index.
+- Maximum transparency note: two sentences.
+- Test: "does the user need to do anything because of this?" If no — cut to one sentence or eliminate.
+- If a transparency note exceeds 40 words, it is too detailed.
+- If it uses any vocabulary from the prohibited terms table, it has not been converted.
 
 ---
 
 ## Phase-Specific Warnings
 
-| Phase Topic | Likely Pitfall | Mitigation |
-|-------------|---------------|------------|
-| Schema design | Instructions masquerading as constraints (Pitfall 1) | All required fields as machine-checkable types with enums |
-| Architecture setup | Generate-validate collapse (Pitfall 2) | Separate agent files for generation and validation from day one |
-| Pipeline design | Skills-can't-call-skills gap (Pitfall 6) | Design subagent chaining pattern before Stage 4-8 skills are built |
-| State management | STATE.md drift (Pitfall 4) | Write protocol defined and session-start hook tested in Phase 2 |
-| Module generation | Parallel sequencing before overviews complete (Pitfall 9) | Two-step Stage 4: sequence-first gate, then parallel session generation |
-| Session generation | Reflection/transfer as afterthoughts (Pitfall 8) | Invert field generation order; transfer context injected from intake |
-| Metaskill mapping | Naming without enacting (Pitfall 7) | Require named thinking routines in activation_activity field |
-| React dashboard | Dashboard as decoration (Pitfall 10) | Define file communication protocol before UI build; content views required |
-| Context management | Session context collapse at scale (Pitfall 3) | Main session is orchestrator only; subagents handle all generation |
-| Intake design | ID vocabulary leaking into SME-facing questions (Pitfall 13) | Test intake with Hello Alice team before schema lock |
-| CLAUDE.md | Doctrine accumulation (Pitfall 12) | 300-line ceiling; reference file architecture enforced from Phase 1 |
-| Gate enforcement | Expecting structural enforcement from behavioral system (Pitfall 11) | Design UX for user understanding, not tool-level blocking |
-
----
-
-## Sources
-
-- Research Phase 4: Claude Code Platform Assessment (`knz-builder-research/research/outputs/04-claude-code-platform-assessment.md`) — HIGH confidence
-- Research Phase 5: Prompt Architecture for Pedagogical Constraint (`05-prompt-architecture-for-pedagogy.md`) — HIGH confidence (multiple external sources verified)
-- Research Phase 10: Tool Architecture Proposal (`10-tool-architecture-proposal.md`) — HIGH confidence
-- Research Phase 7: Metaskills Operationalization (`07-metaskills-operationalization.md`) — HIGH confidence
-- Research Phase 6: Session Design Frameworks (`06-session-design-frameworks.md`) — HIGH confidence
-- Brand Compass Plugin (`knz-brand-guidance/CLAUDE.md`) — HIGH confidence (working reference implementation, same architectural pattern)
-- Research Gaps Document (`knz-builder-research/research/gaps.md`) — HIGH confidence (self-reported known gaps from the research itself)
-- PRD Known Technical Risks (`.planning/PRD.md`, Section 9) — HIGH confidence (domain expert judgment)
+| Phase Topic | Pitfall | Mitigation |
+|-------------|---------|------------|
+| Voice file creation | File nobody reads (1) | Inline critical guardrails in each command; audit Persona sections first |
+| Command retrofits | Hiding steps without hiding vocabulary (2) | Prohibited term search after each retrofit; vocabulary and structure fixed in same pass |
+| Command retrofits | Transparency notes become new step labels (13) | Two-sentence ceiling; no prohibited vocabulary |
+| YAML-to-markdown rewrite | Schema pulls format back to YAML (8) | Schema updated in same commit; test the written file |
+| Voice file + existing personas | Conflict between voice file and command personas (9) | Audit all 12 Persona sections before writing the voice file |
+| Audit mode three-mode | Confidence scale repurposed for content quality (3) | Add separate content_quality dimension; show mode to user before processing |
+| HTML generation | Runs once at startup, not on file write (4) | Wire file watch or explicit trigger; test full flow |
+| HTML generation | HTML inherits source problems (10) | Command retrofits before HTML assembly |
+| HTML formatting | Box-drawing breaks in rendered contexts (12) | Test all new formats in dashboard before finalizing |
+| Deployment model change | Old and new coexist (5) | Coordinated update of all 4 artifacts; remove install.sh entirely |
+| Dashboard env var | Fix documented in README, not init output (11) | Init includes literal launch command; empty dashboard shows diagnostic |
+| Agent extraction | Interface not designed before extraction (6) | Completion Signal format defined before writing either file |
+| Curriculum verifier | Flags issues it cannot prevent (7) | Each check paired with a command fix; uncovered checks deferred |
