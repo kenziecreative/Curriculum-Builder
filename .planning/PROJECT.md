@@ -4,7 +4,7 @@
 
 A Claude Code plugin with a React dashboard that produces delivery-ready curriculum packages for adult learners. It encodes pedagogical doctrine — TMA, DCR, Six Metaskills, Flipped Classroom — as structural constraints enforced through schemas, so that subject matter experts without instructional design training can produce curriculum that meets rigorous pedagogical standards. The tool handles the scaffold; the human handles the soul.
 
-**Current state (v2.0):** Full pipeline plus existing curriculum support. Users can bring existing facilitator guides, slide decks, and participant workbooks into the pipeline via audit mode — the system synthesizes across multiple documents, surfaces gaps and conflicts, and pre-populates stage files so downstream commands enrich rather than replace. A standalone `/curriculum:evaluate` command runs external curriculum through three-tier validation rubrics without going through the full pipeline. All 12 commands operate under a proper Claude Code plugin namespace (`/curriculum:*`).
+**Current state (v3.0):** Full pipeline, existing curriculum support, and polished output quality. Every generated output hides constraint machinery and reads like a skilled colleague built it. A curriculum voice system enforces consistent tone and plain language across all 15 commands. Audit mode routes to three intelligent content-handling modes via a dedicated auditor agent. The delivery layer assembles a polished `delivery/` package with HTML output and a pre-delivery verifier. Deployment is clone-and-run — one clone, one command, working setup.
 
 ## Core Value
 
@@ -46,19 +46,26 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 - ✓ Evaluation mode produces scored report with specific improvement recommendations — v2.0
 - ✓ All 12 commands + 2 agents under proper Claude Code plugin namespace (`/curriculum:*`) — v2.0
 
-### Active (v3.0)
+### Validated (v3.0)
 
-**Goal:** Every generated output reads like a skilled colleague built it — results visible, machinery hidden, voice consistent across all commands.
+- ✓ All command output hides constraint enforcement steps — user sees result and brief plain-language callout only — v3.0
+- ✓ All insider terms replaced with plain language across every command (schema, linkage, TMA, DCR trigger, Bloom's labels, YAML field names as visible labels) — v3.0
+- ✓ Slide outlines written as production direction (what goes on the slide + intent + facilitator rationale), not content inventory — v3.0
+- ✓ Facilitator notes include diagnostic direction: what to observe, what it signals, what move to make — v3.0
+- ✓ Marketing files are copy-paste-ready PAS/DOS prose with VOC language; traceability data in separate section — v3.0
+- ✓ Transfer ecosystem file is readable narrative with plain headings — no YAML structure in output — v3.0
+- ✓ TMA phase labels (ACTIVATE, THEORY, METHOD, etc.) never appear as visible labels in facilitator guides, participant materials, or slide outlines — v3.0
+- ✓ `curriculum-voice.md` created as shared reference — tone per output type, guardrails, plain-language substitutions, signature moves — v3.0
+- ✓ Every command that generates user-facing content references `curriculum-voice.md` before generating — v3.0
+- ✓ Audit mode implements three content-handling modes (gap-fill / enrich / hands-off) via `curriculum-auditor.md` specialist agent — v3.0
+- ✓ `curriculum-auditor.md` tested in isolation before wiring; explicit Completion Signal contract — v3.0
+- ✓ Deployment changed to clone-and-run; `install.sh` deleted; `scripts/release.sh` added — v3.0
+- ✓ Document assembler (`/curriculum:assemble`) and pre-delivery verifier (`/curriculum:verify`) added; HTML output co-located in `delivery/` — v3.0
+- ✓ All stage-completing commands end with warm synthesizing handoff and context-clear nudge — v3.0
 
-**Target features:**
-- Output presentation: hide constraint machinery, plain language everywhere, structured formatting, warm handoffs, context-clear nudges
-- Output quality: slide outlines with production direction, facilitator notes with diagnostic moves, marketing as PAS/DOS prose, TMA labels removed, NEEDS: markers resolved
-- Curriculum voice system: shared voice/guardrails reference file used by all generation commands
-- Audit mode content handling: three-mode gap-fill/enrich/hands-off based on extraction confidence
-- Infrastructure: clone-and-run deployment, dashboard env var, release sync script
-- Delivery: document assembler, HTML output for marketing + facilitator guides, curriculum verifier
+### Active (v4.0)
 
-**Requirements:** PRES-01–08, QUAL-01–09, VOICE-01–02, AUDIT-01–03, INFR-01–03, DLVR-01–03 (28 total)
+*Next milestone goals TBD — use `/gsd:new-milestone` to define.*
 
 ### Out of Scope
 
@@ -112,6 +119,12 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 | Pre-population with enforcement (not replacement) (v2.0) | Existing content has value; pipeline should enrich it while still enforcing schema compliance | ✓ Good — NEEDS: marker pattern enables targeted enrichment |
 | Plugin namespace migration as urgent inserted phase (v2.0) | `/knz-*` naming violated Claude Code plugin conventions; fix required before v2.0 ship | ✓ Good — zero `/knz-*` references remain |
 | Evaluation mode as standalone command (v2.0) | External curriculum evaluation is a distinct use case from pipeline execution — no STATE.md entanglement | ✓ Good — `/curriculum:evaluate` runs independently, no side effects |
+| Voice reference file + inline guardrails (v3.0) | Reference file is documentation; inline enforcement is the actual constraint — both needed for coverage and reliability | ✓ Good — four worst-offending commands have inline guardrails; others reference the file |
+| Auditor agent contracted before wiring (v3.0) | First isolation run used wrong column names — agent must return the specified Completion Signal format reliably before intake.md depends on it | ✓ Good — zero intake failures from auditor contract mismatch |
+| `content_quality` separate from `extraction_confidence` (v3.0) | Mode selection must not conflate "was source content found?" with "is existing content strong enough to leave alone?" — separate dimensions prevent over-writing good content | ✓ Good — hands-off mode protected strong existing content correctly |
+| Clone-and-run replaces install script (v3.0) | `install.sh` deleted entirely, no deprecation stub — contradictory deployment state is worse than a hard break | ✓ Good — no install-script references remain |
+| Standalone `generate-html.js` script (v3.0) | Keeps HTML generation self-contained for Bash invocation without a build step — `wrapHtml()` duplicated inline intentionally | ✓ Good — script runs without node module resolution issues |
+| verify.md read-only, approve controls presentation (v3.0) | verify.md is a diagnostic tool, not a gate — approve.md owns the user-facing gate UI and decides when to invoke verify silently | ✓ Good — clean separation of diagnostic vs. gate responsibility |
 
 ---
-*Last updated: 2026-03-24 after v3.0 milestone start*
+*Last updated: 2026-03-25 after v3.0 milestone*

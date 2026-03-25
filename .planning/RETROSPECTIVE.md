@@ -80,16 +80,62 @@
 
 ---
 
+## Milestone: v3.0 — Output Quality
+
+**Shipped:** 2026-03-25
+**Phases:** 6 (11–16) | **Plans:** 15
+**Files changed:** 46 | **Lines:** ~3,480 insertions / 434 deletions
+**Timeline:** 2026-03-24 → 2026-03-25 (2 days)
+
+### What Was Built
+
+- Curriculum voice system: `curriculum-voice.md` reference file + inline guardrails in four worst-offending commands
+- Full command retrofit: 15 commands/agents — zero prohibited terms, warm handoffs, TMA labels suppressed, NEEDS: markers enforced
+- `curriculum-auditor.md` specialist agent with contracted Completion Signal interface
+- Three-mode audit routing (gap-fill / enrich / hands-off) via `content_quality` dimension
+- Clone-and-run deployment: `install.sh` deleted, `scripts/release.sh` added, `WORKSPACE_DIR` env var support
+- Delivery layer: `/curriculum:assemble`, `/curriculum:verify`, standalone `generate-html.js`, `handleHotUpdate` wiring
+- Three post-audit gap fixes: HTML co-location in `delivery/session-N/`, verify.md Stage 4 false-positive, intake pre-pop filename
+
+### What Worked
+
+- "Reference file is documentation, inline is enforcement" pattern: voice system works because the four worst-offender commands have inline guardrails, not just a pointer to the file
+- Auditor agent isolation test before wiring: first test run caught wrong column names — fixing before wiring prevented a class of intake failures
+- Audit pass before milestone complete: three wiring gaps caught and fixed as Phase 16 instead of discovered post-ship
+- Delivery layer scope clarity: narrow assembler scope (facilitator + marketing only) kept `delivery/` lean and reasoning tractable
+
+### What Was Inefficient
+
+- Phase 13 plan count grew from 4 to 5 mid-execution — context-clear nudge and vocabulary gaps warranted a fifth plan; better to estimate breadth-heavy phases at upper bound
+- The v3.0 ROADMAP archive captured from the in-progress roadmap (with some unchecked checkboxes) — milestone archive should be written after completion, not copied from working state
+
+### Patterns Established
+
+- `content_quality` (strong/partial/absent) separate from `extraction_confidence` (High/Medium/Low/None) — two-dimension assessment prevents conflating "found source content" with "source content is worth keeping"
+- Specialist agent with explicit Completion Signal contract before wiring to an orchestrating command — agent tested in isolation first
+- Delivery layer as separate milestone phase (not appended to generation) — HTML output and assembler require clean source content as prerequisite
+- Post-audit gap closure as an inserted decimal phase (16) — gap closure is a first-class deliverable, not a fixup
+
+### Key Lessons
+
+- Voice enforcement works at the inline layer, not the reference layer — the reference file creates the vocabulary; the inline guardrail prevents the violation at the command level
+- Delivery scope creep risk is real: "delivery package" can mean many things; explicit exclusion list (slide outlines, validation reports excluded from `delivery/`) was the right call
+- Session subdirectory recursion was a silent bug for the entire v1.0–v2.0 lifecycle — no session HTML was ever produced by the batch process; caught only when the delivery layer was built
+
+---
+
 ## Cross-Milestone Trends
 
-| Trend | v1.0 | v2.0 |
-|-------|------|------|
-| Days to ship | 7 | 2 |
-| Plans completed | 19 | 10 |
-| Files changed | — | 66 |
-| Known gaps at ship | 3 (fixed same session) | 0 blockers (tech debt only) |
-| Audit passed | n/a | ✓ (re-audit after fix pass) |
+| Trend | v1.0 | v2.0 | v3.0 |
+|-------|------|------|------|
+| Days to ship | 7 | 2 | 2 |
+| Plans completed | 19 | 10 | 15 |
+| Files changed | — | 66 | 46 |
+| Known gaps at ship | 3 (fixed same session) | 0 blockers (tech debt only) | 3 gaps fixed as Phase 16 |
+| Audit passed | n/a | ✓ (re-audit after fix pass) | ✓ (28/28 requirements) |
 
-**Velocity:** Accelerating — v2.0 shipped in 2 days vs v1.0's 7, with similar plan density. Likely driven by accumulated pattern library and reduced schema uncertainty.
+**Velocity:** Stable at 2 days for v2.0 and v3.0, with v3.0 covering 15 plans (50% more than v2.0). Breadth-heavy retrofits (Phase 13) are faster per plan than architecture-heavy features.
 
-**Quality:** Audit tool caught one real gap (PLG-01 partial) before ship — fixed same session. Pattern of shipping clean then doing a same-session fix pass appears stable.
+**Quality:** Audit-first pattern holding — all three v3.0 gaps caught and fixed before milestone close. Post-audit gap closure as an inserted phase (16) is working well as a pattern.
+
+**Scope management:** v3.0 delivery scope was well-bounded (explicit exclusion list). Phase 13 plan count grew mid-execution but was contained within the phase. Delivery layer scope definition is the highest leverage design decision for future output-facing milestones.

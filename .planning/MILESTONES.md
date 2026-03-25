@@ -1,5 +1,22 @@
 # Milestones
 
+## v3.0 — Output Quality (Shipped: 2026-03-25)
+
+**Phases:** 11–16 | **Plans:** 15 | **Timeline:** 2026-03-24 → 2026-03-25 (2 days)
+**Requirements:** 28/28 satisfied
+
+**Key accomplishments:**
+1. Delivery pipeline now produces a polished `delivery/` package — HTML + markdown co-located per session, assembler and verifier commands wired to the final approval gate
+2. Curriculum voice system established — shared `curriculum-voice.md` reference file with inline guardrails in the four worst-offending commands — machinery hidden from all output
+3. All 15 commands and agents retrofitted: zero prohibited terms, warm handoffs, plain-language vocabulary, TMA labels suppressed, NEEDS: markers enforced before any file marked complete
+4. Audit mode now routes to three intelligent content-handling modes (gap-fill / enrich / hands-off) via a dedicated `curriculum-auditor.md` specialist agent with a contracted Completion Signal interface
+5. Clone-and-run deployment model replaces install script — one clone, one command, working setup with `WORKSPACE_DIR` env var support and `scripts/release.sh` for public sync
+6. Three delivery-layer wiring gaps closed post-audit: HTML co-located in `delivery/session-N/`, verify.md Stage 4 false-positive eliminated, audit pre-population writes `assessment-map.md` (file modules.md reads)
+
+**Archive:** `.planning/milestones/v3.0-ROADMAP.md`, `.planning/milestones/v3.0-REQUIREMENTS.md`
+
+---
+
 ## v2.0 Existing Curriculum Support (Shipped: 2026-03-24)
 
 **Phases completed:** 4 phases, 10 plans, 2 tasks
