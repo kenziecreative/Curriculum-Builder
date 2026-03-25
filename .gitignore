@@ -17,6 +17,7 @@ Thumbs.db
 .env.*.local
 
 # Planning artifacts (security reports may contain sensitive paths)
+.planning/
 .planning/security/
 
 # Node
@@ -29,4 +30,5 @@ dashboard/build/
 .claude/worktrees/
 
 # Curriculum workspace — runtime output, not source
-workspace/
+workspace/*
+!workspace/.gitkeep

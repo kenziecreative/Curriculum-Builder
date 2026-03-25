@@ -38,27 +38,59 @@ git clone https://github.com/kenziecreative/knz-curriculum-builder.git
 cd knz-curriculum-builder
 ```
 
-**2. Run the install script**
+**2. Remove the origin remote**
 
 ```bash
-./scripts/install.sh
+git remote remove origin
 ```
 
-That's it. The script installs the plugin at user scope — it's available in every Claude Code session on your machine from this point on. You don't need to repeat this for each project.
+This is a required step, not optional. You'll be working inside the repo — your workspace files, project briefs, and generated curriculum all live here. Removing the origin remote prevents you from accidentally pushing those to the source repository.
 
-**To update to a newer version**, pull the latest changes and run `./scripts/install.sh` again.
+**3. Open Claude Code in the cloned directory**
 
----
+```bash
+claude .
+```
 
-## Starting a project
-
-Open Claude Code in any working directory and run:
+**4. Run `/curriculum:init`**
 
 ```
 /curriculum:init
 ```
 
-Claude will ask what to call the project, create a workspace folder, and immediately roll into the intake conversation.
+That's it. No install scripts, no additional setup. Claude creates your workspace inside the repo and immediately begins the intake conversation.
+
+**To update to a newer version**, pull the latest changes: `git pull`.
+
+---
+
+## Dashboard
+
+The plugin includes a local dashboard for browsing your workspace files.
+
+```bash
+cd dashboard && npm install && npm run dev
+```
+
+Open [http://localhost:3002](http://localhost:3002) in your browser.
+
+If your workspace lives somewhere other than the default location, point the dashboard there with an env var:
+
+```bash
+WORKSPACE_DIR=/absolute/path/to/your/workspace npm run dev
+```
+
+---
+
+## Starting a project
+
+Open Claude Code in the cloned repo directory and run:
+
+```
+/curriculum:init
+```
+
+Claude will ask what to call the project, create a workspace folder inside the repo, and immediately roll into the intake conversation.
 
 If you already have a project in progress, run `/curriculum:resume` to pick up where you left off. Claude reads your project state at the start of every session and surfaces where you are automatically.
 
