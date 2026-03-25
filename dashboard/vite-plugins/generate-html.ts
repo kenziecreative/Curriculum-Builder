@@ -48,16 +48,34 @@ export async function generateHtmlForWorkspace(workspaceDir: string): Promise<vo
 
     for (const stageDir of stageDirs) {
       const stagePath = path.join(projectDir, stageDir.name)
-      const mdFiles = fs.readdirSync(stagePath).filter(f => f.endsWith('.md'))
+      const entries = fs.readdirSync(stagePath, { withFileTypes: true })
 
-      for (const mdFile of mdFiles) {
-        const raw = fs.readFileSync(path.join(stagePath, mdFile), 'utf-8')
-        // Strip YAML frontmatter (always at file start, between --- delimiters)
-        const content = raw.replace(/^---[\s\S]*?---\n/, '')
-        const html = await marked(content)
-        const title = path.basename(mdFile, '.md').replace(/-/g, ' ')
-        const outputName = mdFile.replace('.md', '.html')
-        fs.writeFileSync(path.join(deliveryDir, outputName), wrapHtml(title, html))
+      for (const entry of entries) {
+        if (entry.isFile() && entry.name.endsWith('.md')) {
+          // Flat file: delivery/{filename}.html
+          const raw = fs.readFileSync(path.join(stagePath, entry.name), 'utf-8')
+          const content = raw.replace(/^---[\s\S]*?---\n/, '')
+          const html = await marked(content)
+          const title = path.basename(entry.name, '.md').replace(/-/g, ' ')
+          const outputName = entry.name.replace('.md', '.html')
+          fs.writeFileSync(path.join(deliveryDir, outputName), wrapHtml(title, html))
+        } else if (entry.isDirectory()) {
+          // Subdirectory: delivery/{subdirName}/{filename}.html
+          const subPath = path.join(stagePath, entry.name)
+          const subEntries = fs.readdirSync(subPath).filter(f => f.endsWith('.md'))
+          const subDeliveryDir = path.join(deliveryDir, entry.name)
+          if (subEntries.length > 0) {
+            fs.mkdirSync(subDeliveryDir, { recursive: true })
+          }
+          for (const mdFile of subEntries) {
+            const raw = fs.readFileSync(path.join(subPath, mdFile), 'utf-8')
+            const content = raw.replace(/^---[\s\S]*?---\n/, '')
+            const html = await marked(content)
+            const title = path.basename(mdFile, '.md').replace(/-/g, ' ')
+            const outputName = mdFile.replace('.md', '.html')
+            fs.writeFileSync(path.join(subDeliveryDir, outputName), wrapHtml(title, html))
+          }
+        }
       }
     }
   }
