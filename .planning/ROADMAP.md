@@ -75,7 +75,10 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
   - Pitfall 11: Dashboard launch command appears in init output, not only in README
 **Estimated complexity**: LOW-MEDIUM — isolated config/doc changes; must be atomic
 
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 11-01-PLAN.md — Convert to clone-and-run model: delete install.sh, update README, add WORKSPACE_DIR env var, add dashboard launch to init output, create release.sh
 
 ---
 
@@ -196,7 +199,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 | 8.1. Plugin Namespace Migration | v2.0 | 2/2 | Complete | 2026-03-23 |
 | 9. Stage Pre-population | v2.0 | 3/3 | Complete | 2026-03-24 |
 | 10. Evaluation Mode | v2.0 | 2/2 | Complete | 2026-03-24 |
-| 11. Infrastructure | v3.0 | TBD | Not started | - |
+| 11. Infrastructure | v3.0 | 0/1 | In progress | - |
 | 12. Voice System | v3.0 | TBD | Not started | - |
 | 13. Command Retrofit | v3.0 | TBD | Not started | - |
 | 14. Audit Mode Enhancement | v3.0 | TBD | Not started | - |
