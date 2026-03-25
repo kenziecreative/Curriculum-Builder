@@ -417,55 +417,125 @@ If no files are found in source-material/:
 
 Stop here. Do not proceed.
 
-**After all files are read:** Do not ask any questions. Synthesize internally and proceed immediately to Step 2.
+**After all files are read:** Do not ask any questions. Proceed immediately to Step 2.
 
-### Step 2: Synthesis and Extraction Table
+### Step 2: Spawn Auditor Agent
 
-After reading all documents, synthesize internally — the user never sees intermediate extraction notes. Display the completed extraction table:
+Spawn a Task subagent:
+
+Description of work:
+> Analyze source materials and return a per-stage assessment per the curriculum-auditor agent specification at `.claude/plugins/curriculum/agents/curriculum-auditor.md`
+
+Context provided to the Task:
+- Full content of all files in `workspace/{project}/source-material/`
+- Full content of `workspace/{project}/00-project-brief/project-brief.md` (if it exists)
+- Stage schemas from `.claude/reference/schemas/`: stage-02-outcomes.md, stage-03-assessments.md, stage-04-modules.md, stage-05-sessions.md, stage-06-metaskills.md, stage-07-transfer.md, stage-08-marketing.md
+- Output path: `workspace/{project}/00-project-brief/audit-results.md`
+
+After the Task returns: Read `workspace/{project}/00-project-brief/audit-results.md`. Parse the four-column stage table. For each stage, extract: stage name, extraction_confidence, content_quality, and summary.
+
+### Step 3: Show Extraction Table and Mode Confirmation
+
+Display the extraction table to the user using only plain language — no schema terms, no internal values. Source the "What was found" column from the `summary` column in `audit-results.md`.
 
 **What I found in your materials:**
 
-| Field | What the documents say | Confidence |
-|-------|------------------------|------------|
-| Program topic | [extracted value or "—"] | High / Medium / Low / None |
-| Who it's for | [extracted value or "—"] | High / Medium / Low / None |
-| Current skill level | [extracted value or "—"] | High / Medium / Low / None |
-| Program format | [extracted value or "—"] | High / Medium / Low / None |
-| Where it's delivered | [extracted value or "—"] | High / Medium / Low / None |
-| Skill type | [extracted value or "—"] | High / Medium / Low / None |
-| Cultural context | [extracted value or "—"] | High / Medium / Low / None |
-| Where they'll use it | [extracted value or "—"] | High / Medium / Low / None |
-| What success looks like | [extracted value or "—"] | High / Medium / Low / None |
+| Stage | What was found |
+|-------|---------------|
+| Learning Outcomes | [summary from audit-results.md] |
+| Assessment Design | [summary from audit-results.md] |
+| Module Structure | [summary from audit-results.md] |
+| Session Content | [summary from audit-results.md] |
+| Thinking and Transfer Skills | [summary from audit-results.md] |
+| Transfer Ecosystem | [summary from audit-results.md] |
+| Marketing | [summary from audit-results.md] |
 
-Include "How learners prefer to learn" row when inferable. Include "Group size" row when program format indicates contact_hours >= 16. Omit conditional rows when not applicable.
+Immediately below the extraction table, display the mode confirmation table. Derive the "What will happen" column from `content_quality` in `audit-results.md` using the mapping below. Never display the internal mode names (gap-fill / enrich / hands-off) to the user.
 
-After the table, add one line:
-> High confidence fields are accepted as-is. I'll ask about the rest.
+**Plain-language mode mapping:**
+- content_quality = absent → "Build from scratch"
+- content_quality = partial → "Fill in what's missing"
+- content_quality = strong → "Keep what you have and validate it"
 
-**Do not ask any follow-up questions yet.** Display the table, pause, then proceed to Step 3.
+**Here's the plan for each stage:**
 
-### Step 3: Confidence Rubric
+| Stage | What was found | What will happen |
+|-------|---------------|-----------------|
+| Learning Outcomes | [summary from audit-results.md] | [plain-language mode] |
+| Assessment Design | [summary from audit-results.md] | [plain-language mode] |
+| Module Structure | [summary from audit-results.md] | [plain-language mode] |
+| Session Content | [summary from audit-results.md] | [plain-language mode] |
+| Thinking and Transfer Skills | [summary from audit-results.md] | [plain-language mode] |
+| Transfer Ecosystem | [summary from audit-results.md] | [plain-language mode] |
+| Marketing | [summary from audit-results.md] | [plain-language mode] |
 
-Apply this rubric when assigning confidence levels in Step 2. The rubric must be applied before display — users only see the completed table.
+### Step 4: Mode Confirmation Gate
 
-| Level | Criterion | Example |
-|-------|-----------|---------|
-| **High** | Field value is directly readable from source text — no inference, conversion, or interpretation required | "This is a 6-session, 90-minute workshop" → Program format: 6 sessions × 90 min |
-| **Medium** | Field is present but requires interpretation, behavioral reformatting, or unit conversion | "Participants are beginners" → must be converted to behavioral format ("can do X, cannot yet do Y") |
-| **Low** | Field is partially implied across documents with thin or conflicting signals | Two documents imply different audiences without explicit statement |
-| **None** | No relevant information found in any source document | Transfer design, reflection structure, social learning — rarely in facilitator guides |
+Use `AskUserQuestion` with three options:
 
-**Critical rule:** Format conversion (slide count → session length estimate, section headings → module count) is Claude's job, not a conflict or a gap. When Claude can derive a schema value from document structure without inference about content, that is Medium confidence extraction — not a missing field.
+- **"Looks good"** — proceed to Step 5 (write Mode Assignment to STATE.md) then Step 6 (follow-up questions)
+- **"Change what happens to a stage"** — ask which stage, then ask what should happen, update the table, re-present gate
+- **"Start over"** — confirm destructively, then restart from the Opening section
 
-**High requires:** The exact schema value is present in the source text. Any inference = Medium at most.
+**On "Change what happens to a stage":**
 
-**Vocabulary quarantine applies in the table and in all follow-up questions.** Never use: Bloom's taxonomy, learning objectives, schema, prior_knowledge, self_direction_level, Grow model, formative assessment, summative assessment, skill type, cultural orientation, closed skill, open skill, enum, contact_hours, modality.
+Use `AskUserQuestion` with a list of all seven stage names. After the user selects a stage, use `AskUserQuestion` with the three plain-language options:
+- "Build from scratch"
+- "Fill in what's missing"
+- "Keep what you have and validate it"
 
-### Step 4: Follow-up Questions
+Map the selection back to an internal mode value:
+- "Build from scratch" → gap-fill
+- "Fill in what's missing" → enrich
+- "Keep what you have and validate it" → hands-off
 
-All follow-up interactions happen in a single pass after the confidence table is shown. The ordering of questions within this pass is Claude's discretion — batch or sequential, conflicts and gaps interleaved or grouped, whichever produces the clearest conversation.
+Add the stage to a pending overrides list (stage name + override mode + source: "user-override"). Update the "What will happen" column in the stage table for that stage. Re-present the updated mode confirmation table and use `AskUserQuestion` again with the same three options.
 
-**For High fields:** Accept as-is. Never ask about them.
+**On "Start over":**
+
+Use `AskUserQuestion` to confirm:
+> Are you sure? This will clear everything we just extracted and start from the beginning.
+
+Options: **"Yes, start over"** / **"Actually, keep what we have"**
+
+On "Yes, start over": reset STATE.md Stage 1 status to `not-started`, reset Key Decisions to `—`, restart from the Opening section.
+On "Actually, keep what we have": return to the mode confirmation table and re-present `AskUserQuestion` with the three gate options.
+
+### Step 5: Write Mode Assignment to STATE.md
+
+After "Looks good" is selected at the gate, add a `## Mode Assignment` section to `workspace/{project}/STATE.md`. This table is what `modules.md` and `sessions.md` read — they do not re-parse `audit-results.md`.
+
+Write the section as:
+
+```
+## Mode Assignment
+
+| Stage | Mode | Source |
+|-------|------|--------|
+| 2: Learning Outcomes | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 3: Assessment Design | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 4: Module Structure | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 5: Session Content | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 6: Metaskill Mapping | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 7: Transfer Ecosystem | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+| 8: Marketing | [gap-fill / enrich / hands-off] | [auditor / user-override] |
+```
+
+Mode values in this table are the internal routing names (gap-fill / enrich / hands-off). Source is "auditor" for auditor-assigned modes and "user-override" for any stage the user changed at Step 4.
+
+Write this section silently — no user-facing announcement.
+
+### Step 6: Follow-up Questions
+
+All follow-up interactions happen in a single pass. These questions fill in any Stage 1 fields not captured in the project brief — they are about the program setup (audience, format, topic), not about curriculum pipeline stages. The ordering is Claude's discretion.
+
+**Follow-up question scope is driven by extraction_confidence from audit-results.md:**
+- High extraction_confidence → few or no follow-up questions for that field
+- Medium → confirm the extracted value before accepting
+- Low → ask a targeted clarifying question
+- None → ask the full question from clean intake
+
+**For fields with High extraction_confidence:** Accept as-is. Never ask about them.
 
 **For Medium fields:** Show what was extracted and ask for confirmation or correction.
 > I found this for [plain-language field name]: "[extracted value]"
@@ -473,9 +543,9 @@ All follow-up interactions happen in a single pass after the confidence table is
 > Does that capture it accurately, or would you like to adjust it?
 
 **For Low fields:** Show what was found (if anything) and ask for clarification.
-> Your materials touch on [plain-language field name] but I couldn't pin down a clear answer. [What was found, briefly.] What's the clearest way to put this?
+> Your materials mention [plain-language field name] but the picture wasn't fully clear. [What was found, briefly.] What's the clearest way to put this?
 
-**For None fields:** Ask a targeted question using the same plain-language framing as clean intake — no schema jargon, no instructional design vocabulary.
+**For None fields:** Ask the full question using the same plain-language framing as clean intake — no schema jargon, no instructional design vocabulary.
 
 Reference the clean intake question for each field when authoring None-field follow-up questions:
 - Program topic → "What's the core topic or skill this program teaches?"
@@ -502,9 +572,9 @@ When a genuine conflict is found, surface it during the follow-up pass:
 
 If the user says "both are partially true": accept the nuance. Ask one synthesizing follow-up to get the canonical answer. Do not force a binary choice.
 
-**After all follow-up questions are resolved:** Proceed immediately to Step 5. Do not show a summary yet.
+**After all follow-up questions are resolved:** Proceed immediately to Step 7.
 
-### Step 5: Confirmation Gate
+### Step 7: Confirmation Gate
 
 Present a clean summary in the same "Your Program at a Glance" format as clean intake — using the user's own words, no schema field names:
 
@@ -523,7 +593,7 @@ Present a clean summary in the same "Your Program at a Glance" format as clean i
 
 Then add a brief gap summary:
 
-> **Your curriculum gap report is ready.** {X of 7} pipeline stages have content to build from; {Y} will be built from scratch.
+> **Your curriculum plan is ready.** {X of 7} pipeline stages have content to build from; {Y} will be built from scratch.
 
 Use `AskUserQuestion` with these three options:
 
@@ -545,7 +615,7 @@ Options: **"Yes, start over"** / **"Actually, keep what we have"**
 On "Yes, start over": reset STATE.md Stage 1 status to `not-started`, reset Key Decisions to `—`, restart from the Opening section.
 On "Actually, keep what we have": return to the summary and re-present `AskUserQuestion`.
 
-### Step 6: Write Output Files
+### Step 8: Write Output Files
 
 On "Looks good — let's keep going":
 
@@ -559,11 +629,7 @@ Use the exact same structure as clean intake (see Schema Compliance Checklist at
 
 **4. Write `curriculum-gap-report.md`** to `workspace/{project}/00-project-brief/curriculum-gap-report.md`.
 
-Before writing, assess each pipeline stage against its schema. Load `.claude/reference/schemas/stage-02-outcomes.md` through `stage-08-marketing.md` to confirm threshold criteria per stage. Apply this assessment structure:
-
-- **Exists** = source materials contain content for this stage that meets schema-field-completeness requirements
-- **Shallow** = content exists but fails specific schema requirements (name the specific missing field — do not use quality language like "limited" or "underdeveloped")
-- **Missing** = no relevant content found in any source document
+Build this report from the `audit-results.md` table already in context — do not re-read source documents. Map `content_quality` values to gap report status: absent → Missing, partial → Shallow, strong → Exists. Use the summary column from `audit-results.md` to populate per-stage detail.
 
 Use this file structure:
 
@@ -591,10 +657,10 @@ This report compares your existing materials against what the full curriculum pi
 {What outcome-level content was found, if any}
 
 ### Shallow
-{Specific schema requirements not met — e.g., "Outcomes present but don't span 4 Bloom's levels; session-level outcomes absent; transfer_context missing per outcome." If nothing is shallow, write: None.}
+{Specific requirements not met. If nothing is shallow, write: None.}
 
 ### Missing
-{Stage 2 schema fields not represented at all. If nothing is missing, write: None.}
+{Stage 2 content not represented at all. If nothing is missing, write: None.}
 
 ---
 
@@ -660,18 +726,6 @@ This report compares your existing materials against what the full curriculum pi
 
 **Next step:** Run `/curriculum:outcomes` to continue — the pipeline will use your existing materials where they meet requirements and generate what's missing.
 ```
-
-**Shallow assessment rules per stage:**
-
-- **Stage 2 (Outcomes):** Shallow if outcomes exist but don't span minimum Bloom's levels required by program length (long: 4, medium: 3, short: 2) OR use prohibited verbs ("understand", "know", "appreciate") OR session-level outcomes absent OR transfer_context missing per outcome
-- **Stage 3 (Assessments):** Shallow if assessments exist but lack paired_objective linkage OR formative assessments absent (summative-only) OR assessment type doesn't match skill_type
-- **Stage 4 (Modules):** Shallow if module groupings exist but aren't named OR group processing prompt absent or generic OR DCR trigger not addressed when skill_type=open and bloom>=Analyze
-- **Stage 5 (Sessions):** Shallow if session content exists but not organized by session_template OR pre-work not tagged to sessions OR reflection prompts absent OR theory exists without application activities
-- **Stage 6 (Metaskills):** Shallow if thinking routines mentioned but not named specifically (generic "discussion" or "reflection" is insufficient) OR metaskills referenced without session mapping
-- **Stage 7 (Transfer Ecosystem):** Shallow if pre-program readiness assessment absent OR lacks minimum 3 questions OR implementation intentions absent OR manager briefing absent when contact_hours > 4
-- **Stage 8 (Marketing):** Treat as Missing unless source documents contain explicit audience-facing promotional copy with documented rationale
-
-Write both files simultaneously before announcing anything to the user.
 
 **5. Pre-populate stage files from gap report:**
 
