@@ -126,6 +126,8 @@ Then show next step:
 
 ```
 Run `/curriculum:approve` to review the human checklist and mark your curriculum delivery-ready.
+
+Your work is saved — clear context before running the next command.
 ```
 
 **If tier_1_failures > 0:**

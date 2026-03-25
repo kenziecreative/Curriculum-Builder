@@ -181,6 +181,8 @@ Then show:
 
 ```
 Your marketing materials are ready. Run /curriculum:approve to review your complete curriculum package and mark it delivery-ready.
+
+Your work is saved — clear context before running the next command.
 ```
 
 ---
