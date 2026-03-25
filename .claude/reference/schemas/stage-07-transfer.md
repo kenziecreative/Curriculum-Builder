@@ -224,3 +224,9 @@ The following conditions must be true for stage completion (Tier 1 schema checks
 8. `evaluation_design.kirkpatrick_level` meets minimum level for program type
 9. `manager_briefing_template` and `manager_checkin_prompts` are present for programs with contact_hours > 4
 10. `baseline_measurement.dimensions` align with stage-02 learning objectives
+
+---
+
+## Write Format
+
+`transfer-ecosystem.md` is written as narrative markdown prose, not YAML. Field definitions in this schema inform generation; they do not appear as YAML keys in the output file. The written document uses plain section headings (Before the Program, During the Program, After the Program) so it can be shared with managers, participants, and facilitators without translation. See `transfer.md` for the full file structure.
