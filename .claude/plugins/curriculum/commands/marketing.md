@@ -114,7 +114,40 @@ The total word count of all marketing elements must be less than 25% of total cu
 
 ## File Write (immediately after generation — no mid-pipeline gate)
 
-Write `workspace/{project}/07-marketing/marketing-package.md` with complete schema-compliant YAML content. All elements written simultaneously.
+Write `workspace/{project}/07-marketing/marketing-package.md` as markdown prose. All sections written simultaneously.
+
+**Writing frameworks — apply silently before drafting prose:**
+- Use PAS (Problem → Agitation → Solution) when the audience has a pain point to address.
+- Use DOS (Dream → Obstacle → Solution) when positioning toward an aspiration.
+- Write in VOC (Voice of Customer) — use language that reflects how learners describe their own challenges, not how instructional designers describe competencies.
+- Lead with benefits, not coverage. "You'll be able to..." not "This program covers..."
+
+**File structure:**
+
+```
+# [Program Name] — Marketing Package
+
+## Program Description
+[2-3 prose paragraphs. Benefits-first. PAS or DOS structure. VOC language. No curriculum field names.]
+
+## Learning Promises
+[Bulleted list. Each item is a learner-facing benefit statement — full outcome text rewritten as what the learner gains. Not outcome IDs. Not "you will understand." "You'll be able to..." is the floor; "You'll walk away with X built" is preferred where accurate.]
+
+## Audience Fit
+[1-2 prose paragraphs. Who this program is for, what they'll be able to do, why it matters to them. Warm enrollment language. No identity labels — behavioral description only.]
+
+---
+
+## Source Traceability
+
+| Claim | Source | Strength |
+|-------|--------|----------|
+| [verbatim phrase from prose above] | [stage/field reference] | [High/Medium/Low] |
+```
+
+The traceability table appears after the horizontal rule separator — never inline with the prose sections.
+
+Omit sections that are not generated for the program's duration tier (e.g., omit Audience Fit for 90-minute programs).
 
 Do not wait for user review before writing. The final review gate is `/curriculum:approve` — that command covers the complete package including marketing materials.
 

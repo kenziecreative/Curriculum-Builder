@@ -9,14 +9,14 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Output Presentation
 
-- [ ] **PRES-01**: All command output hides constraint enforcement steps — user sees result and brief plain-language callout only
-- [ ] **PRES-02**: All insider terms replaced with plain language across every command (schema, linkage, verb violations, DCR trigger, TMA arc, Bloom's labels, outcome IDs in conversation, YAML field names)
-- [ ] **PRES-03**: `/curriculum:outcomes` output uses structured ASCII formatting (box header, section dividers, tree hierarchy per backlog spec)
-- [ ] **PRES-04**: `/curriculum:assessments` output replaces alignment map with human-readable summary (count + what learners do + what it covers)
-- [ ] **PRES-05**: `/curriculum:modules` output removes all numbered constraint enforcement steps; keeps module table + sequence rationale paragraph
-- [ ] **PRES-06**: All stage-completing commands end with warm synthesizing handoff paragraph naming what was built and next command
-- [ ] **PRES-07**: All stage-completing commands include context-clear nudge ("your work is saved — clear context before the next step")
-- [ ] **PRES-08**: `/curriculum:init` introduces the dashboard with launch instructions; `/curriculum:sessions` and `/curriculum:validate` remind user dashboard has updated
+- [x] **PRES-01**: All command output hides constraint enforcement steps — user sees result and brief plain-language callout only
+- [x] **PRES-02**: All insider terms replaced with plain language across every command (schema, linkage, verb violations, DCR trigger, TMA arc, Bloom's labels, outcome IDs in conversation, YAML field names)
+- [x] **PRES-03**: `/curriculum:outcomes` output uses structured ASCII formatting (box header, section dividers, tree hierarchy per backlog spec)
+- [x] **PRES-04**: `/curriculum:assessments` output replaces alignment map with human-readable summary (count + what learners do + what it covers)
+- [x] **PRES-05**: `/curriculum:modules` output removes all numbered constraint enforcement steps; keeps module table + sequence rationale paragraph
+- [x] **PRES-06**: All stage-completing commands end with warm synthesizing handoff paragraph naming what was built and next command
+- [x] **PRES-07**: All stage-completing commands include context-clear nudge ("your work is saved — clear context before the next step")
+- [x] **PRES-08**: `/curriculum:init` introduces the dashboard with launch instructions; `/curriculum:sessions` and `/curriculum:validate` remind user dashboard has updated
 
 ### Output Quality
 
@@ -24,16 +24,16 @@ Requirements for the v3.0 Output Quality milestone.
 - [ ] **QUAL-02**: Facilitator notes include diagnostic direction: what to observe, what it signals, what move to make — not just stage directions
 - [ ] **QUAL-03**: Marketing files are copy-paste-ready prose (PAS/DOS structure, VOC language, benefits-first) — traceability data in separate section at bottom, never wrapped around paragraphs
 - [ ] **QUAL-04**: Transfer ecosystem file is readable narrative with plain headings — no YAML structure in output
-- [ ] **QUAL-05**: Session content shows full objective text everywhere IDs appear in conversation output
-- [ ] **QUAL-06**: NEEDS: markers fully resolved before any file is marked complete — validation stage checks for unconverted markers
+- [x] **QUAL-05**: Session content shows full objective text everywhere IDs appear in conversation output
+- [x] **QUAL-06**: NEEDS: markers fully resolved before any file is marked complete — validation stage checks for unconverted markers
 - [ ] **QUAL-07**: TMA phase labels (ACTIVATE, THEORY, METHOD, etc.) never appear as visible labels in facilitator guides, participant materials, or slide outlines
 - [ ] **QUAL-08**: HTML calculation comments and working notes stripped from all session output files before writing
-- [ ] **QUAL-09**: Writing for Clarity principles applied across all generated content (kernel sentences, precise language, no warm-up copy)
+- [x] **QUAL-09**: Writing for Clarity principles applied across all generated content (kernel sentences, precise language, no warm-up copy)
 
 ### Voice
 
 - [x] **VOICE-01**: `curriculum-voice.md` created as shared reference — tone per output type, guardrails (terms that never appear), plain-language substitutions, signature moves
-- [ ] **VOICE-02**: Every command that generates user-facing content references `curriculum-voice.md` before generating
+- [x] **VOICE-02**: Every command that generates user-facing content references `curriculum-voice.md` before generating
 
 ### Audit Mode
 
@@ -79,25 +79,25 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PRES-01 | Phase 13 | Pending |
-| PRES-02 | Phase 13 | Pending |
-| PRES-03 | Phase 13 | Pending |
-| PRES-04 | Phase 13 | Pending |
-| PRES-05 | Phase 13 | Pending |
-| PRES-06 | Phase 13 | Pending |
-| PRES-07 | Phase 13 | Pending |
-| PRES-08 | Phase 13 | Pending |
+| PRES-01 | Phase 13 | Complete |
+| PRES-02 | Phase 13 | Complete |
+| PRES-03 | Phase 13 | Complete |
+| PRES-04 | Phase 13 | Complete |
+| PRES-05 | Phase 13 | Complete |
+| PRES-06 | Phase 13 | Complete |
+| PRES-07 | Phase 13 | Complete |
+| PRES-08 | Phase 13 | Complete |
 | QUAL-01 | Phase 13 | Pending |
 | QUAL-02 | Phase 13 | Pending |
 | QUAL-03 | Phase 13 | Pending |
 | QUAL-04 | Phase 13 | Pending |
-| QUAL-05 | Phase 13 | Pending |
-| QUAL-06 | Phase 13 | Pending |
+| QUAL-05 | Phase 13 | Complete |
+| QUAL-06 | Phase 13 | Complete |
 | QUAL-07 | Phase 13 | Pending |
 | QUAL-08 | Phase 13 | Pending |
-| QUAL-09 | Phase 13 | Pending |
+| QUAL-09 | Phase 13 | Complete |
 | VOICE-01 | Phase 12 | Complete |
-| VOICE-02 | Phase 12 | Pending |
+| VOICE-02 | Phase 12 | Complete |
 | AUDIT-01 | Phase 14 | Pending |
 | AUDIT-02 | Phase 14 | Pending |
 | AUDIT-03 | Phase 14 | Pending |
