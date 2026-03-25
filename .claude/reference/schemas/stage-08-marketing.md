@@ -110,7 +110,11 @@ The total word count of all marketing output files must be less than 25% of the 
 
 When this stage runs, the following file is created in `output_dir`:
 
-- `marketing-package.md` — All marketing elements in the records format above
+- `marketing-package.md` — Written as markdown prose, not YAML. Field definitions in this schema inform generation; they do not appear as YAML keys in the output file. See marketing.md for file structure.
+
+## Write Format
+
+marketing-package.md is written as markdown prose, not YAML. Field definitions in this schema inform generation — they define what constraints apply to each element type, not what appears in the output file. The output file contains: Program Description (prose), Learning Promises (bullets), Audience Fit (prose), and a Source Traceability table.
 
 ---
 
