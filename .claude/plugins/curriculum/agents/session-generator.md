@@ -157,6 +157,12 @@ For each session M-N-S-N, write to `{output_dir}M-N-S-N/`:
 
 **Create the directory first, then write each file.**
 
+**Pre-write cleanup — required before every Write call (applies to all four files):**
+
+1. Strip all HTML comments (`<!-- ... -->`) from the content.
+2. Strip any working notes or calculation sections from the content.
+3. Check the content for unresolved NEEDS: markers. If any NEEDS: markers are present, do not write the file — instead, surface the markers to the user: "The following items are still incomplete: [list]. Resolve these before the session file is finalized."
+
 ---
 
 ### session.md
@@ -168,22 +174,23 @@ Full schema output. All required fields with exact enum values.
 
 **session_id:** [M-N-S-N]
 **parent_module_id:** [M-N]
-**session_template:** [enum value: gagne | 5e_7e | merrill | wippea | universal_tma_arc]
 **total_duration_minutes:** [sum of all component duration_minutes]
 
-## ACTIVATE: Prior Knowledge Activation
+## Opening: Prior Knowledge Activation
 
 **Activity:** [activity_description]
 **Duration:** [duration_minutes] minutes
 **Target Prior Knowledge:** [target_prior_knowledge]
 
-## THEORY: Learning Objectives
+## Learning Objectives
 
-- [outcome_id 1]
-- [outcome_id 2]
+Look up the full text of each objective from `learning-objectives.md` and include it alongside the ID:
+
+- [outcome_id 1]: [full text of objective 1]
+- [outcome_id 2]: [full text of objective 2]
 [...]
 
-## THEORY: Content
+## [Content Topic]
 
 ### Chunk 1: [chunk_name]
 **Key Concepts:** [concept 1], [concept 2], [concept 3]
@@ -193,32 +200,32 @@ Full schema output. All required fields with exact enum values.
 ### Chunk 2: [chunk_name]
 [...]
 
-## CHECK: Formative Check
+## Formative Check
 
 **Activity:** [check_activity]
 **Duration:** [duration_minutes] minutes
 **Feedback Mechanism:** [feedback_mechanism]
 
-## METHOD: Guided Practice
+## Guided Practice
 
 **Activity:** [activity_description]
 **Scaffolding Provided:** [scaffolding_provided]
 **Facilitator Role:** [facilitator_role]
 **Duration:** [duration_minutes] minutes
 
-## PRACTICE: Independent Practice
+## Independent Practice
 
 **Activity:** [activity_description]
 **Reduced Scaffold:** [reduced_scaffold_note]
 **Duration:** [duration_minutes] minutes
 
-## REFLECT: Reflection Prompt
+## Reflection
 
 **Prompt:** [prompt_text]
 **Duration:** [duration_minutes] minutes
 **Type:** [reflection_type]
 
-## TRANSFER: Transfer Connection
+## Transfer Connection
 
 **Scenario:** [application_scenario]
 **Action:** [action_prompt]
@@ -227,7 +234,7 @@ Full schema output. All required fields with exact enum values.
 
 [Include DCR section below only if skill_type==open AND bloom_level >= Analyze]
 
-## DCR: Deconstruct–Compare–Rebuild
+## Deconstruct–Compare–Rebuild
 
 **Deconstruct:** [deconstruct_element]
 **Compare:** [compare_element]
@@ -243,7 +250,7 @@ Full schema output. All required fields with exact enum values.
 [common_stumbling_points — predictable confusion points with facilitator response guidance]
 
 ### Transition Notes
-[transition_notes — how to move between TMA arc phases smoothly]
+[transition_notes — how to move between sections smoothly]
 
 ## Participant Materials
 
@@ -256,6 +263,12 @@ Full schema output. All required fields with exact enum values.
 [activity_worksheets list — if none, write "None"]
 
 ```
+
+**session.md generation notes:**
+- Section headers are plain descriptive labels that name what learners are doing — never TMA arc labels (ACTIVATE:, THEORY:, CHECK:, METHOD:, PRACTICE:, REFLECT:, TRANSFER:, DCR:)
+- The content section header (## [Content Topic]) should be named by what the content covers, not a structural label
+- The session_template field does not appear in the written session.md — it is internal generation context only
+- Learning objectives must include full text from learning-objectives.md alongside each ID — IDs alone are not sufficient for a facilitator reading the file
 
 ---
 
@@ -281,14 +294,22 @@ Brief description of what this session accomplishes and what learners will produ
 
 ## Common Stumbling Points
 
-1. [stumbling point] — [facilitator response]
-2. [stumbling point] — [facilitator response]
-[From common_stumbling_points array — each item on its own numbered line with response]
+[For each stumbling point, generate a three-part diagnostic block. Describe an observable behavior (not a feeling or internal state), explain what it signals about where the learner is stuck, and give a specific facilitation move — a question to ask, an activity to try, or a reframe to offer.]
+
+**Watch for:** [observable learner behavior — what the facilitator can see or hear]
+**What it means:** [interpretation — what that behavior signals about the learner's state or struggle]
+**Your move:** [specific facilitation action — what to do, not just what to say]
+
+**Watch for:** [observable learner behavior]
+**What it means:** [interpretation]
+**Your move:** [specific facilitation action]
+
+[Add one block per stumbling point from common_stumbling_points]
 
 ## Transition Notes
 
 [transition_notes formatted as inline descriptions between activity blocks]
-[Help facilitator move from ACTIVATE to THEORY, THEORY to CHECK, etc.]
+[Help facilitator move smoothly between sections]
 ```
 
 ---
