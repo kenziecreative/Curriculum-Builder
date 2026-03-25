@@ -103,7 +103,11 @@ Plans:
   - Pitfall 9: Persona audit of all 12 commands completed BEFORE writing the voice file — contradictions between existing personas and the new baseline resolved before the file is authored
 **Estimated complexity**: LOW to write; MEDIUM to enforce; persona audit is the most time-intensive step
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 12-01-PLAN.md — Create curriculum-voice.md: baseline voice, marketing register, universal prohibition table, signature moves
+- [ ] 12-02-PLAN.md — Wire all 13 commands with voice file reference; add inline guardrails to 4 worst-offending files
 
 ---
 
@@ -199,7 +203,7 @@ Plans:
 | 8.1. Plugin Namespace Migration | v2.0 | 2/2 | Complete | 2026-03-23 |
 | 9. Stage Pre-population | v2.0 | 3/3 | Complete | 2026-03-24 |
 | 10. Evaluation Mode | v2.0 | 2/2 | Complete | 2026-03-24 |
-| 11. Infrastructure | 1/1 | Complete   | 2026-03-25 | - |
+| 11. Infrastructure | 1/1 | Complete    | 2026-03-25 | - |
 | 12. Voice System | v3.0 | TBD | Not started | - |
 | 13. Command Retrofit | v3.0 | TBD | Not started | - |
 | 14. Audit Mode Enhancement | v3.0 | TBD | Not started | - |
