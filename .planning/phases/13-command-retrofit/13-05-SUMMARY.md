@@ -109,3 +109,12 @@ None - no external service configuration required.
 ---
 *Phase: 13-command-retrofit*
 *Completed: 2026-03-25*
+
+## Self-Check: PASSED
+
+- FOUND: .claude/plugins/curriculum/commands/marketing.md
+- FOUND: .claude/plugins/curriculum/commands/validate.md
+- FOUND: .claude/plugins/curriculum/commands/assessments.md
+- FOUND: .planning/phases/13-command-retrofit/13-05-SUMMARY.md
+- FOUND: commit 47779af (Task 1 — context-clear nudge)
+- FOUND: commit a8f82cd (Task 2 — assessment summary vocabulary)
