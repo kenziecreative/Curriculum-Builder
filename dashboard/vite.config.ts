@@ -98,6 +98,12 @@ function generateHtml(): Plugin {
       await generateHtmlForWorkspace(WORKSPACE_DIR)
       console.log('[generate-html] Done.')
     },
+    async handleHotUpdate({ file }: { file: string }) {
+      if (file.endsWith('.md') && file.startsWith(WORKSPACE_DIR)) {
+        await generateHtmlForWorkspace(WORKSPACE_DIR)
+        return []
+      }
+    },
   }
 }
 
