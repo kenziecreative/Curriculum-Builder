@@ -48,7 +48,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 - [x] **Phase 11: Infrastructure** — Clone-and-run deployment, dashboard env var, release script (completed 2026-03-25)
 - [x] **Phase 12: Voice System** — Curriculum voice file and cross-command enforcement baseline (completed 2026-03-25)
 - [x] **Phase 13: Command Retrofit** — Presentation and quality improvements across all 12 commands (completed 2026-03-25)
-- [ ] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction
+- [x] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction (completed 2026-03-25)
 - [ ] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier
 
 ## Phase Details
@@ -217,5 +217,5 @@ Plans:
 | 11. Infrastructure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
 | 13. Command Retrofit | 5/5 | Complete    | 2026-03-25 | - |
-| 14. Audit Mode Enhancement | v3.0 | 2/3 | In Progress | - |
+| 14. Audit Mode Enhancement | 3/3 | Complete   | 2026-03-25 | - |
 | 15. Delivery Layer | v3.0 | TBD | Not started | - |
