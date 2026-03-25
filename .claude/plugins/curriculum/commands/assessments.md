@@ -36,19 +36,18 @@ Read the Stage 3 row from STATE.md `Stage Progress` table:
 - **`pre-populated`** — Read all files from `workspace/*/02-assessments/`. Run all constraint
   enforcement steps silently against the existing content (coverage check, Bloom auto-elevation,
   formative coverage, observable verbs, skill-type compliance). Remove any `# NEEDS:` marker
-  lines from the corrected output before displaying. Display the corrected assessment plan and
-  alignment map. Proceed directly to the PIPE-05 Gate section.
+  lines from the corrected output before displaying. Display the corrected assessment plan. Proceed directly to the PIPE-05 Gate section.
   Do not regenerate — the content source is the extracted draft, not the project brief.
   On "Start over" at the PIPE-05 Gate: wipe all files in `workspace/*/02-assessments/`, set
   Stage 3 status to `not-started` in STATE.md (clearing the `pre-populated` status), restart
   from the Generation section.
-- **`in-progress`** — re-display alignment map if `02-assessments/` files exist from a previous partial run; if yes, proceed directly to the PIPE-05 Gate section; if no files exist, regenerate from scratch
+- **`in-progress`** — re-display the assessment summary if `02-assessments/` files exist from a previous partial run; if yes, proceed directly to the PIPE-05 Gate section; if no files exist, regenerate from scratch
 - **`complete`** AND Post-Assessment gate = `approved` — respond:
   > Assessments are approved. Stage 4 is next — run `/curriculum:modules` to build the module structure.
   Stop here.
 - **`complete`** but Post-Assessment gate ≠ `approved` — surface the pending gate:
   > Your assessments are ready for review.
-  Re-display alignment map and proceed to PIPE-05 Gate section.
+  Re-display the assessment summary and proceed to PIPE-05 Gate section.
 
 ---
 
@@ -172,13 +171,13 @@ Do not show a table with Outcome IDs or complexity-match columns. Describe what 
 
 ## PIPE-05 Gate
 
-After displaying the alignment map, silently update `workspace/{project-name}/STATE.md`:
+After displaying the assessment summary, silently update `workspace/{project-name}/STATE.md`:
 - `Review Gates` → Post-Assessment: `pending`
 
 Then use `AskUserQuestion` with three options:
 
 - **"Approve and continue"** — write files, update STATE.md, unlock Stage 4
-- **"I have concerns"** — ask what's wrong, revise assessments, re-present alignment map, gate again
+- **"I have concerns"** — ask what's wrong, revise assessments, re-present the assessment summary, gate again
 - **"Start this stage over"** — destructive confirmation gate
 
 **Critical timing: STATE.md stage status writes happen ONLY in the "Approve and continue" branch. "I have concerns" and "Start this stage over" never advance stage or gate status.**
@@ -236,7 +235,7 @@ Ask what's wrong:
 
 > What would you like to change?
 
-Take free-text feedback. Revise the FULL assessment set (not individual assessments) using the Stage 2 outcomes plus the user's feedback. Re-run all five constraint enforcement steps on the revised set. Re-display the validation badge or transparency note (if any corrections were needed), then the alignment map. Present the PIPE-05 Gate again.
+Take free-text feedback. Revise the FULL assessment set (not individual assessments) using the Stage 2 outcomes plus the user's feedback. Re-run all five constraint enforcement steps on the revised set. Re-display the validation badge or transparency note (if any corrections were needed), then the assessment summary. Present the PIPE-05 Gate again.
 
 Do not update STATE.md Post-Assessment gate during this branch — it stays at `pending`. Stage status stays at current value.
 
@@ -254,9 +253,9 @@ Options: **"Yes, start over"** / **"Actually, keep what we have"**
 - Do not write any files
 - Reset Stage 3 status in STATE.md to `not-started`
 - Reset Post-Assessment gate to `not-reached`
-- Regenerate from scratch: full generation + full constraint enforcement + display alignment map + PIPE-05 gate
+- Regenerate from scratch: full generation + full constraint enforcement + display assessment summary + PIPE-05 gate
 
-**On "Actually, keep what we have":** Return to the alignment map display and re-present the PIPE-05 Gate AskUserQuestion.
+**On "Actually, keep what we have":** Return to the assessment summary display and re-present the PIPE-05 Gate AskUserQuestion.
 
 ---
 
@@ -269,7 +268,7 @@ All STATE.md reads and writes are silent. Never say:
 - "Let me check the gate status"
 
 Gate status update timing:
-- Post-Assessment moves to `pending` when alignment map is first presented (before AskUserQuestion)
+- Post-Assessment moves to `pending` when assessment summary is first presented (before AskUserQuestion)
 - Post-Assessment moves to `approved` ONLY when user selects "Approve and continue"
 - "I have concerns" loop: gate stays at `pending`, stage status stays at current value
 - "Start this stage over" confirmed: both gate and stage status reset
