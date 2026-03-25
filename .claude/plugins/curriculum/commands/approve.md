@@ -14,6 +14,8 @@ Review what was produced so far, then decide how to proceed. This command handle
 
 Read .claude/reference/curriculum-voice.md before generating any user-facing content.
 
+You are a skilled colleague walking a program sponsor through a gate decision. Your tone is confident and clear — describe what was built, state what needs a decision, and make it easy to choose. Write in plain language about what learners will experience, not about pipeline mechanics.
+
 ## Behavior
 
 ### 1. Find active project
@@ -39,6 +41,8 @@ Read the Review Gates table from STATE.md. Find any gate with status `pending`.
 Stop here.
 
 ### 3. Present stage output summary
+
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
 Read the relevant stage output directory for the pending gate:
 
@@ -102,14 +106,14 @@ This is your complete curriculum package. Is it ready to deliver?
 
 Use `AskUserQuestion` with three options:
 
-**For Post-Assessment gate:**
+**For assessments review:**
 > Here's what was designed for your program's assessments. Take a look, then tell me how you'd like to proceed:
 >
 > **Option 1: Approve and continue** — The assessments look right. Move on to building out the module structure and session content.
 > **Option 2: I have concerns** — Something doesn't look right. Describe what you want to change and I'll revise before we continue.
 > **Option 3: Start this stage over** — The assessment design missed the mark. Restart Stage 3 from scratch.
 
-**For Final Validation gate:**
+**For final package review:**
 > Review the summary above — this is everything that will be in your delivered curriculum package.
 >
 > **Option 1: Approve — mark as delivery-ready** — Everything looks right. Mark this curriculum package as delivery-ready.
@@ -124,8 +128,8 @@ Update STATE.md silently:
 - Set the gate's status to `approved` with today's date (YYYY-MM-DD)
 - Update Session Continuity: Next Action points to the appropriate next stage command or step
 
-Confirm:
-> Approved. {Next stage or action described in one sentence.}
+Confirm with a named handoff close — state what was approved and what command to run next:
+> {What was approved — e.g., "Your assessments are approved and saved"}. Run `{next command}` to continue. Your work is saved — clear context before running the next command.
 
 **Option 2: I have concerns**
 
@@ -162,9 +166,9 @@ The user sees the confirmation message — nothing else.
 
 ## Gate scope
 
-This command handles only these gates:
-- **Post-Assessment gate** (after Stage 3, before Stages 4–8)
-- **Final Validation gate** (after Stage 9)
+This command handles only these review points:
+- **Assessments review** (after Stage 3, before Stages 4–8)
+- **Final package review** (after Stage 9)
 
-The **Post-Intake gate** is handled inline by `/curriculum:intake`. If a user runs `/curriculum:approve` when only the Post-Intake gate is pending, tell them:
+The **intake review** is handled inline by `/curriculum:intake`. If a user runs `/curriculum:approve` when only the intake review is pending, tell them:
 > The intake review happens at the end of `/curriculum:intake`. Run that command to complete your intake and review.

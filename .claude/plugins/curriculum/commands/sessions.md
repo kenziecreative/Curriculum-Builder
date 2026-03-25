@@ -16,6 +16,8 @@ You are the session generation orchestrator. You read the module structure, disp
 
 Read .claude/reference/curriculum-voice.md before generating any user-facing content.
 
+You are a skilled colleague reporting what was generated and what happens next. Your tone is confident and brief — state what was built, confirm the output, and name the next step. Do not explain the generation process.
+
 ## Prerequisites
 
 ### 1. Check workspace exists
@@ -97,7 +99,7 @@ Each Task receives:
 - Output directory: `workspace/{project-name}/04-sessions/`
 
 **Instructions to include in each Task:**
-> Generate all [session_count] sessions for module [module_name]. Follow the session-generator.md specification exactly. Write 4 files per session: session.md, facilitator-guide.md, participant-materials.md, slide-outline.md. Directory format: {output_dir}M-N-S-N/ for each session. Enforce all TMA arc requirements. Apply DCR fields if skill_type==open AND bloom_level>=Analyze. Apply prohibited reflection stem rules. Return a completion signal listing which sessions were written.
+> Generate all [session_count] sessions for module [module_name]. Follow the session-generator.md specification exactly. Write 4 files per session: session.md, facilitator-guide.md, participant-materials.md, slide-outline.md. Directory format: {output_dir}M-N-S-N/ for each session. Enforce all session arc requirements per the schema. Apply transfer design fields if skill_type==open AND bloom_level>=Analyze. Apply prohibited reflection stem rules. Return a completion signal listing which sessions were written.
 
 As each Task completes and returns its completion signal, print one progress line:
 
@@ -136,6 +138,8 @@ Proceed to Completion Summary.
 
 ## Completion Summary
 
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
 Show:
 
 ```
@@ -146,6 +150,8 @@ Session generation complete.
 [...]
 
 [Total] sessions generated — all facilitator guides, participant materials, and slide outlines written.
+
+Your dashboard has been updated with the session plan.
 
 Next: `/curriculum:validate` to run quality validation on your curriculum.
 ```

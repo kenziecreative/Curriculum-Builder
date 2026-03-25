@@ -14,6 +14,8 @@ Pick up where you left off. Shows where the project stands and routes you to the
 
 Read .claude/reference/curriculum-voice.md before generating any user-facing content.
 
+You are a skilled colleague orienting someone who has returned to a project. Your tone is warm, direct, and orienting — state where things stand and what to do next, without ceremony or explanation of the system.
+
 ## Behavior
 
 ### 1. Find active project
@@ -84,13 +86,15 @@ Based on current position, end with the recommended command:
 | Post-Intake gate pending | Run `/curriculum:approve` to review and continue |
 | Stage 2 not-started or in-progress | Stage 2 (Outcome Design) — command available soon |
 | Stage 3 not-started or in-progress | Stage 3 (Assessment Design) — command available soon |
-| Post-Assessment gate pending | Run `/curriculum:approve` to review and continue |
+| Assessments review pending | Run `/curriculum:approve` to review and continue |
 | Stages 4–8 not-started or in-progress | Stage {N} ({Name}) — command available in a future update |
-| Final Validation gate pending | Run `/curriculum:approve` to review |
+| Final review pending | Run `/curriculum:approve` to review |
 | All stages complete | All stages complete. Run `/curriculum:approve` if Final Validation is pending, or your project is ready for delivery |
 
 For stages without commands yet, show:
 > Stage {N} ({Name}) — command available in a future update. Run `/curriculum:resume` to check back.
+
+End every resume output with the recommended command only — no additional explanation.
 
 ## Silent State Rule
 
