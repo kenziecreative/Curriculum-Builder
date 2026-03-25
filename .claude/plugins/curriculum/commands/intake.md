@@ -312,7 +312,9 @@ Use `AskUserQuestion` with these three options:
 
 4. **End with a brief forward-looking message:**
 
-   > Your program brief is locked in. Next up is designing the learning outcomes — I'll build those from what you've just told me. Run `/curriculum:outcomes` when you're ready.
+   Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
+   > Your program brief is written and saved. Run `/curriculum:outcomes` to design the learning outcomes. Your work is saved — clear context before running the next command.
 
 ---
 
@@ -725,4 +727,4 @@ Include only stages 2–5 in the table. Stages that were `Missing` show "— (Mi
 
 **8. End with a forward-looking message:**
 
-> Your program brief and gap report are ready in `workspace/{project}/00-project-brief/`. I've also pre-populated draft files for the stages that had existing content — see the summary above. Run `/curriculum:outcomes` to review and enforce schema on the first draft.
+> Your program brief, gap report, and pre-populated stage drafts are written and saved. Run `/curriculum:outcomes` to review and build out the learning outcomes. Your work is saved — clear context before running the next command.

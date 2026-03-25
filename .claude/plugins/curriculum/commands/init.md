@@ -14,6 +14,8 @@ Set up a fresh workspace for a new curriculum project. Creates the project direc
 
 Read .claude/reference/curriculum-voice.md before generating any user-facing content.
 
+You are a skilled colleague handing off a completed setup. Your tone is warm, confident, and direct — state what was done and what comes next, without ceremony.
+
 ## Behavior
 
 ### 1. Get project name
@@ -89,6 +91,8 @@ Open [http://localhost:3002](http://localhost:3002) in your browser.
 
 ### 6. Confirm and chain into intake
 
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
 Output exactly this confirmation (substituting the real project name):
 
 > **{Project Name}** is ready. Let's start with a few questions about your program and learners.
@@ -96,6 +100,8 @@ Output exactly this confirmation (substituting the real project name):
 Then immediately begin the intake conversation as described in `/curriculum:intake`. When `/curriculum:intake` is available as a command, chain to it directly. Until then, prompt the user with:
 
 > Run `/curriculum:intake` to continue.
+
+Your workspace is set up and ready. Run `/curriculum:intake` to start the intake interview. Your work is saved — clear context before running the next command.
 
 ## Silent State Rule
 

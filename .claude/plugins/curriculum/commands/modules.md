@@ -68,6 +68,8 @@ Say instead: module, thinking level, learning objectives, prerequisites, collabo
 
 ## Generation
 
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
 **Load and generate:**
 
 Load `.claude/reference/schemas/stage-04-modules.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
@@ -225,8 +227,9 @@ Then use `AskUserQuestion` with three options:
    ```
    ## [module_name]
 
-   **Module ID:** [module_id]
-   **Prerequisites:** [prerequisite_modules — "none" if empty]
+   <!-- internal: module_id=[M-N] -->
+   **Module:** [module_name]
+   **Prerequisites:** [prerequisite module names — "none" if this is the first module]
 
    ### Learning Objectives
    [List of outcome_id references from Stage 02]
@@ -260,7 +263,7 @@ Then use `AskUserQuestion` with three options:
 
 3. End with brief confirmation:
 
-   > Module structure approved. Your program has [N] modules covering [X] learning objectives. Next: `/curriculum:sessions` to generate the session content.
+   > Your module structure is written and saved. Run `/curriculum:sessions` to generate the session content. Your work is saved — clear context before running the next command.
 
 ---
 

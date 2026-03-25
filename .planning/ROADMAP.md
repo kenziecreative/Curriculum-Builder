@@ -46,7 +46,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 ## Phases
 
 - [x] **Phase 11: Infrastructure** — Clone-and-run deployment, dashboard env var, release script (completed 2026-03-25)
-- [ ] **Phase 12: Voice System** — Curriculum voice file and cross-command enforcement baseline
+- [x] **Phase 12: Voice System** — Curriculum voice file and cross-command enforcement baseline (completed 2026-03-25)
 - [ ] **Phase 13: Command Retrofit** — Presentation and quality improvements across all 12 commands
 - [ ] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction
 - [ ] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier
@@ -138,7 +138,13 @@ Plans:
   - Pitfall 13: Transparency notes capped at two sentences; no prohibited vocabulary; test: "does the user need to act on this?" — if no, cut or eliminate
 **Estimated complexity**: MEDIUM-HIGH — breadth (12 commands + session-generator agent) not depth; highest-impact target is session-generator because it produces the most content volume
 
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 13-01-PLAN.md — Retrofit 10 commands: structural hiding, vocabulary replacement, warm handoffs, context-clear nudge, ASCII formatting for outcomes, plain-language gate summary for assessments
+- [ ] 13-02-PLAN.md — Upgrade marketing.md: YAML → prose write instruction, PAS/DOS generation guidance; update stage-08-marketing.md write note
+- [ ] 13-03-PLAN.md — Upgrade transfer.md: YAML → narrative prose write instruction, plain headings; update stage-07-transfer.md write note
+- [ ] 13-04-PLAN.md — Retrofit session-generator.md: slide outline template replacement, facilitator note diagnostic structure, TMA label suppression, HTML comment stripping, NEEDS: marker enforcement
 
 ---
 
@@ -203,8 +209,8 @@ Plans:
 | 8.1. Plugin Namespace Migration | v2.0 | 2/2 | Complete | 2026-03-23 |
 | 9. Stage Pre-population | v2.0 | 3/3 | Complete | 2026-03-24 |
 | 10. Evaluation Mode | v2.0 | 2/2 | Complete | 2026-03-24 |
-| 11. Infrastructure | 1/1 | Complete    | 2026-03-25 | - |
-| 12. Voice System | v3.0 | 1/2 | In progress | - |
-| 13. Command Retrofit | v3.0 | TBD | Not started | - |
+| 11. Infrastructure | v3.0 | 1/1 | Complete | 2026-03-25 |
+| 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
+| 13. Command Retrofit | v3.0 | 0/4 | Not started | - |
 | 14. Audit Mode Enhancement | v3.0 | TBD | Not started | - |
 | 15. Delivery Layer | v3.0 | TBD | Not started | - |

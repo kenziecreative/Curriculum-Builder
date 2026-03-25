@@ -68,6 +68,8 @@ Say instead: thinking level, complexity level, skills, objectives, outcomes, spe
 
 ## Generation
 
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
 **Load and generate:**
 
 Load `.claude/reference/schemas/stage-02-outcomes.md` as generation context before generating any output. Read all required fields, enum values, duration scaling rules, and validation rules from the schema.
@@ -177,14 +179,29 @@ After constraint enforcement completes, display the outcome set.
 
 **Outcome presentation format:**
 
-Display the outcome hierarchy in readable form using the program's own language. Do not expose schema field names — no `bloom_level:`, no `outcome_id:`, no `transfer_context:`. Format for reading, not schema inspection.
+Display the outcome hierarchy using structured ASCII formatting. Do not expose schema field names — no `bloom_level:`, no `outcome_id:`, no `transfer_context:`. Format for reading, not schema inspection.
 
-For each outcome show:
-- The outcome statement
-- The thinking level in plain language (Recall, Understand, Apply, Analyze, Evaluate, Create — not "Bloom's level")
-- The specific work situation where learners will use this skill
+Use this structure:
 
-Organize by level: Program Outcomes first, then Module Outcomes by their parent program outcome, then Session Outcomes by their parent module outcome.
+```
+╔═══════════════════════════════════════════════════╗
+║  PROGRAM OUTCOMES                                  ║
+╠═══════════════════════════════════════════════════╣
+║  [outcome statement]                               ║
+║  Thinking level: [plain-language level]            ║
+║  Where they'll use it: [real-work context]         ║
+╚═══════════════════════════════════════════════════╝
+
+  └─ MODULE: [module outcome statement]
+       Thinking level: [plain-language level]
+       Where they'll use it: [real-work context]
+
+       └─ SESSION: [session outcome statement]
+            Thinking level: [plain-language level]
+            Where they'll use it: [real-work context]
+```
+
+Repeat the box header for each program outcome. Use └─ connectors to show module and session outcomes nested under their parent. Thinking level names to use: Recall, Understand, Apply, Analyze, Evaluate, Create. Never say "Bloom's taxonomy" or "Bloom's level" in any user-facing text.
 
 **After displaying the full outcome set**, show the thinking-level distribution summary:
 
@@ -196,8 +213,6 @@ Your program spans [N] thinking levels — from [description of lowest, e.g., "r
 | [level name]   | [count]    | [example verb phrase] |
 | ...            | ...        | ...                   |
 ```
-
-Thinking level names to use: Recall, Understand, Apply, Analyze, Evaluate, Create. Never say "Bloom's taxonomy" or "Bloom's level" in this table or anywhere in user-facing text.
 
 ---
 
@@ -244,26 +259,27 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
    ```
    ## Program Outcomes
 
-   ### [outcome_id]: [outcome_statement]
-   - bloom_level: [exact enum value]
-   - prerequisite_knowledge: [behavioral description]
-   - transfer_context: [specific work context]
+   ### [outcome statement]
+   <!-- internal: outcome_id=[PO-N] bloom_level=[exact enum value] -->
+   - Thinking level: [plain-language level name]
+   - Starting knowledge: [behavioral description]
+   - Real-work context: [specific work context]
 
    ## Module Outcomes
 
-   ### [outcome_id]: [outcome_statement]
-   - bloom_level: [exact enum value]
-   - parent_outcome_id: [program outcome id]
-   - prerequisite_knowledge: [behavioral description]
-   - transfer_context: [specific work context]
+   ### [outcome statement]
+   <!-- internal: outcome_id=[MO-N-N] bloom_level=[exact enum value] parent_outcome_id=[PO-N] -->
+   - Thinking level: [plain-language level name]
+   - Starting knowledge: [behavioral description]
+   - Real-work context: [specific work context]
 
    ## Session Outcomes
 
-   ### [outcome_id]: [outcome_statement]
-   - bloom_level: [exact enum value]
-   - parent_outcome_id: [module outcome id]
-   - prerequisite_knowledge: [behavioral description]
-   - transfer_context: [specific work context]
+   ### [outcome statement]
+   <!-- internal: outcome_id=[SO-N-N-N] bloom_level=[exact enum value] parent_outcome_id=[MO-N-N] -->
+   - Thinking level: [plain-language level name]
+   - Starting knowledge: [behavioral description]
+   - Real-work context: [specific work context]
    ```
 
 2. Silently update `workspace/{project-name}/STATE.md`:
@@ -272,7 +288,7 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
 
 3. End with a brief forward-looking message:
 
-   > Your learning outcomes are locked in. Next is designing the assessments — I'll pair each outcome with an assessment that measures it at or above its complexity level. Run `/curriculum:assessments` when you're ready.
+   > Your learning outcomes are written and saved. Run `/curriculum:assessments` to design the assessments. Your work is saved — clear context before running the next command.
 
 ---
 

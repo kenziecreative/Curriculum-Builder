@@ -70,6 +70,8 @@ Say instead: complexity level, thinking level, check-in assessment, final projec
 
 ## Generation
 
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
 **Load and generate:**
 
 Load `.claude/reference/schemas/stage-03-assessments.md` as generation context before generating. Read all required fields, enum values, skill-type constraints, formative/summative requirements, and duration scaling from the schema.
@@ -154,21 +156,17 @@ After constraint enforcement completes, display the results.
 
 > I added [N] assessment(s) and elevated [N] assessment(s) to match their complexity levels. Example: "I added an assessment for MO-2-3 and elevated FA-4 to Evaluate to match its objective." Here's the complete picture:
 
-**Then display the Assessment Alignment Map** — this is the evidence for the gate decision. Use the format below:
+**Then display the assessment summary** — this is the evidence for the gate decision:
 
-```
-## Assessment Alignment Map
+Show a plain-language summary in this format:
 
-| Outcome ID | Outcome (abbreviated) | Assessment ID | Assessment Name | Type | Bloom Match |
-|------------|----------------------|---------------|-----------------|------|-------------|
-```
+> [N] assessments designed. Learners will [action 1], [action 2], and [action 3]. Together they cover [plain-language description of topics or outcomes covered].
 
-- "Type" column uses plain language: "formative check" for `formative`, "final assessment" for `summative` — do not expose enum values in the user-facing table
-- "Bloom Match" column shows the relationship (e.g., "Apply >= Apply", "Evaluate > Analyze") — makes alignment legible without ID vocabulary
-
-After the alignment map, show a brief summary:
+Follow the summary with a brief breakdown:
 
 > [X] check-in assessments distributed throughout the program, [Y] final assessments.
+
+Do not show a table with Outcome IDs or complexity-match columns. Describe what learners do, not how the alignment was computed.
 
 ---
 
@@ -193,25 +191,30 @@ Then use `AskUserQuestion` with three options:
 
    Load `.claude/reference/schemas/stage-03-assessments.md` as generation context before writing. Output must contain all required fields with exact enum values per schema.
 
-   **assessment-map.md** — Full alignment map table linking every Stage 02 objective to its assessment(s):
+   **assessment-map.md** — Full assessment summary linking every learning objective to its assessment(s). Use plain language — no column headers referencing internal IDs or complexity-match labels:
 
    ```
-   ## Assessment Alignment Map
+   ## Assessment Summary
 
-   | Outcome ID | Outcome (abbreviated) | Assessment ID | Assessment Name | Type | Bloom Match |
-   |------------|----------------------|---------------|-----------------|------|-------------|
+   | Outcome (abbreviated) | Assessment Name | What learners do | Type |
+   |-----------------------|-----------------|-----------------|------|
+   <!-- internal: outcome_id=[PO-N/MO-N-N/SO-N-N-N] assessment_id=[FA-N/SA-N] bloom_level=[enum] -->
    ```
+
+   - "Type" column: "check-in" for formative, "final" for summative
+   - "What learners do" column: one action phrase describing the assessment task
 
    **formative-assessments.md** — Full specification for each formative assessment:
 
    ```
-   ## [assessment_id]: [assessment_name]
-   - **paired_objective:** [outcome_id]
-   - **bloom_level:** [enum value]
-   - **format:** [enum value]
-   - **module_placement:** [module/session identifier]
-   - **instructions_for_learner:** [description]
-   - **success_criteria:** [observable behaviors]
+   ## [assessment_name]
+   <!-- internal: assessment_id=[FA-N] paired_objective=[outcome_id] bloom_level=[enum value] -->
+   - **What it covers:** [plain-language outcome description]
+   - **Thinking level:** [plain-language level name]
+   - **Format:** [plain-language format description]
+   - **When it happens:** [module/session identifier]
+   - **Instructions for learners:** [description]
+   - **How to know it's done well:** [observable behaviors]
    ```
 
    **summative-assessments.md** — Full specification for each summative assessment. Same format as formative-assessments.md.
@@ -223,7 +226,7 @@ Then use `AskUserQuestion` with three options:
 
 3. End with brief confirmation:
 
-   > Assessments approved. Your program now has a complete outcome-to-assessment map. Next: `/curriculum:modules` to build the module structure.
+   > Assessments are written and saved. Run `/curriculum:modules` to build the module structure. Your work is saved — clear context before running the next command.
 
 ---
 
