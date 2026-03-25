@@ -51,6 +51,17 @@ describe('generateHtmlForWorkspace', () => {
     expect(html).not.toContain('---')
     expect(html).toContain('<h1>')
   })
+
+  it('generates HTML for session subdirectory files at delivery/{subdir}/{filename}.html', async () => {
+    const projectDir = join(tmpDir, 'test-project')
+    const sessionDir = join(projectDir, '04-sessions', 'session-1')
+    mkdirSync(sessionDir, { recursive: true })
+    writeFileSync(join(sessionDir, 'facilitator-guide.md'), '# Session 1 Guide\n\nContent.')
+
+    await generateHtmlForWorkspace(tmpDir)
+
+    expect(existsSync(join(projectDir, 'delivery', 'session-1', 'facilitator-guide.html'))).toBe(true)
+  })
 })
 
 describe('wrapHtml', () => {

@@ -201,7 +201,12 @@ Plans:
   - Architecture note: Fix session subdirectory recursion bug in `generate-html.ts` (no session HTML has ever been produced by batch process — silent bug confirmed in research)
 **Estimated complexity**: MEDIUM — HTML generation technically simple; real complexity is scope definition for assembler and wiring file-watch; session subdirectory bug fix is a known, bounded change
 
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 15-01-PLAN.md — Fix generate-html.ts recursion bug, add handleHotUpdate, create standalone generate-html.js script
+- [ ] 15-02-PLAN.md — Write assemble.md: delivery package assembly with session-scoped structure
+- [ ] 15-03-PLAN.md — Write verify.md + wire verify and assemble into approve.md Final Validation gate
 
 ---
 
@@ -217,5 +222,5 @@ Plans:
 | 11. Infrastructure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
 | 13. Command Retrofit | 5/5 | Complete    | 2026-03-25 | - |
-| 14. Audit Mode Enhancement | 3/3 | Complete   | 2026-03-25 | - |
-| 15. Delivery Layer | v3.0 | TBD | Not started | - |
+| 14. Audit Mode Enhancement | 3/3 | Complete    | 2026-03-25 | - |
+| 15. Delivery Layer | v3.0 | 3 plans | Not started | - |
