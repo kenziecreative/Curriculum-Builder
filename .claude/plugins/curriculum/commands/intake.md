@@ -749,7 +749,7 @@ This report compares your existing materials against what the full curriculum pi
 
 **C. Stage-specific output targets:**
 - Stage 2 → `workspace/{project}/01-outcomes/` — write `enduring-understandings.md`, `essential-questions.md`, `learning-objectives.md`
-- Stage 3 → `workspace/{project}/02-assessments/` — write `assessment-plan.md`
+- Stage 3 → `workspace/{project}/02-assessments/` — write `assessment-map.md`
 - Stage 4 → `workspace/{project}/03-modules/` — write `module-{N}.md` per module found in source materials
 - Stage 5 → `workspace/{project}/04-sessions/` — write `session-manifest.md` only (session names, mapped outcome IDs, session template placeholder with NEEDS: marker, pre-work if found in source materials). Hard limit: no facilitator guide content, no participant materials, no slide outlines.
 

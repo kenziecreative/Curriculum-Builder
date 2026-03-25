@@ -47,7 +47,7 @@ For each entry below, check whether the file or directory exists. If it does not
 |---|---|---|
 | `workspace/{project}/01-outcomes/learning-objectives.md` | Not yet generated | `/curriculum:outcomes` |
 | `workspace/{project}/02-assessments/` (at least one `.md` file) | Not yet generated | `/curriculum:assessments` |
-| `workspace/{project}/03-modules/module-structure.md` | Not yet generated | `/curriculum:modules` |
+| `workspace/{project}/03-modules/sequence-rationale.md` | Not yet generated | `/curriculum:modules` |
 | `workspace/{project}/04-sessions/` (at least one subdirectory containing `facilitator-guide.md`) | Not yet generated | `/curriculum:sessions` |
 | `workspace/{project}/06-transfer/` (at least one `.md` file) | Not yet generated | `/curriculum:transfer` |
 | `workspace/{project}/07-marketing/` (at least one `.md` file) | Not yet generated | `/curriculum:marketing` |
