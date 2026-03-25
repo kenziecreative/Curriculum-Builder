@@ -32,7 +32,7 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Voice
 
-- [ ] **VOICE-01**: `curriculum-voice.md` created as shared reference — tone per output type, guardrails (terms that never appear), plain-language substitutions, signature moves
+- [x] **VOICE-01**: `curriculum-voice.md` created as shared reference — tone per output type, guardrails (terms that never appear), plain-language substitutions, signature moves
 - [ ] **VOICE-02**: Every command that generates user-facing content references `curriculum-voice.md` before generating
 
 ### Audit Mode
@@ -96,7 +96,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-07 | Phase 13 | Pending |
 | QUAL-08 | Phase 13 | Pending |
 | QUAL-09 | Phase 13 | Pending |
-| VOICE-01 | Phase 12 | Pending |
+| VOICE-01 | Phase 12 | Complete |
 | VOICE-02 | Phase 12 | Pending |
 | AUDIT-01 | Phase 14 | Pending |
 | AUDIT-02 | Phase 14 | Pending |

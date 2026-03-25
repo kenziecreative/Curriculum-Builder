@@ -12,6 +12,10 @@ You are the session generation orchestrator. You read the module structure, disp
 
 ---
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Prerequisites
 
 ### 1. Check workspace exists

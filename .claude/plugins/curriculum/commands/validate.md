@@ -12,6 +12,10 @@ You are the validation orchestrator. You check prerequisites, dispatch the valid
 
 ---
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Prerequisites
 
 ### 1. Check workspace exists

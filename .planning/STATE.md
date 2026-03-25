@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v3.0
 milestone_name: — Output Quality
 status: executing
-stopped_at: Completed 11-infrastructure-11-01-PLAN.md
-last_updated: "2026-03-25T09:37:16.562Z"
-last_activity: "2026-03-25 — Phase 11 planning complete: research, validation strategy, and 11-01-PLAN.md created"
+stopped_at: Completed 12-01-PLAN.md (curriculum-voice.md created)
+last_updated: "2026-03-25T10:16:00Z"
+last_activity: "2026-03-25 — Phase 12 Plan 01 complete: curriculum-voice.md created at .claude/reference/"
 progress:
   total_phases: 5
   completed_phases: 1
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 11 of 15 (Infrastructure)
-Plan: 0 of 1 (ready to execute)
-Status: Planned — ready to execute
-Last activity: 2026-03-25 — Phase 11 planning complete: research, validation strategy, and 11-01-PLAN.md created
+Phase: 12 of 15 (Voice System)
+Plan: 1 of 3 complete
+Status: Executing — Plan 01 complete, Plan 02 next
+Last activity: 2026-03-25 — Phase 12 Plan 01 complete: curriculum-voice.md created at .claude/reference/
 
-Next action: `/gsd:execute-phase 11`
+Next action: `/gsd:execute-phase 12` (Plan 02: wire voice reference to all 13 command files)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -49,6 +49,7 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 11-infrastructure P01 | 12min | 3 tasks | 6 files |
+| Phase 12-voice-system P01 | 5min | 1 task | 1 file |
 
 ## Accumulated Context
 
@@ -63,6 +64,9 @@ Recent decisions affecting current work:
 - [Phase 11-infrastructure]: install.sh deleted entirely — clone-and-run model replaces install-script distribution with no deprecation stub
 - [Phase 11-infrastructure]: WORKSPACE_DIR override documented in README only, not surfaced in /curriculum:init output
 - [Phase 11-infrastructure]: .planning/ added to .gitignore to keep planning artifacts out of the public cloneable repo
+- [Phase 12-voice-system P01]: Only marketing gets an additional-register section; all other output types share the confident-colleague baseline
+- [Phase 12-voice-system P01]: formative/summative assessment and contact_hours added to universal prohibition table — appear in 3+ commands, not command-specific
+- [Phase 12-voice-system P01]: Voice reference file is documentation layer; per-command Never-say lists are enforcement layer — both coexist
 
 ### Pending Todos
 
@@ -77,6 +81,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-25T09:34:29.798Z
-Stopped at: Completed 11-infrastructure-11-01-PLAN.md
-Resume file: None
+Last session: 2026-03-25T10:16:00Z
+Stopped at: Completed 12-01-PLAN.md (curriculum-voice.md created)
+Resume file: .planning/phases/12-voice-system/12-01-SUMMARY.md

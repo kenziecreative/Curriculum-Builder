@@ -10,6 +10,10 @@ Follow the `curriculum:interactive-design` skill for all user-facing output — 
 
 Set up a fresh workspace for a new curriculum project. Creates the project directory structure, STATE.md, and CLAUDE.md, then starts the intake conversation.
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Behavior
 
 ### 1. Get project name

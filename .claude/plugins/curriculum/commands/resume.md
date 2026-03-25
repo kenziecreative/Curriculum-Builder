@@ -10,6 +10,10 @@ Follow the `curriculum:interactive-design` skill for all user-facing output — 
 
 Pick up where you left off. Shows where the project stands and routes you to the right next step.
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Behavior
 
 ### 1. Find active project

@@ -106,7 +106,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 12-01-PLAN.md — Create curriculum-voice.md: baseline voice, marketing register, universal prohibition table, signature moves
+- [x] 12-01-PLAN.md — Create curriculum-voice.md: baseline voice, marketing register, universal prohibition table, signature moves (completed 2026-03-25)
 - [ ] 12-02-PLAN.md — Wire all 13 commands with voice file reference; add inline guardrails to 4 worst-offending files
 
 ---
@@ -204,7 +204,7 @@ Plans:
 | 9. Stage Pre-population | v2.0 | 3/3 | Complete | 2026-03-24 |
 | 10. Evaluation Mode | v2.0 | 2/2 | Complete | 2026-03-24 |
 | 11. Infrastructure | 1/1 | Complete    | 2026-03-25 | - |
-| 12. Voice System | v3.0 | TBD | Not started | - |
+| 12. Voice System | v3.0 | 1/2 | In progress | - |
 | 13. Command Retrofit | v3.0 | TBD | Not started | - |
 | 14. Audit Mode Enhancement | v3.0 | TBD | Not started | - |
 | 15. Delivery Layer | v3.0 | TBD | Not started | - |

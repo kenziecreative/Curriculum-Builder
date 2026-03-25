@@ -12,6 +12,10 @@ You are the evaluation orchestrator. You check prerequisites, resolve input docu
 
 ---
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Prerequisites
 
 ### 1. Check workspace exists

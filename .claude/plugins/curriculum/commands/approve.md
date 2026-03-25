@@ -10,6 +10,10 @@ Follow the `curriculum:interactive-design` skill for all user-facing output — 
 
 Review what was produced so far, then decide how to proceed. This command handles review gates that are NOT inline — the post-assessment gate (after Stage 3) and the final validation gate (after Stage 9). The post-intake gate is handled inline by `/curriculum:intake` itself.
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
 ## Behavior
 
 ### 1. Find active project
