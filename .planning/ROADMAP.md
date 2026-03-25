@@ -50,6 +50,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 - [x] **Phase 13: Command Retrofit** — Presentation and quality improvements across all 12 commands (completed 2026-03-25)
 - [x] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction (completed 2026-03-25)
 - [x] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier (completed 2026-03-25)
+- [ ] **Phase 16: Delivery Gap Closure** — Fix three cross-phase wiring mismatches found in v3.0 audit
 
 ## Phase Details
 
@@ -210,6 +211,27 @@ Plans:
 
 ---
 
+### Phase 16: Delivery Gap Closure
+**Goal**: All three cross-phase wiring mismatches found by the v3.0 audit are fixed — HTML and markdown co-located in delivery/, verify.md Check A no longer false-positives, intake.md audit pre-population feeds the correct downstream file
+**Gap Closure:** Closes gaps from v3.0-MILESTONE-AUDIT.md
+**Requirements:** DLVR-02, DLVR-03, AUDIT-01
+**Key files affected**:
+  - `.claude/plugins/curriculum/scripts/generate-html.js` — write HTML to `delivery/session-N/` matching assemble.md naming
+  - `.claude/plugins/curriculum/commands/verify.md` — Check A: look for `sequence-rationale.md` or `M-*/module-spec.md` instead of `module-structure.md`
+  - `.claude/plugins/curriculum/commands/intake.md` — pre-populate `assessment-map.md` instead of `assessment-plan.md` (or add fallback in modules.md)
+**Success Criteria** (what must be TRUE):
+  1. After running `/curriculum:assemble`, HTML and markdown for the same session are in the same `delivery/session-N/` subdirectory
+  2. Running `/curriculum:verify` on a workspace with complete modules returns no false-positive "Stage 4 not yet generated" warning
+  3. Audit-mode users who skip `/curriculum:assessments` still get meaningful assessment coverage in modules.md (file is found or graceful fallback)
+**Estimated complexity**: LOW — all three are targeted one-line or small-block fixes; no new logic required
+
+**Plans**: 1 plan
+
+Plans:
+- [ ] 16-01-PLAN.md — Fix DLVR-02 (HTML directory naming), DLVR-03 (verify.md Check A), AUDIT-01 (intake.md pre-pop filename)
+
+---
+
 ## Progress
 
 | Phase | Milestone | Plans | Status | Completed |
@@ -223,4 +245,4 @@ Plans:
 | 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
 | 13. Command Retrofit | 5/5 | Complete    | 2026-03-25 | - |
 | 14. Audit Mode Enhancement | 3/3 | Complete    | 2026-03-25 | - |
-| 15. Delivery Layer | 3/3 | Complete   | 2026-03-25 | - |
+| 15. Delivery Layer | 3/3 | Complete    | 2026-03-25 | - |

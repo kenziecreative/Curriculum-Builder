@@ -39,25 +39,22 @@ ${body}
 async function generateForProject(projectDir) {
   const deliveryDir = path.join(projectDir, 'delivery')
 
-  // --- 04-sessions: facilitator-guide.md only ---
-  const sessionsStageDir = path.join(projectDir, '04-sessions')
-  if (fs.existsSync(sessionsStageDir)) {
-    const sessionDirs = fs.readdirSync(sessionsStageDir, { withFileTypes: true })
-      .filter(d => d.isDirectory())
+  // --- delivery/session-N: facilitator-guide.md (read after assemble copies files) ---
+  if (fs.existsSync(deliveryDir)) {
+    const sessionDirs = fs.readdirSync(deliveryDir, { withFileTypes: true })
+      .filter(d => d.isDirectory() && d.name.match(/^session-\d+$/))
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
 
     for (const sessionDir of sessionDirs) {
-      const sessionPath = path.join(sessionsStageDir, sessionDir.name)
-      const guideFile = path.join(sessionPath, 'facilitator-guide.md')
+      const sessionDeliveryPath = path.join(deliveryDir, sessionDir.name)
+      const guideFile = path.join(sessionDeliveryPath, 'facilitator-guide.md')
 
       if (!fs.existsSync(guideFile)) continue
 
       const raw = fs.readFileSync(guideFile, 'utf-8')
       const content = raw.replace(/^---[\s\S]*?---\n/, '')
       const html = await marked(content)
-      const title = 'Facilitator Guide'
-      const subDeliveryDir = path.join(deliveryDir, sessionDir.name)
-      fs.mkdirSync(subDeliveryDir, { recursive: true })
-      fs.writeFileSync(path.join(subDeliveryDir, 'facilitator-guide.html'), wrapHtml(title, html))
+      fs.writeFileSync(path.join(sessionDeliveryPath, 'facilitator-guide.html'), wrapHtml('Facilitator Guide', html))
     }
   }
 
