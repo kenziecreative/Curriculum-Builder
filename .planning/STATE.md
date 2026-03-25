@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v3.0
 milestone_name: — Output Quality
 status: executing
-stopped_at: Phase 14 Plan 03 complete — audit-mode-enhancement phase done, all three plans complete
-last_updated: "2026-03-25T18:32:34.850Z"
-last_activity: "2026-03-25 — Phase 14 Plan 03 complete: modules.md and sessions.md mode routing + diff gate added — Phase 14 Audit Mode Enhancement done"
+stopped_at: Completed 15-01-PLAN.md
+last_updated: "2026-03-25T20:24:04.740Z"
+last_activity: "2026-03-25 — Phase 14 Plan 03 complete: modules.md and sessions.md mode routing + diff gate added"
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 11
-  completed_plans: 11
-  percent: 73
+  total_plans: 14
+  completed_plans: 12
+  percent: 100
 ---
 
 # Project State
@@ -60,6 +60,7 @@ Progress: [██████████] 100%
 | Phase 14-audit-mode-enhancement P01 | 15min | 2 tasks | 1 files |
 | Phase 14-audit-mode-enhancement P02 | 9min | 1 tasks | 1 files |
 | Phase 14-audit-mode-enhancement P03 | 2min | 2 tasks | 2 files |
+| Phase 15-delivery-layer P01 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -98,6 +99,9 @@ Recent decisions affecting current work:
 - [Phase 14-03]: Absent Mode Assignment table in STATE.md falls through to gap-fill silently — clean intake users see no behavior change
 - [Phase 14-03]: Hands-off diff table shows violations-only rows; zero violations skips diff entirely with a note
 - [Phase 14-03]: File writes in pre-populated branch always gated — never written before diff gate approval in any mode
+- [Phase 15-01]: generate-html.js duplicates wrapHtml() inline — keeps script self-contained for Bash invocation without a build step
+- [Phase 15-01]: Standalone script scope is narrow (facilitator guides + marketing only) — delivery/ package stays lean with only facilitator-facing and marketing-facing HTML
+- [Phase 15-01]: handleHotUpdate uses startsWith(WORKSPACE_DIR) not includes() to avoid false positives on path substrings
 
 ### Pending Todos
 
@@ -112,6 +116,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-25T18:32:34.847Z
-Stopped at: Phase 14 Plan 03 complete — audit-mode-enhancement phase done, all three plans complete
+Last session: 2026-03-25T20:24:04.737Z
+Stopped at: Completed 15-01-PLAN.md
 Resume file: None
