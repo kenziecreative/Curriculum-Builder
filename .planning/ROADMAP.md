@@ -168,7 +168,12 @@ Plans:
   - Pitfall 6: Completion Signal format defined and agent tested in isolation BEFORE wiring to intake.md — do not wire until agent returns the specified contract format reliably
 **Estimated complexity**: HIGH — three-mode logic requires design pass before implementation; auditor agent interface must be contracted before writing either file; audit path in intake.md touches the most complex branching in the codebase
 
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 14-01-PLAN.md — Create curriculum-auditor.md agent with Completion Signal contract; isolation test before wiring
+- [ ] 14-02-PLAN.md — Refactor intake.md audit section: Task dispatch, mode confirmation UX, STATE.md Mode Assignment write
+- [ ] 14-03-PLAN.md — Extend modules.md and sessions.md pre-populated branches with mode-aware routing and diff gate
 
 ---
 
@@ -211,6 +216,6 @@ Plans:
 | 10. Evaluation Mode | v2.0 | 2/2 | Complete | 2026-03-24 |
 | 11. Infrastructure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
-| 13. Command Retrofit | 5/5 | Complete   | 2026-03-25 | - |
-| 14. Audit Mode Enhancement | v3.0 | TBD | Not started | - |
+| 13. Command Retrofit | 5/5 | Complete    | 2026-03-25 | - |
+| 14. Audit Mode Enhancement | v3.0 | 0/3 | Not started | - |
 | 15. Delivery Layer | v3.0 | TBD | Not started | - |
