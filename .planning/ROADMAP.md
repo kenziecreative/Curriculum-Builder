@@ -50,7 +50,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 - [x] **Phase 13: Command Retrofit** — Presentation and quality improvements across all 12 commands (completed 2026-03-25)
 - [x] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction (completed 2026-03-25)
 - [x] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier (completed 2026-03-25)
-- [ ] **Phase 16: Delivery Gap Closure** — Fix three cross-phase wiring mismatches found in v3.0 audit
+- [x] **Phase 16: Delivery Gap Closure** — Fix three cross-phase wiring mismatches found in v3.0 audit (completed 2026-03-25)
 
 ## Phase Details
 

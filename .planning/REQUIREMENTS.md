@@ -37,7 +37,7 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Audit Mode
 
-- [ ] **AUDIT-01**: Audit mode implements three content-handling modes — gap-fill (no source content), enrich (thin/incomplete), hands-off (strong existing content) — triggered by extraction confidence level
+- [x] **AUDIT-01**: Audit mode implements three content-handling modes — gap-fill (no source content), enrich (thin/incomplete), hands-off (strong existing content) — triggered by extraction confidence level
 - [x] **AUDIT-02**: When audit mode produces a module structure that differs from source, it shows a side-by-side with reasoning before writing files
 - [x] **AUDIT-03**: Curriculum auditor extracted into dedicated specialist agent — intake command delegates source material analysis to it
 
@@ -50,8 +50,8 @@ Requirements for the v3.0 Output Quality milestone.
 ### Delivery
 
 - [x] **DLVR-01**: Document assembler command or final stage in `/curriculum:approve` compiles all approved stage outputs into facilitator package, participant workbook, and program overview document
-- [ ] **DLVR-02**: Marketing package and facilitator guides generate polished HTML alongside markdown
-- [ ] **DLVR-03**: Curriculum verifier checks completeness before delivery: no NEEDS: markers, broken outcome ID references, missing required stage files, no HTML comments in output
+- [x] **DLVR-02**: Marketing package and facilitator guides generate polished HTML alongside markdown
+- [x] **DLVR-03**: Curriculum verifier checks completeness before delivery: no NEEDS: markers, broken outcome ID references, missing required stage files, no HTML comments in output
 
 ## Future Requirements
 
@@ -98,15 +98,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-09 | Phase 13 | Complete |
 | VOICE-01 | Phase 12 | Complete |
 | VOICE-02 | Phase 12 | Complete |
-| AUDIT-01 | Phase 16 | Pending |
+| AUDIT-01 | Phase 16 | Complete |
 | AUDIT-02 | Phase 14 | Complete |
 | AUDIT-03 | Phase 14 | Complete |
 | INFR-01 | Phase 11 | Complete |
 | INFR-02 | Phase 11 | Complete |
 | INFR-03 | Phase 11 | Complete |
 | DLVR-01 | Phase 15 | Complete |
-| DLVR-02 | Phase 16 | Pending |
-| DLVR-03 | Phase 16 | Pending |
+| DLVR-02 | Phase 16 | Complete |
+| DLVR-03 | Phase 16 | Complete |
 
 **Coverage:**
 - v3.0 requirements: 28 total
