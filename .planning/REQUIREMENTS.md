@@ -51,7 +51,7 @@ Requirements for the v3.0 Output Quality milestone.
 
 - [x] **DLVR-01**: Document assembler command or final stage in `/curriculum:approve` compiles all approved stage outputs into facilitator package, participant workbook, and program overview document
 - [x] **DLVR-02**: Marketing package and facilitator guides generate polished HTML alongside markdown
-- [ ] **DLVR-03**: Curriculum verifier checks completeness before delivery: no NEEDS: markers, broken outcome ID references, missing required stage files, no HTML comments in output
+- [x] **DLVR-03**: Curriculum verifier checks completeness before delivery: no NEEDS: markers, broken outcome ID references, missing required stage files, no HTML comments in output
 
 ## Future Requirements
 
@@ -106,7 +106,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-03 | Phase 11 | Complete |
 | DLVR-01 | Phase 15 | Complete |
 | DLVR-02 | Phase 15 | Complete |
-| DLVR-03 | Phase 15 | Pending |
+| DLVR-03 | Phase 15 | Complete |
 
 **Coverage:**
 - v3.0 requirements: 28 total

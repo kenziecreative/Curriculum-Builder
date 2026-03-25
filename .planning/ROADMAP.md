@@ -49,7 +49,7 @@ See [v2.0 archive](milestones/v2.0-ROADMAP.md) for full phase details.
 - [x] **Phase 12: Voice System** — Curriculum voice file and cross-command enforcement baseline (completed 2026-03-25)
 - [x] **Phase 13: Command Retrofit** — Presentation and quality improvements across all 12 commands (completed 2026-03-25)
 - [x] **Phase 14: Audit Mode Enhancement** — Three-mode content handling and auditor agent extraction (completed 2026-03-25)
-- [ ] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier
+- [x] **Phase 15: Delivery Layer** — Document assembler, HTML output, curriculum verifier (completed 2026-03-25)
 
 ## Phase Details
 
@@ -223,4 +223,4 @@ Plans:
 | 12. Voice System | v3.0 | 2/2 | Complete | 2026-03-25 |
 | 13. Command Retrofit | 5/5 | Complete    | 2026-03-25 | - |
 | 14. Audit Mode Enhancement | 3/3 | Complete    | 2026-03-25 | - |
-| 15. Delivery Layer | 2/3 | In Progress|  | - |
+| 15. Delivery Layer | 3/3 | Complete   | 2026-03-25 | - |
