@@ -20,14 +20,14 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Output Quality
 
-- [ ] **QUAL-01**: Slide outlines written as production direction (what goes on the slide + intent + facilitator rationale), not content inventory — modeled on source format
-- [ ] **QUAL-02**: Facilitator notes include diagnostic direction: what to observe, what it signals, what move to make — not just stage directions
+- [x] **QUAL-01**: Slide outlines written as production direction (what goes on the slide + intent + facilitator rationale), not content inventory — modeled on source format
+- [x] **QUAL-02**: Facilitator notes include diagnostic direction: what to observe, what it signals, what move to make — not just stage directions
 - [x] **QUAL-03**: Marketing files are copy-paste-ready prose (PAS/DOS structure, VOC language, benefits-first) — traceability data in separate section at bottom, never wrapped around paragraphs
 - [x] **QUAL-04**: Transfer ecosystem file is readable narrative with plain headings — no YAML structure in output
 - [x] **QUAL-05**: Session content shows full objective text everywhere IDs appear in conversation output
 - [x] **QUAL-06**: NEEDS: markers fully resolved before any file is marked complete — validation stage checks for unconverted markers
-- [ ] **QUAL-07**: TMA phase labels (ACTIVATE, THEORY, METHOD, etc.) never appear as visible labels in facilitator guides, participant materials, or slide outlines
-- [ ] **QUAL-08**: HTML calculation comments and working notes stripped from all session output files before writing
+- [x] **QUAL-07**: TMA phase labels (ACTIVATE, THEORY, METHOD, etc.) never appear as visible labels in facilitator guides, participant materials, or slide outlines
+- [x] **QUAL-08**: HTML calculation comments and working notes stripped from all session output files before writing
 - [x] **QUAL-09**: Writing for Clarity principles applied across all generated content (kernel sentences, precise language, no warm-up copy)
 
 ### Voice
@@ -87,14 +87,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PRES-06 | Phase 13 | Complete |
 | PRES-07 | Phase 13 | Complete |
 | PRES-08 | Phase 13 | Complete |
-| QUAL-01 | Phase 13 | Pending |
-| QUAL-02 | Phase 13 | Pending |
+| QUAL-01 | Phase 13 | Complete |
+| QUAL-02 | Phase 13 | Complete |
 | QUAL-03 | Phase 13 | Complete |
 | QUAL-04 | Phase 13 | Complete |
 | QUAL-05 | Phase 13 | Complete |
 | QUAL-06 | Phase 13 | Complete |
-| QUAL-07 | Phase 13 | Pending |
-| QUAL-08 | Phase 13 | Pending |
+| QUAL-07 | Phase 13 | Complete |
+| QUAL-08 | Phase 13 | Complete |
 | QUAL-09 | Phase 13 | Complete |
 | VOICE-01 | Phase 12 | Complete |
 | VOICE-02 | Phase 12 | Complete |
