@@ -43,9 +43,9 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Infrastructure
 
-- [ ] **INFR-01**: Deployment model changed to clone-and-run — README, install.sh, CLAUDE.md updated; workspace always inside cloned repo
-- [ ] **INFR-02**: Dashboard accepts `WORKSPACE_DIR` env var; `/curriculum:init` tells user exact launch command for their workspace
-- [ ] **INFR-03**: `scripts/release.sh` automates sync from dev repo to public plugin release repo
+- [x] **INFR-01**: Deployment model changed to clone-and-run — README, install.sh, CLAUDE.md updated; workspace always inside cloned repo
+- [x] **INFR-02**: Dashboard accepts `WORKSPACE_DIR` env var; `/curriculum:init` tells user exact launch command for their workspace
+- [x] **INFR-03**: `scripts/release.sh` automates sync from dev repo to public plugin release repo
 
 ### Delivery
 
@@ -101,9 +101,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUDIT-01 | Phase 14 | Pending |
 | AUDIT-02 | Phase 14 | Pending |
 | AUDIT-03 | Phase 14 | Pending |
-| INFR-01 | Phase 11 | Pending |
-| INFR-02 | Phase 11 | Pending |
-| INFR-03 | Phase 11 | Pending |
+| INFR-01 | Phase 11 | Complete |
+| INFR-02 | Phase 11 | Complete |
+| INFR-03 | Phase 11 | Complete |
 | DLVR-01 | Phase 15 | Pending |
 | DLVR-02 | Phase 15 | Pending |
 | DLVR-03 | Phase 15 | Pending |
