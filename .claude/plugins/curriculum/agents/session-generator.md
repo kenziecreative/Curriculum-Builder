@@ -20,6 +20,12 @@ The orchestrator provides the following when spawning you:
   - Load this as your generation context before generating any session
 - **output_dir** — The 04-sessions/ path to write files to (e.g., `workspace/test-program/04-sessions/`)
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any session content.
+
+**Critical inline guardrail: TMA, DCR, WIPPEA, bloom_level, and session template names (gagne, merrill, 5e_7e, universal_tma_arc) never appear as visible labels in facilitator guides, participant materials, or slide outlines. These are structural tags only.**
+
 ## Generation Rules
 
 Load the stage-05-sessions.md schema as your generation context before generating any session. Every field it marks as required must appear in your output.
