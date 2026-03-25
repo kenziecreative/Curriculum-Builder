@@ -41,19 +41,65 @@ Stop here. Do not proceed.
 Read Stage 5 status from the workspace STATE.md:
 
 - `not-started` → Proceed to Module Reading section
-- `pre-populated` → Read `workspace/*/04-sessions/session-manifest.md`. Run structure enforcement
-  silently: verify each session has named outcomes mapped, flag sessions with NEEDS: template
-  marker. Remove any `# NEEDS:` lines from the display (markers stay in raw file until full
-  generation replaces them). Display the session manifest summary: session names, mapped outcomes,
-  template TBD indicators. Present the review gate (three options below). Do not dispatch
-  generation subagents — full session content generation happens only after the user approves or
-  flags an issue.
-  On "Looks good": proceed to Module Reading section and dispatch subagent Tasks as normal
-  (session manifest provides context for each Task). Set Stage 5 status to `in-progress`.
-  On "Flag an issue": take feedback, regenerate the manifest from project brief plus feedback,
-  re-display. Do not dispatch full generation.
-  On "Start over": wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` (clearing
-  the `pre-populated` status), restart from Module Reading section as if `not-started`.
+- `pre-populated` → Apply mode-routing logic:
+
+  **Step 1 — Read Mode Assignment:**
+  Read `workspace/*/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "5:" or "Session Content".
+
+  **Step 2 — Determine path:**
+
+  - If Mode Assignment table is absent OR Stage 5 row not found → **gap-fill path**: proceed to existing session generation behavior. No diff. No error. Clean intake users are unaffected — behavior is identical to pre-audit-mode operation.
+  - If mode = `gap-fill` → **gap-fill path**: same as above.
+  - If mode = `hands-off` → **hands-off path** (see below).
+  - If mode = `enrich` → **enrich path** (see below).
+
+  **Gap-fill path (absent Mode Assignment or gap-fill mode):**
+  Read `workspace/*/04-sessions/session-manifest.md`. Run structure enforcement silently: verify each session has named outcomes mapped, flag sessions with `# NEEDS:` template markers. Remove any `# NEEDS:` lines from the display (markers stay in raw file until full generation replaces them). Display the session manifest summary: session names, mapped outcomes, template TBD indicators. Present the review gate. Do not dispatch generation subagents — full session content generation happens only after the user approves.
+  On "Looks good": proceed to Module Reading section and dispatch subagent Tasks as normal. Set Stage 5 status to `in-progress`.
+  On "Flag an issue": take feedback, regenerate the manifest from project brief plus feedback, re-display. Do not dispatch full generation.
+  On "Start over": wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` (clearing the `pre-populated` status and removing the Mode Assignment row for Stage 5), restart from Module Reading section as if `not-started`.
+
+  **Hands-off path:**
+  1. Read all session files from `workspace/*/04-sessions/`.
+  2. Run enforcement checks silently: verify session arc completeness (Theory→Method→Application structure), check for `# NEEDS:` template markers, strip any HTML comments from working content.
+  3. If zero violations found: skip the diff table. Proceed directly to session display with this note: "Your session content meets all requirements — no changes needed." Then present the review gate.
+  4. If violations found: show a side-by-side diff table — one row per session that has violations or missing required content. Sessions with no violations do not appear in the table.
+
+     Diff table format:
+     ```
+     | Session | From your materials | What will be added/changed |
+     |---------|---------------------|---------------------------|
+     | [session plain name] | [what currently exists] | [what changes and one-line reason — plain language] |
+     ```
+
+     Plain language only in every cell. Never use field names or internal labels.
+
+  5. Show diff gate (three options):
+     - **"Looks good"** → apply enforcement fixes, remove `# NEEDS:` markers, strip HTML comments, write corrected files to `workspace/*/04-sessions/`, proceed to session generation via Module Reading section.
+     - **"Flag an issue"** → take specific concern; re-display diff with concern noted; re-present diff gate.
+     - **"Start over"** → wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` in STATE.md (clearing `pre-populated` status and removing the Mode Assignment row for Stage 5), restart from Module Reading section as if `not-started`.
+
+  **Enrich path:**
+  1. Read all session files from `workspace/*/04-sessions/`.
+  2. Run enforcement checks silently. Identify which sessions have missing required elements: pre-work absent, transfer activities missing, group reflection questions absent.
+  3. For missing elements only: generate targeted content per session from the project brief and module specs — not full session regeneration.
+  4. Show a side-by-side diff table for ALL sessions — every session gets a row showing what existed and what was added or changed. Mark added content NEW and changed content UPDATED in the "What will be added/changed" column (summary display only — written files contain no markers).
+
+     Diff table format:
+     ```
+     | Session | From your materials | What will be added/changed |
+     |---------|---------------------|---------------------------|
+     | [session plain name] | [what currently exists] | [NEW: ... / UPDATED: ... — one-line reason, plain language] |
+     ```
+
+     Plain language only in every cell. Never use field names or internal labels.
+
+  5. Show diff gate (three options):
+     - **"Looks good"** → write complete session files to `workspace/*/04-sessions/` (clean content, no NEW/UPDATED markers in written files), proceed to session generation dispatch via Module Reading section.
+     - **"Flag an issue"** → take specific concern; re-display diff with concern noted; re-present diff gate.
+     - **"Start over"** → wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` in STATE.md (clearing `pre-populated` status and Mode Assignment row for Stage 5), restart from Module Reading section as if `not-started`.
+
+  **File writes happen only after diff gate approval ("Looks good"). Never write `04-sessions/` files before the gate passes.**
 - `in-progress` → Check which session directories already exist in `workspace/{project-name}/04-sessions/`. Identify which modules are missing complete session files (all 4 files per session). Re-dispatch Tasks only for incomplete modules. Proceed to Parallel Generation with the incomplete module list only.
 - `complete` → Respond: "Sessions are already generated for this program. All session content is in `04-sessions/`." Stop here.
 
