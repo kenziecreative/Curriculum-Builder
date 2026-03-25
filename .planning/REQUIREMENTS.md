@@ -37,7 +37,7 @@ Requirements for the v3.0 Output Quality milestone.
 
 ### Audit Mode
 
-- [ ] **AUDIT-01**: Audit mode implements three content-handling modes — gap-fill (no source content), enrich (thin/incomplete), hands-off (strong existing content) — triggered by extraction confidence level
+- [x] **AUDIT-01**: Audit mode implements three content-handling modes — gap-fill (no source content), enrich (thin/incomplete), hands-off (strong existing content) — triggered by extraction confidence level
 - [ ] **AUDIT-02**: When audit mode produces a module structure that differs from source, it shows a side-by-side with reasoning before writing files
 - [x] **AUDIT-03**: Curriculum auditor extracted into dedicated specialist agent — intake command delegates source material analysis to it
 
@@ -98,7 +98,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-09 | Phase 13 | Complete |
 | VOICE-01 | Phase 12 | Complete |
 | VOICE-02 | Phase 12 | Complete |
-| AUDIT-01 | Phase 14 | Pending |
+| AUDIT-01 | Phase 14 | Complete |
 | AUDIT-02 | Phase 14 | Pending |
 | AUDIT-03 | Phase 14 | Complete |
 | INFR-01 | Phase 11 | Complete |
