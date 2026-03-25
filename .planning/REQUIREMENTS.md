@@ -22,7 +22,7 @@ Requirements for the v3.0 Output Quality milestone.
 
 - [ ] **QUAL-01**: Slide outlines written as production direction (what goes on the slide + intent + facilitator rationale), not content inventory — modeled on source format
 - [ ] **QUAL-02**: Facilitator notes include diagnostic direction: what to observe, what it signals, what move to make — not just stage directions
-- [ ] **QUAL-03**: Marketing files are copy-paste-ready prose (PAS/DOS structure, VOC language, benefits-first) — traceability data in separate section at bottom, never wrapped around paragraphs
+- [x] **QUAL-03**: Marketing files are copy-paste-ready prose (PAS/DOS structure, VOC language, benefits-first) — traceability data in separate section at bottom, never wrapped around paragraphs
 - [ ] **QUAL-04**: Transfer ecosystem file is readable narrative with plain headings — no YAML structure in output
 - [x] **QUAL-05**: Session content shows full objective text everywhere IDs appear in conversation output
 - [x] **QUAL-06**: NEEDS: markers fully resolved before any file is marked complete — validation stage checks for unconverted markers
@@ -89,7 +89,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PRES-08 | Phase 13 | Complete |
 | QUAL-01 | Phase 13 | Pending |
 | QUAL-02 | Phase 13 | Pending |
-| QUAL-03 | Phase 13 | Pending |
+| QUAL-03 | Phase 13 | Complete |
 | QUAL-04 | Phase 13 | Pending |
 | QUAL-05 | Phase 13 | Complete |
 | QUAL-06 | Phase 13 | Complete |

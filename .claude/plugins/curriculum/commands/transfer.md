@@ -176,13 +176,45 @@ Then use `AskUserQuestion` with three options:
 
 ## On "Approve and continue"
 
-1. Write `workspace/{project}/06-transfer/transfer-ecosystem.md` with complete schema-compliant YAML content. All three layers (`pre_program`, `in_program`, `post_program`) must be present. All required fields per the stage-07-transfer.md schema must be populated. Duration scaling and skill-type rules must be reflected in the output.
+1. Write `workspace/{project}/06-transfer/transfer-ecosystem.md` as a narrative markdown document. Do not write YAML. The file must read as a shareable document — not a data structure.
+
+   File structure:
+
+   ```
+   # Transfer Ecosystem: [Program Name]
+
+   ## Before the Program
+   [Prose paragraph describing what managers and participants should do before attending.
+   Written to the facilitator or program coordinator who will brief participants.
+   2-4 sentences covering readiness check, pre-work, and manager briefing where applicable.]
+
+   ## During the Program
+   [Prose paragraph describing the in-session transfer moments built into the program.
+   What learners will practice, what connections they'll make to their real work.
+   Cover follow-through plans, real-work application activities, and error correction practice if applicable.
+   2-4 sentences.]
+
+   ## After the Program
+   [Prose paragraph describing the spaced follow-up schedule, accountability structure, and community continuation plan.
+   What participants will do, what managers can reinforce, what markers indicate transfer occurred.
+   3-5 sentences.]
+
+   ## How We'll Know It Worked
+   [Prose sentence or two describing the success measurement approach — what is being measured, when, and by whom.
+   Plain language — no Kirkpatrick level labels.]
+
+   ## Making It Stick
+   [Optional section: key conditions for transfer success.
+   Plain-language principles a non-ID manager can actually act on.
+   Bullet list of 3-5 actionable items.]
+   ```
 
    Verify before writing:
-   - Every `implementation_intentions[].module_reference` matches a module from 03-modules
-   - Every `real_work_application[].session_reference` matches a session from 04-sessions
-   - `community_continuation_design` is present and populated (not empty, not TBD)
-   - `evaluation_design.kirkpatrick_level` meets the minimum for this program's duration and skill_type
+   - All three time periods (before / during / after) are covered in the narrative
+   - Every module's follow-through commitment is described in the During section
+   - Every real-work application activity from the transfer design appears in the narrative
+   - Community continuation plan is described (not omitted, not TBD)
+   - Success measurement description matches the evaluation level determined for this program
 
 2. Silently update `workspace/{project}/STATE.md`:
    - Stage 7 status: `complete`, Completed: {today's date}
