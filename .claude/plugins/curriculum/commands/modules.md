@@ -248,6 +248,8 @@ Then use `AskUserQuestion` with three options:
 - **"I have concerns"** — ask what's wrong, regenerate fully, re-present gate
 - **"Start this over"** — destructive confirmation gate
 
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to the approval branch, do not write any files until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
+
 **Critical timing: STATE.md stage status writes happen ONLY in the "Approve and continue" branch. "I have concerns" and "Start this over" never advance stage or gate status.**
 
 ---

@@ -231,6 +231,8 @@ After displaying the outcome set and distribution summary, use `AskUserQuestion`
 - **"Flag an issue"** — ask what's wrong, take free-text feedback, regenerate the full set using original intake data plus the feedback, re-run all five constraint checks, re-present full output and distribution summary, show gate again
 - **"Start over"** — use `AskUserQuestion` to confirm: "Are you sure? This will clear the generated outcomes and start from scratch." Options: "Yes, start over" / "Actually, keep what we have." On confirmation: regenerate from scratch with full constraint enforcement.
 
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to the approval branch, do not write any files until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
+
 **On "Flag an issue" — regeneration rule:**
 
 Always regenerate the full outcome set. Never patch individual objectives. Re-run all five constraint enforcement steps on the regenerated set before displaying.

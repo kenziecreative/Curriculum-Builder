@@ -167,6 +167,8 @@ Then use `AskUserQuestion` with three options:
 - **"Flag an issue"** — ask what's wrong, full regeneration with all five steps re-run, re-display
 - **"Start this stage over"** — destructive confirmation gate
 
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to the approval branch, do not invoke any subsequent commands until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
+
 **Critical timing: Stage 6 status moves to `complete` ONLY in the "Approve and continue" branch. "Flag an issue" and "Start this stage over" never advance stage status to complete.**
 
 ---
