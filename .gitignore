@@ -32,3 +32,7 @@ dashboard/build/
 # Curriculum workspace — runtime output, not source
 workspace/*
 !workspace/.gitkeep
+
+# Dev tooling — not needed by users
+scripts/
+tests/
