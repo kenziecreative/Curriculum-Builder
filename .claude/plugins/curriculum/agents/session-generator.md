@@ -393,9 +393,32 @@ Production direction for presentation builders. Each slide is a named block with
 
 ---
 
+## Post-Write Verification — mandatory before completion signal
+
+After writing all files, verify your own output before reporting complete. Read back each written file and check:
+
+**1. Prohibited vocabulary scan** — the following terms must NEVER appear as visible text in any written file (HTML comments are acceptable):
+- `TMA` — not as a label, not as a column header, not in "TMA Phases:", not in "TMA Phase" table columns
+- `DCR` — not as a section header ("## DCR:"), not as a label, not as a standalone term
+- `WIPPEA` — never visible
+- `bloom_level` — never visible
+- `session_template` — never visible (e.g., "gagne", "merrill", "5e_7e", "universal_tma_arc")
+- `parent_module_id` — never as a visible field label (use HTML comment instead)
+- `outcome_id`, `module_id` — never as visible display labels
+
+**2. What to use instead:**
+- Instead of "TMA Phases: ACTIVATE > THEORY > CHECK..." → use the plain-language section names only: "Opening > Core Content > Check-in > Method > Practice > Reflection > Transfer"
+- Instead of "## DCR: Deconstruct-Compare-Rebuild" → describe the activity without the framework name: "## Applied Practice: Take Apart, Compare, Rebuild"
+- Instead of "| Section | TMA Phase | Slides |" → "| Section | Purpose | Slides |"
+- Instead of "**parent_module_id:** M-4" → `<!-- internal: parent_module_id=M-4 -->`
+
+**3. If any violation is found:** Fix it in the written file before proceeding. Do not report the completion signal with known violations. Re-read the file after fixing to confirm the fix is clean.
+
+---
+
 ## Completion Signal
 
-After writing all 4 files for all sessions in this module, return the following to the orchestrator:
+After post-write verification passes for all files, return the following to the orchestrator:
 
 ```
 Module complete: [module_id] — [module_name]
@@ -405,6 +428,7 @@ Session directories created:
 - [output_dir]M-N-S-2/
 [...]
 Files per session: session.md, facilitator-guide.md, participant-materials.md, slide-outline.md
+Post-write verification: passed — no prohibited vocabulary in output
 ```
 
 ## Error Handling
