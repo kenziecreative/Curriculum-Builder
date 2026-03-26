@@ -55,6 +55,8 @@ These fields exist in the file — they never appear in the conversation display
 
 Load `.claude/reference/schemas/stage-08-marketing.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
+**Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.
+
 Read all prior stage outputs:
 - `workspace/{project}/00-project-brief/project-brief.md`: audience description, `transfer_context`, program duration, program name
 - `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives (source for learning promises)
@@ -112,11 +114,18 @@ The total word count of all marketing elements must be less than 25% of total cu
 
 Write `workspace/{project}/07-marketing/marketing-package.md` as markdown prose. All sections written simultaneously.
 
-**Writing frameworks — apply silently before drafting prose:**
-- Use PAS (Problem → Agitation → Solution) when the audience has a pain point to address.
-- Use DOS (Dream → Obstacle → Solution) when positioning toward an aspiration.
-- Write in VOC (Voice of Customer) — use language that reflects how learners describe their own challenges, not how instructional designers describe competencies.
-- Lead with benefits, not coverage. "You'll be able to..." not "This program covers..."
+**Writing rules — from copywriting-doctrine.md (already loaded above). Apply all of these:**
+
+1. **Choose a structural framework** for the Program Description: PAS (pain → agitate → solve) or DOS (desire → obstacle → solve). The entire description must follow one framework — not switch between them.
+2. **Apply the "You Rule"** — every sentence addresses the reader directly. "You'll build..." not "Participants will learn..." Not every sentence must literally start with "you," but the reader must be the subject of every benefit.
+3. **Write sticky, not smooth** — the copy must grab attention, not slide past. If a sentence could be skimmed without stopping, rewrite it.
+4. **Use kernel sentences** — "Blank is Blank." Direct, simple structures. No complex compound sentences when a kernel sentence would land harder.
+5. **Precise language** — numbers beat adjectives. "five-question framework" not "comprehensive framework." "one day" not "a short program."
+6. **VOC language** — use the words learners would actually say. "I keep rebuilding my prompts" not "practitioners experience workflow discontinuity."
+7. **Cut all fluff** — no warm-up sentences, no "In today's rapidly evolving landscape," no "It's worth noting that," no unnecessary modifiers.
+8. **Use headline formulas** for The Promise line — try "Who Else Wants [outcome]?", "[Hard thing] in [timeframe]", or "[Outcome] for [specific person] who [situation]." Pick the strongest.
+9. **After drafting, run the Seven Sweeps** silently: Clarity → Voice & Tone → "So What?" → "Prove It" → Specificity → Heightened Emotion → Zero Risk. Fix issues found in each sweep before writing the file.
+10. **No source references in copy.** Traceability lives in the file's traceability table only — never inline with prose.
 
 **File structure:**
 
