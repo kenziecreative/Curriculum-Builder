@@ -47,6 +47,14 @@ if [ ! -f "$STATE_FILE" ]; then
   exit 0
 fi
 
+# Pre-population bypass: intake creates this marker before writing draft files to stages 2-5.
+# Pre-population is a known safe operation — extracted content with NEEDS: markers, not generated output.
+# The hook exists to prevent the agent from skipping ahead during generation, not to block intake seeding.
+PREPOP_MARKER="$PROJECT_DIR/workspace/$PROJECT_NAME/.pre-populating"
+if [ -f "$PREPOP_MARKER" ]; then
+  exit 0
+fi
+
 # Parse preceding stage status from STATE.md Stage Progress table.
 # Rows look like: | 5 | Session Content | complete |
 PREREQ_STATUS=$(grep -A1 "| $PREREQ_NUM " "$STATE_FILE" | grep -oE 'not-started|in-progress|pre-populated|complete' | head -1)

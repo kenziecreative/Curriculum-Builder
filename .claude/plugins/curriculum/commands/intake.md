@@ -733,6 +733,8 @@ This report compares your existing materials against what the full curriculum pi
 
 > **Edge case guard:** If `curriculum-gap-report.md` is absent — because this is clean intake, not audit mode — skip this entire step and proceed to the STATE.md update.
 
+> **Pre-population gate bypass:** Before writing any pre-populated files, create a marker file at `workspace/{project}/.pre-populating` (empty file). This signals the stage-sequencing hook to allow writes to stages 2–5 during pre-population. After all pre-populated files are written, delete the marker file. This is mandatory — without the marker, the hook will block writes to stages that haven't been individually approved yet.
+
 **A. Read the gap report Summary table.** Parse which stages are `Exists`, `Shallow`, or `Missing`. Only Stages 2–5 are eligible for pre-population. Stages 6–8 (Metaskill Mapping, Transfer Ecosystem, Marketing) are never pre-populated — they require generation, not extraction.
 
 **B. For each eligible stage (2, 3, 4, 5) — if status is `Exists` or `Shallow`:**
