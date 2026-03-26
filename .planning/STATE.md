@@ -5,7 +5,7 @@ milestone_name: TBD
 status: planning
 stopped_at: v3.0 milestone complete — archived 2026-03-25
 last_updated: "2026-03-25T23:55:00.000Z"
-last_activity: 2026-03-25 — v3.0 milestone complete and archived
+last_activity: 2026-03-25 — v3.0 archived; README rewritten; marketing output updated with transformation promise and From/To pairs; generate-html.js dependency fix (v3.0.1)
 progress:
   total_phases: 0
   completed_phases: 0
