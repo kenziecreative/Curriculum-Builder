@@ -34,8 +34,8 @@ You need [Claude Code](https://claude.ai/claude-code) installed first.
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/kenziecreative/knz-curriculum-builder.git
-cd knz-curriculum-builder
+git clone https://github.com/kenziecreative/Curriculum-Builder.git
+cd Curriculum-Builder
 ```
 
 **2. Remove the origin remote**
