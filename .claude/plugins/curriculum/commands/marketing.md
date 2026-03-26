@@ -2,10 +2,6 @@
 description: Generate program marketing materials from curriculum substance — every claim traces to a specific curriculum element, copy is written to make people want to enroll
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:marketing
 
 Generate enrollment-ready marketing copy for your program — every claim grounded in what the curriculum actually teaches, every promise traceable to a specific learning objective, assessment, or transfer activity.
@@ -165,6 +161,15 @@ Do not wait for user review before writing. The final review gate is `/curriculu
 
 ## Traceability Display (after file write)
 
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Marketing Package`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
+
 Show the marketing output with adjacent source footnotes so the user can see both the copy and what grounds it. Format:
 
 ```
@@ -200,7 +205,7 @@ Then show:
 ```
 Your marketing materials are ready. Run /curriculum:approve to review your complete curriculum package and mark it delivery-ready.
 
-Your work is saved — clear context before running the next command.
+Type `/clear` now, then run `/curriculum:approve` to review your complete curriculum package and mark it delivery-ready.
 ```
 
 ---

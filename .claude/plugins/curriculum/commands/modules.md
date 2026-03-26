@@ -2,10 +2,6 @@
 description: Generate module structure from outcomes and assessments — schema enforcement, DAG validation, inline review gate before session generation can begin
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:modules
 
 Generate a sequenced module structure from your approved outcomes and assessments — every learning objective assigned to a module, collaborative activities built into every module, and the sequence validated before you move to session design.
@@ -199,6 +195,15 @@ Track all auto-corrections: how many modules were reordered, how many outcome_id
 
 After constraint enforcement completes, display the results.
 
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Module Structure`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
+
 **Validation badge** (show only if no corrections were needed):
 
 > All modules cover their objectives — sequence and collaborative activities validated.
@@ -309,7 +314,7 @@ Then use `AskUserQuestion` with three options:
 
 3. End with brief confirmation:
 
-   > Your module structure is written and saved. Run `/curriculum:sessions` to generate the session content. Your work is saved — clear context before running the next command.
+   > Your module structure is written and saved. Type `/clear` now, then run `/curriculum:sessions` to generate the session content.
 
 ---
 

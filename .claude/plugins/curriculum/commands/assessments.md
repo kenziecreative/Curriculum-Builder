@@ -2,10 +2,6 @@
 description: Generate assessments paired to every learning outcome — Bloom's alignment enforced, formative coverage required, inline PIPE-05 review gate before Stage 4 can begin
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:assessments
 
 Generate a complete set of assessments from your approved learning outcomes — every outcome paired with an assessment, complexity levels aligned, and formative checks built into every module.
@@ -147,6 +143,15 @@ Track: how many assessments were auto-generated, how many were elevated, what wa
 
 After constraint enforcement completes, display the results.
 
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Assessment Plan`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
+
 **Validation badge** (show only if no corrections were needed):
 
 > All objectives paired — complexity levels aligned across all assessments.
@@ -225,7 +230,7 @@ Then use `AskUserQuestion` with three options:
 
 3. End with brief confirmation:
 
-   > Assessments are written and saved. Run `/curriculum:modules` to build the module structure. Your work is saved — clear context before running the next command.
+   > Assessments are written and saved. Type `/clear` now, then run `/curriculum:modules` to build the module structure.
 
 ---
 

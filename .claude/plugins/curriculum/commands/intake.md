@@ -314,7 +314,7 @@ Use `AskUserQuestion` with these three options:
 
    Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
-   > Your program brief is written and saved. Run `/curriculum:outcomes` to design the learning outcomes. Your work is saved — clear context before running the next command.
+   > Your program brief is written and saved. Type `/clear` now, then run `/curriculum:outcomes` to design the learning outcomes.
 
 ---
 
@@ -781,4 +781,4 @@ Include only stages 2–5 in the table. Stages that were `Missing` show "— (Mi
 
 **8. End with a forward-looking message:**
 
-> Your program brief, gap report, and pre-populated stage drafts are written and saved. Run `/curriculum:outcomes` to review and build out the learning outcomes. Your work is saved — clear context before running the next command.
+> Your program brief, gap report, and pre-populated stage drafts are written and saved. Type `/clear` now, then run `/curriculum:outcomes` to review and build out the learning outcomes.

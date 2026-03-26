@@ -100,7 +100,7 @@ Then immediately begin the intake conversation as described in `/curriculum:inta
 
 > Run `/curriculum:intake` to continue.
 
-Your workspace is set up and ready. Run `/curriculum:intake` to start the intake interview. Your work is saved — clear context before running the next command.
+Your workspace is set up and ready. Type `/clear` to start with a clean context, then run `/curriculum:intake` to begin.
 
 ## Silent State Rule
 

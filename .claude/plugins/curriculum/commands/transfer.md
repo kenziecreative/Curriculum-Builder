@@ -2,10 +2,6 @@
 description: Design the full transfer ecosystem — pre-program readiness, in-program application, post-program spaced follow-up, community continuation, and measurement design — from your curriculum substance
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:transfer
 
 Design the complete follow-through system for your program — what happens before, during, and after — so participants arrive ready, practice on real work, and have a structure to keep going when the program ends.
@@ -122,6 +118,15 @@ Populate `what`, `when`, `by_whom`, and the level. If level is below Level 3 and
 ---
 
 ## Gate Summary (after generation)
+
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Transfer Design`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
 
 After generation and rule application complete, display the compact summary:
 

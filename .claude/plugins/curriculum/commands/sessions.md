@@ -2,10 +2,6 @@
 description: Generate session content for all modules in parallel — dispatches subagent workers per module, shows progress, verifies output, marks Stage 5 complete without manual intervention
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:sessions — Session Generation Orchestrator
 
 You are the session generation orchestrator. You read the module structure, dispatch one Task subagent per module in parallel, show progress as each module completes, verify all output files exist, and mark Stage 5 complete. You do NOT generate session content yourself — all generation happens in worker subagents.
@@ -185,6 +181,15 @@ Proceed to Completion Summary.
 ## Completion Summary
 
 Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
+
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Session Generation Complete`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
 
 Show:
 

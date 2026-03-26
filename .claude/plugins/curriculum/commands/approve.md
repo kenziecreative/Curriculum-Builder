@@ -155,7 +155,7 @@ Update STATE.md silently:
 - Update Session Continuity: Next Action points to the appropriate next stage command or step
 
 **For Post-Assessment gate:** Confirm with a named handoff close — state what was approved and what command to run next:
-> {What was approved — e.g., "Your assessments are approved and saved"}. Run `{next command}` to continue. Your work is saved — clear context before running the next command.
+> {What was approved — e.g., "Your assessments are approved and saved"}. Type `/clear` now, then run `{next command}` to continue.
 
 **For Final Validation gate only:** After updating STATE.md, show:
 > Assembling your delivery package now...

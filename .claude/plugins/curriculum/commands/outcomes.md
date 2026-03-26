@@ -2,10 +2,6 @@
 description: Generate learning outcomes from intake data — program, module, and session levels with thinking-level distribution enforcement and inline review gate
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:outcomes
 
 Generate a full outcome hierarchy from your program brief — program outcomes, module outcomes, and session outcomes — with automatic quality checks run before anything is shown to you.
@@ -177,6 +173,17 @@ After constraint enforcement completes, display the outcome set.
 
 **If no corrections were needed** — no note. Go directly to the output.
 
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Learning Outcomes`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
+
+The outcome display MUST use exactly the following character set: ╔ ╠ ╚ ║ └─. Any other format is incorrect.
+
 **Outcome presentation format:**
 
 Display the outcome hierarchy using structured ASCII formatting. Do not expose schema field names — no `bloom_level:`, no `outcome_id:`, no `transfer_context:`. Format for reading, not schema inspection.
@@ -288,7 +295,7 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
 
 3. End with a brief forward-looking message:
 
-   > Your learning outcomes are written and saved. Run `/curriculum:assessments` to design the assessments. Your work is saved — clear context before running the next command.
+   > Your learning outcomes are written and saved. Type `/clear` now, then run `/curriculum:assessments` to design the assessments.
 
 ---
 

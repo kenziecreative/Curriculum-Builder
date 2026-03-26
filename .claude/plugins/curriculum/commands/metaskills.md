@@ -2,10 +2,6 @@
 description: Map six core thinking skills to specific activation activities — enforces thinking routine specificity, developability sequence, and real-work transfer prompts
 ---
 
-## Output Formatting
-
-Follow the `curriculum:interactive-design` skill for all user-facing output — headings, tables, status indicators, and interaction patterns.
-
 # /curriculum:metaskills
 
 Map the core thinking skills that run through your program to specific named activities and real-work connection prompts — so learners don't just acquire skills in training, they know exactly how to use them on the job.
@@ -125,6 +121,15 @@ Record any fields added.
 ---
 
 ## Gate Display (after constraint enforcement)
+
+**Formatting rules — apply exactly, no substitutions:**
+- Use `##` headings to open major sections (e.g., `## Your Thinking Skill Activation Plan`)
+- Use `###` for subsection labels
+- Bold (`**text**`) for key labels — 1-2 per section max
+- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
+- Tables for any multi-attribute comparison or key/value set with 4+ pairs
+- No walls of prose without a heading every 6-8 lines
+- No bullet-pointing everything — use prose for narrative, lists for enumerations
 
 After all five steps complete, display the full activation plan. Format per thinking skill:
 
