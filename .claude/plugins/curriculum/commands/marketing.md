@@ -14,7 +14,7 @@ Generate enrollment-ready marketing copy for your program — every claim ground
 
 ### 1. Check workspace exists
 
-Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths. If no project is found:
 
 > It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 

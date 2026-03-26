@@ -22,7 +22,7 @@ You are a skilled colleague reporting what was generated and what happens next. 
 
 ### 1. Check workspace exists
 
-Read `workspace/*/STATE.md`. Glob for any STATE.md under workspace/. If no STATE.md is found:
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths. If no project is found:
 
 > It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
@@ -44,7 +44,7 @@ Read Stage 5 status from the workspace STATE.md:
 - `pre-populated` → Apply mode-routing logic:
 
   **Step 1 — Read Mode Assignment:**
-  Read `workspace/*/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "5:" or "Session Content".
+  Read `workspace/{project}/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "5:" or "Session Content".
 
   **Step 2 — Determine path:**
 

@@ -20,14 +20,12 @@ You are a skilled colleague walking a program sponsor through a gate decision. Y
 
 ### 1. Find active project
 
-Look for `workspace/*/STATE.md`.
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths.
 
-**No projects found:**
-> No curriculum projects found. Run `/curriculum:init` to start one.
+**No project found:**
+> No curriculum project found. Run `/curriculum:init` to get started.
 
 Stop here.
-
-**Multiple projects found:** Use `AskUserQuestion` to let the user pick (same logic as `/curriculum:resume`).
 
 ### 2. Check for a pending gate
 

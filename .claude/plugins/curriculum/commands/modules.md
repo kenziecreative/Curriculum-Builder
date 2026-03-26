@@ -14,7 +14,7 @@ Generate a sequenced module structure from your approved outcomes and assessment
 
 ### 1. Check workspace exists
 
-Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths. If no project is found, respond:
 
 > It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 
@@ -36,7 +36,7 @@ Read the Stage 4 row from STATE.md `Stage Progress` table:
 - **`pre-populated`** — Apply mode-routing logic:
 
   **Step 1 — Read Mode Assignment:**
-  Read `workspace/*/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "4:" or "Module Structure".
+  Read `workspace/{project}/STATE.md`. Look for `## Mode Assignment` table. Find the row where the Stage column contains "4:" or "Module Structure".
 
   **Step 2 — Determine path:**
 

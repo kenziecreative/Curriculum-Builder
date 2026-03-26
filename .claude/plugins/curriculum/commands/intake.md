@@ -14,7 +14,7 @@ Conduct a conversational intake interview with a program sponsor or subject matt
 
 ### 1. Check workspace exists
 
-Read `workspace/*/STATE.md` to locate the active project. If no STATE.md is found, respond:
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths. If no project is found, respond:
 
 > It looks like you haven't set up a project workspace yet. Run `/curriculum:init` first to get started.
 

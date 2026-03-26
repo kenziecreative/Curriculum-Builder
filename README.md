@@ -67,7 +67,9 @@ cd Curriculum-Builder
 git remote remove origin
 ```
 
-This is a required step, not optional. You'll be working inside the repo — your workspace files, project briefs, and generated curriculum all live here. Removing the origin remote prevents you from accidentally pushing those to the source repository.
+This is a required step, not optional. This clone is your workspace for one curriculum project — your files, drafts, and generated output all live here. Removing the origin remote prevents you from accidentally pushing those back to the source repository.
+
+When you're ready to build a second curriculum, clone the repo again into a new folder.
 
 **3. Open Claude Code in the cloned directory**
 

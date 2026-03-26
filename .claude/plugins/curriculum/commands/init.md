@@ -30,10 +30,9 @@ Use `AskUserQuestion` with `type: free_text` — no options list, no example val
 
 ### 2. Check for existing workspace
 
-Check whether `workspace/{project-name}/` already exists.
+List subdirectories under `workspace/`. If any subdirectory contains a `STATE.md` file, a project already exists in this workspace:
 
-If it exists:
-> A project called **{Project Name}** already exists. To pick up where you left off, run `/curriculum:resume`.
+> A project already exists in this workspace. Run `/curriculum:resume` to continue it, or start a fresh clone for a new curriculum.
 
 Stop here — do not overwrite.
 

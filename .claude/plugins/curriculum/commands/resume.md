@@ -20,19 +20,12 @@ You are a skilled colleague orienting someone who has returned to a project. You
 
 ### 1. Find active project
 
-Look for `workspace/*/STATE.md`.
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths.
 
-**No projects found:**
-> No curriculum projects found. Run `/curriculum:init` to start one.
+**No project found:**
+> No curriculum project found. Run `/curriculum:init` to get started.
 
 Stop here.
-
-**One project found:** Use it.
-
-**Multiple projects found:** Use `AskUserQuestion` to let the user pick:
-
-> Which project would you like to resume?
-> [List of project names from workspace directory names, title-cased]
 
 ### 2. Read STATE.md
 

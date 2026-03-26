@@ -22,14 +22,12 @@ You are a skilled colleague confirming a package is ready to hand off. Lead with
 
 ## Step 1 — Find active project
 
-Read `workspace/*/STATE.md` by globbing for any STATE.md under workspace/.
+List subdirectories under `workspace/`. Find the one that contains a `STATE.md` file — that is the active project. Use its directory name as `{project}` for all subsequent paths.
 
 **No project found:**
 > No curriculum project found. Run `/curriculum:init` to get started.
 
 Stop here.
-
-**Multiple projects found:** Use `AskUserQuestion` to let the user pick — same pattern as `/curriculum:resume`.
 
 ---
 
