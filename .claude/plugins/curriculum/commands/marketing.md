@@ -159,52 +159,62 @@ Do not wait for user review before writing. The final review gate is `/curriculu
 
 ---
 
-## Traceability Display (after file write)
+## Conversation Display (after file write)
 
 **Formatting rules — apply exactly, no substitutions:**
-- Use `##` headings to open major sections (e.g., `## Your Marketing Package`)
+- Use `##` headings to open major sections (e.g., `## Your Marketing Copy`)
 - Use `###` for subsection labels
 - Bold (`**text**`) for key labels — 1-2 per section max
-- Use ` ✓ ` ` ✗ ` ` △ ` ` → ` for status in tables and lists only — never mid-sentence
-- Tables for any multi-attribute comparison or key/value set with 4+ pairs
 - No walls of prose without a heading every 6-8 lines
-- No bullet-pointing everything — use prose for narrative, lists for enumerations
 
-Show the marketing output with adjacent source footnotes so the user can see both the copy and what grounds it. Format:
+**Show the marketing copy clean — exactly as a reader would see it.** No source references, no traceability footnotes, no `→ Source:` lines inline with the copy. The copy must read as real marketing material that could be sent to a prospective learner right now.
+
+Display format:
 
 ```
-**[Program Name]**
+## Your Marketing Copy
 
-**The promise:** [one-sentence transformation statement]
-→ Source: [transfer design / highest-order objective]
+### The Promise
+[One-sentence transformation statement — the hook]
 
-[Program description content — compelling enrollment copy, 2-3 sentences]
-→ Source: [source_citation for program description, in plain language — e.g., "learning objective 3 (Apply) and the market analysis assessment"]
+### Program Description
+[2-3 prose paragraphs. Compelling. Benefits-first. Written to enroll.]
 
-**What changes:**
-- From: [current struggle] → To: [new capability]
-  → Source: [source_citation in plain language]
+### What Changes
+- **From:** [current struggle] → **To:** [new capability]
+- **From:** [current struggle] → **To:** [new capability]
 [Continue for all From/To pairs]
 
-**What you'll be able to do:**
-- [Learning promise 1 — behavioral outcome statement written to enroll]
-  → Source: [source_citation in plain language]
+### What You'll Be Able to Do
+- [Learning promise 1 — written to make someone want this]
 - [Learning promise 2]
-  → Source: [source_citation in plain language]
 [Continue for all learning promises]
 
-**Who this is for:**
-[Audience positioning content — warm enrollment language]
-→ Source: [source_citation in plain language]
+### Who This Is For
+[1-2 prose paragraphs. Warm enrollment language.]
 ```
 
 Include only the element types generated for this program's duration tier. Omit sections with no records.
 
+**After the clean copy, show the traceability audit separately:**
+
+```
+---
+
+### Source Traceability
+
+Every claim above traces to something the curriculum actually delivers:
+
+| Claim | Grounded In | Strength |
+|-------|-------------|----------|
+| [verbatim phrase from the copy] | [plain-language source — e.g., "the delegation tier exercise in Session 2"] | High / Medium / Low |
+```
+
+The traceability table is a review tool for the designer — it is not part of the marketing copy. Keep them visually separated.
+
 Then show:
 
 ```
-Your marketing materials are ready. Run /curriculum:approve to review your complete curriculum package and mark it delivery-ready.
-
 Type `/clear` now, then run `/curriculum:approve` to review your complete curriculum package and mark it delivery-ready.
 ```
 
