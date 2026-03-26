@@ -1,35 +1,42 @@
 # Curriculum Builder
 
-A Claude Code plugin that guides you through building delivery-ready curriculum, step by step. It asks the right questions, enforces design quality automatically, and keeps you from skipping the parts that actually make training work.
+**A guided curriculum development system by [Kenzie Creative](https://www.kenzienotes.com).**
 
-Built for program designers and subject matter experts who want to move fast without sacrificing rigor.
+Curriculum Builder walks you through the same design process that professional instructional designers use — from defining what learners need to be able to do, to writing session content, to building the follow-through system that makes the learning stick. The difference is that you're having a conversation, not filling out a form. You talk through your program, your learners, your constraints — and the system builds the curriculum from what's actually true about your context.
 
----
-
-## How it works
-
-The plugin runs as a pipeline of commands. Each command produces one piece of the curriculum and unlocks the next. You never stare at a blank page — every stage builds on what came before it.
-
-```
-/curriculum:init          Set up a new project
-/curriculum:intake        Tell Claude about your program and learners
-/curriculum:outcomes      Generate learning objectives
-/curriculum:assessments   Design how you'll measure learning
-/curriculum:modules       Structure your content into modules
-/curriculum:sessions      Write full session content for every module
-/curriculum:metaskills    Map thinking skills to real-work application
-/curriculum:transfer      Design the before/during/after ecosystem
-/curriculum:marketing     Generate enrollment-ready program copy
-/curriculum:validate      Run a quality check on the full package
-```
-
-You can also bring in existing curriculum materials instead of starting from scratch — the tool reads what you have, surfaces gaps, and picks up from there. Or run any external curriculum through the evaluation rubrics without touching the pipeline at all.
+The tool handles the structural rigor automatically. Thinking-level distribution, assessment alignment, collaborative learning requirements, transfer design — all enforced behind the scenes so you don't have to know the rules to follow them. What you bring is the domain expertise. What comes out is a complete, pedagogically sound curriculum package ready to deliver.
 
 ---
 
-## Installation
+## What You Get
 
-You need [Claude Code](https://claude.ai/claude-code) installed first.
+**A complete session package** — facilitator guides, participant materials, and slide outlines for every session in your program. Content follows a Theory → Method → Application structure. Pre-work is treated as a structural requirement, not an optional extra.
+
+**Learning objectives that hold up** — program-level goals, module-level outcomes, and session-level objectives with thinking-level distribution enforced automatically. Every objective is paired with an assessment before any content gets written.
+
+**A transfer ecosystem** — the before/during/after system that separates a training event from something that produces lasting behavioral change. Pre-program prework, in-program application tied to real tasks, post-program spaced follow-up, community continuation, and measurement design.
+
+**Enrollment-ready marketing copy** — every claim traces back to a specific learning objective, assessment, or transfer activity. No hollow promises.
+
+**A delivery package** — all facilitator-facing and learner-facing files compiled into a clean `delivery/` folder, with HTML versions of facilitator guides and marketing materials ready to share.
+
+Every deliverable is written in plain language — no instructional design vocabulary, no schema labels, no working notes in the output.
+
+---
+
+## This Is Not a Content Generator
+
+Curriculum Builder does not write slide decks. It does not produce a PowerPoint. It does not generate a course outline you fill in later.
+
+It builds the structural foundation first — what learners need to do, how you'll know they can do it, how the content is sequenced — and then writes complete session content from that foundation. The facilitator guides, participant materials, and slide outlines exist because the design work is done first, not instead of it.
+
+If you want a quick content dump, this isn't the right tool. If you want a curriculum where the sessions, the assessments, and the transfer design actually connect to each other — that's what this builds.
+
+---
+
+## Getting Started
+
+You'll need [Claude Code](https://claude.ai/claude-code) installed first.
 
 **1. Clone the repository**
 
@@ -64,39 +71,48 @@ That's it. No install scripts, no additional setup. Claude creates your workspac
 
 ---
 
-## Dashboard
+## Before You Start
 
-The plugin includes a local dashboard for browsing your workspace files.
+The process works best when you have a few things nearby. You don't need polished answers — just have the raw material accessible so you're not searching mid-session.
 
-```bash
-cd dashboard && npm install && npm run dev
+- **Who your learners are** — Their role, their experience level, what they struggle with, what they need to be able to do that they can't do now
+- **Program constraints** — How long the program runs, how sessions are structured (live, async, hybrid), any delivery requirements
+- **Your domain expertise** — The key concepts, the common mistakes learners make, the things that experienced practitioners know that beginners don't
+- **Existing materials (if any)** — Facilitator guides, slide decks, participant workbooks, anything that already represents the curriculum. Even rough or outdated stuff is useful
+
+You don't need to prepare a structured outline or write anything up beforehand. The intake conversation draws that out.
+
+---
+
+## Speak Your Answers
+
+The intake conversation works better when you talk rather than type. When you type, you edit yourself. When you speak, you get closer to how you actually think about the subject — and that unfiltered explanation is often closer to what learners need to hear than a polished written version.
+
+Use any dictation tool you have — macOS built-in dictation (Fn key twice), [Wispr Flow](https://wisprflow.ai), [Superwhisper](https://superwhisper.com), or any voice-to-text app. Just talk through your answers.
+
+---
+
+## How It Works
+
+The pipeline runs as a sequence of commands. Each command produces one piece of the curriculum and unlocks the next. You never stare at a blank page — every stage builds on what came before it.
+
 ```
-
-Open [http://localhost:3002](http://localhost:3002) in your browser.
-
-If your workspace lives somewhere other than the default location, point the dashboard there with an env var:
-
-```bash
-WORKSPACE_DIR=/absolute/path/to/your/workspace npm run dev
+/curriculum:init          Set up a new project
+/curriculum:intake        Tell Claude about your program and learners
+/curriculum:outcomes      Generate learning objectives
+/curriculum:assessments   Design how you'll measure learning
+/curriculum:modules       Structure your content into modules
+/curriculum:sessions      Write full session content for every module
+/curriculum:metaskills    Map thinking skills to real-work application
+/curriculum:transfer      Design the before/during/after ecosystem
+/curriculum:marketing     Generate enrollment-ready program copy
+/curriculum:validate      Run a quality check on the full package
+/curriculum:approve       Final review gate — assemble delivery package
 ```
 
 ---
 
-## Starting a project
-
-Open Claude Code in the cloned repo directory and run:
-
-```
-/curriculum:init
-```
-
-Claude will ask what to call the project, create a workspace folder inside the repo, and immediately roll into the intake conversation.
-
-If you already have a project in progress, run `/curriculum:resume` to pick up where you left off. Claude reads your project state at the start of every session and surfaces where you are automatically.
-
----
-
-## The pipeline
+## The Pipeline
 
 ### Stage 1 — Intake: Tell Claude about your program
 
@@ -108,7 +124,7 @@ Claude interviews you about your program — who the learners are, what they nee
 
 At the end, you see a summary of everything captured and get a chance to edit anything before moving on. When you approve it, a `project-brief.md` is written to your workspace — this file drives every subsequent stage.
 
-**If you have existing materials:** At the start of intake, Claude asks whether you're starting fresh or bringing in existing documents. Choose "I have existing materials to bring in" and it will read your files, extract what it can, and only ask about genuine gaps — not the whole interview. See [Audit mode](#audit-mode) below.
+**If you have existing materials:** At the start of intake, Claude asks whether you're starting fresh or bringing in existing documents. See [Audit mode](#audit-mode) below.
 
 ---
 
@@ -118,9 +134,7 @@ At the end, you see a summary of everything captured and get a chance to edit an
 /curriculum:outcomes
 ```
 
-Claude generates a full set of learning objectives from your project brief — program-level goals, module-level outcomes, and session-level objectives. It checks the thinking-level distribution automatically (making sure you're not just covering recall when you need application) and shows you the results before saving anything.
-
-A review gate runs here. When you're satisfied, approve to continue.
+Claude generates a full set of learning objectives from your project brief — program-level goals, module-level outcomes, and session-level objectives. Thinking-level distribution is checked automatically (making sure you're not only covering recall when you need application). A review gate runs here — you see the full set before anything is saved.
 
 ---
 
@@ -130,9 +144,7 @@ A review gate runs here. When you're satisfied, approve to continue.
 /curriculum:assessments
 ```
 
-Every learning objective gets paired with an assessment. Claude makes sure assessments are aligned to the complexity level of each objective and that every module has formative checks built in — not just a final test at the end.
-
-A second review gate runs after this stage. Approve to unlock module design.
+Every learning objective gets paired with an assessment. Claude makes sure assessments are aligned to the complexity level of each objective and that every module has formative checks built in — not just a final test at the end. A second review gate runs after this stage.
 
 ---
 
@@ -142,7 +154,7 @@ A second review gate runs after this stage. Approve to unlock module design.
 /curriculum:modules
 ```
 
-Claude organizes your objectives and assessments into a sequenced module structure. Every module gets a learning arc, and the sequence is validated before you move to session writing. Collaborative activities are required in every module — they're built into the structure, not optional.
+Claude organizes your objectives and assessments into a sequenced module structure. Every module gets a learning arc, and the sequence is validated before you move to session writing. Collaborative activities are required in every module — built into the structure, not optional.
 
 ---
 
@@ -154,7 +166,7 @@ Claude organizes your objectives and assessments into a sequenced module structu
 
 This is the heavy-lift stage. Claude dispatches a separate worker for each module in parallel, writing complete session content for every session in the program. Depending on program size this can take a few minutes — Claude shows you progress as each module finishes.
 
-Session content follows a Theory → Method → Application structure. Pre-work is treated as a structural requirement, not an optional extra.
+Each session includes: facilitator guide, participant materials, and a slide outline written as production direction — what goes on the slide, why it matters, and what the facilitator should do — not a content inventory.
 
 ---
 
@@ -188,19 +200,18 @@ Claude generates program marketing copy where every claim traces back to a speci
 
 ---
 
-### Stage 9 — Validate: Run a quality check
+### Stage 9 — Validate and deliver
 
 ```
 /curriculum:validate
+/curriculum:approve
 ```
 
-A validation agent runs three tiers of checks on the full curriculum package: structural completeness, content quality scoring, and items that need a human eye. Results come back in plain language — no jargon, no check IDs. You'll see what's strong, what needs work, and specific recommendations for each issue.
-
-The final review gate runs here. Approve to mark the project complete.
+A validation agent runs three tiers of checks on the full curriculum package: structural completeness, content quality scoring, and items that need a human eye. Results come back in plain language. The final review gate runs here — when you approve, the delivery package is assembled automatically.
 
 ---
 
-## Audit mode
+## Audit Mode
 
 If you already have curriculum materials — a facilitator guide, slide deck outline, participant workbook, or any combination — you don't have to start from scratch.
 
@@ -210,8 +221,8 @@ When you run `/curriculum:intake`, choose **"I have existing materials to bring 
 2. Extract every intake field it can find, with a confidence level for each one
 3. Show you what it found before asking anything
 4. Ask only about genuine gaps — not the full interview
-5. Surface any real conflicts between documents (e.g., the guide says hands-on but the slide count implies lecture-heavy) as explicit choices you need to make
-6. Produce your `project-brief.md` plus a gap report showing what exists, what's thin, and what's missing relative to the full pipeline
+5. Surface any real conflicts between documents as explicit choices you need to make
+6. Assign a content-handling mode per stage: leave strong content alone, enrich thin content, generate from scratch where nothing exists
 
 Put your source documents in `workspace/{project-name}/source-material/` before running intake, or pass them as arguments directly:
 
@@ -219,11 +230,9 @@ Put your source documents in `workspace/{project-name}/source-material/` before 
 /curriculum:intake facilitator-guide.pdf workshop-slides.md
 ```
 
-After intake, your stage files are pre-populated from your existing content. Downstream commands will check your material against schema requirements and surface what needs attention — they don't throw out what you have and regenerate from scratch.
-
 ---
 
-## Evaluation mode
+## Evaluation Mode
 
 Want to run any curriculum through the quality rubrics without building a full project?
 
@@ -231,37 +240,34 @@ Want to run any curriculum through the quality rubrics without building a full p
 /curriculum:evaluate path/to/your-curriculum.md
 ```
 
-This works on any curriculum document — something you built elsewhere, a vendor program you're evaluating, or materials you inherited. You don't need to have run any pipeline stages first.
+This works on any curriculum document — something you built elsewhere, a vendor program you're evaluating, or materials you inherited. Claude reads the document, runs the full three-tier validation, and writes `evaluation-report.md` to your `source-material/` folder. No pipeline stages required.
 
-Claude reads the document, runs the full three-tier validation, and writes `evaluation-report.md` to your `source-material/` folder. The report tells you:
+---
 
-- What the curriculum does well (specific observations, not generic praise)
-- Every issue found, in plain language with specific recommendations for fixing it
-- Quality scores for key design dimensions
-- Items that require a human judgment call
+## Dashboard
 
-You can pass multiple documents at once:
+The plugin includes a local dashboard for browsing your workspace files as the pipeline runs.
 
+```bash
+cd dashboard && npm install && npm run dev
 ```
-/curriculum:evaluate facilitator-guide.md participant-workbook.md
+
+Open [http://localhost:3002](http://localhost:3002) in your browser. The dashboard shows pipeline progress and renders generated files inline — it updates as Claude writes new content, no server restart needed.
+
+If your workspace lives somewhere other than the default location:
+
+```bash
+WORKSPACE_DIR=/absolute/path/to/your/workspace npm run dev
 ```
 
 ---
 
-## Other commands
-
-**`/curriculum:approve`** — Use this when a review gate is waiting. If you've stepped away and come back, this shows you where you are and walks you through the approval.
-
-**`/curriculum:resume`** — Shows your current position in the pipeline and the next step. Useful if Claude doesn't surface your context automatically or if you switch between projects.
-
----
-
-## Quick reference
+## Quick Reference
 
 | Command | What it does | Produces |
 |---------|-------------|---------|
 | `/curriculum:init` | Create a new project workspace | Folder structure + STATE.md |
-| `/curriculum:intake` | Interview + existing materials intake | `project-brief.md`, `curriculum-gap-report.md` (audit mode) |
+| `/curriculum:intake` | Interview + existing materials intake | `project-brief.md`, gap report (audit mode) |
 | `/curriculum:outcomes` | Generate learning objectives | `learning-objectives.md` + supporting files |
 | `/curriculum:assessments` | Design assessments for every objective | `assessment-map.md` + supporting files |
 | `/curriculum:modules` | Structure content into modules | Module specs in `03-modules/` |
@@ -270,6 +276,8 @@ You can pass multiple documents at once:
 | `/curriculum:transfer` | Design before/during/after system | `transfer-plan.md` |
 | `/curriculum:marketing` | Write enrollment copy | `marketing-copy.md` |
 | `/curriculum:validate` | Quality check the full package | Validation report |
+| `/curriculum:approve` | Final review gate + assemble delivery | `delivery/` folder |
 | `/curriculum:evaluate` | Evaluate any curriculum document | `evaluation-report.md` |
-| `/curriculum:approve` | Handle a review gate | Advances pipeline |
 | `/curriculum:resume` | Pick up where you left off | Status summary |
+| `/curriculum:assemble` | Compile delivery package manually | `delivery/` folder |
+| `/curriculum:verify` | Pre-delivery completeness check | Verification report |
