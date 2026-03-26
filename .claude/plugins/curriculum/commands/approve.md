@@ -126,6 +126,8 @@ This is your complete curriculum package. Is it ready to deliver?
 
 Use `AskUserQuestion` with three options:
 
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to the approval branch, do not write any files or update any state until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
+
 **For assessments review:**
 > Here's what was designed for your program's assessments. Take a look, then tell me how you'd like to proceed:
 >

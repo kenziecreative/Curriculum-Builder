@@ -238,6 +238,8 @@ Use `AskUserQuestion` with these three options:
 - **"I want to edit something"**
 - **"Start over from scratch"**
 
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to any branch, do not write any files until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
+
 ---
 
 ### On "Looks good — let's keep going"
@@ -600,6 +602,8 @@ Use `AskUserQuestion` with these three options:
 - **"Looks good — let's keep going"**
 - **"I want to edit something"**
 - **"Start over from scratch"**
+
+**STOP after calling AskUserQuestion.** Do not generate any further output, do not proceed to any branch, do not write any files until the user's response has been received. AskUserQuestion must be the final action in this response turn. Wait for the next conversation turn before acting on the result.
 
 ---
 
