@@ -8,6 +8,20 @@ The tool handles the structural rigor automatically. Thinking-level distribution
 
 ---
 
+## What It's Built For
+
+The pipeline scales from a single 90-minute workshop to a full semester without any architectural changes. It's been used to design:
+
+- **Accelerator programs** — cohort-based, multi-week, with real-world application built into every session
+- **Day-long workshops** — single-day intensives where every hour has to earn its place
+- **Multi-week courses** — 4–8 week programs with progressive skill-building and spaced practice
+- **Certificate programs** — semester-length with formal assessment and transfer design
+- **SME-led training** — subject matter experts who know their domain but need the instructional structure handled for them
+
+If you're designing any program where you want learners to actually be able to do something at the end — not just know something — this is the right tool.
+
+---
+
 ## What You Get
 
 **A complete session package** — facilitator guides, participant materials, and slide outlines for every session in your program. Content follows a Theory → Method → Application structure. Pre-work is treated as a structural requirement, not an optional extra.
