@@ -57,8 +57,8 @@ You'll need [Claude Code](https://claude.ai/claude-code) installed first.
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/kenziecreative/Curriculum-Builder.git
-cd Curriculum-Builder
+git clone https://github.com/kenziecreative/Curriculum-Builder.git my-curriculum-project
+cd my-curriculum-project
 ```
 
 **2. Remove the origin remote**
