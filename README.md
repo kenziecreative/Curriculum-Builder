@@ -38,13 +38,15 @@ Every deliverable is written in plain language — no instructional design vocab
 
 ---
 
-## This Is Not a Content Generator
+## What Makes This Different
 
-Curriculum Builder does not write slide decks. It does not produce a PowerPoint. It does not generate a course outline you fill in later.
+Most AI tools will generate content when you ask for it. Curriculum Builder generates content *because* the design work is done first — and that changes what you get.
 
-It builds the structural foundation first — what learners need to do, how you'll know they can do it, how the content is sequenced — and then writes complete session content from that foundation. The facilitator guides, participant materials, and slide outlines exist because the design work is done first, not instead of it.
+The facilitator guides, participant materials, and slide outlines aren't templates you fill in. They're written from the learning objectives and assessments that were designed specifically for your program and your learners. The slide outline tells the facilitator what goes on each slide, why it matters pedagogically, and what to do in the room — not just a list of topics. The facilitator guide includes diagnostic cues: what to watch for, what it signals about where learners are, what move to make next.
 
-If you want a quick content dump, this isn't the right tool. If you want a curriculum where the sessions, the assessments, and the transfer design actually connect to each other — that's what this builds.
+The difference shows up when you use the materials. Everything connects because it was built to connect — not assembled from separate pieces after the fact.
+
+What it does not do: produce a PowerPoint file, generate a course outline you fill in later, or write content without the design work behind it. If you need a quick draft to hand-edit, there are faster tools. If you need a complete curriculum package where every piece is designed to work together, this is built for that.
 
 ---
 
