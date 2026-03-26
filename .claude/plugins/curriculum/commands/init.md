@@ -24,9 +24,9 @@ If the user ran `/curriculum:init {project name}`, use that as the project name.
 
 If no name was provided, ask:
 
-> **What should we call this project?** (This becomes your workspace folder name — use lowercase with hyphens, e.g., `entrepreneurship-fundamentals`)
+> **What should we call this project?**
 
-Use `AskUserQuestion` as plain text — no options list, no examples as selectable choices. The user types their answer directly. Normalize the input: lowercase, spaces replaced with hyphens, strip special characters.
+Use `AskUserQuestion` with `type: free_text` — no options list, no example values. The user types their answer directly. Normalize the input: lowercase, spaces replaced with hyphens, strip special characters.
 
 ### 2. Check for existing workspace
 
