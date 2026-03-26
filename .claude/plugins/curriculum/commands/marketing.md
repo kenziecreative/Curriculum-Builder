@@ -127,8 +127,18 @@ Write `workspace/{project}/07-marketing/marketing-package.md` as markdown prose.
 ```
 # [Program Name] — Marketing Package
 
+## The Promise
+[One sentence. The transformation this program delivers. Format: "In [duration], you'll go from [specific current struggle] to [specific new capability]." Draw from the transfer design's post-program outcomes and the highest-order learning objectives. This is the hook — write it to make someone stop scrolling.]
+
 ## Program Description
 [2-3 prose paragraphs. Benefits-first. PAS or DOS structure. VOC language. No curriculum field names.]
+
+## What Changes
+[From/To pairs — one per major transformation this program produces. Each pair names a specific before state (what the learner is stuck with now) and after state (what they walk away able to do). Draw from learning objectives and transfer design real-work application elements. Format:
+
+- **From:** [specific current struggle or limitation] → **To:** [specific new capability or outcome]
+
+3–5 pairs for multi-week programs. 2–3 for shorter programs. Each pair must be traceable to a specific objective or transfer activity.]
 
 ## Learning Promises
 [Bulleted list. Each item is a learner-facing benefit statement — full outcome text rewritten as what the learner gains. Not outcome IDs. Not "you will understand." "You'll be able to..." is the floor; "You'll walk away with X built" is preferred where accurate.]
@@ -147,7 +157,7 @@ Write `workspace/{project}/07-marketing/marketing-package.md` as markdown prose.
 
 The traceability table appears after the horizontal rule separator — never inline with the prose sections.
 
-Omit sections that are not generated for the program's duration tier (e.g., omit Audience Fit for 90-minute programs).
+Omit sections that are not generated for the program's duration tier (e.g., omit Audience Fit and What Changes for 90-minute programs; omit What Changes for programs under 4 contact hours).
 
 Do not wait for user review before writing. The final review gate is `/curriculum:approve` — that command covers the complete package including marketing materials.
 
@@ -160,8 +170,16 @@ Show the marketing output with adjacent source footnotes so the user can see bot
 ```
 **[Program Name]**
 
+**The promise:** [one-sentence transformation statement]
+→ Source: [transfer design / highest-order objective]
+
 [Program description content — compelling enrollment copy, 2-3 sentences]
 → Source: [source_citation for program description, in plain language — e.g., "learning objective 3 (Apply) and the market analysis assessment"]
+
+**What changes:**
+- From: [current struggle] → To: [new capability]
+  → Source: [source_citation in plain language]
+[Continue for all From/To pairs]
 
 **What you'll be able to do:**
 - [Learning promise 1 — behavioral outcome statement written to enroll]

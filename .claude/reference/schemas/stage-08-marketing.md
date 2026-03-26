@@ -31,12 +31,17 @@ Each marketing element is a record with the following fields:
 
 ### `element_type`
 ```
+transformation_promise
+transformation_pair
 program_description
 learning_promise
 audience_positioning
 testimonial_prompt
 enrollment_cta
 ```
+
+- `transformation_promise` — One-sentence hook: "In [duration], you'll go from [current struggle] to [new capability]." One record per program. Required for programs ≥ 4 contact hours.
+- `transformation_pair` — A single From/To pair naming a specific before and after state. Multiple records per program. Required for programs ≥ 4 contact hours (minimum 2 pairs, maximum 5).
 
 ### `claim_type`
 ```
@@ -94,14 +99,15 @@ The total word count of all marketing output files must be less than 25% of the 
 - Optional: `enrollment_cta`
 - `learning_promise`, `audience_positioning`, `testimonial_prompt` are omitted — insufficient curriculum depth to justify
 
-**Half-day to 2-day programs:**
-- Required: `program_description`, `learning_promise`, `audience_positioning`
+**Half-day to 2-day programs (2–16 contact hours):**
+- Required: `program_description`, `learning_promise`, `audience_positioning`, `transformation_promise`, `transformation_pair` (minimum 2)
 - Optional: `enrollment_cta`, `testimonial_prompt`
 - All elements require `source_citation` and `curriculum_traceability`
 
-**Multi-week and semester programs:**
-- Full marketing package: all five element types
+**Multi-week and semester programs (>16 contact hours):**
+- Full marketing package: all seven element types
 - Multiple records per `element_type` allowed for audience segmentation
+- `transformation_pair` minimum 3, maximum 5
 - Marketing-to-pedagogy ratio rule strictly enforced
 
 ---
@@ -114,7 +120,7 @@ When this stage runs, the following file is created in `output_dir`:
 
 ## Write Format
 
-marketing-package.md is written as markdown prose, not YAML. Field definitions in this schema inform generation — they define what constraints apply to each element type, not what appears in the output file. The output file contains: Program Description (prose), Learning Promises (bullets), Audience Fit (prose), and a Source Traceability table.
+marketing-package.md is written as markdown prose, not YAML. Field definitions in this schema inform generation — they define what constraints apply to each element type, not what appears in the output file. The output file contains: The Promise (one sentence), Program Description (prose), What Changes (From/To pairs), Learning Promises (bullets), Audience Fit (prose), and a Source Traceability table. The Promise and What Changes sections are omitted for programs under 4 contact hours.
 
 ---
 
