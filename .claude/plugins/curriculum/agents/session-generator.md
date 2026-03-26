@@ -151,6 +151,12 @@ If BOTH are true → DCR fields are REQUIRED. Include them in session.md. If eit
 
 ---
 
+## Writing for Clarity — applies to ALL generated content
+
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ("In this section we will...", "Now that we have...", "Let's take a moment to..."). Start every paragraph with the conclusion, then support it. Use precise language — numbers beat adjectives, specific beats general. Cut filler: no "It's worth noting that...", no "As you may know...", no unnecessary modifiers. This applies to facilitator guides, participant materials, slide outlines, and session.md — everything this agent writes.
+
+---
+
 ## Output Files — 4 Files Per Session
 
 For each session M-N-S-N, write to `{output_dir}M-N-S-N/`:
