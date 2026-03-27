@@ -170,7 +170,7 @@ Plans:
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 18. Stage Guidance | v4.0 | 3/4 | Gap closure | - |
+| 18. Stage Guidance | 4/4 | Complete   | 2026-03-27 | - |
 | 19. Pipeline Infrastructure | v4.0 | 0/TBD | Not started | - |
 | 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
