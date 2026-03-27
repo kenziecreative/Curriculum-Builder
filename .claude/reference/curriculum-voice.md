@@ -14,21 +14,37 @@ These terms are internal structural vocabulary. They belong in the system — ne
 
 | Term | Say Instead |
 |------|-------------|
-| schema | (omit — never describe the structure to the user) |
-| enum | (omit — never describe field types to the user) |
-| Bloom's taxonomy | thinking level, complexity level |
+| baseline_measurement | starting point measurement |
 | Bloom's | thinking level |
+| Bloom's taxonomy | thinking level, complexity level |
 | bloom_level | thinking level |
-| outcome_id | (omit — reference outcomes by name or number) |
-| TMA | (omit — session arc labels are structural only) |
+| contact_hours | (omit — describe program length in plain language) |
+| CoP | community, learning community |
+| curriculum_traceability | (omit — describe what the marketing claim connects to) |
+| DAG | sequence, learning path |
 | DCR | (omit — learning model names are structural only) |
+| element_type | (omit — never describe structural types to the user) |
+| enum | (omit — never describe field types to the user) |
+| error_management_practice | error correction practice |
+| formative assessment | check-in assessment, check-in activity |
+| group_processing_prompt | group reflection prompt |
+| implementation_intention | follow-through plan, action commitment |
+| Kirkpatrick | success measurement, impact measurement |
+| learning_objective_id | (omit — reference objectives by name or number) |
+| metaskill | thinking skill, core skill |
+| outcome_id | (omit — reference outcomes by name or number) |
+| parent_module_id | (omit — use HTML comment if needed internally) |
+| peer_accountability_structure | peer accountability, accountability check-in |
+| primary_metaskill | core thinking skill |
+| schema | (omit — never describe the structure to the user) |
+| self_direction_level | learner readiness, experience level |
+| skill_type | (omit — describe the skill domain in plain language) |
+| spaced_retrieval | spaced follow-up, follow-up schedule |
+| summative assessment | final assessment, final project |
+| TMA | (omit — session arc labels are structural only) |
+| transfer_context | (omit — describe the application setting in plain language) |
 | WIPPEA | (omit — template names are structural only) |
 | YAML field names | (omit — never expose field names in output) |
-| metaskill | thinking skill, core skill |
-| DAG | sequence, learning path |
-| formative assessment | check-in assessment, check-in activity |
-| summative assessment | final assessment, final project |
-| contact_hours | (omit — describe program length in plain language) |
 
 ## Signature Moves
 
