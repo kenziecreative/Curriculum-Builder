@@ -226,7 +226,7 @@ Then use `AskUserQuestion` with three options:
 
 ## On "Approve and continue"
 
-1. Write `workspace/{project}/06-transfer/transfer-ecosystem.md` as a narrative markdown document. Do not write YAML. The file must read as a shareable document — not a data structure.
+1. Create `workspace/{project}/06-transfer/_drafts/` if it does not exist. Write `workspace/{project}/06-transfer/_drafts/transfer-ecosystem.md` as a narrative markdown document. Do not write YAML. The file must read as a shareable document — not a data structure.
 
    File structure:
 
@@ -266,7 +266,101 @@ Then use `AskUserQuestion` with three options:
    - Community continuation plan is described (not omitted, not TBD)
    - Success measurement description matches the evaluation level determined for this program
 
-2. Silently update `workspace/{project}/STATE.md`:
+### Draft Audit
+
+Run these 10 checks against the file in `workspace/{project}/06-transfer/_drafts/`. All 10 must pass before promotion.
+
+**Check 1: File Completeness**
+Verify `transfer-ecosystem.md` exists in `_drafts/` with non-zero content containing all required sections: Before the Program, During the Program, After the Program, How We'll Know It Worked.
+
+**Check 2: Registry Consistency**
+Read `curriculum-registry.json`. Verify:
+- Module references in follow-through plans match module IDs in registry `time_allocations`
+- Program outcomes referenced match registry `outcome_wording.program_outcomes`
+- Contact hours assumptions match registry `learner_profile.data.contact_hours`
+
+This is a blocking failure — inconsistent references mean the transfer design is based on stale data.
+
+**Check 3: Vocabulary Scan**
+Read `.claude/reference/curriculum-voice.md`. Scan the draft for any term in the never-say table. This is auto-fixable — substitute with the plain-language replacement.
+
+**Check 4: Schema Compliance**
+Load `.claude/reference/schemas/stage-07-transfer.md`. Verify all required fields for the program's duration tier are covered in the narrative (the file is prose, but it must address every required schema element).
+
+**Check 5: Transfer Layer Coverage (T1-25)**
+Verify all three transfer layers are present in the narrative: pre-program (Before the Program section), in-program (During the Program section), post-program (After the Program section). Each section must contain substantive content, not placeholder text.
+
+This is a blocking failure — requires regeneration.
+
+**Check 6: Implementation Intentions (T1-26)**
+Verify that the During the Program section references specific follow-through commitments for each module (at minimum one per module from the module list). Generic references like "each module includes a follow-through plan" without naming the modules are not acceptable.
+
+This is a blocking failure — requires regeneration.
+
+**Check 7: Error Management (T1-27)**
+If `skill_type` from the registry is "open": verify the During section includes error correction practice with specific error types and correction processes. If `skill_type` is "closed": this check passes automatically.
+
+This is a blocking failure — requires regeneration.
+
+**Check 8: Spaced Retrieval Match (T1-28)**
+Verify the After the Program section describes spaced follow-up at the intervals matching the duration scaling rules (1 week only for < 2 hours; 1 week + 1 month for 2-16 hours; all three intervals for > 16 hours). The number of described follow-up touchpoints must match the number of intervals.
+
+This is a blocking failure — requires regeneration.
+
+**Check 9: Evaluation Level (T1-29)**
+Verify the How We'll Know It Worked section describes a measurement approach at or above the minimum level for this program type (Level 2 for short closed-skill; Level 3 for short open-skill or longer programs; Level 4 when business outcomes are specified). If below minimum, check whether `minimum_level_justification` rationale is present in the narrative.
+
+This is a blocking failure — requires regeneration.
+
+**Check 10: Community Continuation (T1-30)**
+Verify the After the Program section includes community continuation content that is not empty, not "TBD", and not placeholder text. Must describe a specific continuation mechanism (platform, format, or activity).
+
+This is a blocking failure — requires regeneration.
+
+### Verification Integrity
+
+A check either passes its defined criteria or it fails. No middle ground.
+
+**Rules:**
+1. Do not rationalize a passing result. If a check's defined criteria are not met, the check fails — regardless of how close the result is.
+2. Do not downgrade severity. If the check definition says "blocking," it blocks. You do not have the authority to change a blocking failure to a warning.
+3. Do not invent passing conditions. If the criteria say "every module must be named," then one unnamed module is a failure, not "substantially complete."
+4. Do not soften failure descriptions. Report exactly what failed and why. Do not add qualifiers that minimize the problem.
+5. Do not bypass checks. Every defined check runs. A check that was skipped is treated as a failure, not an omission.
+
+**Prohibited qualifiers — never use these when reporting check results:**
+approximately, mostly, essentially, close enough, acceptable, nearly, substantially, reasonably, adequate, sufficient, largely, broadly, generally, for the most part, in most cases, with minor exceptions
+
+**If you find yourself wanting to write "mostly passes" or "essentially meets the criteria," the check failed.**
+
+**Audit Result:**
+
+If all 10 checks pass: promote `transfer-ecosystem.md` from `workspace/{project}/06-transfer/_drafts/` to `workspace/{project}/06-transfer/transfer-ecosystem.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the STATE.md update and completion message below.
+
+If any check fails:
+1. Attempt auto-fix for simple failures:
+   - Vocabulary violations (Check 3): substitute with the plain-language replacement from curriculum-voice.md
+   - Registry consistency defaults (Check 2): correct module ID references using registry canonical IDs
+   - Outcome drift: replace draft outcome wording with registry canonical wording
+2. Re-run the failing check(s) after auto-fix.
+3. If content checks (Checks 5–10) still fail after auto-fix: regenerate the transfer ecosystem narrative. Re-run all 10 checks on the new draft. Track this as attempt 2.
+
+   **Retry constraint injection:** Each retry must add cumulative constraints to the regeneration prompt:
+   - Attempt 2: inject the specific failing check criteria as explicit generation constraints
+   - Attempt 3: inject both the attempt-2 constraints plus the verbatim failure reason from attempt 2
+
+4. After 3 failed attempts, stop and escalate. Do not promote. Do not mark the stage complete. Present the escalation in plain language:
+
+   > I wasn't able to produce a transfer design that passes all checks after three tries. Here's what kept failing:
+   > - [Plain-language description of the specific problem — what was missing or wrong, not the check ID]
+   > - [Where in the file the problem appeared]
+   > - [What to try: specific suggestion for how to provide different input or adjust the program design]
+   >
+   > Run `/curriculum:transfer` again and flag an issue to provide different direction.
+
+5. Structural failures (Checks 1, 2, 4) stop immediately — no retry. Report the specific failure and stop.
+
+2. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
    - Stage 7 status: `complete`, Completed: {today's date}
    - Session Continuity → Next Action: `Run /curriculum:marketing to generate enrollment materials`
 
