@@ -59,7 +59,7 @@ See [v3.0 archive](milestones/v3.0-ROADMAP.md) for full phase details.
 **Milestone Goal:** Make the tool invisible to SMEs — every interaction feels like working with a sharp colleague, not being processed through an academic system.
 
 - [x] **Phase 17: Vocabulary & Plain Language** - Remove all remaining ID jargon from every command and output visible to users (completed 2026-03-27)
-- [ ] **Phase 18: Stage Guidance** - Give SMEs plain-language guidance at every review gate so they can evaluate with confidence
+- [x] **Phase 18: Stage Guidance** - Give SMEs plain-language guidance at every review gate so they can evaluate with confidence (completed 2026-03-27)
 - [ ] **Phase 19: Pipeline Infrastructure** - Canonical registry, draft pipeline, context breaks, and sub-stage tracking to make generation reliable
 - [ ] **Phase 20: Integrity & Verification** - Curriculum integrity agent, cross-stage check, goal-backward verification, and anti-softening enforcement
 - [ ] **Phase 21: Deviation & Validation Coverage** - Structured deviation handling and full validation coverage through stage 8
@@ -169,7 +169,7 @@ Plans:
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 18. Stage Guidance | 2/3 | In Progress|  | - |
+| 18. Stage Guidance | 3/3 | Complete   | 2026-03-27 | - |
 | 19. Pipeline Infrastructure | v4.0 | 0/TBD | Not started | - |
 | 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |

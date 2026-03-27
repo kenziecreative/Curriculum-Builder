@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 18-02-PLAN.md
-last_updated: "2026-03-27T02:35:19.487Z"
+stopped_at: Completed 18-03-PLAN.md
+last_updated: "2026-03-27T02:41:52.881Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
   percent: 0
 ---
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 17 P02 | 15 | 3 tasks | 6 files |
 | Phase 18 P01 | 98s | 2 tasks | 2 files |
 | Phase 18-stage-guidance P02 | 8 | 2 tasks | 2 files |
+| Phase 18-stage-guidance P03 | 4min | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 18]: Bloom span replaced with 'building from X to Y' instruction pattern in approve.md — agent fills natural activity descriptions, never taxonomy labels
 - [Phase 18-02]: Em-dash separator for combining what+why in constraint failure lines — reads as one idea with two parts
 - [Phase 18-02]: validate.md failure messages now show 'what was checked — why it matters' so SMEs understand significance without ID training
+- [Phase 18-03]: Auto-detection is additive: existing directory references remain as default legacy pattern — detection block tells Claude which mapping to use without rewriting every path
+- [Phase 18-03]: Directory scheme detection pivots on 00-project-brief vs 01-project-brief presence — unambiguous signal for legacy vs new workspace
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T02:35:19.485Z
-Stopped at: Completed 18-02-PLAN.md
+Last session: 2026-03-27T02:41:52.878Z
+Stopped at: Completed 18-03-PLAN.md
 Resume file: None
