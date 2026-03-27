@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 17-03-PLAN.md — vocabulary enforcement added to all four curriculum agents
-last_updated: "2026-03-27T01:26:38.117Z"
+stopped_at: Completed 17-02-PLAN.md — template jargon fixed, three-layer enforcement added to approve.md
+last_updated: "2026-03-27T01:29:00.440Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -48,6 +48,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 *Updated after each plan completion*
 | Phase 17 P01 | 20 | 2 tasks | 8 files |
 | Phase 17-vocabulary-plain-language P03 | 4 | 2 tasks | 4 files |
+| Phase 17 P02 | 15 | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -61,6 +62,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 17]: Standard Writing for Clarity block and voice reference instruction established — identical wording across all command files creates uniform enforcement surface
 - [Phase 17-03]: Three-layer treatment for curriculum-evaluator.md — voice reference + Writing for Clarity + post-write scan for SME-facing output
 - [Phase 17-03]: Post-write scans reference curriculum-voice.md canonical table rather than hardcoding per-agent lists
+- [Phase 17]: Three-layer vocabulary enforcement pattern for approve.md: voice ref + inline guardrail + never-say table
+- [Phase 17]: curriculum_traceability replaced with source_link in marketing.md hints — schema field name survives in schema file, not in command instructions
 
 ### Pending Todos
 
@@ -74,6 +77,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T01:26:38.115Z
-Stopped at: Completed 17-03-PLAN.md — vocabulary enforcement added to all four curriculum agents
+Last session: 2026-03-27T01:28:55.481Z
+Stopped at: Completed 17-02-PLAN.md — template jargon fixed, three-layer enforcement added to approve.md
 Resume file: None
