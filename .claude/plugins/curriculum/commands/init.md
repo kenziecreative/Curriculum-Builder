@@ -42,15 +42,15 @@ Create `workspace/{project-name}/` with the following directories (per the manif
 
 ```
 workspace/{project-name}/
-  00-project-brief/
-  01-outcomes/
-  02-assessments/
-  03-modules/
-  04-sessions/
-  05-metaskills/
-  06-transfer/
-  07-marketing/
-  08-validation/
+  01-project-brief/
+  02-outcomes/
+  03-assessments/
+  04-modules/
+  05-sessions/
+  06-metaskills/
+  07-transfer/
+  08-marketing/
+  09-validation/
   source-material/
   delivery/
 ```

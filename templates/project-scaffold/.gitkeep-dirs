@@ -8,15 +8,15 @@ directories in the template.
 
 ```
 workspace/{project-name}/
-  00-project-brief/
-  01-outcomes/
-  02-assessments/
-  03-modules/
-  04-sessions/
-  05-metaskills/
-  06-transfer/
-  07-marketing/
-  08-validation/
+  01-project-brief/
+  02-outcomes/
+  03-assessments/
+  04-modules/
+  05-sessions/
+  06-metaskills/
+  07-transfer/
+  08-marketing/
+  09-validation/
   delivery/
 ```
 
@@ -24,19 +24,21 @@ workspace/{project-name}/
 
 | Directory         | Pipeline Stage | Content                                          |
 |-------------------|---------------|--------------------------------------------------|
-| 00-project-brief/ | Stage 1       | Intake brief and key decision record             |
-| 01-outcomes/      | Stage 2       | Learning outcomes (competency + performance)     |
-| 02-assessments/   | Stage 3       | Assessment designs aligned to outcomes           |
-| 03-modules/       | Stage 4       | Module-level structure and learning arcs         |
-| 04-sessions/      | Stage 5       | Session-level content with TMA arc               |
-| 05-metaskills/    | Stage 6       | Metaskill mapping per module                     |
-| 06-transfer/      | Stage 7       | Transfer ecosystem (pre/in/post-program)         |
-| 07-marketing/     | Stage 8       | Marketing copy derived from outcomes             |
-| 08-validation/    | Stage 9       | Validation report and gap analysis               |
+| 01-project-brief/ | Stage 1       | Intake brief and key decision record             |
+| 02-outcomes/      | Stage 2       | Learning outcomes (competency + performance)     |
+| 03-assessments/   | Stage 3       | Assessment designs aligned to outcomes           |
+| 04-modules/       | Stage 4       | Module-level structure and learning arcs         |
+| 05-sessions/      | Stage 5       | Session-level content with TMA arc               |
+| 06-metaskills/    | Stage 6       | Metaskill mapping per module                     |
+| 07-transfer/      | Stage 7       | Transfer ecosystem (pre/in/post-program)         |
+| 08-marketing/     | Stage 8       | Marketing copy derived from outcomes             |
+| 09-validation/    | Stage 9       | Validation report and gap analysis               |
 | delivery/         | Output        | Formatted HTML output (markdown is source truth) |
 
 ## Notes
 
+- New projects use 01-09 directory numbering matching stage numbers 1-9
+- Existing projects may use legacy 00-08 numbering — all commands auto-detect which scheme is present
 - Stage-numbered directories match the `output_dir` from each pipeline schema
 - `delivery/` is for formatted HTML output — markdown in stage dirs is source of truth
 - No placeholder files or template stubs in any directory
