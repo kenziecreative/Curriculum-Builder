@@ -32,8 +32,8 @@ Requirements for SME-ready release. Each maps to roadmap phases.
 
 ### Pipeline Robustness
 
-- [ ] **PIPE-01**: Draft-then-audit pipeline for stages 4-6 — content writes to draft location first, separate audit promotes to final output
-- [ ] **PIPE-02**: Pre-execution input validation — each stage command verifies inputs are valid (not just predecessor status complete) before generating
+- [x] **PIPE-01**: Draft-then-audit pipeline for stages 4-6 — content writes to draft location first, separate audit promotes to final output
+- [x] **PIPE-02**: Pre-execution input validation — each stage command verifies inputs are valid (not just predecessor status complete) before generating
 - [x] **PIPE-03**: Canonical registry (curriculum-registry.json) — single source of truth for outcomes, assessments, time allocations, learner profile data; downstream stages check registry, not files
 - [x] **PIPE-04**: Context breaks in auto-chain — insert explicit context-clear points between auto-chained stages so each gets a fresh window
 - [x] **PIPE-05**: Sub-stage state tracking — STATE.md tracks module-level progress within session generation; context clears mid-stage don't lose completed work
@@ -79,8 +79,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GUIDE-03 | Phase 18 | Complete |
 | DEVL-03 | Phase 18 | Complete |
 | PIPE-03 | Phase 19 | Complete |
-| PIPE-01 | Phase 19 | Pending |
-| PIPE-02 | Phase 19 | Pending |
+| PIPE-01 | Phase 19 | Complete |
+| PIPE-02 | Phase 19 | Complete |
 | PIPE-04 | Phase 19 | Complete |
 | PIPE-05 | Phase 19 | Complete |
 | INTG-01 | Phase 20 | Pending |
