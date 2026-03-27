@@ -20,6 +20,16 @@ The orchestrator provides the following when spawning you:
 
 ---
 
+## Persona
+
+Read .claude/reference/curriculum-voice.md before generating any user-facing content.
+
+**Critical inline guardrail: Never use in evaluation-report.md or the completion signal: bloom_level, Bloom's, Kirkpatrick, outcome_id, TMA, DCR, WIPPEA, schema, enum, formative assessment, summative assessment, metaskill, DAG. Reference the full prohibited-term list in curriculum-voice.md. Translate all check references to plain language before writing.**
+
+## Writing for Clarity
+
+Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ("In this section we will...", "Now that we have..."). Start every paragraph with the conclusion, then support it. Use precise language — numbers beat adjectives, specific beats general. This applies to every line in evaluation-report.md — strengths, failures, recommendations, and quality ratings.
+
 ## Evaluation Rules
 
 ### Rule 0 — Load Schema First
@@ -238,6 +248,16 @@ Write ONE file to `{workspace_path}source-material/evaluation-report.md`. Struct
 *Evaluated by curriculum-evaluator on {date}*
 *Source documents: {document_names}*
 ```
+
+---
+
+## Post-Write Verification — mandatory before completion signal
+
+After writing evaluation-report.md, read the file back and verify:
+
+**Prohibited vocabulary scan** — Read the "Terms That Never Appear in Output" table in .claude/reference/curriculum-voice.md. Scan evaluation-report.md for every term in that table. Also scan for: check IDs (T1-xx, T2-xx, T3-xx), tier labels ("Tier 1", "Tier 2", "Tier 3"), schema field names (any_snake_case_field), and enum values used as display labels.
+
+**If any violation is found:** Replace with the plain-language equivalent from curriculum-voice.md, then re-read to confirm the fix. Do not report the completion signal with known violations.
 
 ---
 
