@@ -254,6 +254,16 @@ Present this block using the user's own words — not schema field names, not te
 
 ---
 
+### Self-check — before you decide
+
+Ask yourself:
+- Does the audience description match who you actually have in mind — the real people who will be in the room?
+- Is the time and format realistic for what you want them to be able to do by the end?
+- Does "success looks like" capture what you actually care about, or did something important get left out?
+- Is there anything you told us — or meant to tell us — that didn't make it into this summary?
+
+---
+
 ### AskUserQuestion — review gate
 
 Use `AskUserQuestion` with these three options:

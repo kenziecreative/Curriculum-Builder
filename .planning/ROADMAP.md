@@ -94,11 +94,12 @@ Plans:
   2. Constraint enforcement results read as plain explanations of what was checked and why it matters — an SME understands "Every learning objective has at least one way to prove the learner can actually do it" without knowing what Bloom alignment means
   3. Thinking-level progression is translated into concrete questions an SME can evaluate: "Does this feel like the right ramp for how you'd actually train someone on this skill?" rather than any reference to cognitive taxonomy
   4. Stage numbering is consistent — users reading pipeline output and workspace directories see the same numbering system with no unexplained mismatch
-**Plans**: 3 plans
+**Plans**: 4 plans
 Plans:
-- [ ] 18-01-PLAN.md — Self-check questions at review gates + natural thinking-level language
-- [ ] 18-02-PLAN.md — Constraint results what+why translation
-- [ ] 18-03-PLAN.md — Stage numbering normalization (01-09 for new projects + auto-detection)
+- [x] 18-01-PLAN.md — Self-check questions at review gates + natural thinking-level language
+- [x] 18-02-PLAN.md — Constraint results what+why translation
+- [x] 18-03-PLAN.md — Stage numbering normalization (01-09 for new projects + auto-detection)
+- [ ] 18-04-PLAN.md — Gap closure: intake review gate self-check questions
 
 ### Phase 19: Pipeline Infrastructure
 **Goal**: Generation is reliable — data stays consistent across stages, content is audited before it reaches deliverables, context windows are managed so nothing generates in a degraded state
@@ -169,7 +170,7 @@ Plans:
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 18. Stage Guidance | 3/3 | Complete   | 2026-03-27 | - |
+| 18. Stage Guidance | v4.0 | 3/4 | Gap closure | - |
 | 19. Pipeline Infrastructure | v4.0 | 0/TBD | Not started | - |
 | 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
