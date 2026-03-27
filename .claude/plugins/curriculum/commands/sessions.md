@@ -185,7 +185,7 @@ Each Task receives:
 - The full content of `01-outcomes/learning-objectives.md`
 - The full content of `00-project-brief/project-brief.md`
 - The full content of `.claude/reference/schemas/stage-05-sessions.md`
-- Output directory: `workspace/{project-name}/04-sessions/`
+- Output directory: `workspace/{project-name}/04-sessions/_drafts/`
 
 **Instructions to include in each Task:**
 > Generate all [session_count] sessions for module [module_name]. Follow the session-generator.md specification exactly. Write 4 files per session: session.md, facilitator-guide.md, participant-materials.md, slide-outline.md. Directory format: {output_dir}M-N-S-N/ for each session. Enforce all session arc requirements per the schema. Apply transfer design fields if skill_type==open AND bloom_level>=Analyze. Apply prohibited reflection stem rules. Return a completion signal listing which sessions were written.
@@ -198,32 +198,55 @@ After printing the progress line, silently update the Module Progress table in w
 
 Where [N remaining] counts how many Tasks have not yet returned. When the final Task returns, print:
 
-> All modules complete — verifying files now.
+> All modules complete — running draft audit now.
 
 ---
 
-## File Verification
+## Draft Audit
 
-After all Tasks report complete, verify that the expected files exist for every session across all modules. Do this by checking the file system directly.
+After all Tasks report complete, run these four checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All four must pass before promotion.
 
-For each module M-N with X sessions:
-For each session M-N-S-1 through M-N-S-X:
+### Check 1: File Completeness
+Verify the expected files exist for every session across all modules. Do this by checking the file system directly.
 
-Check that all 4 files exist:
-- `workspace/{project-name}/04-sessions/M-N-S-N/session.md`
-- `workspace/{project-name}/04-sessions/M-N-S-N/facilitator-guide.md`
-- `workspace/{project-name}/04-sessions/M-N-S-N/participant-materials.md`
-- `workspace/{project-name}/04-sessions/M-N-S-N/slide-outline.md`
+For each module M-N with X sessions, for each session M-N-S-1 through M-N-S-X, verify all 4 files exist with non-zero content:
+- `workspace/{project-name}/04-sessions/_drafts/M-N-S-N/session.md`
+- `workspace/{project-name}/04-sessions/_drafts/M-N-S-N/facilitator-guide.md`
+- `workspace/{project-name}/04-sessions/_drafts/M-N-S-N/participant-materials.md`
+- `workspace/{project-name}/04-sessions/_drafts/M-N-S-N/slide-outline.md`
 
-**If any files are missing:**
+If any module's files are missing, report immediately (do not proceed to other checks):
 
 > I wasn't able to write sessions for "[module_name]" — the files for that module are missing. Run `/curriculum:sessions` again to retry. (Your other modules are intact.)
 
-Do NOT mark Stage 5 complete. Report each module that failed. Keep Stage 5 status as `in-progress`.
+Do NOT mark Stage 5 complete. Keep Stage 5 status as `in-progress`. Do not proceed.
 
-**If all files are verified:**
+### Check 2: Registry Consistency
+Read `workspace/{project-name}/curriculum-registry.json`. For each outcome ID and module ID referenced in the draft session files, verify it exists in the registry. Flag any ID that appears in drafts but not in the registry.
 
-Update curriculum registry silently:
+### Check 3: Vocabulary Scan
+Read `.claude/reference/curriculum-voice.md` never-say table. Scan all draft files for prohibited terms. List any violations found with file path and line content.
+
+### Check 4: Schema Compliance
+Read `.claude/reference/schemas/stage-05-sessions.md`. Verify all required fields are present in draft session files. Flag any missing required fields.
+
+### Audit Result
+
+If all four checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
+
+If any check fails:
+1. Attempt auto-fix for simple failures:
+   - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
+   - Missing fields that have obvious default values: fill in from registry data
+2. Re-run the failing check(s) after auto-fix.
+3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
+
+   > Draft audit found {N} issue(s) that could not be auto-fixed:
+   > - {file}: {specific problem}
+   >
+   > Fix these issues and run `/curriculum:sessions` again.
+
+**After successful promotion**, update curriculum registry silently:
 
 Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
 

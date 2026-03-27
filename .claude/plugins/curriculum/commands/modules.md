@@ -293,7 +293,7 @@ Then use `AskUserQuestion` with three options:
 
 ## On "Approve and continue"
 
-1. Write to `workspace/{project-name}/03-modules/` — all files written simultaneously, not progressively:
+1. Write to `workspace/{project-name}/03-modules/_drafts/` — all files written simultaneously, not progressively. Use `_drafts/` as the output directory; content only reaches the final stage directory after audit checks pass.
 
    Load `.claude/reference/schemas/stage-04-modules.md` as generation context before writing. Output must contain all required fields with exact enum values per schema.
 
@@ -346,7 +346,41 @@ Then use `AskUserQuestion` with three options:
    [modality_switches — list each transition]
    ```
 
-2. Write curriculum registry silently:
+2. Run the Draft Audit against the files in `workspace/{project-name}/03-modules/_drafts/`. All four checks must pass before promotion.
+
+### Draft Audit
+
+**Check 1: File Completeness**
+Verify these files exist in `_drafts/` with non-zero content:
+- `sequence-rationale.md`
+- One `module-spec.md` per module subdirectory (e.g., `M-1/module-spec.md`, `M-2/module-spec.md`)
+
+**Check 2: Registry Consistency**
+Read `workspace/{project-name}/curriculum-registry.json`. For each module ID and outcome ID referenced in the draft files, verify it exists in the registry. Flag any ID that appears in drafts but not in the registry.
+
+**Check 3: Vocabulary Scan**
+Read `.claude/reference/curriculum-voice.md` never-say table. Scan all draft files for prohibited terms. List any violations found with file path and line content.
+
+**Check 4: Schema Compliance**
+Read `.claude/reference/schemas/stage-04-modules.md`. Verify all required fields are present in draft files. Flag any missing required fields.
+
+**Audit Result:**
+
+If all four checks pass: promote files from `_drafts/` to `workspace/{project-name}/03-modules/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
+
+If any check fails:
+1. Attempt auto-fix for simple failures:
+   - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
+   - Missing fields that have obvious default values: fill in from registry data
+2. Re-run the failing check(s) after auto-fix.
+3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
+
+   > Draft audit found {N} issue(s) that could not be auto-fixed:
+   > - {file}: {specific problem}
+   >
+   > Fix these issues and run `/curriculum:modules` again.
+
+3. Write curriculum registry silently (only after successful promotion):
 
    Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
 
@@ -359,12 +393,12 @@ Then use `AskUserQuestion` with three options:
 
    Do this silently — no announcement to the user.
 
-3. Silently update `workspace/{project-name}/STATE.md`:
+4. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 4 status: `complete`, Completed: {today's date}
    - `Review Gates` → Module-Structure: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:sessions to generate session content
 
-4. End with brief confirmation:
+5. End with brief confirmation:
 
    > Your module structure is written and saved. Type `/clear` now, then run `/curriculum:sessions` to generate the session content.
 
