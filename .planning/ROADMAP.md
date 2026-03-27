@@ -128,9 +128,9 @@ Plans:
   4. The integrity agent, validator, and any verification command explicitly refuse to bypass failures, downgrade severity, or rationalize away problems — soft-passing a check it should fail is treated as a failure mode, not a judgment call
 **Plans**: 3 plans
 Plans:
-- [ ] 20-01-PLAN.md — Anti-softening enforcement (Verification Integrity sections in all 7 checking files)
-- [ ] 20-02-PLAN.md — Expanded integrity checks + goal-backward session verification in draft-audit
-- [ ] 20-03-PLAN.md — Cross-stage integration check at final approval gate
+- [x] 20-01-PLAN.md — Anti-softening enforcement (Verification Integrity sections in all 7 checking files)
+- [x] 20-02-PLAN.md — Expanded integrity checks + goal-backward session verification in draft-audit
+- [x] 20-03-PLAN.md — Cross-stage integration check at final approval gate
 
 ### Phase 21: Deviation & Validation Coverage
 **Goal**: The tool handles problems cleanly — small fixable issues are resolved automatically, real problems escalate to the user, and validation covers the full pipeline not just the first half
@@ -140,9 +140,11 @@ Plans:
   1. Generators have a defined, documented list of what they can auto-fix (vocabulary substitution, format correction) versus what requires user escalation (content changes, missing sections, ambiguous intent) — no silent auto-fix of content decisions
   2. Auto-fix attempts stop at 3 and escalate with a specific description of the problem — the user is never left with a broken output that the tool tried to hide
   3. Validation checks cover stages 6-8 (metaskills, transfer, marketing) — a curriculum that passes validation has actually been checked end-to-end, not just through the generation midpoint
-**Plans**: TBD
+**Plans**: 3 plans
 Plans:
-- TBD
+- [ ] 21-01-PLAN.md — Structured deviation handling (3-attempt retry + escalation) in stages 4-6
+- [ ] 21-02-PLAN.md — Draft-then-audit pipeline for stages 7-8 (transfer + marketing)
+- [ ] 21-03-PLAN.md — Validator expansion to T1-19 through T1-33 (full end-to-end coverage)
 
 ### Phase 22: New Capabilities
 **Goal**: SMEs can act on what they learned from delivery — bringing a curriculum back for refinement — and structured research feeds directly into intake without manual repackaging
@@ -176,6 +178,6 @@ Plans:
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 18. Stage Guidance | v4.0 | 4/4 | Complete | 2026-03-27 |
 | 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 20. Integrity & Verification | 3/3 | Complete    | 2026-03-27 | - |
-| 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
+| 20. Integrity & Verification | v4.0 | 3/3 | Complete | 2026-03-27 |
+| 21. Deviation & Validation Coverage | v4.0 | 0/3 | Planning | - |
 | 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
