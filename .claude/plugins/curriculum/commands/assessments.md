@@ -179,6 +179,15 @@ Do not show a table with Outcome IDs or complexity-match columns. Describe what 
 After displaying the assessment summary, silently update `workspace/{project-name}/STATE.md`:
 - `Review Gates` → Post-Assessment: `pending`
 
+Display self-check questions to the user before the gate options:
+
+> ### Before you decide
+>
+> - Could a new hire follow these instructions on day one?
+> - If someone passed all these assessments, would you trust they can do this work unsupervised?
+> - Are there any critical skills missing — things you'd want proof of before letting someone loose?
+> - Do the check-in assessments catch problems early enough, or would a learner reach the end before finding out they're lost?
+
 Then use `AskUserQuestion` with three options:
 
 - **"Approve and continue"** — write files, update STATE.md, unlock Stage 4
