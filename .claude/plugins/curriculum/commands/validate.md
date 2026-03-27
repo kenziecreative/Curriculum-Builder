@@ -142,33 +142,33 @@ Then show missing fields section:
 
 ```
 **Missing or invalid fields:**
-- {plain-language description of what's wrong}. Location: {stage file path}
-- {plain-language description of what's wrong}. Location: {stage file path}
+- {what was checked} — {why it matters}. Location: {stage file path}
+- {what was checked} — {why it matters}. Location: {stage file path}
 [one line per FAIL row]
 ```
 
-Translate check IDs to plain language. Never show "T1-16" or "T1-07" to the user. Use these translations:
+Translate check IDs using both columns — combine the "what" and "why" with an em dash. Never show "T1-16" or "T1-07" to the user. Use these translations:
 
-| Check ID | Plain language |
-|----------|---------------|
-| T1-01 | the thinking level field is empty or invalid |
-| T1-02 | the objective is missing its assessment link |
-| T1-03 | the real-world application context is missing |
-| T1-04 | the prerequisite knowledge field is missing |
-| T1-05 | the program doesn't cover enough thinking levels |
-| T1-06 | an assessment is missing its objective link |
-| T1-07 | the assessment thinking level is lower than the objective it covers |
-| T1-08 | a module is missing a formative (in-progress) check |
-| T1-09 | the program is missing a summative (final) assessment |
-| T1-10 | an open-skill program needs at least one performance-based assessment |
-| T1-11 | a module is missing its group activity structure |
-| T1-12 | the group activity type is not a recognized value |
-| T1-13 | the group interdependence description is missing or too generic |
-| T1-14 | a module is missing its belief-challenging encounter |
-| T1-15 | the module sequence has a circular dependency |
-| T1-16 | a session is missing one or more required content sections |
-| T1-17 | the reflection question is too generic — it could apply to any session |
-| T1-18 | the transfer activity doesn't connect to the real-work context from your project brief |
+| Check ID | What was checked | Why it matters |
+|----------|-----------------|----------------|
+| T1-01 | the thinking level field is empty or invalid | without this, the tool can't verify your assessments match the difficulty of what you're teaching |
+| T1-02 | an objective is missing its assessment link | you're teaching something with no way to prove the learner can actually do it |
+| T1-03 | the real-world application context is missing | learners won't see how this connects to their actual work |
+| T1-04 | the prerequisite knowledge field is missing | facilitators won't know what learners need before starting |
+| T1-05 | the program doesn't cover enough thinking levels | all your objectives ask learners to do the same kind of thinking — the program needs variety from understanding to application |
+| T1-06 | an assessment is missing its objective link | you have an assessment that doesn't prove any specific learning objective |
+| T1-07 | the assessment is easier than the objective it covers | you're testing at a lower difficulty than what you're teaching — learners could pass without actually meeting the objective |
+| T1-08 | a module is missing a check-in assessment | learners won't find out they're lost until the final assessment — too late to course-correct |
+| T1-09 | the program is missing a final assessment | there's no way to prove learners achieved the program's goals |
+| T1-10 | an open-skill program needs at least one performance-based assessment | you can't assess a hands-on skill with a written test alone |
+| T1-11 | a module is missing its group activity structure | learners practice solo but never with others — collaborative skills need collaborative practice |
+| T1-12 | the group activity type is not a recognized value | the group activity format doesn't match known effective structures |
+| T1-13 | the group interdependence description is missing or too generic | the group activity doesn't require real collaboration — participants could complete it alone |
+| T1-14 | a module is missing its belief-challenging encounter | learners never have their assumptions tested — they leave with the same mental models they arrived with |
+| T1-15 | the module sequence has a circular dependency | modules reference each other in a loop — the sequence can't be taught in order |
+| T1-16 | a session is missing one or more required content sections | the session plan is incomplete — a facilitator couldn't deliver it as written |
+| T1-17 | the reflection question is too generic | the reflection prompt could apply to any session — it doesn't ask about anything specific from this one |
+| T1-18 | the transfer activity doesn't connect to the real-work context | the practice activity is abstract — learners won't see how to use this on the job |
 
 Show quality ratings after the missing fields section only if Tier 2 ran (not for 90-min programs). Use the same format as the all-pass case.
 

@@ -81,9 +81,9 @@ See [v3.0 archive](milestones/v3.0-ROADMAP.md) for full phase details.
   5. Running the full pipeline produces zero vocabulary violations in any file a user opens directly
 **Plans**: 3 plans
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- [x] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
+- [x] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
+- [x] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
 
 ### Phase 18: Stage Guidance
 **Goal**: SMEs at every review gate know exactly what to look for, what questions to ask themselves, and how to evaluate what they're reading — without needing instructional design training
@@ -96,9 +96,9 @@ Plans:
   4. Stage numbering is consistent — users reading pipeline output and workspace directories see the same numbering system with no unexplained mismatch
 **Plans**: 3 plans
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- [ ] 18-01-PLAN.md — Self-check questions at review gates + natural thinking-level language
+- [ ] 18-02-PLAN.md — Constraint results what+why translation
+- [ ] 18-03-PLAN.md — Stage numbering normalization (01-09 for new projects + auto-detection)
 
 ### Phase 19: Pipeline Infrastructure
 **Goal**: Generation is reliable — data stays consistent across stages, content is audited before it reaches deliverables, context windows are managed so nothing generates in a degraded state
@@ -110,11 +110,9 @@ Plans:
   3. Each stage command verifies its inputs are valid before generating — a missing field or broken reference stops generation with a specific message, not a malformed output
   4. Auto-chained stages (sessions through marketing) each start with a fresh context window rather than inheriting a saturated context from previous stages
   5. STATE.md tracks module-level progress within session generation — a context clear mid-stage does not lose completed module work
-**Plans**: 3 plans
+**Plans**: TBD
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- TBD
 
 ### Phase 20: Integrity & Verification
 **Goal**: The tool catches its own failures — vocabulary violations, outcome drift, broken links, and generic content are flagged before the user sees the output, not after
@@ -125,11 +123,9 @@ Plans:
   2. Before the final approval gate, a cross-stage integration check traces every outcome ID, assessment link, and module reference across all 8 stages — broken links and orphaned references are caught before the package ships
   3. Session generation verifies that each session actually achieves the module goal it claims — "exists/substantive/wired" check, not just "file was created"
   4. The integrity agent, validator, and any verification command explicitly refuse to bypass failures, downgrade severity, or rationalize away problems — soft-passing a check it should fail is treated as a failure mode, not a judgment call
-**Plans**: 3 plans
+**Plans**: TBD
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- TBD
 
 ### Phase 21: Deviation & Validation Coverage
 **Goal**: The tool handles problems cleanly — small fixable issues are resolved automatically, real problems escalate to the user, and validation covers the full pipeline not just the first half
@@ -139,11 +135,9 @@ Plans:
   1. Generators have a defined, documented list of what they can auto-fix (vocabulary substitution, format correction) versus what requires user escalation (content changes, missing sections, ambiguous intent) — no silent auto-fix of content decisions
   2. Auto-fix attempts stop at 3 and escalate with a specific description of the problem — the user is never left with a broken output that the tool tried to hide
   3. Validation checks cover stages 6-8 (metaskills, transfer, marketing) — a curriculum that passes validation has actually been checked end-to-end, not just through the generation midpoint
-**Plans**: 3 plans
+**Plans**: TBD
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- TBD
 
 ### Phase 22: New Capabilities
 **Goal**: SMEs can act on what they learned from delivery — bringing a curriculum back for refinement — and structured research feeds directly into intake without manual repackaging
@@ -153,11 +147,9 @@ Plans:
   1. `/curriculum:revise` exists and lets a user re-enter the pipeline at any stage with post-delivery feedback — changes propagate downstream using existing traceability links, not a full regeneration
   2. Audit mode intake accepts structured research outputs (skill decompositions, misconception inventories, practitioner workflow maps) as recognized source material — the user does not need to reformat research before bringing it into the tool
   3. Revise command is clearly distinct from in-process flagging — it is explicitly for after the curriculum has been delivered and lived with, not mid-build corrections
-**Plans**: 3 plans
+**Plans**: TBD
 Plans:
-- [ ] 17-01-PLAN.md — Canonical vocabulary source of truth + Writing for Clarity standardization
-- [ ] 17-02-PLAN.md — Template jargon cleanup + approve.md three-layer enforcement
-- [ ] 17-03-PLAN.md — Agent vocabulary guardrails + post-write scan canonicalization
+- TBD
 
 ---
 
@@ -176,8 +168,8 @@ Plans:
 | 14. Audit Mode Enhancement | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
-| 17. Vocabulary & Plain Language | 3/3 | Complete   | 2026-03-27 | - |
-| 18. Stage Guidance | v4.0 | 0/TBD | Not started | - |
+| 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
+| 18. Stage Guidance | v4.0 | 0/3 | Planning complete | - |
 | 19. Pipeline Infrastructure | v4.0 | 0/TBD | Not started | - |
 | 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
