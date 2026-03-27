@@ -111,9 +111,11 @@ Plans:
   3. Each stage command verifies its inputs are valid before generating — a missing field or broken reference stops generation with a specific message, not a malformed output
   4. Auto-chained stages (sessions through marketing) each start with a fresh context window rather than inheriting a saturated context from previous stages
   5. STATE.md tracks module-level progress within session generation — a context clear mid-stage does not lose completed module work
-**Plans**: TBD
+**Plans**: 3 plans
 Plans:
-- TBD
+- [ ] 19-01-PLAN.md — Canonical registry schema + registry write hooks for all stage commands
+- [ ] 19-02-PLAN.md — Pre-execution input validation + draft-then-audit pipeline for stages 4-6
+- [ ] 19-03-PLAN.md — Context breaks in auto-chain + module-level sub-stage tracking
 
 ### Phase 20: Integrity & Verification
 **Goal**: The tool catches its own failures — vocabulary violations, outcome drift, broken links, and generic content are flagged before the user sees the output, not after
@@ -170,8 +172,8 @@ Plans:
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 18. Stage Guidance | 4/4 | Complete   | 2026-03-27 | - |
-| 19. Pipeline Infrastructure | v4.0 | 0/TBD | Not started | - |
+| 18. Stage Guidance | 4/4 | Complete    | 2026-03-27 | - |
+| 19. Pipeline Infrastructure | v4.0 | 0/3 | Not started | - |
 | 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
 | 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
