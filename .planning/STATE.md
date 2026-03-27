@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 19-02-PLAN.md
-last_updated: "2026-03-27T15:04:07.290Z"
+stopped_at: Completed 20-01-PLAN.md
+last_updated: "2026-03-27T20:52:37.635Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
+  total_plans: 13
+  completed_plans: 11
   percent: 0
 ---
 
@@ -56,6 +56,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 19-pipeline-infrastructure P01 | 3min | 2 tasks | 7 files |
 | Phase 19-pipeline-infrastructure P03 | 3min | 2 tasks | 5 files |
 | Phase 19-pipeline-infrastructure P02 | 5min | 2 tasks | 8 files |
+| Phase 20-integrity-verification P01 | 2min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 19-03]: Module Progress tracking is SILENT — not-started/in-progress/complete per module; resume logic trusts file system over STATE.md when they disagree
 - [Phase 19-02]: Input Validation is additive — existing stage status checks unchanged; validation added as numbered prerequisite step between predecessor status check and current stage status check
 - [Phase 19-02]: Draft-then-audit pattern for stages 4-6: generate to _drafts/, run four checks (completeness, registry consistency, vocabulary, schema), auto-fix vocab violations, promote only if all checks pass
+- [Phase 20-01]: Verification Integrity sections are inline in each file (not shared reference) — each agent self-contained so enforcement loads automatically with the agent
+- [Phase 20-01]: approve.md gets Verification Integrity because it presents check results from other agents and can soften what they reported
 
 ### Pending Todos
 
@@ -97,6 +100,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T14:59:51.788Z
-Stopped at: Completed 19-02-PLAN.md
+Last session: 2026-03-27T20:52:37.633Z
+Stopped at: Completed 20-01-PLAN.md
 Resume file: None
