@@ -271,19 +271,58 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 If all six checks pass: promote the file from `_drafts/` to `workspace/{project}/{metaskills-dir}/metaskill-map.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
 
 If any check fails:
-1. Attempt auto-fix for simple failures:
+
+### Auto-Fix Pass
+
+1. Attempt auto-fix for deterministic failures only:
    - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
-   - Missing fields that have obvious default values: fill in from registry data
-   - Outcome drift: replace draft outcome wording with registry canonical wording
+   - Missing fields with obvious defaults: fill from registry data
+   - Outcome drift: replace draft wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
-3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
+3. Track what was fixed: "{N} vocabulary issues fixed, {N} outcome wording corrected, {N} registry defaults filled."
 
-   > Draft audit found {N} issue(s) that could not be auto-fixed:
-   > - {file}: {specific problem}
+**Auto-fix boundary — these three categories only.** Anything involving content judgment (generic content) is NOT auto-fixable. Do not attempt to patch content problems — they require regeneration.
+
+**Structural failures do not enter the retry loop.** File completeness (Check 1), registry consistency (Check 2), and schema compliance (Check 4) indicate a generation error, not a content quality issue. If any of these still fail after auto-fix, stop immediately and report — do not attempt retry.
+
+### Retry with Cumulative Constraints (content failures only)
+
+If blocking failures remain after auto-fix, those failures are from Check 6 (generic content), AND this is not yet attempt 3:
+
+**Attempt tracking:** This is attempt {current} of 3 for {file name}.
+
+1. Collect all remaining blocking failure reasons into a constraint list.
+2. Regenerate ONLY the failing file — not the entire stage output. Inject the constraint list into the generation prompt:
+
+   > The previous draft of {file} failed these checks:
+   > - {failure 1 reason}
+   > - {failure 2 reason from attempt 1, if attempt 2+}
    >
-   > Fix these issues and run `/curriculum:metaskills` again.
+   > Regenerate this file. The new version MUST avoid these specific problems.
 
-   Generic content (Check 6) failures cannot be auto-fixed — they require regeneration. Report the specific field and instruct the user to run `/curriculum:metaskills` again.
+3. Write the regenerated file to `_drafts/`, replacing the failing draft.
+4. Re-run ALL checks (not just the previously failing ones) on the regenerated file.
+5. If all checks pass: proceed to promotion.
+6. If checks still fail: increment attempt counter. If under 3, loop back to step 1 with the cumulative constraint list (attempt 2 carries failure reasons from attempt 1; attempt 3 carries reasons from attempts 1 and 2).
+
+### Escalation (after 3 failed attempts)
+
+If the file has failed 3 attempts:
+
+1. Stop the stage. Do not promote any files. Do not mark the stage complete.
+2. Present the escalation report:
+
+   > Draft audit tried 3 times to fix {file} and could not resolve all issues.
+   >
+   > **What was auto-fixed:** {brief summary — e.g., "Fixed 2 vocabulary issues, corrected outcome wording in 1 place"}
+   >
+   > **What still needs attention:**
+   > - **{Check name}** in {file path}, {section/field}: {plain-language description of the problem} — {concrete suggestion for what to change}
+   > - **{Check name}** in {file path}, {section/field}: {plain-language description} — {suggestion}
+   >
+   > The draft files are in `_drafts/` if you want to edit them directly, or run `/curriculum:metaskills` to start fresh.
+
+3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions use the same plain language as the check failure messages established in Phase 18.
 
 3. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
    - Stage 6 status: `complete`, Completed: {today's date}
