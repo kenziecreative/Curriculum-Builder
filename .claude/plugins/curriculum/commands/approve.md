@@ -241,6 +241,40 @@ If `verify_issues` is not empty:
 [one line per blocker]
 ```
 
+**Curriculum integrity:** *(add after Delivery readiness)*
+
+If `integration_findings.blocking` is empty AND `integration_findings.warnings` is empty:
+```
+**Curriculum integrity:** All cross-stage links verified — every outcome is taught, assessed, and tracked.
+```
+
+If `integration_findings.blocking` is not empty:
+```
+**Curriculum integrity:** {N} broken link{s} found:
+- {plain-language description of each blocking finding}
+[one line per blocking finding, using the descriptions below]
+```
+
+Use these plain-language descriptions for each finding type — do not use the internal label names in user-facing output:
+- Broken reference (outcome with no assessment): "Learning objective '{outcome statement}' is defined but never appears in any assessment — learners have no way to prove they learned it"
+- Orphaned outcome (outcome never taught): "Learning objective '{outcome statement}' exists in the plan but is never taught in any session"
+- Phantom module (in registry, no files): "Module '{module name}' is listed in the curriculum plan but has no session files"
+- Unregistered module (files exist, not in registry): "Session files exist for a module that is not tracked in the curriculum plan"
+- Broken prerequisite: "A module lists '{module name}' as a prerequisite, but that module does not exist in the plan"
+
+If `integration_findings.warnings` is not empty (regardless of blocking):
+```
+**Note:** {N} wording difference{s} between the master plan and stage files:
+- {plain-language description of each drift finding}
+[one line per warning]
+The master plan is treated as authoritative. Review if the stage file wording matters to you.
+```
+
+If `integration_findings.pending` is not empty:
+```
+**Stages not yet generated:** {stage list} — cross-stage links to these stages cannot be verified until they are built.
+```
+
 ---
 This is your complete curriculum package. Is it ready to deliver?
 
@@ -268,15 +302,27 @@ Use `AskUserQuestion` with three options:
 **For final package review:**
 > Review the summary above — this is everything that will be in your delivered curriculum package.
 
-If `verify_issues` is empty (clean verify):
+If `verify_issues` is empty AND `integration_findings.blocking` is empty (clean verify, clean integration):
 > **Option 1: Approve — mark as delivery-ready** — Everything looks right. Mark this curriculum package as delivery-ready.
 > **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
 > **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
 
-If `verify_issues` is not empty (verify found blockers):
+If `verify_issues` is not empty AND `integration_findings.blocking` is not empty (both have blockers):
+> **Option 1: Fix issues before approving** — The items listed above need to be resolved before this curriculum can be marked delivery-ready. {N} check failures and {M} broken cross-stage links need attention.
+> **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
+> **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
+
+If `verify_issues` is not empty AND `integration_findings.blocking` is empty (verify found blockers, integration clean):
 > **Option 1: Fix issues before approving** — The items listed above need to be resolved before this curriculum can be marked delivery-ready. Run the commands listed to regenerate the affected files, then run `/curriculum:approve` again.
 > **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
 > **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
+
+If `verify_issues` is empty AND `integration_findings.blocking` is not empty (verify clean, integration found blockers):
+> **Option 1: Fix issues before approving** — {N} broken cross-stage link{s} need to be resolved before this curriculum can be marked delivery-ready. Run the stage commands listed above to regenerate the affected content, then run `/curriculum:approve` again.
+> **Option 2: I have concerns** — Something needs fixing before this ships. Describe the issue and I'll revise.
+> **Option 3: Start this stage over** — The validation found serious issues. Restart Stage 9 from scratch.
+
+Warnings in `integration_findings.warnings` do not affect which gate option set is shown — warnings are informational and do not block approval.
 
 ### 5. Handle the decision
 
