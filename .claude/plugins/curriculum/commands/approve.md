@@ -88,6 +88,14 @@ Summarize what was produced in plain language. Do not use schema field names or 
 - What the main performance tasks look like (one-line description each)
 - Any notable decisions made during assessment design
 
+### Self-check — before you decide
+
+Ask yourself:
+- Does the final assessment match what you'd expect someone to actually do on the job?
+- If a learner passed every assessment, would you trust they can do this work?
+- Are there any skills you care about that don't have a way to prove the learner can do them?
+- Do the check-in assessments catch problems early enough, or would a learner reach the end before finding out they're lost?
+
 **For Final Validation gate, show the complete pipeline summary:**
 
 Read each stage directory ONLY if that stage's status is `complete` in STATE.md. For any stage not yet complete, show "Not yet generated" for that section.
@@ -100,7 +108,8 @@ Display in this format:
 **[Program Name]** — [Duration] program for [audience description from Stage 1 in plain language]
 
 **What participants learn:**
-[Outcome count from 01-outcomes/] learning objectives spanning [Bloom span in plain language, e.g., "recall through create"] thinking levels
+[Outcome count from 01-outcomes/] learning objectives, building from [natural description of lowest thinking level activities] to [natural description of highest thinking level activities]
+(Describe the span using what learners DO, not taxonomy labels. Examples: "building from foundational knowledge to hands-on application", "building from understanding key concepts to creating original work", "building from identifying patterns to designing solutions". Never use Bloom level names like "remember", "analyze", "evaluate", or "create" as labels — embed them as natural descriptions of learner activity.)
 
 **How you'll know they learned it:**
 [Assessment count from 02-assessments/] assessments — [formative count] during-program checks, [summative count] end-of-program assessments
@@ -145,6 +154,14 @@ If `verify_issues` is not empty:
 
 ---
 This is your complete curriculum package. Is it ready to deliver?
+
+### Self-check — before you decide
+
+Ask yourself:
+- Would you hand this to a new facilitator and trust them to deliver it without calling you?
+- Does the marketing copy promise things the assessments actually measure?
+- If you were a participant, would the pre-work and follow-up feel worth your time?
+- Is there anything you told participants they'd walk away with that isn't covered in the program?
 
 ### 4. Gate decision
 
