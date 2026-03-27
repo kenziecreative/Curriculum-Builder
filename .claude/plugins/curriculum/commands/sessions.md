@@ -230,6 +230,44 @@ Read `.claude/reference/curriculum-voice.md` never-say table. Scan all draft fil
 ### Check 4: Schema Compliance
 Read `.claude/reference/schemas/stage-05-sessions.md`. Verify all required fields are present in draft session files. Flag any missing required fields.
 
+### Check 5: Outcome Drift
+Read `workspace/{project-name}/curriculum-registry.json` fields `outcome_wording.program_outcomes` and `outcome_wording.module_outcomes`. For each outcome ID or module ID referenced in draft session files, compare the outcome statement text against the registry's canonical wording. If the wording has changed beyond minor formatting (capitalization, punctuation), flag it as outcome drift. Report the session file, the outcome ID, the registry wording, and the draft wording.
+
+This is a blocking failure — outcome wording must match the registry. Auto-fix by replacing draft wording with registry canonical wording.
+
+### Check 6: Missing Formative Assessment
+Read the module specs from `workspace/{project-name}/03-modules/` (or `04-modules/` for the new scheme). For each module, verify that the sessions for that module include at least one check-in assessment activity — a point where the facilitator can gauge whether learners are keeping up. A module with only lecture and discussion and a final deliverable but no mid-module check-in fails.
+
+Evidence of formative assessment includes: practice exercises with feedback loops, knowledge checks, peer review activities, guided practice with instructor observation. A session that only has "discuss" and "present final project" without intermediate checkpoints fails.
+
+This is a blocking failure — missing formative assessment cannot be auto-fixed. It requires adding assessment activities to sessions.
+
+### Check 7: Pre-work Gaps
+For each session that references pre-work (reading, video, preparation activity): verify the pre-work content is specified — not just "complete the pre-work" but naming what the learner should read, watch, or do. For sessions after the first in a module: verify the session references or builds on what came before. A session that is entirely self-contained in a way that makes sequencing irrelevant fails.
+
+This is a blocking failure — pre-work gaps cannot be auto-fixed.
+
+### Check 8: Goal-Backward Verification
+For each module, run these three sub-checks against its sessions.
+
+**8a — Exists:** Verify all expected session files were created. For each session directory M-N-S-N, all 4 required files must exist: `session.md`, `facilitator-guide.md`, `participant-materials.md`, `slide-outline.md`. If any file is missing, this sub-check fails.
+
+**8b — Substantive:** Read each module's goal and description from the module spec (`03-modules/M-N/module-spec.md` or `04-modules/M-N/module-spec.md`). Then read the session files for that module. Verify that session activities, examples, and discussion prompts contain topic-specific nouns from the module's content domain. A session where you could swap in any other module's name and the content would still make sense is not substantive.
+
+To check: extract 3–5 key domain terms from the module spec (for example, a module on "Customer Service Recovery" yields "HEARD framework", "service failure", "customer complaint", "recovery protocol"). Verify at least 2 of these domain terms appear in each session's activities or examples.
+
+Activities that fail: "Discuss the key concepts", "Reflect on today's learning". Activities that pass: "Role-play a customer complaint using the HEARD framework's five steps", "Trace a service failure case through the recovery protocol".
+
+**8c — Wired:** Verify pedagogical flow within each module's sessions:
+- Session 1 sets up foundational concepts referenced by later sessions
+- Sessions after the first reference or build on specific content from previous sessions (not just "building on what we learned")
+- If pre-work is assigned, at least one session activity explicitly uses it (not just "having done the pre-work")
+- A module where sessions could be rearranged in any order without loss of coherence fails the wired check
+
+Report goal-backward results per module: "Module M-1 'Customer Service Recovery': Exists YES, Substantive YES, Wired YES" or "Module M-2 'Team Communication': Exists YES, Substantive NO (session M-2-S-2 activities are generic — no domain terms found), Wired NO (sessions are independent — no cross-session references)".
+
+Goal-backward failures on Substantive or Wired are blocking — they cannot be auto-fixed because they require content regeneration.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -248,12 +286,13 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 ### Audit Result
 
-If all four checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
+If all eight checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
    - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
    - Missing fields that have obvious default values: fill in from registry data
+   - Outcome drift: replace draft outcome wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
 3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
 
@@ -261,6 +300,8 @@ If any check fails:
    > - {file}: {specific problem}
    >
    > Fix these issues and run `/curriculum:sessions` again.
+
+   Missing formative assessment (Check 6), pre-work gaps (Check 7), and goal-backward failures on Substantive or Wired (Check 8b, 8c) cannot be auto-fixed — they require content regeneration. Report the specific module and session, and instruct the user to run `/curriculum:sessions` again.
 
 **After successful promotion**, update curriculum registry silently:
 
