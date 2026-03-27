@@ -99,7 +99,7 @@ Plans:
 - [x] 18-01-PLAN.md — Self-check questions at review gates + natural thinking-level language
 - [x] 18-02-PLAN.md — Constraint results what+why translation
 - [x] 18-03-PLAN.md — Stage numbering normalization (01-09 for new projects + auto-detection)
-- [ ] 18-04-PLAN.md — Gap closure: intake review gate self-check questions
+- [x] 18-04-PLAN.md — Gap closure: intake review gate self-check questions
 
 ### Phase 19: Pipeline Infrastructure
 **Goal**: Generation is reliable — data stays consistent across stages, content is audited before it reaches deliverables, context windows are managed so nothing generates in a degraded state
@@ -113,9 +113,9 @@ Plans:
   5. STATE.md tracks module-level progress within session generation — a context clear mid-stage does not lose completed module work
 **Plans**: 3 plans
 Plans:
-- [ ] 19-01-PLAN.md — Canonical registry schema + registry write hooks for all stage commands
-- [ ] 19-02-PLAN.md — Pre-execution input validation + draft-then-audit pipeline for stages 4-6
-- [ ] 19-03-PLAN.md — Context breaks in auto-chain + module-level sub-stage tracking
+- [x] 19-01-PLAN.md — Canonical registry schema + registry write hooks for all stage commands
+- [x] 19-02-PLAN.md — Pre-execution input validation + draft-then-audit pipeline for stages 4-6
+- [x] 19-03-PLAN.md — Context breaks in auto-chain + module-level sub-stage tracking
 
 ### Phase 20: Integrity & Verification
 **Goal**: The tool catches its own failures — vocabulary violations, outcome drift, broken links, and generic content are flagged before the user sees the output, not after
@@ -126,9 +126,11 @@ Plans:
   2. Before the final approval gate, a cross-stage integration check traces every outcome ID, assessment link, and module reference across all 8 stages — broken links and orphaned references are caught before the package ships
   3. Session generation verifies that each session actually achieves the module goal it claims — "exists/substantive/wired" check, not just "file was created"
   4. The integrity agent, validator, and any verification command explicitly refuse to bypass failures, downgrade severity, or rationalize away problems — soft-passing a check it should fail is treated as a failure mode, not a judgment call
-**Plans**: TBD
+**Plans**: 3 plans
 Plans:
-- TBD
+- [ ] 20-01-PLAN.md — Anti-softening enforcement (Verification Integrity sections in all 7 checking files)
+- [ ] 20-02-PLAN.md — Expanded integrity checks + goal-backward session verification in draft-audit
+- [ ] 20-03-PLAN.md — Cross-stage integration check at final approval gate
 
 ### Phase 21: Deviation & Validation Coverage
 **Goal**: The tool handles problems cleanly — small fixable issues are resolved automatically, real problems escalate to the user, and validation covers the full pipeline not just the first half
@@ -172,8 +174,8 @@ Plans:
 | 15. Delivery Layer | v3.0 | 3/3 | Complete | 2026-03-25 |
 | 16. Delivery Gap Closure | v3.0 | 1/1 | Complete | 2026-03-25 |
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 18. Stage Guidance | 4/4 | Complete    | 2026-03-27 | - |
-| 19. Pipeline Infrastructure | 3/3 | Complete   | 2026-03-27 | - |
-| 20. Integrity & Verification | v4.0 | 0/TBD | Not started | - |
+| 18. Stage Guidance | v4.0 | 4/4 | Complete | 2026-03-27 |
+| 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
+| 20. Integrity & Verification | v4.0 | 0/3 | Not started | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
 | 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
