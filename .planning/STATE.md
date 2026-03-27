@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 21-deviation-validation-coverage-01-PLAN.md
-last_updated: "2026-03-27T23:34:54.979Z"
+stopped_at: Completed 21-02-PLAN.md
+last_updated: "2026-03-27T23:35:28.317Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 16
-  completed_plans: 14
+  completed_plans: 15
   percent: 0
 ---
 
@@ -60,6 +60,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 20-integrity-verification P03 | 5min | 2 tasks | 1 files |
 | Phase 20-integrity-verification P02 | 2min | 2 tasks | 3 files |
 | Phase 21-deviation-validation-coverage P01 | 2min | 2 tasks | 3 files |
+| Phase 21-deviation-validation-coverage P02 | 3min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -99,6 +100,9 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 21]: Auto-fix boundary made explicit: vocabulary substitution, registry default fills, outcome drift correction — three categories only in all draft audits
 - [Phase 21]: Sessions retry is per-module with 3 total attempts per module, not per check type — prevents disproportionate retry cost on multi-module programs
 - [Phase 21]: Escalation format shows both auto-fixes applied and remaining failures so user sees the complete picture before deciding to edit drafts or restart
+- [Phase 21-02]: Transfer Draft Audit has 10 checks: 4 standard + 6 stage-specific (transfer layers, implementation intentions, error management, spaced retrieval match, evaluation level, community continuation)
+- [Phase 21-02]: Marketing Draft Audit has 7 checks: 4 standard + 3 stage-specific (source citation completeness, source element existence, marketing ratio with trim targets on retry)
+- [Phase 21-02]: STATE.md update in marketing.md is conditional on promotion — not on file write — consistent with transfer.md and stages 4-6 pattern
 
 ### Pending Todos
 
@@ -112,6 +116,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T23:34:54.976Z
-Stopped at: Completed 21-deviation-validation-coverage-01-PLAN.md
+Last session: 2026-03-27T23:35:28.314Z
+Stopped at: Completed 21-02-PLAN.md
 Resume file: None

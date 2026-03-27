@@ -41,7 +41,7 @@ Requirements for SME-ready release. Each maps to roadmap phases.
 ### Deviation & Validation
 
 - [x] **DEVL-01**: Structured deviation handling — define what generators can auto-fix vs. must escalate to user; 3-attempt limit on auto-fixes before escalation
-- [ ] **DEVL-02**: Full validation coverage — stages 6-8 (metaskills, transfer, marketing) added to validation checks (T1-19 through T1-33)
+- [x] **DEVL-02**: Full validation coverage — stages 6-8 (metaskills, transfer, marketing) added to validation checks (T1-19 through T1-33)
 
 ### New Capabilities
 
@@ -88,7 +88,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INTG-03 | Phase 20 | Complete |
 | INTG-04 | Phase 20 | Complete |
 | DEVL-01 | Phase 21 | Complete |
-| DEVL-02 | Phase 21 | Pending |
+| DEVL-02 | Phase 21 | Complete |
 | FEAT-01 | Phase 22 | Pending |
 | FEAT-02 | Phase 22 | Pending |
 
