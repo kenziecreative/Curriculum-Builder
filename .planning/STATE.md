@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 17-02-PLAN.md — template jargon fixed, three-layer enforcement added to approve.md
-last_updated: "2026-03-27T01:29:00.440Z"
+stopped_at: Completed 18-02-PLAN.md
+last_updated: "2026-03-27T02:35:19.487Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 6
+  completed_plans: 5
   percent: 0
 ---
 
@@ -49,6 +49,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 17 P01 | 20 | 2 tasks | 8 files |
 | Phase 17-vocabulary-plain-language P03 | 4 | 2 tasks | 4 files |
 | Phase 17 P02 | 15 | 3 tasks | 6 files |
+| Phase 18 P01 | 98s | 2 tasks | 2 files |
+| Phase 18-stage-guidance P02 | 8 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -64,6 +66,10 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 17-03]: Post-write scans reference curriculum-voice.md canonical table rather than hardcoding per-agent lists
 - [Phase 17]: Three-layer vocabulary enforcement pattern for approve.md: voice ref + inline guardrail + never-say table
 - [Phase 17]: curriculum_traceability replaced with source_link in marketing.md hints — schema field name survives in schema file, not in command instructions
+- [Phase 18]: Self-check questions use concrete job-readiness language at review gates — SME evaluates like a sharp colleague, not an ID professional
+- [Phase 18]: Bloom span replaced with 'building from X to Y' instruction pattern in approve.md — agent fills natural activity descriptions, never taxonomy labels
+- [Phase 18-02]: Em-dash separator for combining what+why in constraint failure lines — reads as one idea with two parts
+- [Phase 18-02]: validate.md failure messages now show 'what was checked — why it matters' so SMEs understand significance without ID training
 
 ### Pending Todos
 
@@ -77,6 +83,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T01:28:55.481Z
-Stopped at: Completed 17-02-PLAN.md — template jargon fixed, three-layer enforcement added to approve.md
+Last session: 2026-03-27T02:35:19.485Z
+Stopped at: Completed 18-02-PLAN.md
 Resume file: None
