@@ -364,6 +364,26 @@ Read `.claude/reference/curriculum-voice.md` never-say table. Scan all draft fil
 **Check 4: Schema Compliance**
 Read `.claude/reference/schemas/stage-04-modules.md`. Verify all required fields are present in draft files. Flag any missing required fields.
 
+**Check 5: Outcome Drift**
+Read `workspace/{project-name}/curriculum-registry.json` fields `outcome_wording.program_outcomes` and `outcome_wording.module_outcomes`. For each outcome ID referenced in the draft module specs, compare the outcome statement text in the draft against the registry's canonical wording. If the wording has changed beyond minor formatting (capitalization, punctuation), flag it as outcome drift. Report the module file, the outcome ID, the registry wording, and the draft wording.
+
+This is a blocking failure — outcome wording must match the registry. Auto-fix by replacing draft wording with registry canonical wording.
+
+**Check 6: Generic Content Detection**
+For each module spec's `content_chunks`, `social_learning.group_processing_prompt`, `metaskill_activation_activity`, and `belief_challenging_encounter`: verify the content contains topic-specific nouns from the module's subject domain. Flag any field where the content could apply to any module without modification.
+
+Patterns that fail: "Discuss the key concepts", "Reflect on what you learned", "Apply the framework to a scenario". Patterns that pass: "Analyze this customer complaint using the HEARD framework", "Compare waterfall and agile sprint planning for a 3-person team".
+
+This is a blocking failure — generic content cannot be auto-fixed. It requires regeneration.
+
+**Check 7: Doctrine Compliance**
+Verify each module spec has all structurally enforced pedagogy fields populated with substantive content (not empty or placeholder):
+- `social_learning` has all 4 sub-fields with content-specific text
+- `belief_challenging_encounter` names a specific belief and describes a mechanism
+- `modality_switches` has at least 1 entry with named activities
+
+This is a blocking failure — missing pedagogy fields cannot be auto-fixed.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -382,12 +402,13 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all four checks pass: promote files from `_drafts/` to `workspace/{project-name}/03-modules/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
+If all seven checks pass: promote files from `_drafts/` to `workspace/{project-name}/03-modules/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
    - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
    - Missing fields that have obvious default values: fill in from registry data
+   - Outcome drift: replace draft outcome wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
 3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
 
@@ -395,6 +416,8 @@ If any check fails:
    > - {file}: {specific problem}
    >
    > Fix these issues and run `/curriculum:modules` again.
+
+   Generic content (Check 6) and doctrine compliance (Check 7) failures cannot be auto-fixed — they require regeneration. Report the specific module file and field, and instruct the user to run `/curriculum:modules` again.
 
 3. Write curriculum registry silently (only after successful promotion):
 

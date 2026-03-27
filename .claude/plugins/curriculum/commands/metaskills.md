@@ -238,6 +238,18 @@ Read `.claude/reference/curriculum-voice.md` never-say table. Scan the draft fil
 **Check 4: Schema Compliance**
 Read `.claude/reference/schemas/stage-06-metaskills.md`. Verify all required fields are present in the draft file. Flag any missing required fields.
 
+**Check 5: Outcome Drift**
+Read `workspace/{project}/curriculum-registry.json` fields `outcome_wording.program_outcomes` and `outcome_wording.module_outcomes`. For each outcome ID referenced in the draft metaskill map, compare the outcome statement text against the registry's canonical wording. If the wording has changed beyond minor formatting (capitalization, punctuation), flag it as outcome drift. Report the outcome ID, the registry wording, and the draft wording.
+
+This is a blocking failure — outcome wording must match the registry. Auto-fix by replacing draft wording with registry canonical wording.
+
+**Check 6: Generic Content Detection**
+For each metaskill entry's `activation_activity` and `transfer_prompt`: verify the content names specific skills, scenarios, or domain concepts from the curriculum. A thinking routine or prompt that could apply to any program without modification fails.
+
+Patterns that fail: "Think about how this applies to your work", "Discuss the key concepts from this module", "Reflect on what you learned". Patterns that pass: "Use the Five Whys to trace a customer complaint back to its root cause", "Identify one service recovery scenario from last month where you could have applied the HEARD framework differently".
+
+This is a blocking failure — generic content cannot be auto-fixed. It requires regeneration.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -256,12 +268,13 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all four checks pass: promote the file from `_drafts/` to `workspace/{project}/{metaskills-dir}/metaskill-map.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
+If all six checks pass: promote the file from `_drafts/` to `workspace/{project}/{metaskills-dir}/metaskill-map.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
    - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
    - Missing fields that have obvious default values: fill in from registry data
+   - Outcome drift: replace draft outcome wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
 3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
 
@@ -269,6 +282,8 @@ If any check fails:
    > - {file}: {specific problem}
    >
    > Fix these issues and run `/curriculum:metaskills` again.
+
+   Generic content (Check 6) failures cannot be auto-fixed — they require regeneration. Report the specific field and instruct the user to run `/curriculum:metaskills` again.
 
 3. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
    - Stage 6 status: `complete`, Completed: {today's date}
