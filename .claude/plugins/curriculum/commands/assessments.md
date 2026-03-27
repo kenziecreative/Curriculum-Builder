@@ -254,12 +254,24 @@ Then use `AskUserQuestion` with three options:
 
    **summative-assessments.md** — Full specification for each summative assessment. Same format as formative-assessments.md.
 
-2. Silently update `workspace/{project-name}/STATE.md`:
+2. Write curriculum registry silently:
+
+   Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
+
+   - Read the existing registry file.
+   - Write the `assessment_criteria` section. Extract from the assessment files just written: each assessment's id (FA-N or SA-N from `<!-- internal: assessment_id=... -->` comment fields), type (formative → "check-in", summative → "final"), title (assessment_name), mapped_outcomes (paired_objective outcome IDs), and criteria_summary (one sentence from success_criteria_for_assessment).
+   - Set `assessment_criteria.last_updated` to current ISO datetime.
+   - Set `assessment_criteria.stage_source` to 3.
+   - Write the file as formatted JSON (2-space indent).
+
+   Do this silently — no announcement to the user.
+
+3. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 3 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Assessment: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:modules to build module structure
 
-3. End with brief confirmation:
+4. End with brief confirmation:
 
    > Assessments are written and saved. Type `/clear` now, then run `/curriculum:modules` to build the module structure.
 

@@ -194,6 +194,17 @@ Do NOT mark Stage 5 complete. Report each module that failed. Keep Stage 5 statu
 
 **If all files are verified:**
 
+Update curriculum registry silently:
+
+Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
+
+- Read the existing registry file.
+- For each module in `time_allocations.modules[]`, count the actual session directories that exist under `workspace/{project-name}/04-sessions/M-N-S-*/` and set `sessions_completed` to that count.
+- Set `time_allocations.last_updated` to current ISO datetime.
+- Write the file as formatted JSON (2-space indent).
+
+Do this silently — no announcement to the user.
+
 Proceed to Completion Summary.
 
 ---

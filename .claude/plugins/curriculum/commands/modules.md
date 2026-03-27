@@ -329,12 +329,25 @@ Then use `AskUserQuestion` with three options:
    [modality_switches — list each transition]
    ```
 
-2. Silently update `workspace/{project-name}/STATE.md`:
+2. Write curriculum registry silently:
+
+   Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
+
+   - Read the existing registry file. Read `total_contact_hours` from `learner_profile.data.contact_hours`.
+   - Write the `time_allocations` section. Extract from the module specs just written: each module's id (from `<!-- internal: module_id=... -->` comment field), name, sessions_planned count (from Content Chunks count or session allocation), and hours_allocated. Set `sessions_completed` to 0 (Stage 5 will update this after file verification).
+   - Set `time_allocations.total_contact_hours` from the learner profile contact_hours.
+   - Set `time_allocations.last_updated` to current ISO datetime.
+   - Set `time_allocations.stage_source` to 4.
+   - Write the file as formatted JSON (2-space indent).
+
+   Do this silently — no announcement to the user.
+
+3. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 4 status: `complete`, Completed: {today's date}
    - `Review Gates` → Module-Structure: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:sessions to generate session content
 
-3. End with brief confirmation:
+4. End with brief confirmation:
 
    > Your module structure is written and saved. Type `/clear` now, then run `/curriculum:sessions` to generate the session content.
 

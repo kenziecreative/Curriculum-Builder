@@ -311,11 +311,23 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
    - Real-work context: [specific work context]
    ```
 
-2. Silently update `workspace/{project-name}/STATE.md`:
+2. Write curriculum registry silently:
+
+   Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Update `workspace/{project-name}/curriculum-registry.json`:
+
+   - Read the existing registry file.
+   - Write the `outcome_wording` section. Extract from the learning-objectives.md just written: all program outcomes (id, statement, bloom_level), all module outcomes (id, statement, bloom_level, parent_program_outcome), and all session outcomes (id, statement, bloom_level, parent_module_outcome). IDs come from the `<!-- internal: outcome_id=... -->` comment fields.
+   - Set `outcome_wording.last_updated` to current ISO datetime.
+   - Set `outcome_wording.stage_source` to 2.
+   - Write the file as formatted JSON (2-space indent).
+
+   Do this silently — no announcement to the user.
+
+3. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 2 status: `complete`, Completed: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:assessments to design assessments
 
-3. End with a brief forward-looking message:
+4. End with a brief forward-looking message:
 
    > Your learning outcomes are written and saved. Type `/clear` now, then run `/curriculum:assessments` to design the assessments.
 

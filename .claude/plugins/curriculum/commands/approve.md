@@ -233,7 +233,11 @@ After assemble completes, show the confirmation message:
 Ask the user to describe what needs changing:
 > What would you like to change? Describe the specific issue and I'll revise.
 
-Do NOT mark the gate as approved. Do NOT advance the pipeline. Once the user describes the concern, address it in the relevant stage output directory, then re-surface the gate for approval.
+Do NOT mark the gate as approved. Do NOT advance the pipeline. Once the user describes the concern, address it in the relevant stage output directory, then update the curriculum registry silently:
+
+Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. If revisions changed content in a stage that has a registry section (outcomes → `outcome_wording`, assessments → `assessment_criteria`, modules → `time_allocations`), re-read the revised files and update the corresponding section in `workspace/{project}/curriculum-registry.json`. Set `last_updated` to current ISO datetime. Write the file as formatted JSON (2-space indent). Do this silently — no announcement to the user.
+
+Then re-surface the gate for approval.
 
 **Option 3: Start this stage over**
 

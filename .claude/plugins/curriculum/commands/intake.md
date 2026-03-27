@@ -341,12 +341,24 @@ Use `AskUserQuestion` with these three options:
    {array — omit this field entirely if contact_hours < 16}
    ```
 
-3. **Update STATE.md silently:**
+3. **Write curriculum registry silently:**
+
+   Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Write `workspace/{project}/curriculum-registry.json`:
+
+   - If the file does not exist, create it with the `meta` section: `project_name` from `{project}` directory name, `created` set to current ISO datetime, `schema_version` "1.0".
+   - Write the `learner_profile` section. Extract from the project-brief.md just written: `target_audience` (description field), `expertise_level` (derived from self_direction_level: Dependent/Interested → novice, Involved → intermediate, Self-Directed → advanced), `self_direction_level`, `skill_type`, `cultural_orientation`, `transfer_context`, `contact_hours`, `modality`, `success_criteria`.
+   - Set `learner_profile.last_updated` to current ISO datetime.
+   - Set `learner_profile.stage_source` to 1.
+   - Write the file as formatted JSON (2-space indent).
+
+   Do this silently — no announcement to the user.
+
+4. **Update STATE.md silently:**
    - `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
 
-4. **End with a brief forward-looking message:**
+5. **End with a brief forward-looking message:**
 
    Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
@@ -806,6 +818,18 @@ This report compares your existing materials against what the full curriculum pi
 - `Stage Progress` → For each stage that received pre-populated files, set that stage's Status to `pre-populated`. Stages marked `Missing` remain `not-started`.
 - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
 - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
+
+**6b. Write curriculum registry silently:**
+
+Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSON structure. Write `workspace/{project}/curriculum-registry.json`:
+
+- If the file does not exist, create it with the `meta` section: `project_name` from `{project}` directory name, `created` set to current ISO datetime, `schema_version` "1.0".
+- Write the `learner_profile` section. Extract from the project-brief.md just written: `target_audience`, `expertise_level` (derived from self_direction_level), `self_direction_level`, `skill_type`, `cultural_orientation`, `transfer_context`, `contact_hours`, `modality`, `success_criteria`.
+- Set `learner_profile.last_updated` to current ISO datetime.
+- Set `learner_profile.stage_source` to 1.
+- Write the file as formatted JSON (2-space indent).
+
+Do this silently — no announcement to the user.
 
 **7. Display post-intake summary table** (immediately after all writes, before the forward-looking message):
 
