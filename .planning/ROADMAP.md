@@ -176,6 +176,6 @@ Plans:
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 18. Stage Guidance | v4.0 | 4/4 | Complete | 2026-03-27 |
 | 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 20. Integrity & Verification | 3/3 | Complete   | 2026-03-27 | - |
+| 20. Integrity & Verification | 3/3 | Complete    | 2026-03-27 | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
 | 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
