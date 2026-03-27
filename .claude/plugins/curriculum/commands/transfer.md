@@ -214,7 +214,7 @@ After displaying the gate summary, silently update `workspace/{project}/STATE.md
 
 Then use `AskUserQuestion` with three options:
 
-- **"Approve and continue"** — write files, update STATE.md, auto-trigger /curriculum:marketing
+- **"Approve and continue"** — write files, update STATE.md, show context-break handoff to /curriculum:marketing
 - **"Flag an issue"** — ask what's wrong, full regeneration with all rules re-applied, re-display gate summary
 - **"Start this stage over"** — destructive confirmation gate
 
