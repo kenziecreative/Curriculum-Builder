@@ -44,7 +44,23 @@ Read the Stage 2 row from STATE.md `Stage Progress` table. If Stage 2 status is 
 
 Stop here.
 
-### 3. Check Stage 3 status
+### 3. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `outcome_wording.program_outcomes` (at least one entry with `id` and `statement` fields)
+- `outcome_wording.module_outcomes` (at least one entry with `id` and `statement` fields)
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Assessments — {specific field description} is missing from the registry. Run `/curriculum:outcomes` to generate it.
+
+Do not proceed to generation.
+
+### 4. Check Stage 3 status
 
 Read the Stage 3 row from STATE.md `Stage Progress` table:
 

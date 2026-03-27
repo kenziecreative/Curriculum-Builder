@@ -44,7 +44,23 @@ Read Stage 5 status from the workspace STATE.md. If Stage 5 status is not `compl
 
 Stop here.
 
-### 3. Check Stage 6 status
+### 3. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `learner_profile.data.transfer_context`
+- `outcome_wording.module_outcomes` (at least one entry)
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Metaskills — {specific field description} is missing from the registry. Run `/curriculum:outcomes` to generate it.
+
+Do not proceed to generation.
+
+### 4. Check Stage 6 status
 
 Read Stage 6 status from the workspace STATE.md:
 
@@ -183,7 +199,7 @@ After displaying the gate, silently update `workspace/{project}/STATE.md`:
 
 Then use `AskUserQuestion` with three options:
 
-- **"Approve and continue"** — write files, update STATE.md, auto-trigger /curriculum:transfer
+- **"Approve and continue"** — write files, update STATE.md, show context-break handoff to /curriculum:transfer
 - **"Flag an issue"** — ask what's wrong, full regeneration with all five steps re-run, re-display
 - **"Start this stage over"** — destructive confirmation gate
 
@@ -208,13 +224,11 @@ Then use `AskUserQuestion` with three options:
 
 2. Silently update `workspace/{project}/STATE.md`:
    - Stage 6 status: `complete`, Completed: {today's date}
-   - Session Continuity → Next Action: `Transfer design generating now`
+   - Session Continuity → Next Action: `Run /curriculum:transfer to design the follow-through system`
 
 3. Show one line:
 
-   > Your thinking skill activation plan is written and saved. Building your transfer design now.
-
-4. Invoke `/curriculum:transfer` as a Skill. No user prompt before triggering.
+   > Your thinking skill map is written and saved. Type `/clear` now, then run `/curriculum:transfer` to design the follow-through system.
 
 ---
 

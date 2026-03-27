@@ -44,7 +44,25 @@ Read Stage 7 status from the workspace STATE.md. If Stage 7 status is not `compl
 
 Stop here.
 
-### 3. Check Stage 8 status
+### 3. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `learner_profile.data.target_audience`
+- `learner_profile.data.transfer_context`
+- `outcome_wording.program_outcomes` (at least one entry)
+- `assessment_criteria` (at least one entry)
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Marketing — {specific field description} is missing from the registry. Run `/curriculum:transfer` to generate it.
+
+Do not proceed to generation.
+
+### 4. Check Stage 8 status
 
 Read Stage 8 status from the workspace STATE.md:
 

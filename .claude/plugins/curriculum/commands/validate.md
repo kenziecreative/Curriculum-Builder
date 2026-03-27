@@ -56,7 +56,15 @@ Read Stage 5 status from the workspace STATE.md. If Stage 5 status is not `compl
 
 Stop here. Do not proceed.
 
-### 3. Read project brief for program duration
+### 3. Input Validation
+
+Verify that `workspace/{project}/curriculum-registry.json` exists. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Do not proceed to generation.
+
+### 4. Read project brief for program duration
 
 Read `workspace/{project}/00-project-brief/project-brief.md`. Extract the `program_duration` field (e.g., `"90-min"`, `"half-day"`, `"2-day"`, `"multi-week"`). This value controls Tier 2 scaling in the validation agent.
 
@@ -145,9 +153,7 @@ Your dashboard has been updated with the validation results.
 Then show next step:
 
 ```
-Run `/curriculum:approve` to review the human checklist and mark your curriculum delivery-ready.
-
-Type `/clear` now, then run `/curriculum:approve` to continue.
+Type `/clear` now, then run `/curriculum:metaskills` to map thinking skills.
 ```
 
 **If tier_1_failures > 0:**
@@ -229,19 +235,15 @@ Write the updated STATE.md. Do not announce the write.
 
 ---
 
-## Auto-Trigger Metaskills
+## Next Stage Handoff
 
-This section runs ONLY when `tier_1_failures == 0` (same condition as the all-pass state update path above).
+This section runs ONLY when `tier_1_failures == 0`.
 
-Do NOT trigger when `tier_1_failures > 0`. The chain stops at the failure message. User must fix and rerun.
+Do NOT trigger when `tier_1_failures > 0`. The chain stops at the failure message.
 
-After the state update completes (Stage 9 set to complete, Session Continuity updated), show:
+> Validation passed. Type `/clear` now, then run `/curriculum:metaskills` to map thinking skills.
 
-> All required checks passed — mapping thinking skills now.
-
-Then invoke `/curriculum:metaskills` as a Skill.
-
-Do not wait for user input before invoking. This is the same auto-advance pattern used between `/curriculum:sessions` and `/curriculum:validate`.
+Do not invoke metaskills automatically. The user must clear context first.
 
 ---
 

@@ -66,6 +66,25 @@ Read the Stage 1 row from STATE.md `Stage Progress` table. If Stage 1 status is 
 
 Stop here.
 
+### 4. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `learner_profile.data.target_audience`
+- `learner_profile.data.expertise_level`
+- `learner_profile.data.skill_type`
+- `learner_profile.data.transfer_context`
+- `learner_profile.data.contact_hours`
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Outcomes — {specific field description} is missing from the registry. Run `/curriculum:intake` to generate it.
+
+Do not proceed to generation.
+
 ---
 
 ## Persona

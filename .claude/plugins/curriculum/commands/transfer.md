@@ -44,7 +44,26 @@ Read Stage 6 status from the workspace STATE.md. If Stage 6 status is not `compl
 
 Stop here.
 
-### 3. Check Stage 7 status
+### 3. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `learner_profile.data.transfer_context`
+- `learner_profile.data.skill_type`
+- `learner_profile.data.contact_hours`
+- `learner_profile.data.success_criteria`
+- `outcome_wording.program_outcomes` (at least one entry)
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Transfer — {specific field description} is missing from the registry. Run `/curriculum:outcomes` to generate it.
+
+Do not proceed to generation.
+
+### 4. Check Stage 7 status
 
 Read Stage 7 status from the workspace STATE.md:
 
@@ -249,13 +268,11 @@ Then use `AskUserQuestion` with three options:
 
 2. Silently update `workspace/{project}/STATE.md`:
    - Stage 7 status: `complete`, Completed: {today's date}
-   - Session Continuity → Next Action: `Marketing materials generating now`
+   - Session Continuity → Next Action: `Run /curriculum:marketing to generate enrollment materials`
 
 3. Show one line:
 
-   > Transfer design locked — generating your marketing materials now.
-
-4. Invoke `/curriculum:marketing` as a Skill. No user prompt before triggering.
+   > Your transfer ecosystem is written and saved. Type `/clear` now, then run `/curriculum:marketing` to generate enrollment materials.
 
 ---
 

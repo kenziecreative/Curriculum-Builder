@@ -52,7 +52,24 @@ Read the Stage 4 status from the workspace STATE.md. If Stage 4 status is not `c
 
 Stop here. Do not proceed.
 
-### 3. Check Stage 5 status
+### 3. Input Validation
+
+Read `workspace/{project}/curriculum-registry.json`. If the file does not exist, stop and report:
+
+> No curriculum registry found. This usually means the intake stage needs to be re-run with the updated pipeline.
+
+Verify the following fields exist and are non-empty:
+- `time_allocations.modules` (at least one module entry)
+- Each module entry has `sessions_planned` > 0
+- `outcome_wording.session_outcomes` (at least one entry)
+
+If any field is missing or empty, stop and report:
+
+> Cannot start Sessions — {specific field description} is missing from the registry. Run `/curriculum:modules` to generate it.
+
+Do not proceed to generation.
+
+### 4. Check Stage 5 status
 
 Read Stage 5 status from the workspace STATE.md:
 
@@ -247,15 +264,13 @@ Do not announce these state changes.
 
 ---
 
-## Auto-Trigger Validation
+## Next Stage Handoff
 
-After writing all STATE.md updates, automatically invoke the validation command:
+After writing all STATE.md updates and confirming all files verified:
 
-> Running validation on your completed curriculum — this checks all required fields and scores quality dimensions.
+> Sessions complete. Type `/clear` now, then run `/curriculum:validate` to check your curriculum.
 
-Invoke `/curriculum:validate` as a Skill.
-
-Do not wait for user input. This is the same auto-advance pattern used between discussion and planning phases.
+Do not invoke validate automatically. Do not proceed in the current context. The user must clear context and run the next command manually. This ensures validation runs with a fresh context window, not a saturated one from session generation.
 
 ---
 
