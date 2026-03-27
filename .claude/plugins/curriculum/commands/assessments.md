@@ -158,7 +158,7 @@ After constraint enforcement completes, display the results.
 
 **Transparency note** (show only if corrections were made — confident tone, not apologetic):
 
-> I added [N] assessment(s) and elevated [N] assessment(s) to match their complexity levels. Example: "I added an assessment for MO-2-3 and elevated FA-4 to Evaluate to match its objective." Here's the complete picture:
+> I added [N] assessment(s) and elevated [N] assessment(s) to match their complexity levels. Example: "I added an assessment for your third module outcome about data analysis, and elevated the check-in activity for module 4 to match its thinking level." Here's the complete picture:
 
 **Then display the assessment summary** — this is the evidence for the gate decision:
 

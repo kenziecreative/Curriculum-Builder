@@ -299,7 +299,7 @@ Then use `AskUserQuestion` with three options:
    - **Group reflection prompt:** [group_processing_prompt]
 
    ### Core Thinking Skill
-   - **Primary metaskill:** [primary_metaskill]
+   - **Core thinking skill:** [primary_metaskill]
    - **Thinking routine:** [metaskill_activation_activity]
 
    ### What This Module Challenges

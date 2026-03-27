@@ -179,7 +179,7 @@ Full schema output. All required fields with exact enum values.
 # Session: [session_name]
 
 **session_id:** [M-N-S-N]
-**parent_module_id:** [M-N]
+<!-- internal: parent_module_id=[M-N] -->
 **total_duration_minutes:** [sum of all component duration_minutes]
 
 ## Opening: Prior Knowledge Activation

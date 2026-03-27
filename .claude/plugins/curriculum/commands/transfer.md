@@ -155,16 +155,16 @@ After generation and rule application complete, display the compact summary:
 - Community: [continuation_platform or brief description for short programs]
 
 **How you'll measure success:**
-- [Plain-language Kirkpatrick level, e.g., "Behavior change"]: [what is being measured] — measured [when] by [by_whom]
+- [Measurement approach, e.g., "Behavior change on the job"]: [what is being measured] — measured [when] by [by_whom]
 
 Does this transfer design match what you need for this program?
 ```
 
-Plain-language Kirkpatrick translations for display:
-- "Level 1 - Reaction" → "Participant satisfaction"
-- "Level 2 - Learning" → "Knowledge and skill gain"
-- "Level 3 - Behavior" → "Behavior change on the job"
-- "Level 4 - Results" → "Business outcomes"
+Measurement approach translations (use these plain descriptions, never the framework labels):
+- Reaction-level → "Participant satisfaction"
+- Learning-level → "Knowledge and skill gain"
+- Behavior-level → "Behavior change on the job"
+- Results-level → "Business impact"
 
 ---
 
@@ -212,7 +212,7 @@ Then use `AskUserQuestion` with three options:
 
    ## How We'll Know It Worked
    [Prose sentence or two describing the success measurement approach — what is being measured, when, and by whom.
-   Plain language — no Kirkpatrick level labels.]
+   Plain language — no measurement framework labels.]
 
    ## Making It Stick
    [Optional section: key conditions for transfer success.
