@@ -19,6 +19,10 @@
 
 <!-- Stage status enums: not-started | in-progress | complete -->
 
+## Module Progress
+<!-- Populated during session generation (Stage 5). Empty for other stages. -->
+<!-- Status: not-started | in-progress | complete -->
+
 ## Key Decisions
 <!-- Populated during intake — 5-8 most impactful answers from Stage 1 -->
 - **Duration:** —

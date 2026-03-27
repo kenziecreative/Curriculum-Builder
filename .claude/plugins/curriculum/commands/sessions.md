@@ -133,7 +133,7 @@ Read Stage 5 status from the workspace STATE.md:
      - **"Start over"** → wipe `workspace/*/04-sessions/`, set Stage 5 status to `not-started` in STATE.md (clearing `pre-populated` status and Mode Assignment row for Stage 5), restart from Module Reading section as if `not-started`.
 
   **File writes happen only after diff gate approval ("Looks good"). Never write `04-sessions/` files before the gate passes.**
-- `in-progress` → Check which session directories already exist in `workspace/{project-name}/04-sessions/`. Identify which modules are missing complete session files (all 4 files per session). Re-dispatch Tasks only for incomplete modules. Proceed to Parallel Generation with the incomplete module list only.
+- `in-progress` → Read the Module Progress table from workspace STATE.md. Identify modules with status `not-started` or `in-progress`. Cross-reference against the file system to confirm which session directories are actually complete (all 4 files per session present). Re-dispatch Tasks only for modules that are not complete. Update Module Progress entries for any modules that have complete files on disk but were not marked `complete` in STATE.md — this handles the case where files were written but STATE.md was not updated before context cleared. Proceed to Parallel Generation with the incomplete module list only.
 - `complete` → Respond: "Sessions are already generated for this program. All session content is in `04-sessions/`." Stop here.
 
 ---
@@ -152,6 +152,16 @@ Also read these files in full — they are passed to each worker:
 Read `.claude/reference/schemas/stage-05-sessions.md` — also passed to each worker.
 
 Silently update workspace STATE.md Stage 5 status to `in-progress`. Do not announce this.
+
+Write a Module Progress table to workspace STATE.md with one row per module, all set to `not-started`. Do this silently.
+
+| Module | Name | Sessions | Status |
+|--------|------|----------|--------|
+| M-1 | {name} | {count} | not-started |
+| M-2 | {name} | {count} | not-started |
+...
+
+(Replace placeholders with actual module data from the module list. Do not include header row template markers in the written file.)
 
 Show:
 
@@ -183,6 +193,8 @@ Each Task receives:
 As each Task completes and returns its completion signal, print one progress line:
 
 > [module_name] sessions written — [N remaining] remaining.
+
+After printing the progress line, silently update the Module Progress table in workspace STATE.md: set this module's status to `complete`.
 
 Where [N remaining] counts how many Tasks have not yet returned. When the final Task returns, print:
 
@@ -259,6 +271,7 @@ Silently update workspace STATE.md:
 - Stage 5 status: `complete`
 - Completed date: today's date in YYYY-MM-DD format
 - Session Continuity → Next Action: Run /curriculum:validate to validate curriculum
+- All Module Progress entries: set to `complete`
 
 Do not announce these state changes.
 
