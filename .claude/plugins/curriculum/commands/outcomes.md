@@ -16,6 +16,26 @@ List subdirectories under `workspace/`. Find the one that contains a `STATE.md` 
 
 Stop here.
 
+### Directory scheme detection
+
+After identifying `{project}`, detect which directory numbering scheme this workspace uses:
+- If `workspace/{project}/00-project-brief/` exists → use legacy scheme (00-08)
+- If `workspace/{project}/01-project-brief/` exists → use new scheme (01-09)
+
+Use this mapping for all subsequent directory references in this command:
+
+| Stage | Legacy (00-08) | New (01-09) |
+|-------|---------------|-------------|
+| 1 - Intake | 00-project-brief | 01-project-brief |
+| 2 - Outcomes | 01-outcomes | 02-outcomes |
+| 3 - Assessments | 02-assessments | 03-assessments |
+| 4 - Modules | 03-modules | 04-modules |
+| 5 - Sessions | 04-sessions | 05-sessions |
+| 6 - Metaskills | 05-metaskills | 06-metaskills |
+| 7 - Transfer | 06-transfer | 07-transfer |
+| 8 - Marketing | 07-marketing | 08-marketing |
+| 9 - Validation | 08-validation | 09-validation |
+
 ### 2. Check Stage 2 status
 
 Read the Stage 2 row from STATE.md `Stage Progress` table.
