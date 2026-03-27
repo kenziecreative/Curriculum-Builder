@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 20-02-PLAN.md
-last_updated: "2026-03-27T21:00:27.768Z"
+stopped_at: Completed 21-deviation-validation-coverage-01-PLAN.md
+last_updated: "2026-03-27T23:34:54.979Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 13
-  completed_plans: 13
+  total_plans: 16
+  completed_plans: 14
   percent: 0
 ---
 
@@ -59,6 +59,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 20-integrity-verification P01 | 2min | 2 tasks | 7 files |
 | Phase 20-integrity-verification P03 | 5min | 2 tasks | 1 files |
 | Phase 20-integrity-verification P02 | 2min | 2 tasks | 3 files |
+| Phase 21-deviation-validation-coverage P01 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -94,6 +95,10 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 20-03]: Gate decision uses four-branch logic: verify_issues x integration_findings.blocking each evaluated independently; warnings never block approval
 - [Phase 20-02]: Outcome drift is auto-fixable; generic content, doctrine compliance, pre-work gaps, formative assessment, and goal-backward substantive/wired failures all require regeneration
 - [Phase 20-02]: Goal-backward verification reports per-module with Exists/Substantive/Wired sub-checks — domain term extraction is the mechanism for the Substantive check
+- [Phase 21]: Retry loop is content-failure-only — structural failures (completeness, registry consistency, schema) stop immediately, not enter retry loop
+- [Phase 21]: Auto-fix boundary made explicit: vocabulary substitution, registry default fills, outcome drift correction — three categories only in all draft audits
+- [Phase 21]: Sessions retry is per-module with 3 total attempts per module, not per check type — prevents disproportionate retry cost on multi-module programs
+- [Phase 21]: Escalation format shows both auto-fixes applied and remaining failures so user sees the complete picture before deciding to edit drafts or restart
 
 ### Pending Todos
 
@@ -107,6 +112,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T20:56:12.075Z
-Stopped at: Completed 20-02-PLAN.md
+Last session: 2026-03-27T23:34:54.976Z
+Stopped at: Completed 21-deviation-validation-coverage-01-PLAN.md
 Resume file: None
