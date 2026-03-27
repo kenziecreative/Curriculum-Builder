@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 18-04-PLAN.md
-last_updated: "2026-03-27T03:38:18.365Z"
+stopped_at: Completed 19-01-PLAN.md
+last_updated: "2026-03-27T14:52:31.572Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 10
+  completed_plans: 8
   percent: 0
 ---
 
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 18-stage-guidance P02 | 8 | 2 tasks | 2 files |
 | Phase 18-stage-guidance P03 | 4min | 2 tasks | 16 files |
 | Phase 18-stage-guidance P04 | 3 | 1 tasks | 1 files |
+| Phase 19-pipeline-infrastructure P01 | 3min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 18-03]: Auto-detection is additive: existing directory references remain as default legacy pattern — detection block tells Claude which mapping to use without rewriting every path
 - [Phase 18-03]: Directory scheme detection pivots on 00-project-brief vs 01-project-brief presence — unambiguous signal for legacy vs new workspace
 - [Phase 18-04]: Intake self-check questions target program brief accuracy (audience, format, success criteria, completeness catch-all) — not learning design evaluation; SME is verifying captured data, not auditing curriculum quality
+- [Phase 19-01]: Registry wins over stage files on conflict — centralized source is authoritative, direct edits to stage files do not propagate automatically
+- [Phase 19-01]: Intake gets two registry write locations (fresh and audit paths) — both approval branches write project-brief.md so both need registry writes
 
 ### Pending Todos
 
@@ -88,6 +91,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T03:33:58.858Z
-Stopped at: Completed 18-04-PLAN.md
+Last session: 2026-03-27T14:52:31.570Z
+Stopped at: Completed 19-01-PLAN.md
 Resume file: None
