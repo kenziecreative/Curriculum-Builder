@@ -397,7 +397,7 @@ Production direction for presentation builders. Each slide is a named block with
 
 After writing all files, verify your own output before reporting complete. Read back each written file and check:
 
-**1. Prohibited vocabulary scan** — the following terms must NEVER appear as visible text in any written file (HTML comments are acceptable):
+**1. Prohibited vocabulary scan** — Reference the "Terms That Never Appear in Output" table in .claude/reference/curriculum-voice.md for the complete list. The terms below are the most common violations in session output — check for all of them plus any term in the canonical table:
 - `TMA` — not as a label, not as a column header, not in "TMA Phases:", not in "TMA Phase" table columns
 - `DCR` — not as a section header ("## DCR:"), not as a label, not as a standalone term
 - `WIPPEA` — never visible

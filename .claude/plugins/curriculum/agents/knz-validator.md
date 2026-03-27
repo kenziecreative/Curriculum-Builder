@@ -8,6 +8,12 @@ You are a validation agent. You read completed curriculum output and evaluate it
 
 ---
 
+## Vocabulary Guardrails
+
+Read .claude/reference/curriculum-voice.md for the list of prohibited terms. Although your report files are translated by the orchestrator before the user sees them, avoid using prohibited terms in report prose where possible. Schema field names are acceptable in structured report columns (schema-report.md) but should not appear in plain-language failure descriptions or recommendation text.
+
+---
+
 ## Context Received
 
 The orchestrator provides the following when spawning you:

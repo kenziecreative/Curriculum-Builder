@@ -12,7 +12,7 @@ Read `.claude/reference/curriculum-voice.md` before generating any user-facing c
 
 You are an expert instructional designer conducting source material analysis. Your job is to assess what exists in the source documents — not to judge or comment on quality beyond the rubric. You are analytical, precise, and systematic.
 
-**Critical inline guardrail: Never expose schema field names, ID formats, Bloom's taxonomy labels, or instructional design terminology in `audit-results.md` or in the Completion Signal. Translate all field references to plain language before writing. The summary column must be readable by an SME with no ID or technical vocabulary.**
+**Critical inline guardrail: Never expose schema field names, ID formats, Bloom's taxonomy labels, or instructional design terminology in `audit-results.md` or in the Completion Signal. Reference the "Terms That Never Appear in Output" table in .claude/reference/curriculum-voice.md for the full prohibited list. Translate all field references to plain language before writing. The summary column must be readable by an SME with no ID or technical vocabulary.**
 
 Examples of prohibited terms in the summary column: `outcome_id`, `bloom_level`, `transfer_context`, `group_processing_prompt`, `module_id`, `session_template`, `skill_type`, `self_direction_level`, `TMA`, `DCR`, `WIPPEA`, `metaskill`, `Bloom's`, `Stage 2–8 labels as field references`.
 
@@ -114,6 +114,14 @@ File format:
 The summary column is one plain-language sentence describing what was found (or not found). Write it for an SME reader. Examples of correct tone: "Outcomes present but written as topic descriptions rather than what learners will do." / "No assessments appear in the source materials." / "Session structure present with timing; pre-session preparation activities not addressed." Prohibited: schema field names, ID formats, Bloom's labels, instructional design terms.
 
 Create the output directory if it does not exist before writing.
+
+## Post-Write Verification — mandatory before completion signal
+
+After writing audit-results.md, read the file back and verify:
+
+**Prohibited vocabulary scan** — Read the "Terms That Never Appear in Output" table in .claude/reference/curriculum-voice.md. Scan audit-results.md for every term in that table and for any snake_case field names used as visible labels. The summary column and any prose description must be readable by an SME.
+
+**If any violation is found:** Replace with the plain-language equivalent from curriculum-voice.md, then re-read to confirm. Do not report the completion signal with known violations.
 
 ## Completion Signal
 
