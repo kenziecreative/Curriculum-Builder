@@ -47,12 +47,12 @@ For each entry below, check whether the file or directory exists. If it does not
 
 | What to check | Missing description | Fix command |
 |---|---|---|
-| `workspace/{project}/01-outcomes/learning-objectives.md` | Not yet generated | `/curriculum:outcomes` |
-| `workspace/{project}/02-assessments/` (at least one `.md` file) | Not yet generated | `/curriculum:assessments` |
-| `workspace/{project}/03-modules/sequence-rationale.md` | Not yet generated | `/curriculum:modules` |
-| `workspace/{project}/04-sessions/` (at least one subdirectory containing `facilitator-guide.md`) | Not yet generated | `/curriculum:sessions` |
-| `workspace/{project}/06-transfer/` (at least one `.md` file) | Not yet generated | `/curriculum:transfer` |
-| `workspace/{project}/07-marketing/` (at least one `.md` file) | Not yet generated | `/curriculum:marketing` |
+| `workspace/{project}/01-outcomes/learning-objectives.md` | outcomes content not yet generated — learners won't have defined learning goals | `/curriculum:outcomes` |
+| `workspace/{project}/02-assessments/` (at least one `.md` file) | assessments content not yet generated — there's no way to prove learners achieved the objectives | `/curriculum:assessments` |
+| `workspace/{project}/03-modules/sequence-rationale.md` | modules content not yet generated — the program has no structure connecting objectives to sessions | `/curriculum:modules` |
+| `workspace/{project}/04-sessions/` (at least one subdirectory containing `facilitator-guide.md`) | sessions content not yet generated — facilitators have nothing to deliver | `/curriculum:sessions` |
+| `workspace/{project}/06-transfer/` (at least one `.md` file) | transfer content not yet generated — learners have no support for applying skills on the job | `/curriculum:transfer` |
+| `workspace/{project}/07-marketing/` (at least one `.md` file) | marketing content not yet generated — there's no way to communicate what the program offers | `/curriculum:marketing` |
 
 ### Check B — Content issues in generated output files
 
@@ -67,7 +67,7 @@ For each file, run three scans. Each scan that finds a match adds an issue entry
 Look for any line that starts with `NEEDS:` (case-sensitive, at the beginning of a line).
 
 If found:
-- Description: `has unresolved content markers`
+- Description: `has unfinished content — sections marked for completion weren't filled in, so a facilitator couldn't deliver this session as written`
 - Fix command: the appropriate regeneration command for the file's stage:
   - Files in `04-sessions/` → `/curriculum:sessions`
   - Files in `06-transfer/` → `/curriculum:transfer`
@@ -77,14 +77,14 @@ If found:
 Look for any line that is a Markdown heading whose sole text is one of these words: `ACTIVATE`, `THEORY`, `METHOD`, `APPLICATION`, `BRIDGE`, `TRANSFER`. (Match: a line starting with one or more `#` characters followed by optional whitespace, then exactly one of those words, then end of line.)
 
 If found:
-- Description: `contains formatting labels that should not appear in facilitator guides`
+- Description: `contains internal structural labels that would confuse a facilitator — these are tool scaffolding, not delivery content`
 - Fix command: `/curriculum:sessions` (TMA labels only appear in session files)
 
 **Scan B3 — HTML comments**
 Look for `<!--` anywhere in the file content.
 
 If found:
-- Description: `contains internal notes that should not appear in output`
+- Description: `contains hidden notes meant for the tool, not the facilitator — these need to be removed before delivery`
 - Fix command: the appropriate regeneration command for the file's stage (same logic as B1).
 
 Do NOT run vocabulary checks. Check B is a slip-through net only — vocabulary enforcement is handled at write time.
