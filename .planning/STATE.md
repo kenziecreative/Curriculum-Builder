@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 17-01-PLAN.md — vocabulary canonical table and WfC enforcement added
-last_updated: "2026-03-27T01:22:22.736Z"
+stopped_at: Completed 17-03-PLAN.md — vocabulary enforcement added to all four curriculum agents
+last_updated: "2026-03-27T01:26:38.117Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -47,6 +47,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 *Updated after each plan completion*
 | Phase 17 P01 | 20 | 2 tasks | 8 files |
+| Phase 17-vocabulary-plain-language P03 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -58,6 +59,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Roadmap v4.0]: Phase 22 (New Capabilities) last — FEAT-01 and FEAT-02 are additive, not quality fixes; nothing depends on them
 - [Phase 17]: Alphabetized never-say table in curriculum-voice.md (31 entries) — all prohibited terms from all commands now in single canonical source
 - [Phase 17]: Standard Writing for Clarity block and voice reference instruction established — identical wording across all command files creates uniform enforcement surface
+- [Phase 17-03]: Three-layer treatment for curriculum-evaluator.md — voice reference + Writing for Clarity + post-write scan for SME-facing output
+- [Phase 17-03]: Post-write scans reference curriculum-voice.md canonical table rather than hardcoding per-agent lists
 
 ### Pending Todos
 
@@ -71,6 +74,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T01:22:22.733Z
-Stopped at: Completed 17-01-PLAN.md — vocabulary canonical table and WfC enforcement added
+Last session: 2026-03-27T01:26:38.115Z
+Stopped at: Completed 17-03-PLAN.md — vocabulary enforcement added to all four curriculum agents
 Resume file: None

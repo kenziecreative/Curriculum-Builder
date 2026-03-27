@@ -76,12 +76,12 @@ Generate the full marketing package silently. Apply all constraints below before
   - Required: `program_description` (1 record)
   - Optional: `enrollment_cta` (1 record)
   - Omit: `learning_promise`, `audience_positioning`, `testimonial_prompt` — insufficient curriculum depth to justify
-  - All elements still require `source_citation` and `curriculum_traceability`
+  - All elements still require `source_citation` and a source link (where each claim comes from)
 
 - `contact_hours` 2–16 (half-day to 2-day programs):
   - Required: `program_description`, `learning_promise` (minimum 2 records), `audience_positioning` (minimum 1 record)
   - Optional: `enrollment_cta`, `testimonial_prompt`
-  - All elements require `source_citation` and `curriculum_traceability`
+  - All elements require `source_citation` and a source link (where each claim comes from)
 
 - `contact_hours` > 16 (multi-week or semester programs):
   - Full package: all five element types
@@ -92,17 +92,17 @@ Generate the full marketing package silently. Apply all constraints below before
 
 Every element in the marketing package must have:
 - A populated `source_citation` field referencing a specific stage output (e.g., "stage-02 OBJ-03 (Apply)", "stage-07 real_work_application session-01")
-- A `curriculum_traceability` object with `claim_text` (verbatim excerpt from `content`), `supporting_element` (specific stage reference), and `strength` (direct/inferred/adjacent)
+- A `source_link` object showing where each claim comes from: `claim_text` (verbatim excerpt from `content`), `supporting_element` (specific stage reference), and `strength` (direct/inferred/adjacent)
 
 If any element cannot be grounded in a specific curriculum source: do not include that element. No unsourced claims.
 
 **Audience positioning:**
 
-Translate the behavioral audience description from Stage 1 ("participants who can X but cannot yet Y") into warm enrollment language. The behavioral description is the schema source; the copy reads human. Example: "can X, cannot yet Y" → "You know how to [X], but you're ready to level up to [Y]." Keep the `curriculum_traceability` pointing to stage-01 audience field.
+Translate the behavioral audience description from Stage 1 ("participants who can X but cannot yet Y") into warm enrollment language. The behavioral description is the schema source; the copy reads human. Example: "can X, cannot yet Y" → "You know how to [X], but you're ready to level up to [Y]." Keep the source link pointing to the stage-01 audience field.
 
 **Learning promises:**
 
-Use behavioral language matching the Bloom's level of the cited objectives. Apply higher-order verbs where the objectives support them: Create, Evaluate, Analyze, Apply. Write as what the learner will be able to DO, not what they will KNOW. "You will understand X" is not acceptable. "You will be able to X" is the floor; "You'll walk away with X built" is preferred where accurate.
+Use behavioral language matching the thinking level of the cited objectives. Apply higher-order verbs where the objectives support them: Create, Evaluate, Analyze, Apply. Write as what the learner will be able to DO, not what they will KNOW. "You will understand X" is not acceptable. "You will be able to X" is the floor; "You'll walk away with X built" is preferred where accurate.
 
 **Marketing ratio rule:**
 

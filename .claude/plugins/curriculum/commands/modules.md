@@ -210,7 +210,7 @@ After constraint enforcement completes, display the results.
 
 **Transparency note** (show only if corrections were made — confident tone, not apologetic):
 
-> I adjusted [N] item(s) — [brief example, e.g., "added MO-2-4 to Module 2 and made the group reflection prompts specific to each module's content"]. Here's the full module structure:
+> I adjusted [N] item(s) — [brief example, e.g., "added a missing outcome to Module 2 and made the group reflection prompts specific to each module's content"]. Here's the full module structure:
 
 **Then display the gate summary table:**
 
