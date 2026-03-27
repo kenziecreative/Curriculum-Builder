@@ -150,7 +150,7 @@ The total word count of all marketing elements must be less than 25% of total cu
 
 ## File Write (immediately after generation — no mid-pipeline gate)
 
-Write `workspace/{project}/07-marketing/marketing-package.md` as markdown prose. All sections written simultaneously.
+Create `workspace/{project}/07-marketing/_drafts/` if it does not exist. Write `workspace/{project}/07-marketing/_drafts/marketing-package.md` as markdown prose. All sections written simultaneously.
 
 **Writing rules — from copywriting-doctrine.md (already loaded above). Apply all of these:**
 
@@ -206,7 +206,88 @@ Do not wait for user review before writing. The final review gate is `/curriculu
 
 ---
 
-## Conversation Display (after file write)
+### Draft Audit
+
+Run these 7 checks against the file in `workspace/{project}/07-marketing/_drafts/`. All 7 must pass before promotion.
+
+**Check 1: File Completeness**
+Verify `marketing-package.md` exists in `_drafts/` with non-zero content containing required sections for this program's duration tier (at minimum: The Promise, Program Description, Source Traceability).
+
+**Check 2: Registry Consistency**
+Read `curriculum-registry.json`. Verify:
+- Learning promises reference outcomes that exist in registry `outcome_wording.program_outcomes`
+- Audience description aligns with registry `learner_profile.data.target_audience`
+- Program duration references match registry `learner_profile.data.contact_hours`
+
+This is a blocking failure.
+
+**Check 3: Vocabulary Scan**
+Read `.claude/reference/curriculum-voice.md`. Scan the draft for any term in the never-say table, plus the marketing-specific prohibited terms: schema, curriculum_traceability, bloom_level, learning_objective_id, element_type, claim_type. Auto-fixable for never-say substitutions. Marketing-specific terms should not appear in prose at all (they are file metadata only).
+
+**Check 4: Schema Compliance**
+Load `.claude/reference/schemas/stage-08-marketing.md`. Verify all required elements for this duration tier are present. Verify source_citation and source_link fields are populated for every claim.
+
+**Check 5: Source Citation Completeness (T1-31)**
+Verify every marketing claim in the prose sections has a corresponding entry in the Source Traceability table with a populated source reference. Claims without sources are not acceptable — every promise must trace to a curriculum element.
+
+This is a blocking failure — requires regeneration.
+
+**Check 6: Source Element Existence (T1-32)**
+For each entry in the Source Traceability table, verify the referenced stage output actually exists. A source_citation of "stage-02 OBJ-03" must correspond to an actual objective in 01-outcomes/learning-objectives.md. A reference to "stage-07 real_work_application session-01" must correspond to content in 06-transfer/transfer-ecosystem.md.
+
+This is a blocking failure — requires regeneration.
+
+**Check 7: Marketing Ratio (T1-33)**
+Count the total word count of the marketing package prose (excluding the traceability table). Count the total word count of all curriculum output files in stages 01-07. Verify marketing word count is less than 25% of curriculum word count.
+
+This is a blocking failure — trim learning promises first (keeping most traceable), then audience positioning. Keep program description and direct-strength traceability claims.
+
+### Verification Integrity
+
+A check either passes its defined criteria or it fails. No middle ground.
+
+**Rules:**
+1. Do not rationalize a passing result. If a check's defined criteria are not met, the check fails — regardless of how close the result is.
+2. Do not downgrade severity. If the check definition says "blocking," it blocks. You do not have the authority to change a blocking failure to a warning.
+3. Do not invent passing conditions. If the criteria say "every claim must have a source," then one unsourced claim is a failure, not "substantially complete."
+4. Do not soften failure descriptions. Report exactly what failed and why. Do not add qualifiers that minimize the problem.
+5. Do not bypass checks. Every defined check runs. A check that was skipped is treated as a failure, not an omission.
+
+**Prohibited qualifiers — never use these when reporting check results:**
+approximately, mostly, essentially, close enough, acceptable, nearly, substantially, reasonably, adequate, sufficient, largely, broadly, generally, for the most part, in most cases, with minor exceptions
+
+**If you find yourself wanting to write "mostly passes" or "essentially meets the criteria," the check failed.**
+
+**Audit Result:**
+
+If all 7 checks pass: promote `marketing-package.md` from `workspace/{project}/07-marketing/_drafts/` to `workspace/{project}/07-marketing/marketing-package.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the Conversation Display section below.
+
+If any check fails:
+1. Attempt auto-fix for simple failures:
+   - Vocabulary violations (Check 3): substitute with the plain-language replacement from curriculum-voice.md. Remove any marketing-specific prohibited terms from prose (they are metadata only).
+2. Re-run the failing check(s) after auto-fix.
+3. If content checks (Checks 5–7) still fail after auto-fix: regenerate the marketing package. Re-run all 7 checks on the new draft. Track this as attempt 2.
+
+   **Retry constraint injection:** Each retry must add cumulative constraints to the regeneration prompt:
+   - Attempt 2: inject the specific failing check criteria as explicit generation constraints
+   - Attempt 3: inject both the attempt-2 constraints plus the verbatim failure reason from attempt 2
+
+   **Marketing Ratio (Check 7) auto-fix on retry:** When ratio exceeds 25%, the retry instruction must specify trimming targets: "Trim learning promises to the N most traceable. Remove audience positioning section if ratio still exceeds threshold."
+
+4. After 3 failed attempts, stop and escalate. Do not promote. Do not mark the stage complete. Present the escalation in plain language:
+
+   > I wasn't able to produce marketing copy that passes all checks after three tries. Here's what kept failing:
+   > - [Plain-language description of the specific problem — what was missing or wrong, not the check ID]
+   > - [Where in the file the problem appeared]
+   > - [What to try: specific suggestion for how to provide different input or adjust the program design]
+   >
+   > Run `/curriculum:marketing` again to retry.
+
+5. Structural failures (Checks 1, 2, 4) stop immediately — no retry. Report the specific failure and stop.
+
+---
+
+## Conversation Display (after successful promotion)
 
 **Formatting rules — apply exactly, no substitutions:**
 - Use `##` headings to open major sections (e.g., `## Your Marketing Copy`)
@@ -267,13 +348,13 @@ Type `/clear` now, then run `/curriculum:approve` to review your complete curric
 
 ---
 
-## State Update (silent, after file write)
+## State Update (silent, after successful promotion)
 
-Update `workspace/{project}/STATE.md`:
+Update `workspace/{project}/STATE.md` only after the draft audit passes and the file is promoted from `_drafts/` to the deliverable directory:
 - Stage 8 status: `complete`, Completed: {today's date}
 - Session Continuity → Next Action: `Run /curriculum:approve to review complete package and mark delivery-ready`
 
-Do not announce this update.
+Do not announce this update. Do not update STATE.md if promotion did not occur.
 
 ---
 
