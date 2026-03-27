@@ -289,19 +289,60 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 If all eight checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
 
 If any check fails:
-1. Attempt auto-fix for simple failures:
+
+### Auto-Fix Pass
+
+1. Attempt auto-fix for deterministic failures only:
    - Vocabulary violations: substitute with the plain-language replacement from curriculum-voice.md
-   - Missing fields that have obvious default values: fill in from registry data
-   - Outcome drift: replace draft outcome wording with registry canonical wording
+   - Missing fields with obvious defaults: fill from registry data
+   - Outcome drift: replace draft wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
-3. If still failing after auto-fix: stop and report the specific failures. Do not promote. Do not mark the stage complete.
+3. Track what was fixed: "{N} vocabulary issues fixed, {N} outcome wording corrected, {N} registry defaults filled."
 
-   > Draft audit found {N} issue(s) that could not be auto-fixed:
-   > - {file}: {specific problem}
+**Auto-fix boundary — these three categories only.** Anything involving content judgment (missing formative assessment, pre-work gaps, goal-backward failures) is NOT auto-fixable. Do not attempt to patch content problems — they require regeneration.
+
+**Structural failures do not enter the retry loop.** File completeness (Check 1) and Check 8a (session files exist) indicate a generation error, not a content quality issue. If these still fail after auto-fix, stop immediately and report — do not attempt retry.
+
+### Retry with Cumulative Constraints (content failures only)
+
+If blocking failures remain after auto-fix, those failures are from Check 6 (missing formative assessment), Check 7 (pre-work gaps), Check 8b (goal-backward Substantive), or Check 8c (goal-backward Wired), AND this module is not yet at attempt 3:
+
+**Attempt tracking:** This is attempt {current} of 3 for module {M-N} "{module name}".
+
+Retry is per-module — a module's sessions get 3 total attempts, not 3 per check type.
+
+1. Collect all remaining blocking failure reasons for this module into a constraint list.
+2. Regenerate ONLY the sessions for the failing module — not sessions for other modules. Inject the constraint list into the generation prompt:
+
+   > The previous draft of sessions for module {M-N} "{module name}" failed these checks:
+   > - {failure reason from Check 6/7/8b/8c}
+   > - {failure reason from attempt 1, if attempt 2+}
    >
-   > Fix these issues and run `/curriculum:sessions` again.
+   > Regenerate sessions for this module. The new version MUST avoid these specific problems.
 
-   Missing formative assessment (Check 6), pre-work gaps (Check 7), and goal-backward failures on Substantive or Wired (Check 8b, 8c) cannot be auto-fixed — they require content regeneration. Report the specific module and session, and instruct the user to run `/curriculum:sessions` again.
+3. Write the regenerated sessions to `_drafts/`, replacing the failing module's session files.
+4. Re-run ALL checks on the regenerated module's sessions (not just the previously failing ones).
+5. If all checks pass for this module: proceed to promotion for this module.
+6. If checks still fail: increment attempt counter for this module. If under 3, loop back to step 1 with the cumulative constraint list (attempt 2 carries failure reasons from attempt 1; attempt 3 carries reasons from attempts 1 and 2).
+
+### Escalation (after 3 failed attempts)
+
+If a module's sessions have failed 3 attempts:
+
+1. Stop the stage. Do not promote any files. Do not mark the stage complete.
+2. Present the escalation report:
+
+   > Draft audit tried 3 times to fix sessions for module {M-N} "{module name}" and could not resolve all issues.
+   >
+   > **What was auto-fixed:** {brief summary — e.g., "Fixed 3 vocabulary issues, corrected outcome wording in 2 sessions"}
+   >
+   > **What still needs attention:**
+   > - **Missing mid-module check-in** in Module M-1 "Name": Sessions S-1 through S-3 have no formative assessment point — add a brief skill check or practice moment in at least one session
+   > - **Pre-work not named** in Module M-2 "Name", Session S-2: Pre-work is referenced but not described — name the specific reading, exercise, or preparation task
+   >
+   > The draft files are in `_drafts/` if you want to edit them directly, or run `/curriculum:sessions` to start fresh.
+
+3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions reference the specific module and session. Use the same plain language as the check failure messages established in Phase 18.
 
 **After successful promotion**, update curriculum registry silently:
 
