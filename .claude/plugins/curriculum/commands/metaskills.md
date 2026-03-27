@@ -222,7 +222,7 @@ Then use `AskUserQuestion` with three options:
    - `evidence_gap_acknowledgment` (true only for Imagining; false or omitted for others)
    - `imagining_adjacent_practice` (only for Imagining records)
 
-2. Run the Draft Audit against `workspace/{project}/{metaskills-dir}/_drafts/`. All four checks must pass before promotion.
+2. Run the Draft Audit against `workspace/{project}/{metaskills-dir}/_drafts/`. All six checks must pass before promotion.
 
 ### Draft Audit
 

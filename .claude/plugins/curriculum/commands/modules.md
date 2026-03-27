@@ -346,7 +346,7 @@ Then use `AskUserQuestion` with three options:
    [modality_switches — list each transition]
    ```
 
-2. Run the Draft Audit against the files in `workspace/{project-name}/03-modules/_drafts/`. All four checks must pass before promotion.
+2. Run the Draft Audit against the files in `workspace/{project-name}/03-modules/_drafts/`. All seven checks must pass before promotion.
 
 ### Draft Audit
 

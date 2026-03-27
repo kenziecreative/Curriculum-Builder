@@ -204,7 +204,7 @@ Where [N remaining] counts how many Tasks have not yet returned. When the final 
 
 ## Draft Audit
 
-After all Tasks report complete, run these four checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All four must pass before promotion.
+After all Tasks report complete, run these eight checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All eight must pass before promotion.
 
 ### Check 1: File Completeness
 Verify the expected files exist for every session across all modules. Do this by checking the file system directly.
