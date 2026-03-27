@@ -230,6 +230,22 @@ Read `.claude/reference/curriculum-voice.md` never-say table. Scan all draft fil
 ### Check 4: Schema Compliance
 Read `.claude/reference/schemas/stage-05-sessions.md`. Verify all required fields are present in draft session files. Flag any missing required fields.
 
+### Verification Integrity
+
+A check either passes its defined criteria or it fails. No middle ground.
+
+**Rules:**
+1. Do not rationalize a passing result. If a check's defined criteria are not met, the check fails — regardless of how close the result is.
+2. Do not downgrade severity. If the check definition says "blocking," it blocks. You do not have the authority to change a blocking failure to a warning.
+3. Do not invent passing conditions. If the criteria say "every outcome ID must have at least one assessment," then 9 out of 10 is a failure, not "substantially complete."
+4. Do not soften failure descriptions. Report exactly what failed and why. Do not add qualifiers that minimize the problem.
+5. Do not bypass checks. Every defined check runs. A check that was skipped is treated as a failure, not an omission.
+
+**Prohibited qualifiers — never use these when reporting check results:**
+approximately, mostly, essentially, close enough, acceptable, nearly, substantially, reasonably, adequate, sufficient, largely, broadly, generally, for the most part, in most cases, with minor exceptions
+
+**If you find yourself wanting to write "mostly passes" or "essentially meets the criteria," the check failed.**
+
 ### Audit Result
 
 If all four checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
