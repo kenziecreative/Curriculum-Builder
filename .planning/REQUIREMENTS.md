@@ -25,9 +25,9 @@ Requirements for SME-ready release. Each maps to roadmap phases.
 
 ### Integrity & Verification
 
-- [ ] **INTG-01**: Curriculum integrity agent created with named failure modes — vocabulary violations, outcome drift, generic content, broken cross-stage links, missing formative assessment, pre-work gaps, doctrine violations
-- [ ] **INTG-02**: Cross-stage integration check traces every outcome ID, assessment link, and module reference across all 8 stages before final approve gate
-- [ ] **INTG-03**: Goal-backward verification at session generation — verify sessions achieve module goals (exists/substantive/wired), not just that files were created
+- [x] **INTG-01**: Curriculum integrity agent created with named failure modes — vocabulary violations, outcome drift, generic content, broken cross-stage links, missing formative assessment, pre-work gaps, doctrine violations
+- [x] **INTG-02**: Cross-stage integration check traces every outcome ID, assessment link, and module reference across all 8 stages before final approve gate
+- [x] **INTG-03**: Goal-backward verification at session generation — verify sessions achieve module goals (exists/substantive/wired), not just that files were created
 - [x] **INTG-04**: Anti-softening instructions encoded in validator, integrity agent, and any verification command — explicit refuse-to-bypass, no-downgrade-severity, no-rationalize-away-failures rules
 
 ### Pipeline Robustness
@@ -83,9 +83,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PIPE-02 | Phase 19 | Complete |
 | PIPE-04 | Phase 19 | Complete |
 | PIPE-05 | Phase 19 | Complete |
-| INTG-01 | Phase 20 | Pending |
-| INTG-02 | Phase 20 | Pending |
-| INTG-03 | Phase 20 | Pending |
+| INTG-01 | Phase 20 | Complete |
+| INTG-02 | Phase 20 | Complete |
+| INTG-03 | Phase 20 | Complete |
 | INTG-04 | Phase 20 | Complete |
 | DEVL-01 | Phase 21 | Pending |
 | DEVL-02 | Phase 21 | Pending |

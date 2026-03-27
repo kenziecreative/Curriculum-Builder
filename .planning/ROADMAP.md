@@ -61,7 +61,7 @@ See [v3.0 archive](milestones/v3.0-ROADMAP.md) for full phase details.
 - [x] **Phase 17: Vocabulary & Plain Language** - Remove all remaining ID jargon from every command and output visible to users (completed 2026-03-27)
 - [x] **Phase 18: Stage Guidance** - Give SMEs plain-language guidance at every review gate so they can evaluate with confidence (completed 2026-03-27)
 - [x] **Phase 19: Pipeline Infrastructure** - Canonical registry, draft pipeline, context breaks, and sub-stage tracking to make generation reliable (completed 2026-03-27)
-- [ ] **Phase 20: Integrity & Verification** - Curriculum integrity agent, cross-stage check, goal-backward verification, and anti-softening enforcement
+- [x] **Phase 20: Integrity & Verification** - Curriculum integrity agent, cross-stage check, goal-backward verification, and anti-softening enforcement (completed 2026-03-27)
 - [ ] **Phase 21: Deviation & Validation Coverage** - Structured deviation handling and full validation coverage through stage 8
 - [ ] **Phase 22: New Capabilities** - Revise command for post-delivery feedback loops and research input support for audit mode
 
@@ -176,6 +176,6 @@ Plans:
 | 17. Vocabulary & Plain Language | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 18. Stage Guidance | v4.0 | 4/4 | Complete | 2026-03-27 |
 | 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 20. Integrity & Verification | 1/3 | In Progress|  | - |
+| 20. Integrity & Verification | 3/3 | Complete   | 2026-03-27 | - |
 | 21. Deviation & Validation Coverage | v4.0 | 0/TBD | Not started | - |
 | 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
