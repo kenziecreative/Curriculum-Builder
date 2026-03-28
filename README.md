@@ -126,6 +126,7 @@ The pipeline runs as a sequence of commands. Each command produces one piece of 
 /curriculum:marketing     Generate enrollment-ready program copy
 /curriculum:validate      Run a quality check on the full package
 /curriculum:approve       Final review gate — assemble delivery package
+/curriculum:revise        Revise a delivered curriculum with post-delivery feedback
 ```
 
 ---
@@ -242,10 +243,12 @@ When you run `/curriculum:intake`, choose **"I have existing materials to bring 
 5. Surface any real conflicts between documents as explicit choices you need to make
 6. Assign a content-handling mode per stage: leave strong content alone, enrich thin content, generate from scratch where nothing exists
 
+You can also include research documents — skill decompositions, misconception inventories, practitioner workflow analyses, or academic papers about your subject domain. Claude recognizes these from their content (you don't need to label them) and extracts insights that inform downstream generation. A facilitator guide tells Claude what you've been teaching; a research paper tells Claude what the evidence says about how people actually learn this material.
+
 Put your source documents in `workspace/{project-name}/source-material/` before running intake, or pass them as arguments directly:
 
 ```
-/curriculum:intake facilitator-guide.pdf workshop-slides.md
+/curriculum:intake facilitator-guide.pdf workshop-slides.md skill-decomposition.md
 ```
 
 ---
@@ -259,6 +262,22 @@ Want to run any curriculum through the quality rubrics without building a full p
 ```
 
 This works on any curriculum document — something you built elsewhere, a vendor program you're evaluating, or materials you inherited. Claude reads the document, runs the full three-tier validation, and writes `evaluation-report.md` to your `source-material/` folder. No pipeline stages required.
+
+---
+
+## Post-Delivery Revision
+
+After you've delivered a curriculum and lived with it, you can bring it back for targeted revision based on what you learned.
+
+```
+/curriculum:revise
+```
+
+Tell Claude what changed — a session that ran long, an activity that didn't land, feedback from participants, a new requirement from a stakeholder. Claude maps your feedback to the affected stages, shows you what will change and what won't, and waits for your confirmation before touching anything.
+
+Changes propagate downstream automatically through the existing traceability links. If you revise a learning objective, the assessments, session content, and marketing copy that reference it get updated — you don't regenerate the whole curriculum.
+
+This is explicitly for post-delivery feedback. For changes during the build process, use the review gates built into each stage.
 
 ---
 
@@ -298,4 +317,5 @@ WORKSPACE_DIR=/absolute/path/to/your/workspace npm run dev
 | `/curriculum:evaluate` | Evaluate any curriculum document | `evaluation-report.md` |
 | `/curriculum:resume` | Pick up where you left off | Status summary |
 | `/curriculum:assemble` | Compile delivery package manually | `delivery/` folder |
+| `/curriculum:revise` | Revise a delivered curriculum with feedback | Updated files + revision log |
 | `/curriculum:verify` | Pre-delivery completeness check | Verification report |
