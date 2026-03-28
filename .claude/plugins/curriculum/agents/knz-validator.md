@@ -56,20 +56,16 @@ Run ALL applicable checks before writing any report. Never stop on first failure
 
 ### Rule 2 — Tier 1 Scope
 
-Run T1-01 through T1-18 (Stages 2–5). For T1-19 through T1-33, write the following in the schema-report.md table for each check:
-
-```
-| T1-XX | [field_name] | stage-0N | — | Not applicable — Stage N not yet generated |
-```
+Run T1-01 through T1-33 (all stages). For any stage whose directory is missing or empty, write "Not applicable — Stage N not yet generated" for that stage's checks. Do not skip checks for stages that exist — run every applicable check.
 
 ### Rule 3 — Tier 2 Scope (Duration Scaling)
 
 - `90-min` programs: **Skip ALL Tier 2 dimensions.** Do not create rubric-report.md. Note "skipped — program < half-day" in the completion signal.
 - `half-day`, `2-day`, `multi-week`, `semester`, and all other programs: Run all 5 Tier 2 dimensions.
 
-### Rule 4 — Tier 3 Scope (Phase 6)
+### Rule 4 — Tier 3 Scope
 
-Run T3-06, T3-07, and T3-08 only. Skip T3-01 through T3-05 (transfer ecosystem not yet generated) and T3-09 (marketing not yet generated). Note skipped items in human-review-checklist.md with "Not applicable — Stage N not yet generated."
+Run T3-01 through T3-09. For any stage whose directory is missing or empty, note "Not applicable — Stage N not yet generated" for that stage's Tier 3 items.
 
 ### Rule 5 — T1-07 Bloom Comparison
 
@@ -125,7 +121,70 @@ Read stage files in this order:
 3. `{workspace_path}03-modules/` — Read each `M-N/module-spec.md`. If directory missing or empty → mark all T1-11 through T1-15 as FAIL with "STAGE NOT FOUND".
 4. `{workspace_path}04-sessions/` — Read each `M-N-S-N/session.md`. If directory missing or empty → mark all T1-16 through T1-18 as FAIL with "STAGE NOT FOUND".
 
+5. `{workspace_path}{metaskills-dir}/` — Read `metaskill-map.md`. Parse the YAML content to extract metaskill records with `metaskill_name`, `activation_activity`, `sequence_position`, and `evidence_gap_acknowledgment`. The metaskills directory is `05-metaskills` for legacy workspaces and `06-metaskills` for new workspaces — use the same directory scheme detection already present for stages 1-4. If directory missing or file missing → mark T1-19 through T1-24 as "Not applicable — Stage 6 not yet generated".
+
+6. `{workspace_path}{transfer-dir}/` — Read `transfer-ecosystem.md`. This is a prose document, not YAML — parse sections by heading (Before the Program, During the Program, After the Program, How We'll Know It Worked). The transfer directory is `06-transfer` for legacy workspaces and `07-transfer` for new workspaces. If directory missing or file missing → mark T1-25 through T1-30 as "Not applicable — Stage 7 not yet generated".
+
+7. `{workspace_path}{marketing-dir}/` — Read `marketing-package.md`. Parse prose sections and the Source Traceability table. The marketing directory is `07-marketing` for legacy workspaces and `08-marketing` for new workspaces. If directory missing or file missing → mark T1-31 through T1-33 as "Not applicable — Stage 8 not yet generated".
+
 **If a stage directory is missing or empty:** Mark all checks for that stage as FAIL with message `"STAGE NOT FOUND — {stage_dir} directory missing or empty"`. Continue to next stage.
+
+---
+
+## Check Implementations — Stages 6–8 (T1-19 through T1-33)
+
+These checks apply when stage directories for metaskills, transfer, and marketing exist. Run in order. Follow the failure message format exactly.
+
+### Stage 06 Checks (metaskill-map.md)
+
+**T1-19 — activation_activity named thinking routine**
+Read each metaskill record's `activation_activity`. Verify it names a specific thinking routine (not generic descriptors like "discussion", "reflection", "group activity", "brainstorm", "debrief"). FAIL message: `GENERIC ACTIVITY — '{activation_activity}' is not a named thinking routine`
+
+**T1-20 — six-metaskill coverage**
+Collect all unique `metaskill_name` values across records. Verify all six metaskills appear (Exploring, Creating, Feeling, Imagining, Innovating, Adapting). For programs with `contact_hours` < 2: relax to minimum 3 of 6. FAIL message: `MISSING METASKILLS — {missing_names} not activated`
+
+**T1-21 — developability hierarchy: Innovating**
+Find the first record where `metaskill_name` is "Innovating". Verify its `sequence_position` is higher than at least one "Exploring" record AND at least one "Creating" record. FAIL message: `HIERARCHY VIOLATION — Innovating at position {N} but Exploring at {N} and Creating at {N}`
+
+**T1-22 — developability hierarchy: Adapting**
+Find the first record where `metaskill_name` is "Adapting". Verify its `sequence_position` is higher than at least one record from each of the other five metaskills (or at minimum after Exploring and Creating). FAIL message: `HIERARCHY VIOLATION — Adapting at position {N} before foundational skills`
+
+**T1-23 — 30% activation cap**
+Count activations per metaskill. Verify no single metaskill exceeds 30% of total activations. Skip for programs with `contact_hours` < 2. FAIL message: `OVER-REPRESENTED — {metaskill_name} has {N}% of activations (max 30%)`
+
+**T1-24 — Imagining evidence gap acknowledgment**
+For any record where `metaskill_name` is "Imagining", verify `evidence_gap_acknowledgment` is true. FAIL message: `MISSING EVIDENCE GAP — Imagining record at position {N} lacks evidence gap acknowledgment`
+
+### Stage 07 Checks (transfer-ecosystem.md)
+
+**T1-25 — three transfer layers present**
+Verify the transfer document contains all three sections: Before the Program, During the Program, After the Program. Each must have substantive content (not just headings). FAIL message: `MISSING TRANSFER LAYER — {section_name} section is missing or empty`
+
+**T1-26 — implementation intentions per module**
+Read the module list from stage 4 output. Verify the During the Program section references specific follow-through commitments for each module. FAIL message: `MISSING IMPLEMENTATION INTENTION — Module {M-N} has no follow-through reference in transfer design`
+
+**T1-27 — error management practice for open-skill programs**
+Read `skill_type` from registry. If "open": verify During section mentions error correction practice. If "closed": auto-pass. FAIL message: `MISSING ERROR MANAGEMENT — open-skill program requires error correction practice`
+
+**T1-28 — spaced retrieval interval match**
+Read `contact_hours` from registry. Determine required intervals (< 2h: 1 week only; 2–16h: 1 week + 1 month; > 16h: all three). Verify After section describes the correct number of follow-up touchpoints. FAIL message: `SPACED RETRIEVAL MISMATCH — expected {N} intervals for {contact_hours}h program, found {M}`
+
+**T1-29 — evaluation level minimum**
+Determine minimum evaluation level from program type. Verify How We'll Know It Worked section describes measurement at or above minimum. FAIL message: `EVALUATION BELOW MINIMUM — program requires Level {N} minimum, found Level {M}`
+
+**T1-30 — community continuation not placeholder**
+Verify After section includes community continuation content that is not placeholder. Scan for "TBD", "to be determined", "placeholder", or sections with only a heading and no content. FAIL message: `PLACEHOLDER COMMUNITY — community continuation is empty or marked TBD`
+
+### Stage 08 Checks (marketing-package.md)
+
+**T1-31 — source citations present**
+Parse the Source Traceability table. Verify every row has a non-empty source reference. Also verify that every major claim in the prose sections (The Promise, Program Description, What Changes, Learning Promises) has a corresponding traceability entry. FAIL message: `UNSOURCED CLAIM — "{claim_excerpt}" has no source citation`
+
+**T1-32 — source references exist in stage output**
+For each source reference in the traceability table, verify the referenced stage output exists. Check that stage-02 references match actual objectives, stage-07 references match actual transfer content, etc. FAIL message: `BROKEN SOURCE — source "{reference}" does not exist in stage output`
+
+**T1-33 — marketing word count ratio**
+Count marketing prose word count (excluding traceability table). Count curriculum word count (stages 01–07). Verify marketing < 25%. FAIL message: `MARKETING RATIO EXCEEDED — marketing is {N}% of curriculum (max 25%)`
 
 ---
 
@@ -271,17 +330,29 @@ For all other programs, write a detailed rubric report:
 **Program:** {project name}
 **Validation run:** {date}
 
-## Phase 6 Applicable Items
-
-The following Tier 3 items apply at this stage (Stages 2–5 complete):
-
-- T3-06: belief_challenging_encounter (Stage 4)
-- T3-07: real_work_application / transfer_connection (Stage 5)
-- T3-08: Not applicable — marketing stage not yet generated
-
 ## Review Items
 
-{For each applicable T3 item, write:}
+{For each applicable T3 item, write a checklist entry. If a stage is missing, write "Not applicable — Stage N not yet generated" in the Skipped Items table instead.}
+
+- [ ] T3-01 — Pre-program readiness assessment: Is the complexity appropriate for the audience's self-direction level? | Location: {transfer-dir}/transfer-ecosystem.md > Before the Program > readiness_assessment | Review type: feasibility
+
+  *What to evaluate:* Can a typical participant complete this without facilitation? Is the format (survey, self-assessment, video) feasible given how this audience will encounter the program?
+
+- [ ] T3-02 — Manager briefing template: Does it accurately describe program goals without overpromising? | Location: {transfer-dir}/transfer-ecosystem.md > Before the Program > manager_briefing | Review type: content_accuracy
+
+  *What to evaluate:* Does the description match the program scope? Are any claims (skills gained, time required) realistic?
+
+- [ ] T3-03 — Post-program spaced retrieval: Is the frequency and format feasible for this audience? | Location: {transfer-dir}/transfer-ecosystem.md > After the Program > spaced_retrieval | Review type: feasibility
+
+  *What to evaluate:* Will participants realistically engage with follow-up prompts at the intervals specified? Is the format (email, app, group check-in) appropriate for this audience?
+
+- [ ] T3-04 — Community of practice design: Is the platform and seeding activity appropriate for this audience and context? | Location: {transfer-dir}/transfer-ecosystem.md > After the Program > community_continuation | Review type: contextual_fit
+
+  *What to evaluate:* Is the chosen platform one this audience already uses or will realistically join? Does the seeding activity create genuine reasons to participate?
+
+- [ ] T3-05 — Evaluation design feasibility: Is the evaluation method feasible given the program context? | Location: {transfer-dir}/transfer-ecosystem.md > How We'll Know It Worked > evaluation_design | Review type: feasibility
+
+  *What to evaluate:* Who is responsible for collecting this data? Is the method realistic given the program's delivery format and relationship with participants post-program?
 
 - [ ] T3-06 — {module_name}: Does the belief_challenging_encounter genuinely surface a common misconception for this specific audience? | Location: 03-modules/{M-N}/module-spec.md > belief_challenging_encounter | Review type: content_accuracy
 
@@ -291,19 +362,22 @@ The following Tier 3 items apply at this stage (Stages 2–5 complete):
 
   *What to evaluate:* Is the action_prompt realistic for this audience's job or business context? Would a typical participant be able to complete this within 1–2 days of the session?
 
-{Generate one T3-06 item per module. Generate one T3-07 item per session.}
+- [ ] T3-08 — Learning promises: Are the behavioral outcomes achievable within the program's contact hours? | Location: {marketing-dir}/marketing-package.md > Learning Promises | Review type: content_accuracy
+
+  *What to evaluate:* Do the stated outcomes match what the curriculum actually covers? Are the claims proportionate to the program length and depth?
+
+- [ ] T3-09 — Adjacent traceability claims: Flag any marketing claim where source strength is "adjacent" — the traceability is indirect and requires human confirmation. | Location: {marketing-dir}/marketing-package.md > Source Traceability table | Review type: contextual_fit
+
+  *What to evaluate:* Does the claim accurately represent what the cited curriculum element actually teaches? Is the connection tight enough to make the claim confidently?
+
+{Generate one T3-06 item per module. Generate one T3-07 item per session. Omit T3-01 through T3-05 if transfer stage not generated. Omit T3-08 and T3-09 if marketing stage not generated.}
 
 ## Skipped Items (Not Yet Applicable)
 
 | Item | Reason |
 |------|--------|
+{List any T3 items omitted because their stage is not yet generated, e.g.:}
 | T3-01 | Not applicable — Stage 7 (Transfer) not yet generated |
-| T3-02 | Not applicable — Stage 7 (Transfer) not yet generated |
-| T3-03 | Not applicable — Stage 7 (Transfer) not yet generated |
-| T3-04 | Not applicable — Stage 7 (Transfer) not yet generated |
-| T3-05 | Not applicable — Stage 7 (Transfer) not yet generated |
-| T3-08 | Not applicable — Stage 8 (Marketing) not yet generated |
-| T3-09 | Not applicable — Stage 8 (Marketing) not yet generated |
 ```
 
 ---
@@ -321,7 +395,7 @@ tier_3_items: N
 files_written: schema-report.md, rubric-report.md (or omitted), human-review-checklist.md
 ```
 
-Where `tier_1_checks_run` counts only the checks that were actually evaluated (T1-01 through T1-18 = 18 checks applicable in Phase 6).
+Where `tier_1_checks_run` counts only the checks that were actually evaluated (T1-01 through T1-33 = 33 total; subtract "Not applicable" checks for stages not yet generated).
 
 ---
 
