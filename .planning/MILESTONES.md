@@ -1,5 +1,28 @@
 # Milestones
 
+## v4.0 — SME-Ready (Shipped: 2026-03-28)
+
+**Phases:** 17–24 | **Plans:** 20 | **Commits:** 57 | **Timeline:** 2026-03-26 → 2026-03-28 (3 days)
+**Requirements:** 22/22 satisfied | **Audit:** tech_debt (all requirements met, non-blocking items)
+
+**Key accomplishments:**
+1. Canonical vocabulary enforcement — 31-entry never-say table in `curriculum-voice.md` + Writing for Clarity standardized across all commands and agents; zero ID jargon reaches users in any pipeline output
+2. Plain-language review gates — self-check questions at every approval point; constraint results explain what was checked and why it matters; thinking levels described in natural language instead of Bloom labels
+3. Curriculum registry + quality pipeline — `curriculum-registry.json` as single source of truth, draft-then-audit with 4-check gates for stages 4-8, pre-execution input validation, context breaks between all stages
+4. Anti-softening integrity system — binary pass/fail enforcement in 9 checking files; goal-backward session verification (Exists/Substantive/Wired); cross-stage integration check at final approval gate
+5. Full end-to-end validation — T1-01 through T1-33 covering all 8 stages; 3-attempt deviation handling with cumulative constraint injection; plain-language translations for every check
+6. Post-delivery revision + research input — `/curriculum:revise` for targeted feedback loops after delivery; audit mode recognizes structured research documents as source material; pipeline recovery routing completed
+
+**Tech debt accepted:**
+- 7 commands missing Writing for Clarity prose block (voice reference present)
+- 3 draft-audit preambles say "four checks" (gate logic correct)
+- validate.md hardcodes legacy directory path (new-scheme workspaces)
+- resume.md missing route to /curriculum:revise
+
+**Archive:** `.planning/milestones/v4.0-ROADMAP.md`, `.planning/milestones/v4.0-REQUIREMENTS.md`
+
+---
+
 ## v3.0 — Output Quality (Shipped: 2026-03-25)
 
 **Phases:** 11–16 | **Plans:** 15 | **Timeline:** 2026-03-24 → 2026-03-25 (2 days)

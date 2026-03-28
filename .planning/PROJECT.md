@@ -4,7 +4,7 @@
 
 A Claude Code plugin with a React dashboard that produces delivery-ready curriculum packages for adult learners. It encodes pedagogical doctrine — TMA, DCR, Six Metaskills, Flipped Classroom — as structural constraints enforced through schemas, so that subject matter experts without instructional design training can produce curriculum that meets rigorous pedagogical standards. The tool handles the scaffold; the human handles the soul.
 
-**Current state (v3.0):** Full pipeline, existing curriculum support, and polished output quality. Every generated output hides constraint machinery and reads like a skilled colleague built it. A curriculum voice system enforces consistent tone and plain language across all 15 commands. Audit mode routes to three intelligent content-handling modes via a dedicated auditor agent. The delivery layer assembles a polished `delivery/` package with HTML output and a pre-delivery verifier. Deployment is clone-and-run — one clone, one command, working setup.
+**Current state (v4.0):** Full pipeline with SME-invisible infrastructure. Canonical vocabulary enforcement (31-entry never-say table) ensures zero ID jargon reaches users. Plain-language self-check questions at every review gate. Curriculum registry as single source of truth with draft-then-audit quality gates on all content stages. Anti-softening integrity system with binary pass/fail enforcement across 9 checking files. Full end-to-end validation (T1-01 through T1-33) with 3-attempt deviation handling. Post-delivery `/curriculum:revise` command for feedback loops. Audit mode recognizes structured research as source material. 16 commands + 4 agents under `/curriculum:*` namespace. Deployment is clone-and-run.
 
 ## Core Value
 
@@ -63,9 +63,29 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 - ✓ Document assembler (`/curriculum:assemble`) and pre-delivery verifier (`/curriculum:verify`) added; HTML output co-located in `delivery/` — v3.0
 - ✓ All stage-completing commands end with warm synthesizing handoff and context-clear nudge — v3.0
 
-### Active (v4.0)
+### Validated (v4.0)
 
-*Next milestone goals TBD — use `/gsd:new-milestone` to define.*
+- ✓ Canonical vocabulary enforcement — 31-entry never-say table, Writing for Clarity across all commands, three-layer enforcement on highest-stakes outputs — v4.0
+- ✓ Plain-language review gates — self-check questions at every approval point, constraint results explain what+why, thinking levels in natural language — v4.0
+- ✓ Curriculum registry (`curriculum-registry.json`) as single source of truth for cross-stage data — v4.0
+- ✓ Draft-then-audit pipeline for all content stages (4-8) with 4-check quality gates — v4.0
+- ✓ Pre-execution input validation on all downstream stage commands — v4.0
+- ✓ Context breaks between auto-chained stages — v4.0
+- ✓ Anti-softening integrity system — binary pass/fail in 9 checking files, prohibited qualifier lists — v4.0
+- ✓ Goal-backward session verification (Exists/Substantive/Wired) — v4.0
+- ✓ Cross-stage integration check at final approval gate — v4.0
+- ✓ Curriculum integrity agent with named failure modes (outcome drift, generic content, doctrine violations, missing formative assessment, pre-work gaps) — v4.0
+- ✓ Full validation T1-01 through T1-33 covering all 8 stages end-to-end — v4.0
+- ✓ Structured deviation handling — 3-attempt retry with cumulative constraints, auto-fix boundaries, escalation — v4.0
+- ✓ Sub-stage state tracking — module-level progress in STATE.md survives context clears — v4.0
+- ✓ `/curriculum:revise` command for post-delivery feedback loops with targeted revision — v4.0
+- ✓ Research input recognition in audit mode — structured research as source material — v4.0
+- ✓ Stage numbering normalized (01-09 for new, auto-detection for legacy) — v4.0
+- ✓ Pipeline recovery routing fixed (resume.md, validate.md next-action, dead command names) — v4.0
+
+### Active
+
+(No active requirements — next milestone not yet planned)
 
 ### Out of Scope
 
@@ -125,6 +145,12 @@ Every curriculum package that comes out of this tool produces genuine behavioral
 | Clone-and-run replaces install script (v3.0) | `install.sh` deleted entirely, no deprecation stub — contradictory deployment state is worse than a hard break | ✓ Good — no install-script references remain |
 | Standalone `generate-html.js` script (v3.0) | Keeps HTML generation self-contained for Bash invocation without a build step — `wrapHtml()` duplicated inline intentionally | ✓ Good — script runs without node module resolution issues |
 | verify.md read-only, approve controls presentation (v3.0) | verify.md is a diagnostic tool, not a gate — approve.md owns the user-facing gate UI and decides when to invoke verify silently | ✓ Good — clean separation of diagnostic vs. gate responsibility |
+| Canonical never-say table in curriculum-voice.md (v4.0) | All 31 prohibited terms centralized — per-command lists were drifting and incomplete | ✓ Good — single source of truth, all 20 files reference it |
+| Registry-wins-over-files principle (v4.0) | curriculum-registry.json is authoritative; direct stage file edits don't propagate | ✓ Good — cross-stage drift structurally prevented |
+| Draft-then-audit with auto-fix boundary (v4.0) | Content stages write to _drafts/ first; only vocabulary, registry defaults, and outcome drift are auto-fixable | ✓ Good — content decisions never silently changed |
+| Anti-softening as inline Verification Integrity (v4.0) | Each checking file self-contained; enforcement loads automatically with the agent | ✓ Good — no soft passes observed in verification |
+| Context breaks replace auto-chain (v4.0) | Every stage transition is explicit /clear + next command, not Skill invocation | ✓ Good — no context exhaustion in pipeline runs |
+| revise.md registry-first change propagation (v4.0) | Update registry before any file changes; targeted regen via parent references | ✓ Good — consistent with Phase 19 principles |
 
 ---
-*Last updated: 2026-03-25 after v3.0 milestone*
+*Last updated: 2026-03-28 after v4.0 milestone completion*

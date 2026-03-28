@@ -124,18 +124,81 @@
 
 ---
 
+## Milestone: v4.0 — SME-Ready
+
+**Shipped:** 2026-03-28
+**Phases:** 8 (17–24) | **Plans:** 20
+**Files changed:** 49 | **Lines:** ~5,001 insertions / 293 deletions
+**Timeline:** 2026-03-26 → 2026-03-28 (3 days)
+**Commits:** 57
+
+### What Was Built
+
+- Canonical vocabulary enforcement: 31-entry never-say table in `curriculum-voice.md`, Writing for Clarity across all commands, three-layer enforcement on highest-stakes outputs
+- Plain-language review gates: self-check questions at 4 approval points, constraint results with what+why explanations, thinking levels described naturally
+- Curriculum registry (`curriculum-registry.json`): single source of truth with per-section timestamps, 6 stage commands write, all 8 downstream commands validate inputs
+- Draft-then-audit pipeline for stages 4-8: `_drafts/` write → 4-check audit (completeness, registry consistency, vocabulary, schema) → promote
+- Anti-softening integrity: Verification Integrity sections in 9 checking files, prohibited qualifier lists, binary pass/fail enforcement
+- Goal-backward session verification: Exists/Substantive/Wired sub-checks with domain-term extraction
+- Cross-stage integration check at final approval gate: bidirectional tracing of outcomes, assessments, module references
+- Full validation coverage: T1-01 through T1-33 covering all 8 stages with plain-language translations
+- 3-attempt deviation handling: cumulative constraint injection, auto-fix boundaries (vocabulary/registry/drift only), escalation format
+- Context breaks replacing auto-chain: `/clear` handoffs between all stage transitions
+- Module-level progress tracking in STATE.md with file-system-authoritative resume logic
+- `/curriculum:revise` command: post-delivery feedback loop with registry-first change propagation
+- Research input recognition in audit mode with conditional per-stage Research Insights
+- Pipeline recovery fixes: validate.md next-action, resume.md routing table, dead command names
+
+### What Worked
+
+- Audit-then-close pattern: first audit identified 5 integration gaps (MC-01 through MC-05); phases 23-24 closed the high-priority ones cleanly
+- Registry-first principle cascaded well: once established in Phase 19, all subsequent phases (20-22) could reference registry for verification without new architecture
+- Anti-softening as inline sections (not shared reference): each file self-contained, no import chain to break
+- Context-break pattern: eliminating auto-chain Skill invocations removed a whole class of context exhaustion problems
+- Draft-then-audit pattern scaled naturally from stages 4-6 (Phase 19) to stages 7-8 (Phase 21) with stage-specific checks added incrementally
+
+### What Was Inefficient
+
+- SUMMARY.md `requirements_completed` frontmatter was inconsistent: 10 of 22 requirements missing from frontmatter despite being verified in VERIFICATION.md — frontmatter tracking is unreliable for multi-plan phases where a requirement spans multiple plans
+- Previous audit file had to be re-audited: phases 23-24 were created from the first audit, but the audit file itself was stale — milestone audit should be a terminal step, not an iterative document
+- Phase 22 ROADMAP checkboxes show `[ ]` despite both plans being complete — ROADMAP checkbox updates are a manual step that gets missed when plans are executed in rapid succession
+
+### Patterns Established
+
+- Registry-wins-over-files: centralized source is authoritative; stage file edits don't propagate — consistent principle for all cross-stage data
+- Auto-fix boundary (3 categories only): vocabulary substitution, registry default fills, outcome drift correction — content decisions never auto-fixed
+- Verification Integrity as inline structural constraint: placed before judgment logic in every checking file
+- Escalation format: auto-fixes applied + remaining failures shown together — user sees complete picture
+- Gap closure as numbered phases (23, 24): audit findings become first-class phases, not ad-hoc fixups
+
+### Key Lessons
+
+- Integration checking is the highest-value audit step: per-phase VERIFICATION catches local issues; cross-phase wiring catches the gaps that actually break user flows
+- Writing for Clarity and voice reference are complementary but distinct: voice reference controls vocabulary; WfC controls prose quality — missing one doesn't break the other but degrades output
+- Post-delivery revision (revise.md) is architecturally simple because registry-first principle was established earlier — the hardest work was in Phase 19, not Phase 22
+- Pipeline recovery routing bugs are invisible until someone actually clears context mid-run — these are worth auditing explicitly, not just testing generation flows
+
+### Cost Observations
+
+- Model mix: 100% sonnet for subagents (integration checker, verifier, executor, planner), opus for orchestration
+- Sessions: ~20 across 3 days
+- Notable: v4.0 had 57 commits vs v3.0's ~45 — more commits per day but lower conflict rate due to smaller, focused changes
+
+---
+
 ## Cross-Milestone Trends
 
-| Trend | v1.0 | v2.0 | v3.0 |
-|-------|------|------|------|
-| Days to ship | 7 | 2 | 2 |
-| Plans completed | 19 | 10 | 15 |
-| Files changed | — | 66 | 46 |
-| Known gaps at ship | 3 (fixed same session) | 0 blockers (tech debt only) | 3 gaps fixed as Phase 16 |
-| Audit passed | n/a | ✓ (re-audit after fix pass) | ✓ (28/28 requirements) |
+| Trend | v1.0 | v2.0 | v3.0 | v4.0 |
+|-------|------|------|------|------|
+| Days to ship | 7 | 2 | 2 | 3 |
+| Plans completed | 19 | 10 | 15 | 20 |
+| Files changed | — | 66 | 46 | 49 |
+| Commits | — | — | ~45 | 57 |
+| Known gaps at ship | 3 (fixed same session) | 0 blockers (tech debt only) | 3 gaps fixed as Phase 16 | 4 gaps fixed as Phases 23-24, 7 tech debt items accepted |
+| Audit passed | n/a | ✓ (re-audit after fix pass) | ✓ (28/28 requirements) | ✓ (22/22 requirements, tech_debt status) |
 
-**Velocity:** Stable at 2 days for v2.0 and v3.0, with v3.0 covering 15 plans (50% more than v2.0). Breadth-heavy retrofits (Phase 13) are faster per plan than architecture-heavy features.
+**Velocity:** v4.0 at 3 days for 20 plans (6.7 plans/day) vs v3.0 at 2 days for 15 plans (7.5 plans/day). Slightly slower due to infrastructure-heavy phases (registry, draft-then-audit, integrity checks) requiring more cross-file wiring than v3.0's output-quality retrofits.
 
-**Quality:** Audit-first pattern holding — all three v3.0 gaps caught and fixed before milestone close. Post-audit gap closure as an inserted phase (16) is working well as a pattern.
+**Quality:** Audit-then-close pattern matured — v4.0 ran the audit twice (once mid-milestone to identify gaps, once post-closure to verify). Gap closure as numbered phases (23, 24) is the established pattern across v3.0 and v4.0. Tech debt acceptance at completion is a deliberate decision, not an oversight.
 
-**Scope management:** v3.0 delivery scope was well-bounded (explicit exclusion list). Phase 13 plan count grew mid-execution but was contained within the phase. Delivery layer scope definition is the highest leverage design decision for future output-facing milestones.
+**Scope management:** v4.0 scope grew from 6 planned phases (17-22) to 8 (17-24) via audit-driven gap closure. This is the expected pattern: audit identifies integration gaps that become new phases. The scope growth was bounded — phases 23-24 were small (1 plan each) and targeted specific wiring fixes.
