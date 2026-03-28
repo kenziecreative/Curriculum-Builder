@@ -45,5 +45,5 @@
 ## Session Continuity
 - **Last Session:** —
 - **Stopped At:** —
-- **Next Action:** Run /knz-intake to begin structured intake
-- **Resume Command:** /knz-resume
+- **Next Action:** Run /curriculum:intake to begin structured intake
+- **Resume Command:** /curriculum:resume

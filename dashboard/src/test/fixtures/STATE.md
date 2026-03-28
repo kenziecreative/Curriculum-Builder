@@ -40,5 +40,5 @@
 ## Session Continuity
 - **Last Session:** 2026-03-19
 - **Stopped At:** Stage 1 complete
-- **Next Action:** Run /knz-modules to build module structure
-- **Resume Command:** /knz-resume
+- **Next Action:** Run /curriculum:modules to build module structure
+- **Resume Command:** /curriculum:resume
