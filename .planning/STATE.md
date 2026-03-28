@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 22-01-PLAN.md (revise command)
-last_updated: "2026-03-28T02:34:00.465Z"
-last_activity: 2026-03-26 — v4.0 roadmap created
+stopped_at: Completed 23-01-PLAN.md
+last_updated: "2026-03-28T03:39:42.733Z"
+last_activity: 2026-03-28 — Gap closure phases 23-24 created from v4.0 audit
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 18
-  completed_plans: 18
-  percent: 0
+  total_phases: 8
+  completed_phases: 7
+  total_plans: 19
+  completed_plans: 19
+  percent: 75
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-26)
 
 **Core value:** Every curriculum package produces genuine behavioral change through structurally enforced pedagogy that no user can accidentally skip
-**Current focus:** v4.0 Phase 17 — Vocabulary & Plain Language
+**Current focus:** v4.0 Phase 23 — Pipeline Recovery Fixes (gap closure)
 
 ## Current Position
 
-Phase: 17 of 22 (Vocabulary & Plain Language)
+Phase: 23 of 24 (Pipeline Recovery Fixes — gap closure)
 Plan: Not yet planned
 Status: Ready to plan
-Last activity: 2026-03-26 — v4.0 roadmap created
+Last activity: 2026-03-28 — Gap closure phases 23-24 created from v4.0 audit
 
-Progress: [░░░░░░░░░░] 0% (v4.0)
+Progress: [███████░░░] 75% (v4.0)
 
 ## Performance Metrics
 
@@ -64,6 +64,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 21-deviation-validation-coverage P03 | 6min | 1 tasks | 1 files |
 | Phase 22-new-capabilities P02 | 2min | 2 tasks | 2 files |
 | Phase 22-new-capabilities P01 | 8min | 2 tasks | 1 files |
+| Phase 23-pipeline-recovery-fixes P01 | 5min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -114,6 +115,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 22-01]: revise.md references stage command files by name for draft-then-audit pipeline rather than re-specifying audit checks
 - [Phase 22-01]: Registry updated silently before any file regeneration — registry-first principle consistent with Phase 19
 - [Phase 22-01]: Post-delivery vs mid-build distinction enforced via prerequisites: revise.md requires all stages complete, approve.md option 2 is mid-build
+- [Phase 23]: validate.md State Update routes to curriculum:metaskills after passing validation — not curriculum:approve; approve is a separate gate not a post-validation step
+- [Phase 23]: resume.md routing table now has 7 explicit stage rows (stages 2-8) replacing placeholder rows and fallback template block
 
 ### Pending Todos
 
@@ -127,6 +130,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-28T02:16:27.093Z
-Stopped at: Completed 22-01-PLAN.md (revise command)
+Last session: 2026-03-28T03:39:42.729Z
+Stopped at: Completed 23-01-PLAN.md
 Resume file: None
+Next Action: Run /gsd:plan-phase 23 to plan pipeline recovery fixes
