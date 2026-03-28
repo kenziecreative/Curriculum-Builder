@@ -85,7 +85,7 @@ Spawn ONE Task with the following:
 - `program_duration`: extracted value from project-brief.md
 
 **Instructions:**
-> You are the validation agent. Follow knz-validator.md exactly. Read stage output from 01-outcomes/, 02-assessments/, 03-modules/, 04-sessions/. Run all applicable Tier 1 checks (T1-01 through T1-18), Tier 2 rubric scoring (per duration scaling rules — skip all dimensions for 90-min programs), and applicable Tier 3 checks (T3-06, T3-07 only — T3-01 through T3-05 and T3-08 through T3-09 are not yet applicable). Write all 3 report files to 08-validation/. Return a completion signal with tier_1_failures count, tier_2_scores (or "skipped"), and tier_3_items count.
+> You are the validation agent. Follow knz-validator.md exactly. Read stage output from 01-outcomes/, 02-assessments/, 03-modules/, 04-sessions/, {metaskills-dir}/, {transfer-dir}/, {marketing-dir}/. Run all applicable Tier 1 checks (T1-01 through T1-33), Tier 2 rubric scoring (per duration scaling rules — skip all dimensions for 90-min programs), and all applicable Tier 3 checks (T3-01 through T3-09 — for any stage not yet generated, mark those checks as not applicable). Write all 3 report files to 08-validation/. Return a completion signal with tier_1_failures count, tier_2_scores (or "skipped"), and tier_3_items count.
 
 Do not dispatch a second Task. Do not run validation logic in this orchestrator command.
 

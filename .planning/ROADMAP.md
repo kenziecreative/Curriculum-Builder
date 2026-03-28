@@ -180,7 +180,9 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. validate.md Task dispatch instruction covers T1-01 through T1-33 — matching the validator agent's actual scope
   2. Plain-language translation table in validate.md includes entries for T1-19 through T1-33 (metaskills, transfer, marketing checks) — no raw check IDs visible to users
-**Plans**: 0 plans (needs `/gsd:plan-phase 24`)
+**Plans**: 1 plan
+Plans:
+- [ ] 24-01-PLAN.md — Update dispatch range to T1-01 through T1-33 and add plain-language translations for T1-19 through T1-33
 
 ---
 
@@ -205,5 +207,5 @@ Plans:
 | 20. Integrity & Verification | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 21. Deviation & Validation Coverage | v4.0 | 3/3 | Complete | 2026-03-28 |
 | 22. New Capabilities | v4.0 | 2/2 | Complete | 2026-03-28 |
-| 23. Pipeline Recovery Fixes | 1/1 | Complete   | 2026-03-28 | - |
-| 24. Validation Coverage Alignment | v4.0 | 0/0 | Pending | - |
+| 23. Pipeline Recovery Fixes | 1/1 | Complete    | 2026-03-28 | - |
+| 24. Validation Coverage Alignment | v4.0 | 0/1 | In Progress | - |
