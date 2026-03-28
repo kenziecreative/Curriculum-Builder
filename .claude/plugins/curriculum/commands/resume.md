@@ -101,15 +101,16 @@ Based on current position, end with the recommended command:
 | Stage 1 not-started | Run `/curriculum:intake` to begin |
 | Stage 1 in-progress | Run `/curriculum:intake` to continue |
 | Post-Intake gate pending | Run `/curriculum:approve` to review and continue |
-| Stage 2 not-started or in-progress | Stage 2 (Outcome Design) — command available soon |
-| Stage 3 not-started or in-progress | Stage 3 (Assessment Design) — command available soon |
+| Stage 2 not-started or in-progress | Run `/curriculum:outcomes` to continue |
+| Stage 3 not-started or in-progress | Run `/curriculum:assessments` to continue |
 | Assessments review pending | Run `/curriculum:approve` to review and continue |
-| Stages 4–8 not-started or in-progress | Stage {N} ({Name}) — command available in a future update |
+| Stage 4 not-started or in-progress | Run `/curriculum:modules` to continue |
+| Stage 5 not-started or in-progress | Run `/curriculum:sessions` to continue |
+| Stage 6 not-started or in-progress | Run `/curriculum:metaskills` to continue |
+| Stage 7 not-started or in-progress | Run `/curriculum:transfer` to continue |
+| Stage 8 not-started or in-progress | Run `/curriculum:marketing` to continue |
 | Final review pending | Run `/curriculum:approve` to review |
 | All stages complete | All stages complete. Run `/curriculum:approve` if Final Validation is pending, or your project is ready for delivery |
-
-For stages without commands yet, show:
-> Stage {N} ({Name}) — command available in a future update. Run `/curriculum:resume` to check back.
 
 End every resume output with the recommended command only — no additional explanation.
 

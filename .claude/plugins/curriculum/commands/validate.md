@@ -222,7 +222,7 @@ Read `workspace/{project}/STATE.md`. Update the following fields:
 
 **If file verification passed AND tier_1_failures == 0:**
 - Stage 9 status: `complete`
-- Session Continuity → Next Action: `Run /curriculum:approve to review human checklist and approve final package`
+- Session Continuity → Next Action: `Run /curriculum:metaskills to map thinking skills`
 
 **If file verification passed AND tier_1_failures > 0:**
 - Stage 9 status: `in-progress`

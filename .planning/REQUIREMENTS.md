@@ -45,7 +45,7 @@ Requirements for SME-ready release. Each maps to roadmap phases.
 
 ### New Capabilities
 
-- [ ] **FEAT-01**: `/curriculum:revise` command — post-delivery feedback loop with targeted re-entry at any stage and change propagation downstream
+- [x] **FEAT-01**: `/curriculum:revise` command — post-delivery feedback loop with targeted re-entry at any stage and change propagation downstream
 - [x] **FEAT-02**: Research input support — audit mode intake recognizes structured research outputs as source material
 
 ## Future Requirements
@@ -89,7 +89,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INTG-04 | Phase 20 | Complete |
 | DEVL-01 | Phase 21 | Complete |
 | DEVL-02 | Phase 21 | Complete |
-| FEAT-01 | Phase 22 | Pending |
+| FEAT-01 | Phase 22 | Complete |
 | FEAT-02 | Phase 22 | Complete |
 
 **Coverage:**

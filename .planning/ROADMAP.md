@@ -5,7 +5,7 @@
 - ✅ **v1.0 — MVP** — Phases 1-7 (shipped 2026-03-22) — [archive](milestones/v1.0-ROADMAP.md)
 - ✅ **v2.0 — Existing Curriculum Support** — Phases 8-10 (shipped 2026-03-24) — [archive](milestones/v2.0-ROADMAP.md)
 - ✅ **v3.0 — Output Quality** — Phases 11-16 (shipped 2026-03-25) — [archive](milestones/v3.0-ROADMAP.md)
-- 🚧 **v4.0 — SME-Ready** — Phases 17-22 (in progress)
+- 🚧 **v4.0 — SME-Ready** — Phases 17-24 (in progress)
 
 ---
 
@@ -159,6 +159,29 @@ Plans:
 - [ ] 22-01-PLAN.md — /curriculum:revise command (post-delivery feedback loop with targeted revision)
 - [ ] 22-02-PLAN.md — Research input recognition in audit mode (auditor enrichment + gap report insights)
 
+### Phase 23: Pipeline Recovery Fixes
+**Goal**: Pipeline recovery flow works correctly — users who clear context mid-pipeline and run `/curriculum:resume` are routed to the right next command, not a dead end or skipped stages
+**Depends on**: Phase 22
+**Requirements**: Tech debt (PIPE-05, MC-02, MC-03, MC-05 from milestone audit)
+**Gap Closure**: Closes gaps from v4.0 audit
+**Success Criteria** (what must be TRUE):
+  1. validate.md STATE.md Session Continuity writes "Run /curriculum:metaskills" as the next action after validation passes — not /curriculum:approve
+  2. resume.md routing table includes actual command names for all stages 2-8 — no "command available soon" or "future update" placeholders remain
+  3. Template STATE.md references `/curriculum:intake` — not the dead `/knz-intake` command name
+**Plans**: 1 plan
+Plans:
+- [ ] 23-01-PLAN.md — Fix validate.md next-action, resume.md routing table, and dead /knz-* command names
+
+### Phase 24: Validation Coverage Alignment
+**Goal**: validate.md dispatches the full T1-01 through T1-33 check range to the validator agent and provides plain-language translations for all checks — users see readable descriptions for every validation result
+**Depends on**: Phase 23
+**Requirements**: Tech debt (DEVL-02, VOCAB-02, MC-01 from milestone audit)
+**Gap Closure**: Closes gaps from v4.0 audit
+**Success Criteria** (what must be TRUE):
+  1. validate.md Task dispatch instruction covers T1-01 through T1-33 — matching the validator agent's actual scope
+  2. Plain-language translation table in validate.md includes entries for T1-19 through T1-33 (metaskills, transfer, marketing checks) — no raw check IDs visible to users
+**Plans**: 0 plans (needs `/gsd:plan-phase 24`)
+
 ---
 
 ## Progress
@@ -181,4 +204,6 @@ Plans:
 | 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 20. Integrity & Verification | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 21. Deviation & Validation Coverage | v4.0 | 3/3 | Complete | 2026-03-28 |
-| 22. New Capabilities | 2/2 | Complete   | 2026-03-28 | - |
+| 22. New Capabilities | v4.0 | 2/2 | Complete | 2026-03-28 |
+| 23. Pipeline Recovery Fixes | v4.0 | 0/1 | In Progress | - |
+| 24. Validation Coverage Alignment | v4.0 | 0/0 | Pending | - |
