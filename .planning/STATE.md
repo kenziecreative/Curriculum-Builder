@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 21-02-PLAN.md
-last_updated: "2026-03-27T23:35:28.317Z"
+stopped_at: Completed 21-03-PLAN.md
+last_updated: "2026-03-28T01:23:56.124Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 16
-  completed_plans: 15
+  completed_plans: 16
   percent: 0
 ---
 
@@ -61,6 +61,7 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 20-integrity-verification P02 | 2min | 2 tasks | 3 files |
 | Phase 21-deviation-validation-coverage P01 | 2min | 2 tasks | 3 files |
 | Phase 21-deviation-validation-coverage P02 | 3min | 2 tasks | 2 files |
+| Phase 21-deviation-validation-coverage P03 | 6min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -103,6 +104,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 21-02]: Transfer Draft Audit has 10 checks: 4 standard + 6 stage-specific (transfer layers, implementation intentions, error management, spaced retrieval match, evaluation level, community continuation)
 - [Phase 21-02]: Marketing Draft Audit has 7 checks: 4 standard + 3 stage-specific (source citation completeness, source element existence, marketing ratio with trim targets on retry)
 - [Phase 21-02]: STATE.md update in marketing.md is conditional on promotion — not on file write — consistent with transfer.md and stages 4-6 pattern
+- [Phase 21-03]: Validator covers all 33 Tier 1 checks and all 9 Tier 3 items — no stub rows remain for stages that exist
+- [Phase 21-03]: Graceful degradation preserved: missing stages still get 'Not applicable' so partial pipelines validate cleanly
 
 ### Pending Todos
 
@@ -116,6 +119,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-27T23:35:28.314Z
-Stopped at: Completed 21-02-PLAN.md
+Last session: 2026-03-28T01:23:56.121Z
+Stopped at: Completed 21-03-PLAN.md
 Resume file: None
