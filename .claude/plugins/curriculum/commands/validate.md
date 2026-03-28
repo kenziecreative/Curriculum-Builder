@@ -195,6 +195,21 @@ Translate check IDs using both columns — combine the "what" and "why" with an 
 | T1-16 | a session is missing one or more required content sections | the session plan is incomplete — a facilitator couldn't deliver it as written |
 | T1-17 | the reflection question is too generic | the reflection prompt could apply to any session — it doesn't ask about anything specific from this one |
 | T1-18 | the transfer activity doesn't connect to the real-work context | the practice activity is abstract — learners won't see how to use this on the job |
+| T1-19 | a thinking skill activity uses a generic label instead of a named routine | "discussion" or "reflection" doesn't tell facilitators what to actually do — a named routine gives them a concrete protocol to follow |
+| T1-20 | the program doesn't activate all six thinking skills | learners develop lopsided capabilities — some ways of thinking never get practiced |
+| T1-21 | the Innovating skill is introduced before foundational skills | learners are asked to innovate before they've learned to explore and create — the difficulty sequence is out of order |
+| T1-22 | the Adapting skill is introduced before foundational skills | learners are asked to adapt before building the underlying skills — the difficulty sequence is out of order |
+| T1-23 | one thinking skill dominates the program | more than 30% of all skill activations focus on one area — learners don't get balanced practice across thinking skills |
+| T1-24 | the Imagining skill is missing its evidence gap note | Imagining has limited empirical support compared to other skills — without acknowledging this, facilitators may over-claim its benefits |
+| T1-25 | the transfer design is missing one or more phases | a complete transfer plan needs before, during, and after components — without all three, learning doesn't stick |
+| T1-26 | a module has no follow-through commitment in the transfer plan | learners finish the module with no specific plan to apply what they learned — good intentions without structure fade fast |
+| T1-27 | an open-skill program is missing error practice | hands-on skills require practice that includes making and correcting mistakes — you can't learn by watching alone |
+| T1-28 | the follow-up schedule doesn't match the program length | shorter programs need fewer touchpoints, longer programs need more — the spacing is off for this program's duration |
+| T1-29 | the evaluation approach is below the minimum for this program type | the program claims certain outcomes but measures at a level that can't verify those claims |
+| T1-30 | the community continuation section is a placeholder | "TBD" or empty community plans mean learners have no ongoing support after the program ends |
+| T1-31 | a marketing claim has no source in the curriculum | the marketing copy makes a promise that isn't backed by any specific curriculum element |
+| T1-32 | a marketing source reference points to something that doesn't exist | the marketing copy cites a curriculum element that can't be found — the reference is broken |
+| T1-33 | the marketing copy is too long relative to the curriculum | marketing text exceeds 25% of the curriculum content — the packaging outweighs the product |
 
 Show quality ratings after the missing fields section only if Tier 2 ran (not for 90-min programs). Use the same format as the all-pass case.
 
