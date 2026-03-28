@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 23-01-PLAN.md
-last_updated: "2026-03-28T03:42:03.597Z"
+stopped_at: Completed 24-01-PLAN.md
+last_updated: "2026-03-28T04:06:49.211Z"
 last_activity: 2026-03-28 — Gap closure phases 23-24 created from v4.0 audit
 progress:
   total_phases: 8
-  completed_phases: 7
-  total_plans: 19
-  completed_plans: 19
+  completed_phases: 8
+  total_plans: 20
+  completed_plans: 20
   percent: 75
 ---
 
@@ -65,6 +65,7 @@ Progress: [███████░░░] 75% (v4.0)
 | Phase 22-new-capabilities P02 | 2min | 2 tasks | 2 files |
 | Phase 22-new-capabilities P01 | 8min | 2 tasks | 1 files |
 | Phase 23-pipeline-recovery-fixes P01 | 5min | 2 tasks | 4 files |
+| Phase 24 P01 | 2min | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -117,6 +118,7 @@ Progress: [███████░░░] 75% (v4.0)
 - [Phase 22-01]: Post-delivery vs mid-build distinction enforced via prerequisites: revise.md requires all stages complete, approve.md option 2 is mid-build
 - [Phase 23]: validate.md State Update routes to curriculum:metaskills after passing validation — not curriculum:approve; approve is a separate gate not a post-validation step
 - [Phase 23]: resume.md routing table now has 7 explicit stage rows (stages 2-8) replacing placeholder rows and fallback template block
+- [Phase 24]: validate.md dispatch aligned to full T1-01–T1-33 and T3-01–T3-09 scope; graceful degradation for missing stages replaces explicit exclusion list
 
 ### Pending Todos
 
@@ -130,7 +132,7 @@ Progress: [███████░░░] 75% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-28T03:39:42.729Z
-Stopped at: Completed 23-01-PLAN.md
+Last session: 2026-03-28T04:06:49.208Z
+Stopped at: Completed 24-01-PLAN.md
 Resume file: None
 Next Action: Run /gsd:plan-phase 23 to plan pipeline recovery fixes
