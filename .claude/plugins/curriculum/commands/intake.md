@@ -698,6 +698,7 @@ This report compares your existing materials against what the full curriculum pi
 - **Exists** = your materials have this; the pipeline will build from it
 - **Shallow** = something is here, but it doesn't yet meet the structural requirements; the pipeline will fill it out
 - **Missing** = nothing found; the pipeline will build this from scratch
+- **Research Insights** (when present) = observations from research documents that can help shape this stage's content — not requirements, but useful context for the generators that build each stage
 
 ---
 
@@ -712,6 +713,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Missing
 {Stage 2 content not represented at all. If nothing is missing, write: None.}
 
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Learning Outcomes, list them here. Use this format for each: "- [Insight description] *(from: [source filename])*". If no research insights are relevant to this stage, omit this subsection entirely — do not write "None" or "No research insights found."}
+
 ---
 
 ## Stage 3: Assessment Design
@@ -719,6 +723,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Exists
 ### Shallow
 ### Missing
+
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Assessment Design, list them here. If none, omit this subsection.}
 
 ---
 
@@ -728,6 +735,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Shallow
 ### Missing
 
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Module Structure, list them here. If none, omit this subsection.}
+
 ---
 
 ## Stage 5: Session Content
@@ -735,6 +745,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Exists
 ### Shallow
 ### Missing
+
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Session Content, list them here. If none, omit this subsection.}
 
 ---
 
@@ -744,6 +757,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Shallow
 ### Missing
 
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Metaskill Mapping, list them here. If none, omit this subsection.}
+
 ---
 
 ## Stage 7: Transfer Ecosystem
@@ -752,6 +768,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Shallow
 ### Missing
 
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Transfer Ecosystem, list them here. If none, omit this subsection.}
+
 ---
 
 ## Stage 8: Marketing
@@ -759,6 +778,9 @@ This report compares your existing materials against what the full curriculum pi
 ### Exists
 ### Shallow
 ### Missing
+
+### Research Insights
+{If audit-results.md contains any Research Insights tagged as relevant to Marketing, list them here. If none, omit this subsection.}
 
 ---
 
