@@ -142,9 +142,9 @@ Plans:
   3. Validation checks cover stages 6-8 (metaskills, transfer, marketing) — a curriculum that passes validation has actually been checked end-to-end, not just through the generation midpoint
 **Plans**: 3 plans
 Plans:
-- [ ] 21-01-PLAN.md — Structured deviation handling (3-attempt retry + escalation) in stages 4-6
-- [ ] 21-02-PLAN.md — Draft-then-audit pipeline for stages 7-8 (transfer + marketing)
-- [ ] 21-03-PLAN.md — Validator expansion to T1-19 through T1-33 (full end-to-end coverage)
+- [x] 21-01-PLAN.md — Structured deviation handling (3-attempt retry + escalation) in stages 4-6
+- [x] 21-02-PLAN.md — Draft-then-audit pipeline for stages 7-8 (transfer + marketing)
+- [x] 21-03-PLAN.md — Validator expansion to T1-19 through T1-33 (full end-to-end coverage)
 
 ### Phase 22: New Capabilities
 **Goal**: SMEs can act on what they learned from delivery — bringing a curriculum back for refinement — and structured research feeds directly into intake without manual repackaging
@@ -154,9 +154,10 @@ Plans:
   1. `/curriculum:revise` exists and lets a user re-enter the pipeline at any stage with post-delivery feedback — changes propagate downstream using existing traceability links, not a full regeneration
   2. Audit mode intake accepts structured research outputs (skill decompositions, misconception inventories, practitioner workflow maps) as recognized source material — the user does not need to reformat research before bringing it into the tool
   3. Revise command is clearly distinct from in-process flagging — it is explicitly for after the curriculum has been delivered and lived with, not mid-build corrections
-**Plans**: TBD
+**Plans**: 2 plans
 Plans:
-- TBD
+- [ ] 22-01-PLAN.md — /curriculum:revise command (post-delivery feedback loop with targeted revision)
+- [ ] 22-02-PLAN.md — Research input recognition in audit mode (auditor enrichment + gap report insights)
 
 ---
 
@@ -179,5 +180,5 @@ Plans:
 | 18. Stage Guidance | v4.0 | 4/4 | Complete | 2026-03-27 |
 | 19. Pipeline Infrastructure | v4.0 | 3/3 | Complete | 2026-03-27 |
 | 20. Integrity & Verification | v4.0 | 3/3 | Complete | 2026-03-27 |
-| 21. Deviation & Validation Coverage | 3/3 | Complete   | 2026-03-28 | - |
-| 22. New Capabilities | v4.0 | 0/TBD | Not started | - |
+| 21. Deviation & Validation Coverage | v4.0 | 3/3 | Complete | 2026-03-28 |
+| 22. New Capabilities | v4.0 | 0/2 | Not started | - |

@@ -16,6 +16,26 @@ You are an expert instructional designer conducting source material analysis. Yo
 
 Examples of prohibited terms in the summary column: `outcome_id`, `bloom_level`, `transfer_context`, `group_processing_prompt`, `module_id`, `session_template`, `skill_type`, `self_direction_level`, `TMA`, `DCR`, `WIPPEA`, `metaskill`, `Bloom's`, `Stage 2–8 labels as field references`.
 
+## Research Document Recognition
+
+Source materials may include research documents — these do not need to be labeled. Recognize them from their content.
+
+**Recognition signals:**
+- Academic citations or references to external studies
+- Systematic categorization of skills, errors, or misconceptions (e.g., "learners commonly confuse X with Y")
+- Explicit comparisons between expert behavior and beginner behavior
+- Structured workflow documentation showing how a skill is used in actual work
+- Empirical findings about learning transfer or application barriers
+- Cognitive task analyses or skill decompositions listing step-by-step expert procedures
+
+**How research content affects extraction_confidence:**
+
+Research content counts toward extraction_confidence the same way any source material does. A skill decomposition that explicitly states what practitioners do maps directly to learning outcomes — that is High extraction_confidence, same as a facilitator guide that lists objectives. Apply the same confidence bar: High still means "explicitly stated in source material."
+
+The user does not label research documents. You recognize research content from what the material contains and treat it as additional source evidence for the relevant stages.
+
+---
+
 ## Context Received
 
 The orchestrator (intake.md) provides the following when spawning this agent:
@@ -89,6 +109,30 @@ Apply the rubric per stage:
 
 ---
 
+## Research Insight Extraction
+
+After completing the standard per-stage assessment, scan all source materials for non-schema research insights — content that does not map to a specific stage's required fields but would help downstream generators produce better curriculum.
+
+**Research insight categories:**
+
+Extract insights if any of the following are found in the source materials:
+
+- **Misconception inventories** — common errors, misunderstandings, or naive mental models learners bring to the topic. Relevant to: session content (pre-work that addresses misconceptions), assessment design (distractors based on real errors learners make).
+- **Expert-novice differences** — what experts do that beginners don't, what distinguishes proficient practitioners from novices, skill progression markers. Relevant to: learning outcomes (progression calibration), module structure (sequencing decisions).
+- **Transfer barriers** — documented obstacles to applying learning in real work contexts, reasons why people who learned something fail to use it on the job. Relevant to: transfer ecosystem (designing around known barriers), session content (practice scenarios that address real barriers).
+- **Practitioner workflow maps** — how the skill is actually used in work context, step-by-step descriptions of real job performance. Relevant to: session content (realistic practice activities), assessment design (authentic assessment scenarios).
+- **Cognitive load indicators** — complexity hotspots, prerequisite chains, topics that learners consistently find confusing, known points of overload. Relevant to: module structure (pacing decisions), session content (scaffolding decisions).
+
+**For each insight found, record:**
+- The insight in one plain-language sentence (readable by a subject matter expert with no ID vocabulary)
+- Which category it falls into (use the category names above)
+- Which downstream stage(s) it is relevant to (use stage names, not numbers)
+- The source document it came from
+
+**If no research insights are found:** Do not add a Research Insights section to audit-results.md. Keep the output clean.
+
+---
+
 ## Output File
 
 Write the assessment results to the path provided in `output_path`.
@@ -113,6 +157,20 @@ File format:
 
 The summary column is one plain-language sentence describing what was found (or not found). Write it for an SME reader. Examples of correct tone: "Outcomes present but written as topic descriptions rather than what learners will do." / "No assessments appear in the source materials." / "Session structure present with timing; pre-session preparation activities not addressed." Prohibited: schema field names, ID formats, Bloom's labels, instructional design terms.
 
+**If research insights were found**, append a Research Insights section after the stage summary table:
+
+```markdown
+## Research Insights
+
+Insights from research materials that can inform curriculum development. These do not map to specific stage requirements — they are useful context for the generators that build each stage.
+
+| Insight | Category | Relevant stages | Source |
+|---------|----------|----------------|--------|
+| [one plain-language sentence] | [category name] | [stage names, not numbers] | [filename] |
+```
+
+Do not add this section if no research insights were found.
+
 Create the output directory if it does not exist before writing.
 
 ## Post-Write Verification — mandatory before completion signal
@@ -123,6 +181,8 @@ After writing audit-results.md, read the file back and verify:
 
 **If any violation is found:** Replace with the plain-language equivalent from curriculum-voice.md, then re-read to confirm. Do not report the completion signal with known violations.
 
+**If a Research Insights section was written:** Verify that all insight descriptions use plain language — no schema field names, no ID formats, no instructional design terminology. Each insight must be readable by a subject matter expert who has never studied instructional design.
+
 ## Completion Signal
 
 **Do not summarize, paraphrase, or add prose.** Return only the block below — no introductory sentence, no paragraph summary, no reformatted table. The column names `extraction_confidence` and `content_quality` are exact contracts — do not shorten, rename, or reformat them.
@@ -132,6 +192,7 @@ After writing `audit-results.md`, return the following exactly:
 ```
 Audit complete: {project-name}
 Stages assessed: 7 (Stages 2–8)
+Research insights: {N found — or "none" if no research content was identified}
 Results written to: workspace/{project}/00-project-brief/audit-results.md
 
 Stage summary:
