@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v4.0
 milestone_name: — SME-Ready
 status: planning
-stopped_at: Completed 21-03-PLAN.md
-last_updated: "2026-03-28T01:30:18.322Z"
+stopped_at: Completed 22-01-PLAN.md (revise command)
+last_updated: "2026-03-28T02:16:27.099Z"
 last_activity: 2026-03-26 — v4.0 roadmap created
 progress:
   total_phases: 6
-  completed_phases: 5
-  total_plans: 16
-  completed_plans: 16
+  completed_phases: 6
+  total_plans: 18
+  completed_plans: 18
   percent: 0
 ---
 
@@ -62,6 +62,8 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 | Phase 21-deviation-validation-coverage P01 | 2min | 2 tasks | 3 files |
 | Phase 21-deviation-validation-coverage P02 | 3min | 2 tasks | 2 files |
 | Phase 21-deviation-validation-coverage P03 | 6min | 1 tasks | 1 files |
+| Phase 22-new-capabilities P02 | 2min | 2 tasks | 2 files |
+| Phase 22-new-capabilities P01 | 8min | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -106,6 +108,12 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 - [Phase 21-02]: STATE.md update in marketing.md is conditional on promotion — not on file write — consistent with transfer.md and stages 4-6 pattern
 - [Phase 21-03]: Validator covers all 33 Tier 1 checks and all 9 Tier 3 items — no stub rows remain for stages that exist
 - [Phase 21-03]: Graceful degradation preserved: missing stages still get 'Not applicable' so partial pipelines validate cleanly
+- [Phase 22-02]: Research content treated as equal evidence for extraction_confidence — no special tier; same High/Medium/Low/None bar applies regardless of source type
+- [Phase 22-02]: Research insights stay in gap report only (not pre-populated into stage files) — downstream generators read gap report on startup, zero changes needed to any downstream command
+- [Phase 22-02]: Research Insights sections are conditional and omitted when empty — preserves clean output for SMEs who don't bring research documents
+- [Phase 22-01]: revise.md references stage command files by name for draft-then-audit pipeline rather than re-specifying audit checks
+- [Phase 22-01]: Registry updated silently before any file regeneration — registry-first principle consistent with Phase 19
+- [Phase 22-01]: Post-delivery vs mid-build distinction enforced via prerequisites: revise.md requires all stages complete, approve.md option 2 is mid-build
 
 ### Pending Todos
 
@@ -119,6 +127,6 @@ Progress: [░░░░░░░░░░] 0% (v4.0)
 
 ## Session Continuity
 
-Last session: 2026-03-28T01:23:56.121Z
-Stopped at: Completed 21-03-PLAN.md
+Last session: 2026-03-28T02:16:27.093Z
+Stopped at: Completed 22-01-PLAN.md (revise command)
 Resume file: None
