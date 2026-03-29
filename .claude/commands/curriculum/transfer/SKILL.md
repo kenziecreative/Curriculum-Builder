@@ -106,6 +106,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-07-transfer.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
+
 Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours`, `transfer_context`, `skill_type`, audience description, and success criteria.
 
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives.
@@ -366,11 +368,33 @@ If any check fails:
 
 5. Structural failures (Checks 1, 2, 4) stop immediately — no retry. Report the specific failure and stop.
 
-2. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
+2. Update audit trail (only after successful promotion):
+
+   Read `workspace/{project}/audit-trail.md`. If Stage 7's section already exists (re-generation), replace it. Otherwise append.
+
+   Write the Stage 7 section following the format in `.claude/reference/audit-trail-format.md`:
+
+   **Grounded In:** For each transfer layer produced, list:
+   - **Pre-program activities**: which source material file and specific claim or audience context shaped the readiness check design
+   - **In-program follow-through plans**: which source material file and specific claim shaped the real-work application activities or follow-through commitments per module
+   - **Post-program spaced follow-up**: which source material file and specific claim shaped the spaced retrieval intervals or accountability structure
+   - **Community continuation**: which source material file (if any) shaped the community continuation design
+
+   **Agent-Generated:** List content produced from the agent's own knowledge — e.g., "Evaluation level determination", "Spaced follow-up interval selection", "Error correction practice design (open-skill programs)", "Manager briefing structure", "Accountability check-in format".
+
+   **Read but Not Referenced:** List any source material files that were loaded but not incorporated into transfer design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+   Update the Build Summary block at the top of the trail:
+   - Add "Stage 7: Transfer" to the Stages completed list
+   - Recalculate grounding percentage
+
+   Do this silently — no announcement to the user.
+
+3. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
    - Stage 7 status: `complete`, Completed: {today's date}
    - Session Continuity → Next Action: `Run /curriculum:marketing to generate enrollment materials`
 
-3. Show one line:
+4. Show one line:
 
    > Your transfer ecosystem is written and saved. Type `/clear` now, then run `/curriculum:marketing` to generate enrollment materials.
 

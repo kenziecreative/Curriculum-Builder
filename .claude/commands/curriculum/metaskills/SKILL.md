@@ -99,6 +99,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-06-metaskills.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
+
 Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours` and `transfer_context`.
 
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: objective list and bloom levels.
@@ -330,11 +332,30 @@ If the file has failed 3 attempts:
 
 3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions use the same plain language as the check failure messages established in Phase 18.
 
-3. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
+3. Update audit trail (only after successful promotion):
+
+   Read `workspace/{project}/audit-trail.md`. If Stage 6's section already exists (re-generation), replace it. Otherwise append.
+
+   Write the Stage 6 section following the format in `.claude/reference/audit-trail-format.md`:
+
+   **Grounded In:** For each thinking skill activation record produced, list:
+   - **[Thinking skill name]**: which source material file grounded the activation activity and transfer prompt, and the specific claim, work context, or domain concept that shaped it
+
+   **Agent-Generated:** List content produced from the agent's own knowledge — e.g., "Thinking skill selection and assignment to modules", "Developability sequence ordering", "Imagining adjacent practice classification", "Evidence level assignments".
+
+   **Read but Not Referenced:** List any source material files that were loaded but not incorporated into the metaskill map. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+   Update the Build Summary block at the top of the trail:
+   - Add "Stage 6: Metaskills" to the Stages completed list
+   - Recalculate grounding percentage
+
+   Do this silently — no announcement to the user.
+
+4. Silently update `workspace/{project}/STATE.md` (only after successful promotion):
    - Stage 6 status: `complete`, Completed: {today's date}
    - Session Continuity → Next Action: `Run /curriculum:transfer to design the follow-through system`
 
-4. Show one line:
+5. Show one line:
 
    > Your thinking skill map is written and saved. Type `/clear` now, then run `/curriculum:transfer` to design the follow-through system.
 

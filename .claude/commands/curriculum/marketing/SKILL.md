@@ -99,6 +99,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-08-marketing.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
+
 **Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.
 
 Read all prior stage outputs:
@@ -351,6 +353,31 @@ Then show:
 ```
 Type `/clear` now, then run `/curriculum:approve` to review your complete curriculum package and mark it delivery-ready.
 ```
+
+---
+
+## Audit Trail Update (silent, after successful promotion)
+
+Read `workspace/{project}/audit-trail.md`. If Stage 8's section already exists (re-generation), replace it. Otherwise append.
+
+Write the Stage 8 section following the format in `.claude/reference/audit-trail-format.md`:
+
+**Grounded In:** For each marketing copy section produced, list:
+- **The Promise**: which stage output (learning objectives, transfer design) grounded the transformation statement
+- **Program Description**: which source material file and specific claim or domain context shaped the program description content
+- **What Changes (From/To pairs)**: which learning objectives and transfer activities grounded each pair
+- **Learning Promises**: which specific program outcomes grounded each learning promise
+- **Audience Fit**: which stage-01 audience description grounded the audience positioning
+
+**Agent-Generated:** List content produced from the agent's own knowledge — e.g., "PAS/DOS structural framework selection", "Headline formula selection and application", "VOC language adaptation", "Marketing word count ratio compliance trimming".
+
+**Read but Not Referenced:** List any source material files that were loaded but not incorporated into marketing copy. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+Update the Build Summary block at the top of the trail:
+- Add "Stage 8: Marketing" to the Stages completed list
+- Recalculate grounding percentage
+
+Do this silently — no announcement to the user.
 
 ---
 

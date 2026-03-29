@@ -144,6 +144,8 @@ Read Stage 5 status from the workspace STATE.md:
 
 Before generating, check `workspace/source-material/` for any files. If files exist, read them. These represent prior work the user has brought into the project — research, outlines, existing curriculum, or domain context. Generated content should build from and align with this material. The pipeline structures the user's knowledge; it does not replace it.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
+
 ---
 
 ## Module Reading
@@ -360,6 +362,25 @@ Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSO
 - For each module in `time_allocations.modules[]`, count the actual session directories that exist under `workspace/{project-name}/04-sessions/M-N-S-*/` and set `sessions_completed` to that count.
 - Set `time_allocations.last_updated` to current ISO datetime.
 - Write the file as formatted JSON (2-space indent).
+
+Do this silently — no announcement to the user.
+
+Update audit trail:
+
+Read `workspace/{project}/audit-trail.md`. If Stage 5's section already exists (re-generation), replace it. Otherwise append.
+
+Write the Stage 5 section following the format in `.claude/reference/audit-trail-format.md`:
+
+**Grounded In:** For each session plan produced, list:
+- **[Session name] (Module [N])**: which source material file grounded the session content, and the specific claim, finding, or domain example that shaped the session's activities, pre-work, or facilitator prompts
+
+**Agent-Generated:** List content produced from the agent's own knowledge — e.g., "Theory→Method→Application arc structure for each session", "Facilitator guide debrief questions", "Slide outline structure", "Pre-work activity design for sessions with no source material grounding".
+
+**Read but Not Referenced:** List any source material files that were loaded but not incorporated into session design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+Update the Build Summary block at the top of the trail:
+- Add "Stage 5: Sessions" to the Stages completed list
+- Recalculate grounding percentage
 
 Do this silently — no announcement to the user.
 

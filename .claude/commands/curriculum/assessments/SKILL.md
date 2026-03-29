@@ -113,6 +113,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-03-assessments.md` as generation context before generating. Read all required fields, enum values, skill-type constraints, formative/summative requirements, and duration scaling from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step in the approval branch.
+
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids and their bloom_level values.
 
 Read from `workspace/*/00-project-brief/project-brief.md`: `skill_type`, `contact_hours`, `modality`.
@@ -288,12 +290,44 @@ Then use `AskUserQuestion` with three options:
 
    Do this silently — no announcement to the user.
 
-3. Silently update `workspace/{project-name}/STATE.md`:
+3. Update audit trail:
+
+   Read `workspace/{project}/audit-trail.md`. If Stage 3's section already exists (re-generation), replace it. Otherwise append.
+
+   Write the Stage 3 section following the format in `.claude/reference/audit-trail-format.md`:
+
+   **Grounded In:** For each assessment produced, list:
+   - **[Assessment name]**: which source material file grounded the assessment design, and the specific claim or finding that shaped it
+
+   **Agent-Generated:** List content produced from the agent's own knowledge — e.g., "Assessment format selection for each outcome", "Duration estimates for each assessment activity", "Success criteria observable verb choices".
+
+   **Read but Not Referenced:** List any source material files that were loaded but not incorporated into assessment design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+   **SME Confirmation:** (to be added when the PIPE-05 confirmation is recorded — see below)
+
+   Update the Build Summary block at the top of the trail:
+   - Add "Stage 3: Assessments" to the Stages completed list
+   - Recalculate grounding percentage
+
+   Do this silently — no announcement to the user.
+
+4. Record SME confirmation in the audit trail:
+
+   Read `workspace/{project}/audit-trail.md`. In the Stage 3 section, add or update the **SME Confirmation** subsection:
+   - **Confirmed:** {ISO timestamp — current datetime in YYYY-MM-DDTHH:MM:SSZ format}
+   - **Decision:** "Approved assessment design"
+   - **Modifications:** None. (If the SME used "I have concerns" before approving, record: the original concern and the resolution — one line per modification in before/after format)
+
+   Update Build Summary: increment SME checkpoints count by 1.
+
+   Do this silently — no announcement to the user.
+
+5. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 3 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Assessment: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:modules to build module structure
 
-4. End with brief confirmation:
+6. End with brief confirmation:
 
    > Assessments are written and saved. Type `/clear` now, then run `/curriculum:modules` to build the module structure.
 

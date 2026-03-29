@@ -115,6 +115,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-02-outcomes.md` as generation context before generating any output. Read all required fields, enum values, duration scaling rules, and validation rules from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step in the approval branch.
+
 Read these fields from `workspace/*/00-project-brief/project-brief.md` and `workspace/*/STATE.md`:
 - `program_topic`
 - `target_audience.description`
@@ -348,11 +350,34 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
 
    Do this silently — no announcement to the user.
 
-3. Silently update `workspace/{project-name}/STATE.md`:
+3. Update audit trail:
+
+   Read `workspace/{project}/audit-trail.md`. If Stage 2's section already exists (re-generation), replace it. Otherwise append.
+
+   Write the Stage 2 section following the format in `.claude/reference/audit-trail-format.md`:
+
+   **Grounded In:** For each major output section produced, list:
+   - **Program outcomes**: which source material file the content drew from, and the specific claim or finding that grounded this section
+   - **Module outcomes**: source file and grounding claim
+   - **Session outcomes**: source file and grounding claim
+   - **Enduring understandings**: source file and grounding claim (or note if derived from outcomes)
+   - **Essential questions**: source file and grounding claim (or note if derived from outcomes)
+
+   **Agent-Generated:** List content produced from the agent's own knowledge not traceable to source material — e.g., "Thinking-level distribution across outcome hierarchy", "Observable verb selection for each outcome".
+
+   **Read but Not Referenced:** List any source material files that were loaded but whose content was not incorporated into this stage's output. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+   Update the Build Summary block at the top of the trail:
+   - Add "Stage 2: Outcomes" to the Stages completed list
+   - Recalculate grounding percentage
+
+   Do this silently — no announcement to the user.
+
+4. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 2 status: `complete`, Completed: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:assessments to design assessments
 
-4. End with a brief forward-looking message:
+5. End with a brief forward-looking message:
 
    > Your learning outcomes are written and saved. Type `/clear` now, then run `/curriculum:assessments` to design the assessments.
 

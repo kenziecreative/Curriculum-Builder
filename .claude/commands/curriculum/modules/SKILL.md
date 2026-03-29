@@ -159,6 +159,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/schemas/stage-04-modules.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
+Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
+
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids (primary decomposition input — modules are built to cover these objectives, not derived from topic lists).
 
 Read from `workspace/*/02-assessments/assessment-map.md`: assessment coverage to confirm what each module must set up learners to demonstrate.
@@ -477,12 +479,31 @@ If a file has failed 3 attempts:
 
    Do this silently — no announcement to the user.
 
-4. Silently update `workspace/{project-name}/STATE.md`:
+4. Update audit trail:
+
+   Read `workspace/{project}/audit-trail.md`. If Stage 4's section already exists (re-generation), replace it. Otherwise append.
+
+   Write the Stage 4 section following the format in `.claude/reference/audit-trail-format.md`:
+
+   **Grounded In:** For each module specification produced, list:
+   - **[Module name]**: which source material file grounded the module design (from `workspace/source-material/`), and the specific claim, finding, or domain context that shaped this module's content chunks, belief-challenging encounter, or collaborative activity
+
+   **Agent-Generated:** List content produced from the agent's own knowledge — e.g., "Module sequence rationale", "Prerequisite dependency ordering", "Metaskill activation activity selection", "Content chunk cognitive load estimates", "Belief-challenging encounter design".
+
+   **Read but Not Referenced:** List any source material files that were loaded but not incorporated into module design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
+
+   Update the Build Summary block at the top of the trail:
+   - Add "Stage 4: Modules" to the Stages completed list
+   - Recalculate grounding percentage
+
+   Do this silently — no announcement to the user.
+
+5. Silently update `workspace/{project-name}/STATE.md`:
    - `Stage Progress` → Stage 4 status: `complete`, Completed: {today's date}
    - `Review Gates` → Module-Structure: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:sessions to generate session content
 
-5. End with brief confirmation:
+6. End with brief confirmation:
 
    > Your module structure is written and saved. Type `/clear` now, then run `/curriculum:sessions` to generate the session content.
 
