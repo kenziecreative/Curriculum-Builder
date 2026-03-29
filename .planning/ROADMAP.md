@@ -122,11 +122,11 @@ Plans:
   3. The user reviews all findings at a checkpoint before generation proceeds and can confirm, adjust, or add context
   4. Verified findings are saved as a grounding document in workspace/source-material/ that all downstream stages can reference
   5. When source materials already exist at intake, the domain research step is skipped -- existing materials serve as the grounding base
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 27-01: TBD
-- [ ] 27-02: TBD
+- [ ] 27-01-PLAN.md -- Domain research SKILL.md command with hypothesis gathering, web research, evidence tagging, SME review, and grounding document output
+- [ ] 27-02-PLAN.md -- Pipeline integration: intake chaining to research for from-scratch builds, resume routing, skip logic for existing source materials
 
 ### Phase 28: Alignment Verification
 **Goal**: Generated content is checked against source material after every stage -- so the pipeline cannot silently ignore, distort, or strip nuance from the evidence it was given
@@ -171,7 +171,7 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 11-16 (archived) | v3.0 | 15/15 | Complete | 2026-03-25 |
 | 17-24 (archived) | v4.0 | 20/20 | Complete | 2026-03-28 |
 | 25. Audit Trail Infrastructure | v5.0 | 2/2 | Complete | 2026-03-29 |
-| 26. Canonical Outcome Registry | 1/2 | In Progress|  | - |
-| 27. Domain Research | v5.0 | 0/0 | Not started | - |
+| 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
+| 27. Domain Research | v5.0 | 0/2 | Not started | - |
 | 28. Alignment Verification | v5.0 | 0/0 | Not started | - |
 | 29. Cross-Stage Consistency | v5.0 | 0/0 | Not started | - |
