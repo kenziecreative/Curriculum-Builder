@@ -155,9 +155,9 @@ Read all module specs from `workspace/{project-name}/03-modules/`. For each subd
 - Extract: `module_id`, `module_name`, `sessions_planned` count from module-spec.md
 - Build module list: `[{module_id, module_name, session_count, spec_path}]`
 
-Also read these files in full — they are passed to each worker:
+Also read these in full — they are passed to each worker:
 - `workspace/{project-name}/01-outcomes/learning-objectives.md`
-- `workspace/{project-name}/00-project-brief/project-brief.md`
+- The `learner_profile.data` section from `workspace/{project-name}/curriculum-registry.json` (all 9 fields: target_audience, expertise_level, self_direction_level, skill_type, cultural_orientation, transfer_context, contact_hours, modality, success_criteria)
 
 Read `.claude/reference/schemas/stage-05-sessions.md` — also passed to each worker.
 
@@ -193,7 +193,7 @@ Each Task receives:
 **Context provided to the Task:**
 - The full content of `03-modules/M-N/module-spec.md` for this module
 - The full content of `01-outcomes/learning-objectives.md`
-- The full content of `00-project-brief/project-brief.md`
+- The learner profile from registry: `learner_profile.data` section from `workspace/{project-name}/curriculum-registry.json` (all 9 fields: target_audience, expertise_level, self_direction_level, skill_type, cultural_orientation, transfer_context, contact_hours, modality, success_criteria)
 - The full content of `.claude/reference/schemas/stage-05-sessions.md`
 - Output directory: `workspace/{project-name}/04-sessions/_drafts/`
 

@@ -165,7 +165,7 @@ Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids (pri
 
 Read from `workspace/*/02-assessments/assessment-map.md`: assessment coverage to confirm what each module must set up learners to demonstrate.
 
-Read from `workspace/*/00-project-brief/project-brief.md`: `contact_hours`, `skill_type`, `self_direction_level`, `modality`, `transfer_context`.
+Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours`, `skill_type`, `self_direction_level`, `modality`, `transfer_context`. Do not read these fields from project-brief.md.
 
 Generate the full module structure silently — no running commentary during generation. Apply duration scaling:
 

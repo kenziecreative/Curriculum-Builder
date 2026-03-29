@@ -117,7 +117,7 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids and their bloom_level values.
 
-Read from `workspace/*/00-project-brief/project-brief.md`: `skill_type`, `contact_hours`, `modality`.
+Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `skill_type`, `contact_hours`, `modality`. Do not read these fields from project-brief.md.
 
 Generate assessments silently — no running commentary during generation. Generate:
 
@@ -175,7 +175,7 @@ If `skill_type` = `open`: verify at least one `performance-based` or `simulation
 
 **Step 6 — Delivery format compatibility check:**
 
-Read `modality` from `workspace/{project-name}/00-project-brief/project-brief.md` (same file read in Generation section). If `modality` = `virtual`: check every assessment format against the exclusion list in `stage-03-assessments.md` Delivery Format Constraints. For any assessment using `oral` or `demonstration`: auto-substitute using the substitution map, keeping the same bloom_level and paired_objective. Record the substitution (e.g., "Substituted `oral` → `performance-based` for the module 2 check-in — oral format is not practical for virtual delivery"). If `modality` cannot be read (field missing or file not found): treat as `virtual` and apply the virtual exclusion check. Do not skip this step. If `modality` = `blended`: flag (do not auto-substitute) any `oral` or `demonstration` assessments without a module_placement that can be confirmed as an in-person session — include a note in the transparency section asking the user to confirm placement.
+Read `modality` from `workspace/{project}/curriculum-registry.json` field `learner_profile.data` (same registry read in Generation section). If `modality` = `virtual`: check every assessment format against the exclusion list in `stage-03-assessments.md` Delivery Format Constraints. For any assessment using `oral` or `demonstration`: auto-substitute using the substitution map, keeping the same bloom_level and paired_objective. Record the substitution (e.g., "Substituted `oral` → `performance-based` for the module 2 check-in — oral format is not practical for virtual delivery"). If `modality` cannot be read (field missing or file not found): treat as `virtual` and apply the virtual exclusion check. Do not skip this step. If `modality` = `blended`: flag (do not auto-substitute) any `oral` or `demonstration` assessments without a module_placement that can be confirmed as an in-person session — include a note in the transparency section asking the user to confirm placement.
 
 **Step 7 — Record changes:**
 

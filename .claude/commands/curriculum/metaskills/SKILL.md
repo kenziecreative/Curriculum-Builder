@@ -101,7 +101,7 @@ Load `.claude/reference/schemas/stage-06-metaskills.md` as generation context be
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
-Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours` and `transfer_context`.
+Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours` and `transfer_context`. Do not read these fields from project-brief.md.
 
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: objective list and bloom levels.
 

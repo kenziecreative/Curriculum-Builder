@@ -103,8 +103,9 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 **Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.
 
+Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `target_audience` (for audience description), `transfer_context`, `contact_hours` (for program duration). Read program name from `curriculum-registry.json` field `meta.project_name`. Do not read these fields from project-brief.md.
+
 Read all prior stage outputs:
-- `workspace/{project}/00-project-brief/project-brief.md`: audience description, `transfer_context`, program duration, program name
 - `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives (source for learning promises)
 - `workspace/{project}/02-assessments/assessment-map.md`: objective-assessment alignment table (source for outcome evidence and performance task descriptions)
 - `workspace/{project}/03-modules/`: module topics (source for program description content areas)

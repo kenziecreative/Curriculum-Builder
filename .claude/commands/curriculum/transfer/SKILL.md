@@ -108,7 +108,7 @@ Load `.claude/reference/schemas/stage-07-transfer.md` as generation context befo
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
-Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours`, `transfer_context`, `skill_type`, audience description, and success criteria.
+Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours`, `transfer_context`, `skill_type`, `target_audience` (for audience description), and `success_criteria`. Do not read these fields from project-brief.md.
 
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives.
 
