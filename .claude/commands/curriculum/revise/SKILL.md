@@ -231,6 +231,12 @@ Incorporate the new input, update the impact map, and re-present for confirmatio
 
 ---
 
+## Audit Trail Reference
+
+Load `.claude/reference/audit-trail-format.md` before executing any changes. This must be available for the revision entry write in Step 5d.
+
+---
+
 ## Step 5: Execute Changes
 
 Execute all approved changes in registry-first order. Work through each approved item in sequence.
@@ -299,6 +305,23 @@ Append to `workspace/{project}/revision-log.md` (create the file if it doesn't e
 ```
 
 If `revision-log.md` already exists, append the new revision section below the existing content. Do not overwrite previous revision entries.
+
+### 5e. Update the audit trail
+
+Read `workspace/{project}/audit-trail.md`. Append a revision entry following the format in `.claude/reference/audit-trail-format.md`:
+
+```
+---
+
+## Revision: {ISO date — YYYY-MM-DD}
+- **Feedback:** {the SME's original observation or feedback — use their words where possible}
+- **Changes:** {what was changed — specific, not vague (e.g., "Rewrote Module 3 outcomes to use observable verbs" not "Updated outcomes")}
+- **Affected stages:** {which stages were updated — e.g., Stage 2: Outcomes, Stage 4: Modules}
+```
+
+Update Build Summary: increment Revisions count by 1.
+
+Do this silently — no announcement to the user.
 
 ---
 

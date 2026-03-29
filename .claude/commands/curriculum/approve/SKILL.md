@@ -60,6 +60,12 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 ---
 
+## Audit Trail Reference
+
+Load `.claude/reference/audit-trail-format.md` before writing any trail entries. This must be available for both SME confirmation writes below.
+
+---
+
 ## Behavior
 
 ### 1. Find active project
@@ -334,10 +340,42 @@ Update STATE.md silently:
 - Set the gate's status to `approved` with today's date (YYYY-MM-DD)
 - Update Session Continuity: Next Action points to the appropriate next stage command or step
 
-**For Post-Assessment gate:** Confirm with a named handoff close — state what was approved and what command to run next:
+**For Post-Assessment gate:**
+
+Write SME confirmation to the audit trail:
+
+Read `workspace/{project}/audit-trail.md`. In the Stage 3 section, add or update the **SME Confirmation** subsection:
+- **Confirmed:** {ISO timestamp — current datetime in YYYY-MM-DDTHH:MM:SSZ format}
+- **Decision:** "Approved assessment design via post-assessment gate"
+- **Modifications:** {If any changes were requested before approval: list each modification with before/after values. If no modifications: None.}
+
+Update Build Summary: increment SME checkpoints count by 1.
+
+Do this silently — no announcement to the user.
+
+Confirm with a named handoff close — state what was approved and what command to run next:
 > {What was approved — e.g., "Your assessments are approved and saved"}. Type `/clear` now, then run `{next command}` to continue.
 
-**For Final Validation gate only:** After updating STATE.md, show:
+**For Final Validation gate only:**
+
+Write SME confirmation to the audit trail:
+
+Read `workspace/{project}/audit-trail.md`. Add a new section at the end of the trail (after all stage sections):
+
+```
+---
+
+## Final Validation
+Confirmed: {ISO timestamp — current datetime in YYYY-MM-DDTHH:MM:SSZ format}
+- **Decision:** "Approved full curriculum for delivery"
+- **Modifications:** {If any changes were requested before final approval: list each modification. If no modifications: None.}
+```
+
+Update Build Summary: increment SME checkpoints count by 1.
+
+Do this silently — no announcement to the user.
+
+After updating STATE.md, show:
 > Assembling your delivery package now...
 
 Then invoke `/curriculum:assemble` as a Skill (same auto-trigger pattern as validate.md uses for metaskills). Do not wait for user input before invoking.
