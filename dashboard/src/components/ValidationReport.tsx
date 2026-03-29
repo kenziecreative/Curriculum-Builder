@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface ValidationReportProps {
   isVisible: boolean
@@ -88,9 +89,9 @@ function parseChecklistItems(markdown: string): ChecklistItem[] {
 }
 
 function scoreColor(score: number): string {
-  if (score >= 0.7) return 'text-green-600'
-  if (score < 0.4) return 'text-red-600'
-  return 'text-yellow-600'
+  if (score >= 0.7) return 'text-olive'
+  if (score < 0.4) return 'text-rust'
+  return 'text-amber'
 }
 
 export function ValidationReport({ isVisible }: ValidationReportProps) {
@@ -113,12 +114,16 @@ export function ValidationReport({ isVisible }: ValidationReportProps) {
 
   if (!isVisible) return null
   if (schemaReport === null) return (
-    <div className="text-sm text-gray-400 p-4">Loading validation results...</div>
+    <div className="text-sm text-muted-foreground p-4">Loading validation results...</div>
   )
   if (schemaReport === 'not-found') return (
-    <div className="rounded-xl bg-gray-50 p-4 text-sm text-gray-500">
-      Validation not yet run. Complete Stage 5, then run /curriculum:validate.
-    </div>
+    <Card>
+      <CardContent className="pt-6">
+        <p className="text-sm text-muted-foreground">
+          Validation not yet run. Complete Stage 5, then run /curriculum:validate.
+        </p>
+      </CardContent>
+    </Card>
   )
 
   const failRows = parseFailRows(schemaReport)
@@ -130,62 +135,64 @@ export function ValidationReport({ isVisible }: ValidationReportProps) {
   const hasFails = failRows.length > 0
 
   return (
-    <div className="rounded-xl bg-gray-50 p-4 space-y-4">
-      {/* Headline */}
-      <div className={`text-sm font-semibold ${hasFails ? 'text-red-600' : 'text-green-600'}`}>
-        {hasFails
-          ? `Found ${failRows.length} issue${failRows.length === 1 ? '' : 's'} that need fixing before your curriculum is delivery-ready.`
-          : 'Your curriculum passed all required checks.'}
-      </div>
-
-      {/* Tier 1 failures */}
-      {hasFails && (
-        <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Missing or invalid fields</div>
-          <div className="space-y-1">
-            {failRows.map((row, i) => (
-              <div key={i} className="text-xs text-gray-700">
-                <span className="text-red-500 font-medium">{row.field}</span>
-                {' — '}{row.message}
-                <span className="text-gray-400 ml-1">({row.file})</span>
-              </div>
-            ))}
-          </div>
+    <Card>
+      <CardContent className="pt-6 space-y-4">
+        {/* Headline */}
+        <div className={`text-sm font-semibold ${hasFails ? 'text-rust' : 'text-olive'}`}>
+          {hasFails
+            ? `Found ${failRows.length} issue${failRows.length === 1 ? '' : 's'} that need fixing before your curriculum is delivery-ready.`
+            : 'Your curriculum passed all required checks.'}
         </div>
-      )}
 
-      {/* Tier 2 scores */}
-      {scores.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Quality ratings</div>
-          <div className="space-y-1">
-            {scores.map((s, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs">
-                <span className="text-gray-600 w-36">{s.label}</span>
-                <span className={`font-medium ${scoreColor(s.score)}`}>{Math.round(s.score * 10)}/10</span>
-                {s.score < 0.5 && s.recommendation && (
-                  <span className="text-gray-400">{s.recommendation}</span>
-                )}
-              </div>
-            ))}
+        {/* Tier 1 failures */}
+        {hasFails && (
+          <div>
+            <div className="text-xs font-semibold text-muted-foreground mb-2">Missing or invalid fields</div>
+            <div className="space-y-1">
+              {failRows.map((row, i) => (
+                <div key={i} className="text-xs text-foreground">
+                  <span className="text-rust font-medium">{row.field}</span>
+                  {' — '}{row.message}
+                  <span className="text-muted-foreground ml-1">({row.file})</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Tier 3 checklist */}
-      {checklistItems.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Human review checklist</div>
-          <div className="space-y-1">
-            {checklistItems.map((item, i) => (
-              <div key={i} className="text-xs text-gray-700 flex gap-2">
-                <span className="text-gray-400 flex-shrink-0">{item.checked ? '✓' : '○'}</span>
-                <span>{item.text}</span>
-              </div>
-            ))}
+        {/* Tier 2 scores */}
+        {scores.length > 0 && (
+          <div>
+            <div className="text-xs font-semibold text-muted-foreground mb-2">Quality ratings</div>
+            <div className="space-y-1">
+              {scores.map((s, i) => (
+                <div key={i} className="flex items-center gap-2 text-xs">
+                  <span className="text-muted-foreground w-36">{s.label}</span>
+                  <span className={`font-medium ${scoreColor(s.score)}`}>{Math.round(s.score * 10)}/10</span>
+                  {s.score < 0.5 && s.recommendation && (
+                    <span className="text-muted-foreground/60">{s.recommendation}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+
+        {/* Tier 3 checklist */}
+        {checklistItems.length > 0 && (
+          <div>
+            <div className="text-xs font-semibold text-muted-foreground mb-2">Human review checklist</div>
+            <div className="space-y-1">
+              {checklistItems.map((item, i) => (
+                <div key={i} className="text-xs text-foreground flex gap-2">
+                  <span className="text-muted-foreground flex-shrink-0">{item.checked ? '✓' : '○'}</span>
+                  <span>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

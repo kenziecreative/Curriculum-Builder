@@ -94,13 +94,13 @@ describe('ValidationReport', () => {
     })
     // 0.72 → 7/10 (green)
     const greenScore = screen.getByText('7/10')
-    expect(greenScore.className).toContain('text-green-600')
-    // 0.35 → 4/10 (red, rounds to 4 from 0.35*10=3.5)
+    expect(greenScore.className).toContain('text-olive')
+    // 0.35 → 4/10 (red/rust, rounds to 4 from 0.35*10=3.5)
     const redScore = screen.getByText('4/10')
-    expect(redScore.className).toContain('text-red-600')
-    // 0.55 → 6/10 (yellow)
+    expect(redScore.className).toContain('text-rust')
+    // 0.55 → 6/10 (amber)
     const yellowScore = screen.getByText('6/10')
-    expect(yellowScore.className).toContain('text-yellow-600')
+    expect(yellowScore.className).toContain('text-amber')
   })
 
   it('renders Tier 3 checklist items from human-review-checklist.md', async () => {

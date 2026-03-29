@@ -2,7 +2,7 @@
 // RUNTIME FETCH ONLY — do not use import.meta.glob; see CONTEXT.md
 // KEY DIFFERENCE: KNZ STATE.md uses pipe-delimited tables, NOT checkboxes
 
-import type { StageRecord, GateRecord, KnzPipelineState } from '@/types/pipeline'
+import type { StageRecord, GateRecord, KeyDecision, KnzPipelineState } from '@/types/pipeline'
 
 function extractSection(md: string, heading: string): string {
   const pattern = new RegExp(`## ${heading}\\s*\\n([\\s\\S]*?)(?=\\n## |$)`)
@@ -46,9 +46,21 @@ export function parseNextAction(md: string): string | null {
   return match?.[1]?.trim() ?? null
 }
 
+export function parseKeyDecisions(md: string): KeyDecision[] {
+  const section = extractSection(md, 'Key Decisions')
+  const lines = section.split('\n').filter(l => l.trim().startsWith('- **'))
+  return lines
+    .map(line => {
+      const match = line.match(/\*\*(.+?):\*\*\s*(.+)/)
+      return match ? { label: match[1], value: match[2] } : null
+    })
+    .filter((x): x is KeyDecision => x !== null && x.value !== '(set during intake)')
+}
+
 export function buildPipelineState(md: string): KnzPipelineState {
   const stages = parseStageProgress(md)
   const gates = parseReviewGates(md)
+  const keyDecisions = parseKeyDecisions(md)
   const nextAction = parseNextAction(md)
 
   // currentStage: the in-progress stage, or the first not-started stage after any complete stages
@@ -56,7 +68,7 @@ export function buildPipelineState(md: string): KnzPipelineState {
   const firstNotStarted = stages.find(s => s.status === 'not-started')
   const currentStage = inProgress?.number ?? firstNotStarted?.number ?? null
 
-  return { stages, gates, nextAction, currentStage }
+  return { stages, gates, keyDecisions, nextAction, currentStage }
 }
 
 export async function loadStateFromUrl(url: string): Promise<KnzPipelineState> {

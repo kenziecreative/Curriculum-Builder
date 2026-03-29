@@ -1,1 +1,282 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Brand Compass — Kenzie Creative Design System
+  Walnut / Rust / Olive / Amber / Cream / Charcoal
+  Typography: Bitter (display) + IBM Plex Sans (body) + IBM Plex Mono (code)
+*/
+
+@theme {
+  --font-display: 'Bitter', serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Kenzie brand colors available as Tailwind utilities */
+  --color-walnut: #5d4e37;
+  --color-walnut-90: #6d5f4a;
+  --color-walnut-80: #7d705d;
+  --color-walnut-70: #8e8271;
+  --color-walnut-60: #9e9384;
+  --color-walnut-20: #ded9d1;
+  --color-walnut-10: #eeece8;
+
+  --color-rust: #b8593b;
+  --color-rust-90: #bf6a4f;
+  --color-rust-80: #c67b62;
+  --color-rust-70: #cd8c76;
+  --color-rust-60: #d49d8a;
+  --color-rust-20: #f1dcd5;
+  --color-rust-10: #f8edea;
+
+  --color-olive: #7a8b6e;
+  --color-olive-90: #87967d;
+  --color-olive-80: #95a18b;
+  --color-olive-70: #a2ac9a;
+  --color-olive-60: #afb7a9;
+  --color-olive-20: #e4e8e1;
+  --color-olive-10: #f1f3f0;
+
+  --color-amber: #d4a855;
+  --color-amber-90: #d8b166;
+  --color-amber-80: #dcba77;
+  --color-amber-70: #e0c389;
+  --color-amber-60: #e5cc9a;
+  --color-amber-20: #f6ecda;
+  --color-amber-10: #faf5ec;
+
+  --color-cream: #f5f0e6;
+  --color-cream-dark: #ede5d6;
+
+  --color-charcoal: #4a4a4a;
+  --color-charcoal-70: #7a7a7a;
+  --color-charcoal-50: #a4a4a4;
+  --color-charcoal-30: #cfcfcf;
+  --color-charcoal-10: #ebebeb;
+}
+
+/* Shadcn semantic layer — maps Kenzie tokens to component variables */
+@theme inline {
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+/*
+  Light theme — Cream backgrounds, walnut primary, rust accents
+*/
+:root {
+  --background: #f5f0e6; /* cream */
+  --foreground: #4a4a4a; /* charcoal */
+  --card: #ffffff;
+  --card-foreground: #4a4a4a; /* charcoal */
+  --popover: #ffffff;
+  --popover-foreground: #4a4a4a;
+  --primary: #5d4e37; /* walnut */
+  --primary-foreground: #f5f0e6; /* cream */
+  --secondary: #ede5d6; /* cream-dark */
+  --secondary-foreground: #5d4e37; /* walnut */
+  --muted: #eeece8; /* walnut-10 */
+  --muted-foreground: #7a7a7a; /* charcoal-70 */
+  --accent: #b8593b; /* rust */
+  --accent-foreground: #ffffff;
+  --destructive: #b8593b; /* rust */
+  --border: #ded9d1; /* walnut-20 */
+  --input: #ded9d1; /* walnut-20 */
+  --ring: #9e9384; /* walnut-60 */
+  /* Sidebar — dark walnut */
+  --sidebar: #5d4e37; /* walnut */
+  --sidebar-foreground: #f5f0e6; /* cream */
+  --sidebar-primary: #f5f0e6; /* cream */
+  --sidebar-primary-foreground: #5d4e37; /* walnut */
+  --sidebar-accent: #6d5f4a; /* walnut-90 */
+  --sidebar-accent-foreground: #f5f0e6; /* cream */
+  --sidebar-border: #7d705d; /* walnut-80 */
+}
+
+/*
+  Dark theme — Deep charcoal backgrounds, cream text, warm walnut surfaces
+*/
+.dark {
+  --background: #2a2a2a; /* deeper than charcoal */
+  --foreground: #f5f0e6; /* cream */
+  --card: #4a4a4a; /* charcoal */
+  --card-foreground: #f5f0e6; /* cream */
+  --popover: #4a4a4a;
+  --popover-foreground: #f5f0e6;
+  --primary: #f5f0e6; /* cream */
+  --primary-foreground: #5d4e37; /* walnut */
+  --secondary: #5d4e37; /* walnut */
+  --secondary-foreground: #f5f0e6; /* cream */
+  --muted: #5d4e37; /* walnut */
+  --muted-foreground: #ded9d1; /* walnut-20 */
+  --accent: #d49d8a; /* rust-60 — lighter for dark bg */
+  --accent-foreground: #2a2a2a;
+  --destructive: #cd8c76; /* rust-70 */
+  --border: #6d5f4a; /* walnut-90 */
+  --input: #6d5f4a;
+  --ring: #9e9384; /* walnut-60 */
+  /* Sidebar — deeper dark */
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #f5f0e6;
+  --sidebar-primary: #d4a855; /* amber */
+  --sidebar-primary-foreground: #2a2a2a;
+  --sidebar-accent: #4a4a4a; /* charcoal */
+  --sidebar-accent-foreground: #f5f0e6;
+  --sidebar-border: #5d4e37; /* walnut */
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight;
+  }
+  code,
+  pre,
+  kbd {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Prose — styles for rendered markdown content */
+.prose {
+  @apply text-sm text-foreground leading-relaxed;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-foreground mt-5 mb-2;
+  }
+  h1 {
+    @apply text-xl;
+  }
+  h2 {
+    @apply text-lg;
+  }
+  h3 {
+    @apply text-base font-semibold;
+  }
+  h4 {
+    @apply text-sm font-semibold;
+  }
+
+  p {
+    @apply mb-3;
+  }
+
+  ul,
+  ol {
+    @apply mb-3 pl-5;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  li {
+    @apply mb-1;
+  }
+  li > ul,
+  li > ol {
+    @apply mt-1 mb-0;
+  }
+
+  strong {
+    @apply font-semibold text-foreground;
+  }
+  em {
+    @apply italic;
+  }
+
+  blockquote {
+    @apply border-l-2 border-walnut/30 pl-4 my-3 text-muted-foreground italic;
+  }
+
+  code {
+    @apply px-1 py-0.5 bg-muted rounded text-xs font-mono;
+  }
+
+  hr {
+    @apply my-6 border-border;
+  }
+
+  table {
+    @apply w-full my-3 text-xs;
+  }
+  th {
+    @apply text-left font-semibold pb-2 border-b border-border pr-3;
+  }
+  td {
+    @apply py-1.5 border-b border-border/50 pr-3;
+  }
+
+  a {
+    @apply text-accent underline underline-offset-2;
+  }
+
+  > :first-child {
+    @apply mt-0;
+  }
+  > :last-child {
+    @apply mb-0;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 200ms ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

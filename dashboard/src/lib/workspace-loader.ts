@@ -11,6 +11,16 @@ export async function listStageFiles(stage: string): Promise<string[]> {
   }
 }
 
+export async function listDeliveryFiles(): Promise<string[]> {
+  try {
+    const res = await fetch('/workspace-files/delivery')
+    if (!res.ok) return []
+    return await res.json()
+  } catch {
+    return []
+  }
+}
+
 // Known stage directories (flat workspace, 01-09 numbering)
 export const STAGE_DIRS: { number: number; dir: string; name: string }[] = [
   { number: 1, dir: '01-project-brief', name: 'Program Brief' },

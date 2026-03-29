@@ -30,7 +30,7 @@ function serveWorkspace(): Plugin {
             return
           }
           const files = fs.readdirSync(stageDir)
-            .filter(f => f.endsWith('.md'))
+            .filter(f => f.endsWith('.md') || f.endsWith('.html'))
             .sort()
           res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify(files))

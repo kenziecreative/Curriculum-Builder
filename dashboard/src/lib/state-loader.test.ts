@@ -58,7 +58,7 @@ describe('parseReviewGates', () => {
 
 describe('parseNextAction', () => {
   it('returns the next action string from Session Continuity section', () => {
-    expect(parseNextAction(fixture)).toBe('Run /knz-modules to build module structure')
+    expect(parseNextAction(fixture)).toBe('Run /curriculum:modules to build module structure')
   })
 
   it('returns null when Next Action is missing', () => {
