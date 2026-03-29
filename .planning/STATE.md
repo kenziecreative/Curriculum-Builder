@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 26-canonical-outcome-registry-02-PLAN.md
-last_updated: "2026-03-29T18:22:00Z"
+stopped_at: Completed 27-01-PLAN.md
+last_updated: "2026-03-29T22:23:12.716Z"
 last_activity: 2026-03-29 -- Phase 26 Plan 02 complete
 progress:
   total_phases: 5
-  completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
+  completed_phases: 2
+  total_plans: 6
+  completed_plans: 5
   percent: 50
 ---
 
@@ -60,6 +60,9 @@ Recent decisions affecting current work:
 - [26-02]: Stale detection is warn-and-continue for all stages — never blocks silently; user chooses to proceed or re-run upstream
 - [26-02]: Stale check skipped when stage status is not-started; runs when pre-populated (audit mode)
 - [26-02]: Revise step 5a-ii shows plain-language stale summary before step 5b lists specific files for regeneration
+- [Phase 27-domain-research]: Domain research is Stage 1.5 — inserts between intake and outcomes, not woven into intake
+- [Phase 27-domain-research]: Evidence labels applied per-hypothesis during research, not after all research completes (RSRCH-03)
+- [Phase 27-domain-research]: Grounding document lands in source-material/ for automatic downstream pickup via existing loading blocks
 
 ### Pending Todos
 
@@ -94,7 +97,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-29T18:05:49.695Z
-Stopped at: Completed 26-canonical-outcome-registry-01-PLAN.md
+Last session: 2026-03-29T22:23:12.713Z
+Stopped at: Completed 27-01-PLAN.md
 Resume file: None
 Next Action: /gsd:execute-phase 26

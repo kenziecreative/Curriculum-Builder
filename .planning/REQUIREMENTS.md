@@ -9,11 +9,11 @@ Requirements for Generation Integrity milestone. Each maps to roadmap phases.
 
 ### Domain Research
 
-- [ ] **RSRCH-01**: After intake completes with no source materials, agent asks the SME for hypotheses about the domain that should shape how the curriculum is taught
-- [ ] **RSRCH-02**: Agent researches each SME hypothesis against evidence using web search and available sources
-- [ ] **RSRCH-03**: Each finding is tagged with an evidence label (SUPPORTED, COMPLICATED, CONTRADICTED, GAP) at research time, not during synthesis
-- [ ] **RSRCH-04**: Agent presents findings at a checkpoint for SME review before generation proceeds -- SME can confirm, adjust, or add context
-- [ ] **RSRCH-05**: Verified findings are saved as a grounding document in workspace/source-material/ that all downstream stages reference
+- [x] **RSRCH-01**: After intake completes with no source materials, agent asks the SME for hypotheses about the domain that should shape how the curriculum is taught
+- [x] **RSRCH-02**: Agent researches each SME hypothesis against evidence using web search and available sources
+- [x] **RSRCH-03**: Each finding is tagged with an evidence label (SUPPORTED, COMPLICATED, CONTRADICTED, GAP) at research time, not during synthesis
+- [x] **RSRCH-04**: Agent presents findings at a checkpoint for SME review before generation proceeds -- SME can confirm, adjust, or add context
+- [x] **RSRCH-05**: Verified findings are saved as a grounding document in workspace/source-material/ that all downstream stages reference
 - [ ] **RSRCH-06**: If source materials already exist at intake, domain research step is skipped -- source materials serve as the grounding base
 
 ### Alignment Verification
@@ -85,11 +85,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | CANON-02 | Phase 26 | Complete |
 | CANON-03 | Phase 26 | Complete |
 | CANON-04 | Phase 26 | Complete |
-| RSRCH-01 | Phase 27 | Pending |
-| RSRCH-02 | Phase 27 | Pending |
-| RSRCH-03 | Phase 27 | Pending |
-| RSRCH-04 | Phase 27 | Pending |
-| RSRCH-05 | Phase 27 | Pending |
+| RSRCH-01 | Phase 27 | Complete |
+| RSRCH-02 | Phase 27 | Complete |
+| RSRCH-03 | Phase 27 | Complete |
+| RSRCH-04 | Phase 27 | Complete |
+| RSRCH-05 | Phase 27 | Complete |
 | RSRCH-06 | Phase 27 | Pending |
 | ALIGN-01 | Phase 28 | Pending |
 | ALIGN-02 | Phase 28 | Pending |

@@ -172,6 +172,6 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 17-24 (archived) | v4.0 | 20/20 | Complete | 2026-03-28 |
 | 25. Audit Trail Infrastructure | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
-| 27. Domain Research | v5.0 | 0/2 | Not started | - |
+| 27. Domain Research | 1/2 | In Progress|  | - |
 | 28. Alignment Verification | v5.0 | 0/0 | Not started | - |
 | 29. Cross-Stage Consistency | v5.0 | 0/0 | Not started | - |
