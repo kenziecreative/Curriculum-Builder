@@ -103,6 +103,8 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours` and `transfer_context`. Do not read these fields from project-brief.md.
 
+**Canonical outcome wording:** When writing metaskill activation records that reference learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording`. Use the statement verbatim. Do not paraphrase or summarize outcome statements in metaskill descriptions.
+
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: objective list and bloom levels.
 
 Read from `workspace/{project}/03-modules/module-structure.md` (or the module subdirectories under `workspace/{project}/03-modules/`): module list and module IDs for use in `module_reference` fields.

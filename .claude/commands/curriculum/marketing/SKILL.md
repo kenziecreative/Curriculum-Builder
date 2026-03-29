@@ -105,6 +105,8 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `target_audience` (for audience description), `transfer_context`, `contact_hours` (for program duration). Read program name from `curriculum-registry.json` field `meta.project_name`. Do not read these fields from project-brief.md.
 
+**Canonical outcome wording (marketing exception):** Marketing copy derives emotional and conversion-oriented language from learning outcomes — it does not use verbatim outcome statements. When referencing outcomes, read the canonical statement from `curriculum-registry.json` field `outcome_wording`, then derive the marketing copy from it. Record the derivation in the audit trail: for each marketing claim that derives from an outcome, note the outcome ID and canonical statement it derived from. Maintain outcome ID linkage via `<!-- internal: outcome_id=... -->` comments so Phase 28 (Alignment Verification) can trace marketing claims back to canonical outcomes.
+
 Read all prior stage outputs:
 - `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives (source for learning promises)
 - `workspace/{project}/02-assessments/assessment-map.md`: objective-assessment alignment table (source for outcome evidence and performance task descriptions)

@@ -167,6 +167,8 @@ Read from `workspace/*/02-assessments/assessment-map.md`: assessment coverage to
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours`, `skill_type`, `self_direction_level`, `modality`, `transfer_context`. Do not read these fields from project-brief.md.
 
+**Canonical outcome wording:** When writing module specs that reference learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording.module_outcomes` and `outcome_wording.program_outcomes`. Use the statement verbatim in the module's `learning_objectives` descriptions. The `<!-- internal: outcome_id=... -->` comment provides the ID; the prose text must match the registry's `statement` field for that ID exactly.
+
 Generate the full module structure silently — no running commentary during generation. Apply duration scaling:
 
 | Program Size | contact_hours | Stage 04 Behavior |

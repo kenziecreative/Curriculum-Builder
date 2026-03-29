@@ -119,6 +119,8 @@ Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids and 
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `skill_type`, `contact_hours`, `modality`. Do not read these fields from project-brief.md.
 
+**Canonical outcome wording:** When writing assessment output that references learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording`. Use the statement verbatim in assessment descriptions and criteria. Do not paraphrase, summarize, or reword outcome statements. The `<!-- internal: outcome_id=... -->` comment provides the ID; the prose text must match the registry's `statement` field for that ID exactly.
+
 Generate assessments silently — no running commentary during generation. Generate:
 
 - Every objective gets at least one assessment (100% coverage)

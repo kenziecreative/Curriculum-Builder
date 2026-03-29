@@ -110,6 +110,8 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours`, `transfer_context`, `skill_type`, `target_audience` (for audience description), and `success_criteria`. Do not read these fields from project-brief.md.
 
+**Canonical outcome wording:** When writing transfer design elements that reference learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording`. Use the statement verbatim in transfer activity descriptions. Do not paraphrase.
+
 Read from `workspace/{project}/01-outcomes/learning-objectives.md`: program-level and module-level objectives.
 
 Read from `workspace/{project}/03-modules/`: module list with module IDs (for `module_reference` fields in follow-through plans).

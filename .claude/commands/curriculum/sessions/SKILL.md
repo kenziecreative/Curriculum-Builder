@@ -194,11 +194,14 @@ Each Task receives:
 - The full content of `03-modules/M-N/module-spec.md` for this module
 - The full content of `01-outcomes/learning-objectives.md`
 - The learner profile from registry: `learner_profile.data` section from `workspace/{project-name}/curriculum-registry.json` (all 9 fields: target_audience, expertise_level, self_direction_level, skill_type, cultural_orientation, transfer_context, contact_hours, modality, success_criteria)
+- The outcome_wording section from `workspace/{project-name}/curriculum-registry.json` (program_outcomes, module_outcomes, session_outcomes with exact canonical statements)
 - The full content of `.claude/reference/schemas/stage-05-sessions.md`
 - Output directory: `workspace/{project-name}/04-sessions/_drafts/`
 
 **Instructions to include in each Task:**
 > Generate all [session_count] sessions for module [module_name]. Follow the session-generator.md specification exactly. Write 4 files per session: session.md, facilitator-guide.md, participant-materials.md, slide-outline.md. Directory format: {output_dir}M-N-S-N/ for each session. Enforce all session arc requirements per the schema. Apply transfer design fields if skill_type==open AND bloom_level>=Analyze. Apply prohibited reflection stem rules. Return a completion signal listing which sessions were written.
+>
+> **Canonical outcome wording:** When writing session content that references learning outcomes, use the exact outcome statement from the registry's outcome_wording section. Do not paraphrase. The `<!-- internal: outcome_id=... -->` comment provides the ID; the prose text must match the registry's `statement` field for that ID exactly.
 
 As each Task completes and returns its completion signal, print one progress line:
 
