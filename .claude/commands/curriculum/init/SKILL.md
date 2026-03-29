@@ -60,7 +60,7 @@ Before outputting the step 6 confirmation, output this block:
 **Your workspace is ready. To view it in the dashboard:**
 
 ```
-cd dashboard && npm run dev
+cd dashboard && npm install && npm run dev
 ```
 
 Open [http://localhost:3002](http://localhost:3002) in your browser.
