@@ -93,6 +93,10 @@ These fields exist in the file — they never appear in the conversation display
 
 ## Generation (silent)
 
+### Source Material
+
+Before generating, check `workspace/source-material/` for any files. If files exist, read them. These represent prior work the user has brought into the project — research, outlines, existing curriculum, or domain context. Generated content should build from and align with this material. The pipeline structures the user's knowledge; it does not replace it.
+
 Load `.claude/reference/schemas/stage-08-marketing.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
 **Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.

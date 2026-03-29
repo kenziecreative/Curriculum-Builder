@@ -93,6 +93,10 @@ Say instead: thinking skill, practice activity, named thinking routine, real-wor
 
 Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
+### Source Material
+
+Before generating, check `workspace/source-material/` for any files. If files exist, read them. These represent prior work the user has brought into the project — research, outlines, existing curriculum, or domain context. Generated content should build from and align with this material. The pipeline structures the user's knowledge; it does not replace it.
+
 Load `.claude/reference/schemas/stage-06-metaskills.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
 Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours` and `transfer_context`.

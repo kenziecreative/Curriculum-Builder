@@ -140,6 +140,12 @@ Read Stage 5 status from the workspace STATE.md:
 
 ---
 
+### Source Material
+
+Before generating, check `workspace/source-material/` for any files. If files exist, read them. These represent prior work the user has brought into the project — research, outlines, existing curriculum, or domain context. Generated content should build from and align with this material. The pipeline structures the user's knowledge; it does not replace it.
+
+---
+
 ## Module Reading
 
 Read all module specs from `workspace/{project-name}/03-modules/`. For each subdirectory named M-N (e.g., M-1, M-2) that contains a `module-spec.md`:

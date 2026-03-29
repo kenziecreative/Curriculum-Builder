@@ -100,6 +100,10 @@ Say instead: transfer design, follow-through plan, accountability check-in, succ
 
 ## Generation (silent)
 
+### Source Material
+
+Before generating, check `workspace/source-material/` for any files. If files exist, read them. These represent prior work the user has brought into the project — research, outlines, existing curriculum, or domain context. Generated content should build from and align with this material. The pipeline structures the user's knowledge; it does not replace it.
+
 Load `.claude/reference/schemas/stage-07-transfer.md` as generation context before generating. Read all required fields, enum values, duration scaling, and validation rules from the schema.
 
 Read from `workspace/{project}/00-project-brief/project-brief.md`: `contact_hours`, `transfer_context`, `skill_type`, audience description, and success criteria.
