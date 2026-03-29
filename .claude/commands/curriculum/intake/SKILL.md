@@ -358,7 +358,7 @@ Use `AskUserQuestion` with these three options:
 4. **Update STATE.md silently:**
    - `Stage Progress` → Stage 1 status: `complete`, Completed: {today's date}
    - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
-   - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
+   - `Session Continuity` → **Next Action:** Run /curriculum:research to ground the curriculum in evidence
 
 5. **Initialize audit trail silently:**
 
@@ -407,7 +407,7 @@ Use `AskUserQuestion` with these three options:
 
    Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
-   > Your program brief is written and saved. Type `/clear` now, then run `/curriculum:outcomes` to design the learning outcomes.
+   > Your program brief is written and saved. Type `/clear` now, then run `/curriculum:research` to ground the curriculum in evidence before designing outcomes.
 
 ---
 
