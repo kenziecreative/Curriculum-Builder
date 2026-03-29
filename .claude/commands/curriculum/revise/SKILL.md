@@ -255,6 +255,31 @@ Modify the affected registry section(s). Set `last_updated` to current ISO datet
 
 Do this silently — no announcement to the user. The registry write happens before any file changes.
 
+### 5a-ii. Flag downstream stages as potentially stale
+
+After updating the registry, identify which downstream stages have already completed and are now working from outdated data. Read the Stage Progress table from `workspace/{project}/STATE.md`.
+
+For each registry section that was modified in Step 5a, identify stages that depend on it:
+
+| Modified section | Stages that depend on it |
+|---|---|
+| `outcome_wording` | Stages 3 (assessments), 4 (modules), 5 (sessions), 6 (thinking skills), 7 (transfer), 8 (marketing) |
+| `assessment_criteria` | Stages 4 (modules), 5 (sessions) |
+| `time_allocations` | Stage 5 (sessions) |
+| `learner_profile` | Stages 3–8 (all downstream) |
+
+For each downstream stage with status `complete` in STATE.md that depends on a modified section, collect the stage names. Then show:
+
+> The registry has been updated. These completed stages may now be working from outdated data:
+> - {Stage name} (depends on {modified section — in plain language, e.g., "the learning outcomes"})
+> - ...
+>
+> Step 5b will identify which specific files need regeneration.
+
+This summary gives the user context for why files need updating before Step 5b lists them.
+
+If no completed stages depend on the modified sections, skip this step.
+
 ### 5b. Identify files for regeneration
 
 Using the registry parent references and outcome IDs, identify every file that reads from the changed registry section. Apply targeted scope — if outcome MO-2-1 changed, only sessions under Module 2 need regenerating, not all sessions.
@@ -267,6 +292,8 @@ Use `AskUserQuestion`:
 - **Yes, regenerate all** — proceed with all listed files
 - **Let me pick** — present each file individually with yes/no
 - **Skip — I'll update them manually** — log the change in the revision log and move on
+
+Note: Any skipped stages will show a stale data warning if you run them again later, because the registry was updated after they last completed.
 
 ### 5c. Targeted regeneration
 
