@@ -360,7 +360,50 @@ Use `AskUserQuestion` with these three options:
    - `Review Gates` → Post-Intake: `approved`, Approved: {today's date}
    - `Session Continuity` → **Next Action:** Run /curriculum:outcomes to begin outcome design
 
-5. **End with a brief forward-looking message:**
+5. **Initialize audit trail silently:**
+
+   Load `.claude/reference/audit-trail-format.md` for the canonical format.
+
+   Create `workspace/{project}/audit-trail.md` with:
+
+   ```
+   # Audit Trail: {program_topic}
+   Generated: {ISO timestamp}
+
+   ## Build Summary
+   - **Stages completed:** Stage 1: Intake
+   - **Source materials:** 0 files loaded
+   - **Grounding:** 0% of content sections grounded in source material
+   - **SME checkpoints:** 1 confirmation recorded
+   - **Modifications:** {0, or count of edits made at the review gate}
+   - **Revisions:** 0 post-delivery revisions
+
+   ---
+
+   ## Stage 1: Intake
+   Generated: {ISO timestamp}
+
+   ### Agent-Generated
+   - Program topic: {program_topic}
+   - Target audience: {target_audience.description}
+   - Prior knowledge: {target_audience.prior_knowledge}
+   - Self-direction level: {self_direction_level} — assessed from conversation
+   - Skill type: {skill_type} — classified from SME description
+   - Transfer context: {transfer_context}
+   - Success criteria: {success_criteria}
+   - Context of use: synthesized from transfer context and audience description
+
+   ### SME Confirmation
+   - **Confirmed:** {ISO timestamp}
+   - **Decision:** Approved project brief as presented
+   - **Modifications:** {None, or list of before/after values if edits were made at the review gate}
+   ```
+
+   This is a clean (no source materials) intake — omit `Grounded In` and `Read but Not Referenced` subsections per the no-source-material variant in `audit-trail-format.md`.
+
+   Do this silently — no announcement to the user.
+
+6. **End with a brief forward-looking message:**
 
    Write in kernel sentences — one idea per sentence, subject before verb, active voice. No warm-up openers ('In this section we will...', 'Now that we have...'). Start every paragraph with the conclusion, then support it.
 
@@ -854,6 +897,49 @@ Load `.claude/reference/schemas/curriculum-registry-schema.md` for the exact JSO
 - Write the file as formatted JSON (2-space indent).
 
 Do this silently — no announcement to the user.
+
+**6c. Initialize audit trail silently:**
+
+   Load `.claude/reference/audit-trail-format.md` for the canonical format.
+
+   Create `workspace/{project}/audit-trail.md` with:
+
+   ```
+   # Audit Trail: {program_topic}
+   Generated: {ISO timestamp}
+
+   ## Build Summary
+   - **Stages completed:** Stage 1: Intake
+   - **Source materials:** {count of files read in Step 1} files loaded
+   - **Grounding:** {rough percentage — grounded intake decisions / total intake decisions × 100}% of content sections grounded in source material
+   - **SME checkpoints:** 1 confirmation recorded
+   - **Modifications:** {0, or count of edits made at the Step 7 review gate}
+   - **Revisions:** 0 post-delivery revisions
+
+   ---
+
+   ## Stage 1: Intake
+   Generated: {ISO timestamp}
+
+   ### Grounded In
+   {For each key intake decision that was drawn directly from source material — e.g., program topic, target audience, transfer context:}
+   - **{field name}**: {source filename} — "{relevant quote or finding that directly shaped this decision}"
+   {If no specific claims can be directly traced to source material, write: None identified — source materials informed overall context.}
+
+   ### Agent-Generated
+   - {Intake decisions that were assessed or synthesized during the conversation — e.g., self-direction level classification, skill type determination, context_of_use synthesis}
+
+   ### Read but Not Referenced
+   - {Source files that were loaded in Step 1 but whose content was not specifically referenced in any intake decision above}
+   - {If all loaded files were referenced, write: All loaded files were referenced above.}
+
+   ### SME Confirmation
+   - **Confirmed:** {ISO timestamp}
+   - **Decision:** Approved project brief as presented
+   - **Modifications:** {None, or list of before/after values for any changes made at the Step 7 review gate}
+   ```
+
+   Do this silently — no announcement to the user.
 
 **7. Display post-intake summary table** (immediately after all writes, before the forward-looking message):
 
