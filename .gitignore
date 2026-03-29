@@ -29,9 +29,15 @@ dashboard/build/
 # Claude Code runtime
 .claude/worktrees/
 
-# Curriculum workspace — runtime output, not source
-workspace/*
-!workspace/.gitkeep
+# Dev CLAUDE.md — project version is created by /curriculum:init
+/CLAUDE.md
+
+# Curriculum workspace — track STATE.md and directory structure, ignore generated content
+workspace/**
+!workspace/
+!workspace/STATE.md
+!workspace/*/
+!workspace/*/.gitkeep
 
 # Dev tooling — not needed by users
 scripts/
