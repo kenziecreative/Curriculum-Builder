@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 27-01-PLAN.md
-last_updated: "2026-03-29T22:23:12.716Z"
-last_activity: 2026-03-29 -- Phase 26 Plan 02 complete
+stopped_at: Completed 27-02-PLAN.md
+last_updated: "2026-03-29T22:25:17Z"
+last_activity: 2026-03-29 -- Phase 27 Plan 02 complete
 progress:
   total_phases: 5
   completed_phases: 2
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 
 ## Current Position
 
-Phase: 26 of 29 (Canonical Outcome Registry) -- COMPLETE
+Phase: 27 of 29 (Domain Research) -- COMPLETE
 Plan: 2 of 2 complete
-Status: Phase 26 complete -- ready for Phase 27
-Last activity: 2026-03-29 -- Phase 26 Plan 02 complete
+Status: Phase 27 complete -- ready for Phase 28
+Last activity: 2026-03-29 -- Phase 27 Plan 02 complete
 
-Progress: [###.......] 50%
+Progress: [####......] 60%
 
 ## Performance Metrics
 
@@ -61,6 +61,8 @@ Recent decisions affecting current work:
 - [26-02]: Stale check skipped when stage status is not-started; runs when pre-populated (audit mode)
 - [26-02]: Revise step 5a-ii shows plain-language stale summary before step 5b lists specific files for regeneration
 - [Phase 27-domain-research]: Domain research is Stage 1.5 — inserts between intake and outcomes, not woven into intake
+- [27-02]: Clean intake routes to /curriculum:research; audit-mode builds skip research and route to /curriculum:outcomes (RSRCH-06)
+- [27-02]: Resume command handles three domain research states: not-started, in-progress, and skipped (audit mode)
 - [Phase 27-domain-research]: Evidence labels applied per-hypothesis during research, not after all research completes (RSRCH-03)
 - [Phase 27-domain-research]: Grounding document lands in source-material/ for automatic downstream pickup via existing loading blocks
 
@@ -97,7 +99,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-29T22:23:12.713Z
-Stopped at: Completed 27-01-PLAN.md
+Last session: 2026-03-29T22:25:17Z
+Stopped at: Completed 27-02-PLAN.md
 Resume file: None
-Next Action: /gsd:execute-phase 26
+Next Action: /gsd:execute-phase 28

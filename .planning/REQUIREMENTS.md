@@ -14,7 +14,7 @@ Requirements for Generation Integrity milestone. Each maps to roadmap phases.
 - [x] **RSRCH-03**: Each finding is tagged with an evidence label (SUPPORTED, COMPLICATED, CONTRADICTED, GAP) at research time, not during synthesis
 - [x] **RSRCH-04**: Agent presents findings at a checkpoint for SME review before generation proceeds -- SME can confirm, adjust, or add context
 - [x] **RSRCH-05**: Verified findings are saved as a grounding document in workspace/source-material/ that all downstream stages reference
-- [ ] **RSRCH-06**: If source materials already exist at intake, domain research step is skipped -- source materials serve as the grounding base
+- [x] **RSRCH-06**: If source materials already exist at intake, domain research step is skipped -- source materials serve as the grounding base
 
 ### Alignment Verification
 
@@ -90,7 +90,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | RSRCH-03 | Phase 27 | Complete |
 | RSRCH-04 | Phase 27 | Complete |
 | RSRCH-05 | Phase 27 | Complete |
-| RSRCH-06 | Phase 27 | Pending |
+| RSRCH-06 | Phase 27 | Complete |
 | ALIGN-01 | Phase 28 | Pending |
 | ALIGN-02 | Phase 28 | Pending |
 | ALIGN-03 | Phase 28 | Pending |
