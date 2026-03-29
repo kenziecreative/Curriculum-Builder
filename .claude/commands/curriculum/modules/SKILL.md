@@ -63,7 +63,36 @@ If any field is missing or empty, stop and report:
 
 Do not proceed to generation.
 
-### 4. Check Stage 4 status
+### 4. Stale upstream check
+
+Read `workspace/{project}/curriculum-registry.json`. Read the Stage Progress table from `workspace/{project}/STATE.md` to find completion dates for upstream stages.
+
+This stage depends on the following registry data:
+
+| Registry section | This stage needs it because |
+|---|---|
+| `outcome_wording` | Module learning objectives must use the exact approved outcome statements |
+| `assessment_criteria` | Modules are sequenced to set learners up for assessments — changed assessment criteria affects what each module must cover |
+| `learner_profile` | Contact hours, skill type, and self-direction level determine module count and content chunk sizing |
+
+If Stage 4 status is `not-started`, skip this check — there is nothing to be stale against.
+
+For each section above, compare `{section}.last_updated` against the upstream stage's completion date in STATE.md:
+- `outcome_wording` — compare against Stage 2 (Outcomes) completion date
+- `assessment_criteria` — compare against Stage 3 (Assessments) completion date
+- `learner_profile` — compare against Stage 1 (Intake) completion date
+
+If any registry section's `last_updated` is more recent than the upstream stage's completion date in STATE.md, show:
+
+> **Heads up:** {The most recently updated section, e.g., "The assessments"} were updated on {last_updated} — after {stage name} last ran. The module structure you're about to generate may not reflect the latest changes. You can proceed, or re-run `/curriculum:{stage}` first to pick up the changes.
+
+Use `AskUserQuestion`:
+- **"Proceed anyway"** — continue to generation with current registry data
+- **"I'll re-run the upstream stage first"** — stop here; user will re-run
+
+If no sections are stale, proceed silently.
+
+### 5. Check Stage 4 status
 
 Read the Stage 4 row from STATE.md `Stage Progress` table:
 
