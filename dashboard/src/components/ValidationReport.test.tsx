@@ -56,7 +56,7 @@ describe('ValidationReport', () => {
   it('renders not-yet-run message when schema-report.md returns 404', async () => {
     mockFetch(false, '', false, '')
     await act(async () => {
-      render(<ValidationReport projectName="test-program" isVisible={true} />)
+      render(<ValidationReport isVisible={true} />)
     })
     expect(screen.getByText(/Validation not yet run/)).toBeTruthy()
   })
@@ -64,14 +64,14 @@ describe('ValidationReport', () => {
   it('renders loading state while fetches are in flight', async () => {
     // Never-resolving fetch — component stays in loading state
     vi.stubGlobal('fetch', vi.fn().mockReturnValue(new Promise(() => {})))
-    render(<ValidationReport projectName="test-program" isVisible={true} />)
+    render(<ValidationReport isVisible={true} />)
     expect(screen.getByText(/Loading validation results/)).toBeTruthy()
   })
 
   it('renders only FAIL rows, not PASS rows', async () => {
     mockFetch(true, SCHEMA_REPORT_WITH_FAILURES, false, '')
     await act(async () => {
-      render(<ValidationReport projectName="test-program" isVisible={true} />)
+      render(<ValidationReport isVisible={true} />)
     })
     // FAIL rows appear
     expect(screen.getByText('transfer_connection')).toBeTruthy()
@@ -81,7 +81,7 @@ describe('ValidationReport', () => {
   it('does not render PASS rows in the failure list', async () => {
     mockFetch(true, SCHEMA_REPORT_WITH_FAILURES, false, '')
     await act(async () => {
-      render(<ValidationReport projectName="test-program" isVisible={true} />)
+      render(<ValidationReport isVisible={true} />)
     })
     // The PASS row field name should NOT appear
     expect(screen.queryByText('reflection_prompt')).toBeNull()
@@ -90,7 +90,7 @@ describe('ValidationReport', () => {
   it('renders quality scores as N/10 format with correct color classes', async () => {
     mockFetch(true, SCHEMA_REPORT_WITH_FAILURES, false, '')
     await act(async () => {
-      render(<ValidationReport projectName="test-program" isVisible={true} />)
+      render(<ValidationReport isVisible={true} />)
     })
     // 0.72 → 7/10 (green)
     const greenScore = screen.getByText('7/10')
@@ -106,25 +106,25 @@ describe('ValidationReport', () => {
   it('renders Tier 3 checklist items from human-review-checklist.md', async () => {
     mockFetch(true, SCHEMA_REPORT_NO_FAILURES, true, HUMAN_REVIEW_CHECKLIST)
     await act(async () => {
-      render(<ValidationReport projectName="test-program" isVisible={true} />)
+      render(<ValidationReport isVisible={true} />)
     })
     expect(screen.getByText(/Verify emotional tone/)).toBeTruthy()
     expect(screen.getByText(/Check timing estimates/)).toBeTruthy()
   })
 
   it('returns null when isVisible is false', () => {
-    const { container } = render(<ValidationReport projectName="test-program" isVisible={false} />)
+    const { container } = render(<ValidationReport isVisible={false} />)
     expect(container.firstChild).toBeNull()
   })
 
   it('does not refetch when already fetched', async () => {
     mockFetch(true, SCHEMA_REPORT_NO_FAILURES, false, '')
-    const { rerender } = render(<ValidationReport projectName="test-program" isVisible={false} />)
+    const { rerender } = render(<ValidationReport isVisible={false} />)
     await act(async () => {
-      rerender(<ValidationReport projectName="test-program" isVisible={true} />)
+      rerender(<ValidationReport isVisible={true} />)
     })
     await act(async () => {
-      rerender(<ValidationReport projectName="test-program" isVisible={true} />)
+      rerender(<ValidationReport isVisible={true} />)
     })
     // fetch should be called exactly twice (schema + checklist), not 4 times
     const fetchMock = vi.mocked(fetch)

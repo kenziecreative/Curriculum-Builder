@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 
 interface ValidationReportProps {
-  projectName: string
   isVisible: boolean
 }
 
@@ -94,7 +93,7 @@ function scoreColor(score: number): string {
   return 'text-yellow-600'
 }
 
-export function ValidationReport({ projectName, isVisible }: ValidationReportProps) {
+export function ValidationReport({ isVisible }: ValidationReportProps) {
   const [schemaReport, setSchemaReport] = useState<string | null>(null)
   const [checklistReport, setChecklistReport] = useState<string | null>(null)
   const [fetched, setFetched] = useState(false)
@@ -102,15 +101,15 @@ export function ValidationReport({ projectName, isVisible }: ValidationReportPro
   useEffect(() => {
     if (!isVisible || fetched) return
     setFetched(true)
-    fetch(`/workspace/${projectName}/08-validation/schema-report.md`)
+    fetch('/workspace/09-validation/schema-report.md')
       .then(r => r.ok ? r.text() : Promise.reject(r.status))
       .then(text => setSchemaReport(text))
       .catch(() => setSchemaReport('not-found'))
-    fetch(`/workspace/${projectName}/08-validation/human-review-checklist.md`)
+    fetch('/workspace/09-validation/human-review-checklist.md')
       .then(r => r.ok ? r.text() : Promise.reject(r.status))
       .then(text => setChecklistReport(text))
       .catch(() => setChecklistReport('not-found'))
-  }, [isVisible, projectName, fetched])
+  }, [isVisible, fetched])
 
   if (!isVisible) return null
   if (schemaReport === null) return (
@@ -118,7 +117,7 @@ export function ValidationReport({ projectName, isVisible }: ValidationReportPro
   )
   if (schemaReport === 'not-found') return (
     <div className="rounded-xl bg-gray-50 p-4 text-sm text-gray-500">
-      Validation not yet run. Complete Stage 5, then run /knz-validate.
+      Validation not yet run. Complete Stage 5, then run /curriculum:validate.
     </div>
   )
 

@@ -19,35 +19,11 @@ function serveWorkspace(): Plugin {
       server.middlewares.use((req, res, next) => {
         if (!req.url) return next()
 
-        // /workspace-index — returns JSON list of projects with STATE.md mtime
-        if (req.url === '/workspace-index') {
-          if (!fs.existsSync(WORKSPACE_DIR)) {
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify([]))
-            return
-          }
-          const entries = fs.readdirSync(WORKSPACE_DIR, { withFileTypes: true })
-            .filter(d => d.isDirectory())
-            .map(d => {
-              const statePath = path.join(WORKSPACE_DIR, d.name, 'STATE.md')
-              return {
-                name: d.name,
-                stateMtime: fs.existsSync(statePath)
-                  ? fs.statSync(statePath).mtime.toISOString()
-                  : null,
-              }
-            })
-            .sort((a, b) => (b.stateMtime ?? '').localeCompare(a.stateMtime ?? ''))
-          res.setHeader('Content-Type', 'application/json')
-          res.end(JSON.stringify(entries))
-          return
-        }
-
-        // /workspace-files/{project}/{stage} — returns JSON array of .md filenames
-        const filesMatch = req.url.match(/^\/workspace-files\/([^/]+)\/([^/]+)$/)
+        // /workspace-files/{stage} — returns JSON array of .md filenames in a stage dir
+        const filesMatch = req.url.match(/^\/workspace-files\/([^/]+)$/)
         if (filesMatch) {
-          const [, project, stage] = filesMatch
-          const stageDir = path.join(WORKSPACE_DIR, project, stage)
+          const [, stage] = filesMatch
+          const stageDir = path.join(WORKSPACE_DIR, stage)
           if (!fs.existsSync(stageDir)) {
             res.setHeader('Content-Type', 'application/json')
             res.end(JSON.stringify([]))

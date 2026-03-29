@@ -25,9 +25,8 @@ afterEach(() => {
 
 describe('useWorkspacePoll', () => {
   it('calls fetch on mount and sets loading=false after first fetch', async () => {
-    const { result } = renderHook(() => useWorkspacePoll('test-program'))
+    const { result } = renderHook(() => useWorkspacePoll())
     expect(result.current.loading).toBe(true)
-    // Let the initial poll() promise resolve
     await act(async () => {
       await vi.runAllTicks()
       await Promise.resolve()
@@ -38,21 +37,12 @@ describe('useWorkspacePoll', () => {
 
   it('clears interval on unmount — no memory leak', async () => {
     const clearIntervalSpy = vi.spyOn(global, 'clearInterval')
-    const { unmount } = renderHook(() => useWorkspacePoll('test-program'))
+    const { unmount } = renderHook(() => useWorkspacePoll())
     await act(async () => {
       await vi.runAllTicks()
       await Promise.resolve()
     })
     unmount()
     expect(clearIntervalSpy).toHaveBeenCalled()
-  })
-
-  it('returns null state when projectName is null', async () => {
-    const { result } = renderHook(() => useWorkspacePoll(null))
-    await act(async () => {
-      await vi.runAllTicks()
-      await Promise.resolve()
-    })
-    expect(result.current.state).toBeNull()
   })
 })

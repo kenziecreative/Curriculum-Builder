@@ -5,17 +5,16 @@ import { ChevronDown, ChevronRight, FileText } from 'lucide-react'
 
 interface FileExpanderProps {
   filename: string      // e.g. "learning-objectives.md"
-  stagePath: string     // e.g. "test-program/01-outcomes"
-  projectName: string   // e.g. "test-program"
+  stagePath: string     // e.g. "02-outcomes"
 }
 
-export function FileExpander({ filename, stagePath, projectName }: FileExpanderProps) {
+export function FileExpander({ filename, stagePath }: FileExpanderProps) {
   const [expanded, setExpanded] = useState(false)
   const [content, setContent] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const baseName = filename.replace('.md', '')
-  const htmlUrl = `/workspace/${projectName}/delivery/${baseName}.html`
+  const htmlUrl = `/workspace/delivery/${baseName}.html`
   const mdUrl = `/workspace/${stagePath}/${filename}`
 
   useEffect(() => {

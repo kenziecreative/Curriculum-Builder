@@ -3,19 +3,16 @@ import { listStageFiles, STAGE_DIRS } from '@/lib/workspace-loader'
 import { FileExpander } from './FileExpander'
 
 interface DeliverableSectionProps {
-  projectName: string
-  highlightedStage: number | null  // Scroll-to / highlight from stepper click
+  highlightedStage: number | null
 }
 
-export function DeliverableSection({ projectName, highlightedStage }: DeliverableSectionProps) {
+export function DeliverableSection({ highlightedStage }: DeliverableSectionProps) {
   const [stageFiles, setStageFiles] = useState<Record<string, string[]>>({})
 
   useEffect(() => {
-    if (!projectName) return
-    // Fetch file lists for all stage directories in parallel
     Promise.all(
       STAGE_DIRS.map(async s => {
-        const files = await listStageFiles(projectName, s.dir)
+        const files = await listStageFiles(s.dir)
         return { dir: s.dir, files }
       })
     ).then(results => {
@@ -25,7 +22,7 @@ export function DeliverableSection({ projectName, highlightedStage }: Deliverabl
       }
       setStageFiles(map)
     })
-  }, [projectName])
+  }, [])
 
   const stagesWithFiles = STAGE_DIRS.filter(s => stageFiles[s.dir]?.length > 0)
 
@@ -53,8 +50,7 @@ export function DeliverableSection({ projectName, highlightedStage }: Deliverabl
               <FileExpander
                 key={filename}
                 filename={filename}
-                stagePath={`${projectName}/${stageDir.dir}`}
-                projectName={projectName}
+                stagePath={stageDir.dir}
               />
             ))}
           </div>

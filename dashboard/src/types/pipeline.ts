@@ -19,10 +19,6 @@ export interface GateRecord {
   approved: string | null  // ISO date string or null
 }
 
-export interface ProjectIndex {
-  name: string
-  stateMtime: string | null  // ISO datetime from /workspace-index endpoint
-}
 
 export interface KnzPipelineState {
   stages: StageRecord[]
