@@ -40,5 +40,5 @@ workspace/**
 !workspace/*/.gitkeep
 
 # Dev tooling — not needed by users
-scripts/
-tests/
+/scripts/
+/tests/

@@ -111,10 +111,10 @@ If the directory is empty or missing → add to `missing` with note: "Run `/curr
 After all file copies are complete, call generate-html.js via Bash. Run the command from the `dashboard/` directory so Node can resolve the `marked` dependency installed there:
 
 ```
-cd {absolute path to dashboard/} && node {absolute path to .claude/plugins/curriculum/scripts/generate-html.js} {absolute path to workspace/{project}/} {project name}
+cd {absolute path to dashboard/} && node {absolute path to dashboard/scripts/generate-html.js} {absolute path to workspace/{project}/} {project name}
 ```
 
-To find the absolute path to the script: construct it from the plugin directory path. The script is located at `.claude/plugins/curriculum/scripts/generate-html.js` relative to the project root. Use the absolute path derived from the workspace location. The `dashboard/` directory is at the same level as `workspace/` and `.claude/`.
+To find the absolute path to the script: construct it from the plugin directory path. The script is located at `dashboard/scripts/generate-html.js` relative to the project root. Use the absolute path derived from the workspace location. The `dashboard/` directory is at the same level as `workspace/` and `.claude/`.
 
 The script generates HTML versions of:
 - `delivery/session-N/facilitator-guide.html` (for each session that has a facilitator-guide.md)

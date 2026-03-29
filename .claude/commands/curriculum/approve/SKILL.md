@@ -108,7 +108,7 @@ Write in kernel sentences — one idea per sentence, subject before verb, active
 
 **For Final Validation gate only — run verify silently first:**
 
-Before reading stage directories or showing any summary, spawn ONE Task with the content of `.claude/plugins/curriculum/skills/verify/SKILL.md` and `workspace/{project}/STATE.md`. Instruct it: "Run the verify checks defined in verify.md against workspace/{project}/. Return the issue list only — do not print anything to the user." Collect the returned issue list and store it as `verify_issues`. Do NOT display verify results yet. Proceed to building the summary below.
+Before reading stage directories or showing any summary, spawn ONE Task with the content of `.claude/commands/curriculum/verify/SKILL.md` and `workspace/{project}/STATE.md`. Instruct it: "Run the verify checks defined in verify.md against workspace/{project}/. Return the issue list only — do not print anything to the user." Collect the returned issue list and store it as `verify_issues`. Do NOT display verify results yet. Proceed to building the summary below.
 
 (Post-Assessment gate: skip this step — no verify check needed.)
 

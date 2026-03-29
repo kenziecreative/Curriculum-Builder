@@ -1,9 +1,0 @@
-{
-  "name": "curriculum",
-  "version": "1.0.0",
-  "description": "Curriculum builder plugin — encodes pedagogical doctrine as structural constraints to produce delivery-ready curriculum for adult learners",
-  "author": {
-    "name": "Kelsey Ruger",
-    "email": "kelsey@kenziecreative.com"
-  }
-}

@@ -474,7 +474,7 @@ Stop here. Do not proceed.
 Spawn a Task subagent:
 
 Description of work:
-> Analyze source materials and return a per-stage assessment per the curriculum-auditor agent specification at `.claude/plugins/curriculum/agents/curriculum-auditor.md`
+> Analyze source materials and return a per-stage assessment per the curriculum-auditor agent specification at `.claude/agents/curriculum-auditor.md`
 
 Context provided to the Task:
 - Full content of all files in `workspace/{project}/source-material/`

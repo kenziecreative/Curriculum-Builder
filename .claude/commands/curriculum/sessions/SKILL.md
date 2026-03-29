@@ -180,7 +180,7 @@ For EACH module in the module list, spawn a Task subagent simultaneously. Do NOT
 Each Task receives:
 
 **Description of work:**
-> Generate all sessions for module [module_name] per the session-generator agent specification at .claude/plugins/curriculum/agents/session-generator.md
+> Generate all sessions for module [module_name] per the session-generator agent specification at .claude/agents/session-generator.md
 
 **Context provided to the Task:**
 - The full content of `03-modules/M-N/module-spec.md` for this module

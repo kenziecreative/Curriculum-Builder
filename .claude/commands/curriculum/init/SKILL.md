@@ -40,7 +40,7 @@ Stop here — do not overwrite.
 
 ### 3. Create project CLAUDE.md
 
-Copy the contents of `${CLAUDE_SKILL_DIR}/project-scaffold/CLAUDE.md` into `CLAUDE.md` at the project root.
+Copy the contents of `.claude/reference/project-scaffold/CLAUDE.md` into `CLAUDE.md` at the project root.
 
 Do this silently — no announcement.
 
