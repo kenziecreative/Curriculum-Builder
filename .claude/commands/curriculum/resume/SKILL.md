@@ -103,6 +103,9 @@ Based on current position, end with the recommended command:
 | Stage 1 not-started | Run `/curriculum:intake` to begin |
 | Stage 1 in-progress | Run `/curriculum:intake` to continue |
 | Post-Intake gate pending | Run `/curriculum:approve` to review and continue |
+| Stage 1 complete, Domain Research not-started (from-scratch build) | Run `/curriculum:research` — this will ground your curriculum in evidence before outcome design |
+| Domain Research in-progress | Run `/curriculum:research` — pick up where you left off |
+| Domain Research skipped (audit mode — source materials existed) | Continue to Stage 2 outcomes routing below |
 | Stage 2 not-started or in-progress | Run `/curriculum:outcomes` to continue |
 | Stage 3 not-started or in-progress | Run `/curriculum:assessments` to continue |
 | Assessments review pending | Run `/curriculum:approve` to review and continue |
