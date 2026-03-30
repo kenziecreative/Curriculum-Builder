@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 28-01-PLAN.md
-last_updated: "2026-03-30T01:14:28.107Z"
+stopped_at: Completed 28-02-PLAN.md
+last_updated: "2026-03-30T01:23:58.282Z"
 last_activity: 2026-03-29 -- Phase 27 Plan 02 complete
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
   percent: 60
 ---
 
@@ -66,6 +66,8 @@ Recent decisions affecting current work:
 - [Phase 27-domain-research]: Evidence labels applied per-hypothesis during research, not after all research completes (RSRCH-03)
 - [Phase 27-domain-research]: Grounding document lands in source-material/ for automatic downstream pickup via existing loading blocks
 - [Phase 28-alignment-verification]: Alignment check runs after other draft audit checks pass; 3 blocking distortion types; marketing gets traceability + distortion checks only (no verbatim); assumed content is warning not block; Alignment Check subsection only written on pass
+- [Phase 28]: Stages 2-7 use verbatim alignment checks; stage 8 (marketing) uses traceability variant — outcome ID linkage + distortion checks, no verbatim alignment
+- [Phase 28]: Alignment check skip guard consistent across all 7 stages: no source-material/ files AND no domain-research-findings.md = skip, trail records Skipped
 
 ### Pending Todos
 
@@ -100,7 +102,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-30T01:14:28.104Z
-Stopped at: Completed 28-01-PLAN.md
+Last session: 2026-03-30T01:23:58.279Z
+Stopped at: Completed 28-02-PLAN.md
 Resume file: None
 Next Action: /gsd:execute-phase 28

@@ -76,7 +76,7 @@ See [v4.0 archive](milestones/v4.0-ROADMAP.md) for full phase details.
 - [x] **Phase 25: Audit Trail Infrastructure** - Recording and tracing what the pipeline reads, uses, and assumes during generation -- completed 2026-03-29
 - [x] **Phase 26: Canonical Outcome Registry** - Single source of truth for learning outcomes and intake decisions that all stages reference -- completed 2026-03-29
 - [x] **Phase 27: Domain Research** - New pipeline stage between intake and outcomes that grounds from-scratch builds in verified evidence (completed 2026-03-29)
-- [ ] **Phase 28: Alignment Verification** - Post-generation checks that output actually uses source material and does not distort findings
+- [x] **Phase 28: Alignment Verification** - Post-generation checks that output actually uses source material and does not distort findings (completed 2026-03-30)
 - [ ] **Phase 29: Cross-Stage Consistency** - Automated contradiction detection across pipeline stages before approve gates
 
 ## Phase Details
@@ -173,5 +173,5 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 25. Audit Trail Infrastructure | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
-| 28. Alignment Verification | 1/2 | In Progress|  | - |
+| 28. Alignment Verification | 2/2 | Complete   | 2026-03-30 | - |
 | 29. Cross-Stage Consistency | v5.0 | 0/0 | Not started | - |

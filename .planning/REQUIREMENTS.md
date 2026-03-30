@@ -22,8 +22,8 @@ Requirements for Generation Integrity milestone. Each maps to roadmap phases.
 - [x] **ALIGN-02**: Content generated without source material grounding is flagged as "assumed" with a specific marker
 - [x] **ALIGN-03**: Qualifier stripping is detected -- when source says "in some contexts" but output says "always"
 - [x] **ALIGN-04**: Range narrowing is detected -- when source gives a range but output narrows it
-- [ ] **ALIGN-05**: Alignment check runs automatically as part of the draft-then-audit pipeline, before content advances from draft to final
-- [ ] **ALIGN-06**: Alignment issues block draft promotion until resolved -- same hard-gate pattern as the research agent
+- [x] **ALIGN-05**: Alignment check runs automatically as part of the draft-then-audit pipeline, before content advances from draft to final
+- [x] **ALIGN-06**: Alignment issues block draft promotion until resolved -- same hard-gate pattern as the research agent
 
 ### Canonical Registry
 
@@ -95,8 +95,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | ALIGN-02 | Phase 28 | Complete |
 | ALIGN-03 | Phase 28 | Complete |
 | ALIGN-04 | Phase 28 | Complete |
-| ALIGN-05 | Phase 28 | Pending |
-| ALIGN-06 | Phase 28 | Pending |
+| ALIGN-05 | Phase 28 | Complete |
+| ALIGN-06 | Phase 28 | Complete |
 | XSTAGE-01 | Phase 29 | Pending |
 | XSTAGE-02 | Phase 29 | Pending |
 | XSTAGE-03 | Phase 29 | Pending |
