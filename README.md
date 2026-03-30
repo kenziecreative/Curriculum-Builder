@@ -44,6 +44,8 @@ Most AI tools will generate content when you ask for it. Curriculum Builder gene
 
 The facilitator guides, participant materials, and slide outlines aren't templates you fill in. They're written from the learning objectives and assessments that were designed specifically for your program and your learners. The slide outline tells the facilitator what goes on each slide, why it matters pedagogically, and what to do in the room — not just a list of topics. The facilitator guide includes diagnostic cues: what to watch for, what it signals about where learners are, what move to make next.
 
+Every claim in the output is grounded in evidence. When you provide source materials, the pipeline checks that generated content actually uses what you gave it — not just acknowledges it exists. When you start from scratch, Claude researches your domain first so the curriculum is built on verified findings, not assumptions. After every generation stage, an alignment check verifies that the output faithfully represents the source material — catching things like hedged research findings being stated as absolutes, or ranges being narrowed to single values.
+
 The difference shows up when you use the materials. Everything connects because it was built to connect — not assembled from separate pieces after the fact.
 
 What it does not do: produce a PowerPoint file, generate a course outline you fill in later, or write content without the design work behind it. If you need a quick draft to hand-edit, there are faster tools. If you need a complete curriculum package where every piece is designed to work together, this is built for that.
@@ -100,6 +102,8 @@ The process works best when you have a few things nearby. You don't need polishe
 
 You don't need to prepare a structured outline or write anything up beforehand. The intake conversation draws that out.
 
+**Starting from scratch?** If you don't have existing materials, that's fine — Claude will research your domain after intake. You'll share what you believe about how your subject should be taught, Claude tests those ideas against real evidence, and you review the findings together before any content gets written. The curriculum is grounded in verified evidence either way — whether you bring it or Claude finds it.
+
 ---
 
 ## Speak Your Answers
@@ -117,6 +121,7 @@ The pipeline runs as a sequence of commands. Each command produces one piece of 
 ```
 /curriculum:init          Set up a new project
 /curriculum:intake        Tell Claude about your program and learners
+/curriculum:research      Research your domain (from-scratch builds only)
 /curriculum:outcomes      Generate learning objectives
 /curriculum:assessments   Design how you'll measure learning
 /curriculum:modules       Structure your content into modules
@@ -144,6 +149,20 @@ Claude interviews you about your program — who the learners are, what they nee
 At the end, you see a summary of everything captured and get a chance to edit anything before moving on. When you approve it, a `project-brief.md` is written to your workspace — this file drives every subsequent stage.
 
 **If you have existing materials:** At the start of intake, Claude asks whether you're starting fresh or bringing in existing documents. See [Audit mode](#audit-mode) below.
+
+---
+
+### Stage 1.5 — Research: Ground the curriculum in evidence (from-scratch builds only)
+
+```
+/curriculum:research
+```
+
+When you're building a curriculum from scratch — no existing materials to bring in — Claude researches your domain before any content gets written. You share what you believe about how your subject should be taught, and Claude tests each idea against real evidence.
+
+Each finding comes back with a clear label: the evidence supports what you said, it's more complicated than expected, it contradicts your assumption, or there's a gap in what's known. You review everything together, adjust anything that needs adjusting, and approve the findings before they become the grounding document for the rest of the pipeline.
+
+This stage is skipped automatically when you bring in existing source materials — those documents serve as the evidence base instead.
 
 ---
 
@@ -305,6 +324,7 @@ WORKSPACE_DIR=/absolute/path/to/your/workspace npm run dev
 |---------|-------------|---------|
 | `/curriculum:init` | Create a new project workspace | Folder structure + STATE.md |
 | `/curriculum:intake` | Interview + existing materials intake | `project-brief.md`, gap report (audit mode) |
+| `/curriculum:research` | Research your domain (from-scratch only) | `domain-research-findings.md` in source-material/ |
 | `/curriculum:outcomes` | Generate learning objectives | `learning-objectives.md` + supporting files |
 | `/curriculum:assessments` | Design assessments for every objective | `assessment-map.md` + supporting files |
 | `/curriculum:modules` | Structure content into modules | Module specs in `03-modules/` |
