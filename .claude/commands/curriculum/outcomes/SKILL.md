@@ -117,6 +117,8 @@ Load `.claude/reference/schemas/stage-02-outcomes.md` as generation context befo
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step in the approval branch.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step.
+
 Read these fields from `workspace/*/00-project-brief/project-brief.md` and `workspace/*/STATE.md`:
 - `program_topic`
 - `target_audience.description`
@@ -207,6 +209,31 @@ Verify every module and session outcome has a `parent_outcome_id` referencing a 
 **Step 5 — Record changes:**
 
 Track: were any verbs replaced? Were any objectives added? Were any transfer contexts filled in? This feeds the transparency note.
+
+---
+
+## Alignment Check (runs after constraint enforcement, before display)
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip the alignment check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available." Proceed directly to Output Presentation.
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare the generated outcome set against source material. Grounding-required areas for this stage: program outcomes, module outcomes, session outcomes, enduring understandings, essential questions.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Display the alignment check results using the format in alignment-check-reference.md Section 6.
+
+**If alignment check PASSES:** proceed to Output Presentation.
+
+**If alignment check FAILS (blocking issues found):**
+- Inject the specific issues as constraints and regenerate the full outcome set using the retry constraint format from alignment-check-reference.md Section 7.
+- Re-run all five constraint enforcement steps on the regenerated set.
+- Re-run the alignment check.
+- Track this as attempt {current} of 3.
+- If all 3 attempts fail: present the alignment issues in plain language (no instructional design vocabulary), keep the outcome set in draft state, do not proceed to the review gate. Report exactly what distortions persist and what the user needs to address.
+
+Alignment issues are never auto-fixable. Re-generation is the only resolution path.
 
 ---
 
@@ -367,9 +394,17 @@ Always regenerate the full outcome set. Never patch individual objectives. Re-ru
 
    **Read but Not Referenced:** List any source material files that were loaded but whose content was not incorporated into this stage's output. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+   **Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+   - **Result:** PASS
+   - **Issues found:** {0 or count of issues that were resolved through retry}
+   - **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+   - **Assumed content areas:** {list section names where no source backing was found, or "None"}
+   - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
    Update the Build Summary block at the top of the trail:
    - Add "Stage 2: Outcomes" to the Stages completed list
    - Recalculate grounding percentage
+   - Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
    Do this silently — no announcement to the user.
 

@@ -190,6 +190,8 @@ Load `.claude/reference/schemas/stage-04-modules.md` as generation context befor
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step in the draft audit.
+
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids (primary decomposition input — modules are built to cover these objectives, not derived from topic lists).
 
 Read from `workspace/*/02-assessments/assessment-map.md`: assessment coverage to confirm what each module must set up learners to demonstrate.
@@ -385,7 +387,7 @@ Then use `AskUserQuestion` with three options:
    [modality_switches — list each transition]
    ```
 
-2. Run the Draft Audit against the files in `workspace/{project-name}/03-modules/_drafts/`. All seven checks must pass before promotion.
+2. Run the Draft Audit against the files in `workspace/{project-name}/03-modules/_drafts/`. All eight checks must pass before promotion.
 
 ### Draft Audit
 
@@ -423,6 +425,20 @@ Verify each module spec has all structurally enforced pedagogy fields populated 
 
 This is a blocking failure — missing pedagogy fields cannot be auto-fixed.
 
+**Check 8: Source Material Alignment**
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare draft module specs against source material. Grounding-required areas for this stage: module descriptions, key concepts, prerequisite rationale.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Report using the format in alignment-check-reference.md Section 6.
+
+This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -441,7 +457,7 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all seven checks pass: promote files from `_drafts/` to `workspace/{project-name}/03-modules/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
+If all eight checks pass: promote files from `_drafts/` to `workspace/{project-name}/03-modules/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
 
 If any check fails:
 
@@ -460,7 +476,7 @@ If any check fails:
 
 ### Retry with Cumulative Constraints (content failures only)
 
-If blocking failures remain after auto-fix, those failures are from Check 6 (generic content) or Check 7 (doctrine compliance), AND this is not yet attempt 3:
+If blocking failures remain after auto-fix, those failures are from Check 6 (generic content), Check 7 (doctrine compliance), or Check 8 (source material alignment), AND this is not yet attempt 3:
 
 **Attempt tracking:** This is attempt {current} of 3 for {file name}.
 
@@ -495,6 +511,8 @@ If a file has failed 3 attempts:
    >
    > The draft files are in `_drafts/` if you want to edit them directly, or run `/curriculum:modules` to start fresh.
 
+   Alignment issues that persist at escalation must be described in plain language: what the source material says, what the draft said instead, and what the user needs to correct. No internal codes or check IDs.
+
 3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions use the same plain language as the check failure messages established in Phase 18.
 
 3. Write curriculum registry silently (only after successful promotion):
@@ -523,9 +541,17 @@ If a file has failed 3 attempts:
 
    **Read but Not Referenced:** List any source material files that were loaded but not incorporated into module design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+   **Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+   - **Result:** PASS
+   - **Issues found:** {0 or count of issues that were resolved through retry}
+   - **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+   - **Assumed content areas:** {list section names where no source backing was found, or "None"}
+   - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
    Update the Build Summary block at the top of the trail:
    - Add "Stage 4: Modules" to the Stages completed list
    - Recalculate grounding percentage
+   - Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
    Do this silently — no announcement to the user.
 

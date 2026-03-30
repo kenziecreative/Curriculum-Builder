@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 27-02-PLAN.md
-last_updated: "2026-03-29T22:29:17.242Z"
+stopped_at: Completed 28-01-PLAN.md
+last_updated: "2026-03-30T01:14:28.107Z"
 last_activity: 2026-03-29 -- Phase 27 Plan 02 complete
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 8
+  completed_plans: 7
   percent: 60
 ---
 
@@ -65,6 +65,7 @@ Recent decisions affecting current work:
 - [27-02]: Resume command handles three domain research states: not-started, in-progress, and skipped (audit mode)
 - [Phase 27-domain-research]: Evidence labels applied per-hypothesis during research, not after all research completes (RSRCH-03)
 - [Phase 27-domain-research]: Grounding document lands in source-material/ for automatic downstream pickup via existing loading blocks
+- [Phase 28-alignment-verification]: Alignment check runs after other draft audit checks pass; 3 blocking distortion types; marketing gets traceability + distortion checks only (no verbatim); assumed content is warning not block; Alignment Check subsection only written on pass
 
 ### Pending Todos
 
@@ -99,7 +100,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-29T22:25:17Z
-Stopped at: Completed 27-02-PLAN.md
+Last session: 2026-03-30T01:14:28.104Z
+Stopped at: Completed 28-01-PLAN.md
 Resume file: None
 Next Action: /gsd:execute-phase 28

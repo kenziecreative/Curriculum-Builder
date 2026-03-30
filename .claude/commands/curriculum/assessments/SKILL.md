@@ -142,6 +142,8 @@ Load `.claude/reference/schemas/stage-03-assessments.md` as generation context b
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step in the approval branch.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step.
+
 Read from `workspace/*/01-outcomes/learning-objectives.md`: all outcome_ids and their bloom_level values.
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `skill_type`, `contact_hours`, `modality`. Do not read these fields from project-brief.md.
@@ -209,6 +211,31 @@ Read `modality` from `workspace/{project}/curriculum-registry.json` field `learn
 **Step 7 — Record changes:**
 
 Track: how many assessments were auto-generated, how many were elevated, what was changed in success criteria. This feeds the transparency note.
+
+---
+
+## Alignment Check (runs after constraint enforcement, before display)
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip the alignment check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available." Proceed directly to Output Presentation.
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare the generated assessment set against source material. Grounding-required areas for this stage: assessment criteria, performance indicators, rubric standards.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Display the alignment check results using the format in alignment-check-reference.md Section 6.
+
+**If alignment check PASSES:** proceed to Output Presentation.
+
+**If alignment check FAILS (blocking issues found):**
+- Inject the specific issues as constraints and regenerate the full assessment set using the retry constraint format from alignment-check-reference.md Section 7.
+- Re-run all seven constraint enforcement steps on the regenerated set.
+- Re-run the alignment check.
+- Track this as attempt {current} of 3.
+- If all 3 attempts fail: present the alignment issues in plain language (no instructional design vocabulary), keep the assessment set in draft state, do not proceed to the PIPE-05 gate. Report exactly what distortions persist and what the user needs to address.
+
+Alignment issues are never auto-fixable. Re-generation is the only resolution path.
 
 ---
 
@@ -332,11 +359,19 @@ Then use `AskUserQuestion` with three options:
 
    **Read but Not Referenced:** List any source material files that were loaded but not incorporated into assessment design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+   **Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+   - **Result:** PASS
+   - **Issues found:** {0 or count of issues that were resolved through retry}
+   - **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+   - **Assumed content areas:** {list section names where no source backing was found, or "None"}
+   - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
    **SME Confirmation:** (to be added when the PIPE-05 confirmation is recorded — see below)
 
    Update the Build Summary block at the top of the trail:
    - Add "Stage 3: Assessments" to the Stages completed list
    - Recalculate grounding percentage
+   - Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
    Do this silently — no announcement to the user.
 

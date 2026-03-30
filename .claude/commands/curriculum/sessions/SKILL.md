@@ -175,6 +175,8 @@ Before generating, check `workspace/source-material/` for any files. If files ex
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step in the draft audit.
+
 ---
 
 ## Module Reading
@@ -246,7 +248,7 @@ Where [N remaining] counts how many Tasks have not yet returned. When the final 
 
 ## Draft Audit
 
-After all Tasks report complete, run these eight checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All eight must pass before promotion.
+After all Tasks report complete, run these nine checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All nine must pass before promotion.
 
 ### Check 1: File Completeness
 Verify the expected files exist for every session across all modules. Do this by checking the file system directly.
@@ -310,6 +312,22 @@ Report goal-backward results per module: "Module M-1 'Customer Service Recovery'
 
 Goal-backward failures on Substantive or Wired are blocking — they cannot be auto-fixed because they require content regeneration.
 
+### Check 9: Source Material Alignment
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare draft session files against source material. Grounding-required areas for this stage: key concept explanations, pre-work content rationale. NOT checked: session activities, discussion prompts, time blocks, facilitator guide logistics — these are expected agent-generated content.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Report using the format in alignment-check-reference.md Section 6.
+
+This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
+
+**Retry scope for alignment failures:** Retries are per-module (same as other content failures). Alignment issues for a specific module's sessions trigger re-generation of that module's sessions only.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -328,7 +346,7 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 ### Audit Result
 
-If all eight checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
+If all nine checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
 
 If any check fails:
 
@@ -347,7 +365,7 @@ If any check fails:
 
 ### Retry with Cumulative Constraints (content failures only)
 
-If blocking failures remain after auto-fix, those failures are from Check 6 (missing formative assessment), Check 7 (pre-work gaps), Check 8b (goal-backward Substantive), or Check 8c (goal-backward Wired), AND this module is not yet at attempt 3:
+If blocking failures remain after auto-fix, those failures are from Check 6 (missing formative assessment), Check 7 (pre-work gaps), Check 8b (goal-backward Substantive), Check 8c (goal-backward Wired), or Check 9 (source material alignment), AND this module is not yet at attempt 3:
 
 **Attempt tracking:** This is attempt {current} of 3 for module {M-N} "{module name}".
 
@@ -384,6 +402,8 @@ If a module's sessions have failed 3 attempts:
    >
    > The draft files are in `_drafts/` if you want to edit them directly, or run `/curriculum:sessions` to start fresh.
 
+   Alignment issues that persist at escalation must be described in plain language: what the source material says, what the draft said instead, and what the user needs to correct. Report the specific module and session where each issue was found.
+
 3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions reference the specific module and session. Use the same plain language as the check failure messages established in Phase 18.
 
 **After successful promotion**, update curriculum registry silently:
@@ -410,9 +430,17 @@ Write the Stage 5 section following the format in `.claude/reference/audit-trail
 
 **Read but Not Referenced:** List any source material files that were loaded but not incorporated into session design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+**Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+- **Result:** PASS
+- **Issues found:** {0 or count of issues that were resolved through retry}
+- **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+- **Assumed content areas:** {list section names where no source backing was found, or "None"}
+- **Attempts:** {1 if passed on first try; 2 or 3 if retries were needed; note which modules required retries}
+
 Update the Build Summary block at the top of the trail:
 - Add "Stage 5: Sessions" to the Stages completed list
 - Recalculate grounding percentage
+- Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
 Do this silently — no announcement to the user.
 

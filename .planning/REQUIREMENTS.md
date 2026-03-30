@@ -18,10 +18,10 @@ Requirements for Generation Integrity milestone. Each maps to roadmap phases.
 
 ### Alignment Verification
 
-- [ ] **ALIGN-01**: After each generation stage (outcomes through marketing), an alignment check verifies output references source material findings
-- [ ] **ALIGN-02**: Content generated without source material grounding is flagged as "assumed" with a specific marker
-- [ ] **ALIGN-03**: Qualifier stripping is detected -- when source says "in some contexts" but output says "always"
-- [ ] **ALIGN-04**: Range narrowing is detected -- when source gives a range but output narrows it
+- [x] **ALIGN-01**: After each generation stage (outcomes through marketing), an alignment check verifies output references source material findings
+- [x] **ALIGN-02**: Content generated without source material grounding is flagged as "assumed" with a specific marker
+- [x] **ALIGN-03**: Qualifier stripping is detected -- when source says "in some contexts" but output says "always"
+- [x] **ALIGN-04**: Range narrowing is detected -- when source gives a range but output narrows it
 - [ ] **ALIGN-05**: Alignment check runs automatically as part of the draft-then-audit pipeline, before content advances from draft to final
 - [ ] **ALIGN-06**: Alignment issues block draft promotion until resolved -- same hard-gate pattern as the research agent
 
@@ -91,10 +91,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | RSRCH-04 | Phase 27 | Complete |
 | RSRCH-05 | Phase 27 | Complete |
 | RSRCH-06 | Phase 27 | Complete |
-| ALIGN-01 | Phase 28 | Pending |
-| ALIGN-02 | Phase 28 | Pending |
-| ALIGN-03 | Phase 28 | Pending |
-| ALIGN-04 | Phase 28 | Pending |
+| ALIGN-01 | Phase 28 | Complete |
+| ALIGN-02 | Phase 28 | Complete |
+| ALIGN-03 | Phase 28 | Complete |
+| ALIGN-04 | Phase 28 | Complete |
 | ALIGN-05 | Phase 28 | Pending |
 | ALIGN-06 | Phase 28 | Pending |
 | XSTAGE-01 | Phase 29 | Pending |
