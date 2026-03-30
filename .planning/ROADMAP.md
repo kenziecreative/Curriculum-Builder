@@ -141,8 +141,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 28-01-PLAN.md -- Alignment check reference document and audit trail format update for alignment results
-- [ ] 28-02-PLAN.md -- Alignment checks wired into all 7 generation stage commands with marketing traceability variant
+- [x] 28-01-PLAN.md -- Alignment check reference document and audit trail format update for alignment results -- completed 2026-03-30
+- [x] 28-02-PLAN.md -- Alignment checks wired into all 7 generation stage commands with marketing traceability variant -- completed 2026-03-30
 
 ### Phase 29: Cross-Stage Consistency
 **Goal**: Automated checks catch contradictions between pipeline stages before the user approves -- so sessions match module specs, marketing matches outcomes, and nothing slips through the cracks
@@ -153,11 +153,11 @@ Plans:
   2. After marketing is generated, the user can see a check confirming that every marketing claim traces to a specific outcome or assessment
   3. Cross-stage consistency checks run automatically before the approve gate -- the user does not have to remember to run them
   4. When a contradiction is found, the user sees both conflicting values shown side by side with file references -- not just a generic "inconsistency detected" message
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 29-01: TBD
-- [ ] 29-02: TBD
+- [ ] 29-01-PLAN.md -- Consistency check reference document and audit trail format update for consistency results
+- [ ] 29-02-PLAN.md -- Consistency checks wired into sessions and marketing commands, approve gate refactored to use shared reference
 
 ## Progress
 
@@ -173,5 +173,5 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 25. Audit Trail Infrastructure | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
-| 28. Alignment Verification | 2/2 | Complete   | 2026-03-30 | - |
-| 29. Cross-Stage Consistency | v5.0 | 0/0 | Not started | - |
+| 28. Alignment Verification | v5.0 | 2/2 | Complete | 2026-03-30 |
+| 29. Cross-Stage Consistency | v5.0 | 0/2 | Not started | - |
