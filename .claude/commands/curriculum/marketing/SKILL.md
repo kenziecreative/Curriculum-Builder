@@ -130,6 +130,8 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Load `.claude/reference/alignment-check-reference.md` for the alignment check logic (traceability variant). This must be available before the alignment check step in the draft audit.
 
+Load `.claude/reference/consistency-check-reference.md` for cross-stage consistency checks. This must be available before the consistency check step in the draft audit.
+
 **Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `target_audience` (for audience description), `transfer_context`, `contact_hours` (for program duration). Read program name from `curriculum-registry.json` field `meta.project_name`. Do not read these fields from project-brief.md.
@@ -248,7 +250,7 @@ Do not wait for user review before writing. The final review gate is `/curriculu
 
 ### Draft Audit
 
-Run these 8 checks against the file in `workspace/{project}/07-marketing/_drafts/`. All 8 must pass before promotion.
+Run these 9 checks against the file in `workspace/{project}/07-marketing/_drafts/`. All 9 must pass before promotion.
 
 **Check 1: File Completeness**
 Verify `marketing-package.md` exists in `_drafts/` with non-zero content containing required sections for this program's duration tier (at minimum: The Promise, Program Description, Source Traceability).
@@ -302,6 +304,21 @@ Report using the format in alignment-check-reference.md Section 6.
 
 This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
 
+**Check 9: Cross-Stage Consistency (Marketing Claim Tracing)**
+
+If Stage 2 (Outcomes) or Stage 3 (Assessments) have not been generated, skip this check. Record in the trail: "Consistency Check: Skipped — assessments not yet generated."
+
+Using the logic in `.claude/reference/consistency-check-reference.md` Section 4:
+
+Phase 28 alignment checks enforce that every marketing claim links to an outcome ID in the registry. This check verifies the next link in the chain: for every marketing claim that links to an outcome ID (via `<!-- internal: outcome_id=... -->` comments), verify that outcome ID has at least one assessment in `curriculum-registry.json` under `assessment_criteria.assessments[].linked_outcomes`.
+
+If a marketing claim links to an outcome that has no assessment:
+- **Severity:** BLOCKING
+- **Report format:** Use consistency-check-reference.md Section 6.
+- Full message: "Marketing promises '{claim text}' via outcome {ID}, but no assessment measures that outcome."
+
+Not auto-fixable. Fix guidance per Section 6: "The claim '{text}' links to outcome {ID} via your registry, but no assessment measures that outcome. Add an assessment for outcome {ID} (run `/curriculum:assessments`) or remove the claim."
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -320,17 +337,19 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all 8 checks pass: promote `marketing-package.md` from `workspace/{project}/07-marketing/_drafts/` to `workspace/{project}/07-marketing/marketing-package.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the Conversation Display section below.
+If all 9 checks pass: promote `marketing-package.md` from `workspace/{project}/07-marketing/_drafts/` to `workspace/{project}/07-marketing/marketing-package.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the Conversation Display section below.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
    - Vocabulary violations (Check 3): substitute with the plain-language replacement from curriculum-voice.md. Remove any marketing-specific prohibited terms from prose (they are metadata only).
 2. Re-run the failing check(s) after auto-fix.
-3. If content checks (Checks 5–8) still fail after auto-fix: regenerate the marketing package. Re-run all 8 checks on the new draft. Track this as attempt 2.
+3. If content checks (Checks 5–9) still fail after auto-fix: regenerate the marketing package. Re-run all 9 checks on the new draft. Track this as attempt 2.
 
    **Retry constraint injection:** Each retry must add cumulative constraints to the regeneration prompt:
    - Attempt 2: inject the specific failing check criteria as explicit generation constraints
    - Attempt 3: inject both the attempt-2 constraints plus the verbatim failure reason from attempt 2
+
+   For consistency failures (Check 9), use the constraint format from consistency-check-reference.md Section 7.
 
    **Marketing Ratio (Check 7) auto-fix on retry:** When ratio exceeds 25%, the retry instruction must specify trimming targets: "Trim learning promises to the N most traceable. Remove audience positioning section if ratio still exceeds threshold."
 
@@ -434,10 +453,18 @@ Write the Stage 8 section following the format in `.claude/reference/audit-trail
 - **Issues found:** {0 or count of issues that were resolved through retry}
 - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
 
+**Consistency Check (Claim Tracing):** (write only if consistency check passed — omit this subsection if check was skipped or if stage escalated before passing)
+- **Result:** PASS
+- **Checks run:** Marketing claim-to-assessment chain
+- **Issues found:** 0
+- **Contradictions:** None
+- **Attempts:** {1, 2, or 3}
+
 Update the Build Summary block at the top of the trail:
 - Add "Stage 8: Marketing" to the Stages completed list
 - Recalculate grounding percentage
 - Increment alignment checks counter by 1 (or note "skipped" if no source material)
+- Increment consistency checks counter by 1 (or note "skipped" if assessments not yet generated)
 
 Do this silently — no announcement to the user.
 

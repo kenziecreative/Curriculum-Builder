@@ -177,6 +177,8 @@ Load `.claude/reference/audit-trail-format.md` for the canonical audit trail for
 
 Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step in the draft audit.
 
+Load `.claude/reference/consistency-check-reference.md` for cross-stage consistency checks. This must be available before the consistency check step in the draft audit.
+
 ---
 
 ## Module Reading
@@ -248,7 +250,7 @@ Where [N remaining] counts how many Tasks have not yet returned. When the final 
 
 ## Draft Audit
 
-After all Tasks report complete, run these nine checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All nine must pass before promotion.
+After all Tasks report complete, run these ten checks against the files in `workspace/{project-name}/04-sessions/_drafts/`. All ten must pass before promotion.
 
 ### Check 1: File Completeness
 Verify the expected files exist for every session across all modules. Do this by checking the file system directly.
@@ -328,6 +330,24 @@ This is a blocking failure — alignment issues cannot be auto-fixed. They requi
 
 **Retry scope for alignment failures:** Retries are per-module (same as other content failures). Alignment issues for a specific module's sessions trigger re-generation of that module's sessions only.
 
+### Check 10: Cross-Stage Consistency
+
+If the Stage 4 (Modules) directory does not exist on disk, skip this check — there is nothing to check against. Record in the trail: "Consistency Check: Skipped — module specs not yet generated."
+
+Using the logic in `.claude/reference/consistency-check-reference.md` Section 3:
+
+**10a — Time Math:** For each module, sum the session durations from all session files in that module's session directory. Compare against the module spec's allocated hours from `curriculum-registry.json` under `time_allocations.modules[].hours`. On mismatch, report using the table format from consistency-check-reference.md Section 6 and show both fix paths:
+1. Run `/curriculum:modules` to update the module spec to match the session total
+2. Run `/curriculum:sessions` to regenerate sessions within the module's allocated budget
+
+**10b — Prerequisite Ordering:** For each session, check if it references outcomes from a module that comes later in the prerequisite chain. Read `prerequisite_modules` from each module spec. If a session in Module A references an outcome ID belonging to Module B, and Module A does not list Module B as a prerequisite, flag as a prerequisite ordering violation. Report using the table format from Section 6.
+
+**10c — Outcome ID Coverage:** For each module, verify every outcome ID listed in the module spec appears in at least one session within that module. An outcome assigned to a module but never taught in any session is a coverage gap. Report using Section 6 format.
+
+All three sub-checks are blocking failures — consistency issues are never auto-fixable. They require re-generation of the current stage or an upstream stage.
+
+Report format: Use consistency-check-reference.md Section 6 (table format grouped by contradiction type).
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -346,7 +366,7 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 ### Audit Result
 
-If all nine checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
+If all ten checks pass: promote files from `_drafts/` to `workspace/{project-name}/04-sessions/` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then update the curriculum registry and proceed to Completion Summary.
 
 If any check fails:
 
@@ -365,17 +385,17 @@ If any check fails:
 
 ### Retry with Cumulative Constraints (content failures only)
 
-If blocking failures remain after auto-fix, those failures are from Check 6 (missing formative assessment), Check 7 (pre-work gaps), Check 8b (goal-backward Substantive), Check 8c (goal-backward Wired), or Check 9 (source material alignment), AND this module is not yet at attempt 3:
+If blocking failures remain after auto-fix, those failures are from Check 6 (missing formative assessment), Check 7 (pre-work gaps), Check 8b (goal-backward Substantive), Check 8c (goal-backward Wired), Check 9 (source material alignment), or Check 10 (cross-stage consistency), AND this module is not yet at attempt 3:
 
 **Attempt tracking:** This is attempt {current} of 3 for module {M-N} "{module name}".
 
 Retry is per-module — a module's sessions get 3 total attempts, not 3 per check type.
 
-1. Collect all remaining blocking failure reasons for this module into a constraint list.
+1. Collect all remaining blocking failure reasons for this module into a constraint list. For consistency failures (Check 10), use the constraint format from consistency-check-reference.md Section 7.
 2. Regenerate ONLY the sessions for the failing module — not sessions for other modules. Inject the constraint list into the generation prompt:
 
    > The previous draft of sessions for module {M-N} "{module name}" failed these checks:
-   > - {failure reason from Check 6/7/8b/8c}
+   > - {failure reason from Check 6/7/8b/8c/10}
    > - {failure reason from attempt 1, if attempt 2+}
    >
    > Regenerate sessions for this module. The new version MUST avoid these specific problems.
@@ -437,10 +457,18 @@ Write the Stage 5 section following the format in `.claude/reference/audit-trail
 - **Assumed content areas:** {list section names where no source backing was found, or "None"}
 - **Attempts:** {1 if passed on first try; 2 or 3 if retries were needed; note which modules required retries}
 
+**Consistency Check:** (write only if consistency check passed — omit this subsection if check was skipped or if stage escalated before passing)
+- **Result:** PASS
+- **Checks run:** Time math, Prerequisite ordering, Outcome coverage
+- **Issues found:** 0
+- **Contradictions:** None
+- **Attempts:** {1, 2, or 3}
+
 Update the Build Summary block at the top of the trail:
 - Add "Stage 5: Sessions" to the Stages completed list
 - Recalculate grounding percentage
 - Increment alignment checks counter by 1 (or note "skipped" if no source material)
+- Increment consistency checks counter by 1 (or note "skipped" if module specs not yet generated)
 
 Do this silently — no announcement to the user.
 
