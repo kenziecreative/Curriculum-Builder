@@ -64,6 +64,8 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 Load `.claude/reference/audit-trail-format.md` before writing any trail entries. This must be available for both SME confirmation writes below.
 
+Load `.claude/reference/consistency-check-reference.md` before running the final gate sweep. This defines all cross-stage consistency checks.
+
 ---
 
 ## Behavior
@@ -120,42 +122,18 @@ Before reading stage directories or showing any summary, spawn ONE Task with the
 
 ### Cross-Stage Integration Check
 
-**Also for Final Validation gate — run cross-stage integration check:**
+**Also for Final Validation gate — run the full cross-stage consistency sweep:**
 
-Before showing any summary, trace the three link types below across all stages. Read `workspace/{project}/curriculum-registry.json` as the canonical source. Then read the actual stage files to verify consistency. Store all findings as `integration_findings`.
+Before showing any summary, load `.claude/reference/consistency-check-reference.md` Section 5 (Final Gate Sweep). Run all checks defined there against the project workspace. Read `workspace/{project}/curriculum-registry.json` as the canonical source. Store all findings as `integration_findings`.
 
 For stages not yet generated, mark each finding as "Pending — Stage N not yet generated" (not broken). Use the established pattern: if the target stage directory does not exist on disk, the reference is pending, not broken.
 
-**Trace 1: Outcome IDs (bidirectional)**
-
-- Forward: For every outcome ID in `outcome_wording.program_outcomes` and `outcome_wording.module_outcomes`, verify it appears in at least one assessment's `linked_outcomes` (Stage 3), at least one module's `learning_objectives` (Stage 4), and at least one session's content (Stage 5). An outcome that exists in the registry but is never assessed, never assigned to a module, or never taught in a session is an orphaned outcome — BLOCKING.
-- Backward: For every outcome ID referenced in assessments, modules, or sessions, verify it exists in the registry's `outcome_wording`. An ID that appears in a downstream stage but not in the registry is a broken reference — BLOCKING.
-- For stages not yet generated: mark as "Pending — Stage N not yet generated" — not a failure.
-
-**Trace 2: Assessment Links (bidirectional)**
-
-- Forward: For every assessment in `assessment_criteria.assessments`, verify its `linked_outcomes` reference real outcome IDs that exist in the registry.
-- Backward: For every outcome ID in the registry, verify at least one assessment links to it. An outcome with no assessment is an uncovered outcome — BLOCKING.
-- For stages not yet generated: mark as pending.
-
-**Trace 3: Module References (bidirectional)**
-
-- Forward: For every module in `time_allocations.modules`, verify it has a corresponding module spec directory (Stage 4) and session directories (Stage 5). A module in the registry with no files is a phantom module — BLOCKING.
-- Backward: For every module directory that exists on disk, verify it has a corresponding entry in the registry. A directory with no registry entry is an unregistered module — BLOCKING.
-- Verify `prerequisite_modules` references in module specs point to real module IDs. A prerequisite that references a non-existent module is a broken dependency — BLOCKING.
-- For stages not yet generated: mark as pending.
-
-**Registry-file drift detection:**
-
-After all three traces, compare the registry data against the actual stage files for any content discrepancies (e.g., outcome statement in registry differs from outcome statement in 01-outcomes/ files). Report drift as a WARNING — not blocking. Per the Phase 19 "registry wins" principle, the registry is authoritative; user decides whether the stage file wording matters.
-
-**Result classification:**
-
-- Broken references (ID exists in one stage but not another where it should): BLOCKING
-- Orphaned outcomes (defined but never used downstream): BLOCKING
+Result classification follows consistency-check-reference.md Section 5:
+- Broken references: BLOCKING
+- Orphaned outcomes: BLOCKING
 - Phantom or unregistered modules: BLOCKING
 - Registry-file drift: WARNING
-- Pending (stage not yet generated): INFORMATIONAL — not a failure
+- Pending (stage not generated): INFORMATIONAL
 
 Store all findings in `integration_findings` with this structure:
 
@@ -281,6 +259,20 @@ The master plan is treated as authoritative. Review if the stage file wording ma
 If `integration_findings.pending` is not empty:
 ```
 **Stages not yet generated:** {stage list} — cross-stage links to these stages cannot be verified until they are built.
+```
+
+**Stage consistency:** *(add after the integrity block above)*
+
+Read the audit trail for consistency check trail entries from Stage 5 (Sessions) and Stage 8 (Marketing).
+
+If consistency check trail entries exist for sessions and/or marketing:
+```
+**Stage consistency:** Sessions: {PASS/FAIL/Skipped}, Marketing: {PASS/FAIL/Skipped}
+```
+
+If no consistency check trail entries exist for either stage:
+```
+**Stage consistency:** Per-stage checks will be included in the sweep above.
 ```
 
 ---
