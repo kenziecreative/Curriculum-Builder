@@ -162,7 +162,7 @@ When you're building a curriculum from scratch — no existing materials to brin
 
 Each finding comes back with a clear label: the evidence supports what you said, it's more complicated than expected, it contradicts your assumption, or there's a gap in what's known. You review everything together, adjust anything that needs adjusting, and approve the findings before they become the grounding document for the rest of the pipeline.
 
-This stage is skipped automatically when you bring in existing source materials — those documents serve as the evidence base instead.
+This stage is skipped automatically when you bring in existing source materials — the pipeline already has documents to reference during generation.
 
 ---
 
