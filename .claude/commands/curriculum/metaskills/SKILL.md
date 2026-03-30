@@ -128,6 +128,8 @@ Load `.claude/reference/schemas/stage-06-metaskills.md` as generation context be
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step in the draft audit.
+
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours` and `transfer_context`. Do not read these fields from project-brief.md.
 
 **Canonical outcome wording:** When writing metaskill activation records that reference learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording`. Use the statement verbatim. Do not paraphrase or summarize outcome statements in metaskill descriptions.
@@ -259,7 +261,7 @@ Then use `AskUserQuestion` with three options:
    - `evidence_gap_acknowledgment` (true only for Imagining; false or omitted for others)
    - `imagining_adjacent_practice` (only for Imagining records)
 
-2. Run the Draft Audit against `workspace/{project}/{metaskills-dir}/_drafts/`. All six checks must pass before promotion.
+2. Run the Draft Audit against `workspace/{project}/{metaskills-dir}/_drafts/`. All seven checks must pass before promotion.
 
 ### Draft Audit
 
@@ -287,6 +289,20 @@ Patterns that fail: "Think about how this applies to your work", "Discuss the ke
 
 This is a blocking failure — generic content cannot be auto-fixed. It requires regeneration.
 
+**Check 7: Source Material Alignment**
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare the draft metaskill map against source material. Grounding-required areas for this stage: thinking skill activation rationale, domain-specific examples. NOT checked: activation activity structure, facilitation logistics.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Report using the format in alignment-check-reference.md Section 6.
+
+This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -305,7 +321,7 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all six checks pass: promote the file from `_drafts/` to `workspace/{project}/{metaskills-dir}/metaskill-map.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
+If all seven checks pass: promote the file from `_drafts/` to `workspace/{project}/{metaskills-dir}/metaskill-map.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to steps 3 and 4 below.
 
 If any check fails:
 
@@ -324,7 +340,7 @@ If any check fails:
 
 ### Retry with Cumulative Constraints (content failures only)
 
-If blocking failures remain after auto-fix, those failures are from Check 6 (generic content), AND this is not yet attempt 3:
+If blocking failures remain after auto-fix, those failures are from Check 6 (generic content) or Check 7 (source material alignment), AND this is not yet attempt 3:
 
 **Attempt tracking:** This is attempt {current} of 3 for {file name}.
 
@@ -359,6 +375,8 @@ If the file has failed 3 attempts:
    >
    > The draft files are in `_drafts/` if you want to edit them directly, or run `/curriculum:metaskills` to start fresh.
 
+   Alignment issues that persist at escalation must be described in plain language: what the source material says, what the draft said instead, and what the user needs to correct. No internal codes or check IDs.
+
 3. The escalation message must follow curriculum-voice.md — no ID jargon. Problem descriptions use the same plain language as the check failure messages established in Phase 18.
 
 3. Update audit trail (only after successful promotion):
@@ -374,9 +392,17 @@ If the file has failed 3 attempts:
 
    **Read but Not Referenced:** List any source material files that were loaded but not incorporated into the metaskill map. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+   **Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+   - **Result:** PASS
+   - **Issues found:** {0 or count of issues that were resolved through retry}
+   - **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+   - **Assumed content areas:** {list section names where no source backing was found, or "None"}
+   - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
    Update the Build Summary block at the top of the trail:
    - Add "Stage 6: Metaskills" to the Stages completed list
    - Recalculate grounding percentage
+   - Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
    Do this silently — no announcement to the user.
 

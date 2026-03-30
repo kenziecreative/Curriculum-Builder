@@ -135,6 +135,8 @@ Load `.claude/reference/schemas/stage-07-transfer.md` as generation context befo
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic. This must be available before the alignment check step in the draft audit.
+
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `contact_hours`, `transfer_context`, `skill_type`, `target_audience` (for audience description), and `success_criteria`. Do not read these fields from project-brief.md.
 
 **Canonical outcome wording:** When writing transfer design elements that reference learning outcomes, read the exact outcome statement from `curriculum-registry.json` field `outcome_wording`. Use the statement verbatim in transfer activity descriptions. Do not paraphrase.
@@ -305,7 +307,7 @@ Then use `AskUserQuestion` with three options:
 
 ### Draft Audit
 
-Run these 10 checks against the file in `workspace/{project}/06-transfer/_drafts/`. All 10 must pass before promotion.
+Run these 11 checks against the file in `workspace/{project}/06-transfer/_drafts/`. All 11 must pass before promotion.
 
 **Check 1: File Completeness**
 Verify `transfer-ecosystem.md` exists in `_drafts/` with non-zero content containing all required sections: Before the Program, During the Program, After the Program, How We'll Know It Worked.
@@ -354,6 +356,20 @@ Verify the After the Program section includes community continuation content tha
 
 This is a blocking failure — requires regeneration.
 
+**Check 11: Source Material Alignment**
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+
+Using the logic in `.claude/reference/alignment-check-reference.md`:
+
+1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+2. Compare the draft transfer ecosystem against source material. Grounding-required areas for this stage: real-work application scenarios, success indicators. NOT checked: transfer activity structure, timeline logistics, community continuation format.
+3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
+4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.
+5. Report using the format in alignment-check-reference.md Section 6.
+
+This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -372,7 +388,7 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all 10 checks pass: promote `transfer-ecosystem.md` from `workspace/{project}/06-transfer/_drafts/` to `workspace/{project}/06-transfer/transfer-ecosystem.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the STATE.md update and completion message below.
+If all 11 checks pass: promote `transfer-ecosystem.md` from `workspace/{project}/06-transfer/_drafts/` to `workspace/{project}/06-transfer/transfer-ecosystem.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the STATE.md update and completion message below.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
@@ -380,7 +396,7 @@ If any check fails:
    - Registry consistency defaults (Check 2): correct module ID references using registry canonical IDs
    - Outcome drift: replace draft outcome wording with registry canonical wording
 2. Re-run the failing check(s) after auto-fix.
-3. If content checks (Checks 5–10) still fail after auto-fix: regenerate the transfer ecosystem narrative. Re-run all 10 checks on the new draft. Track this as attempt 2.
+3. If content checks (Checks 5–11) still fail after auto-fix: regenerate the transfer ecosystem narrative. Re-run all 11 checks on the new draft. Track this as attempt 2.
 
    **Retry constraint injection:** Each retry must add cumulative constraints to the regeneration prompt:
    - Attempt 2: inject the specific failing check criteria as explicit generation constraints
@@ -396,6 +412,8 @@ If any check fails:
    > Run `/curriculum:transfer` again and flag an issue to provide different direction.
 
 5. Structural failures (Checks 1, 2, 4) stop immediately — no retry. Report the specific failure and stop.
+
+   Alignment issues that persist at escalation must be described in plain language: what the source material says, what the draft said instead, and what the user needs to correct. No internal codes or check IDs.
 
 2. Update audit trail (only after successful promotion):
 
@@ -413,9 +431,17 @@ If any check fails:
 
    **Read but Not Referenced:** List any source material files that were loaded but not incorporated into transfer design. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+   **Alignment Check:** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+   - **Result:** PASS
+   - **Issues found:** {0 or count of issues that were resolved through retry}
+   - **Distortions detected:** {count — qualifier stripped, range narrowed, or over-claimed grounding}
+   - **Assumed content areas:** {list section names where no source backing was found, or "None"}
+   - **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
    Update the Build Summary block at the top of the trail:
    - Add "Stage 7: Transfer" to the Stages completed list
    - Recalculate grounding percentage
+   - Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
    Do this silently — no announcement to the user.
 

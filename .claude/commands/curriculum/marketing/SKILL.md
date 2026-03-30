@@ -128,6 +128,8 @@ Load `.claude/reference/schemas/stage-08-marketing.md` as generation context bef
 
 Load `.claude/reference/audit-trail-format.md` for the canonical audit trail format. This must be available before the trail write step after successful draft promotion.
 
+Load `.claude/reference/alignment-check-reference.md` for the alignment check logic (traceability variant). This must be available before the alignment check step in the draft audit.
+
 **Load `.claude/reference/copywriting-doctrine.md` before writing any copy.** This file contains the structural frameworks (PAS, DOS, PCPO, FAB), headline formulas, the "You Rule," Writing for Clarity principles (sticky not smooth, kernel sentences, precise language), VOC approach, and the Seven Sweeps post-generation quality check. Every rule in that file applies to the marketing output. Do not summarize or skip it — read it in full.
 
 Read from `workspace/{project}/curriculum-registry.json` field `learner_profile.data`: `target_audience` (for audience description), `transfer_context`, `contact_hours` (for program duration). Read program name from `curriculum-registry.json` field `meta.project_name`. Do not read these fields from project-brief.md.
@@ -246,7 +248,7 @@ Do not wait for user review before writing. The final review gate is `/curriculu
 
 ### Draft Audit
 
-Run these 7 checks against the file in `workspace/{project}/07-marketing/_drafts/`. All 7 must pass before promotion.
+Run these 8 checks against the file in `workspace/{project}/07-marketing/_drafts/`. All 8 must pass before promotion.
 
 **Check 1: File Completeness**
 Verify `marketing-package.md` exists in `_drafts/` with non-zero content containing required sections for this program's duration tier (at minimum: The Promise, Program Description, Source Traceability).
@@ -280,6 +282,26 @@ Count the total word count of the marketing package prose (excluding the traceab
 
 This is a blocking failure — trim learning promises first (keeping most traceable), then audience positioning. Keep program description and direct-strength traceability claims.
 
+**Check 8: Source Material Alignment (Marketing Traceability)**
+
+This check uses the traceability variant from `.claude/reference/alignment-check-reference.md` Section 5. Marketing does NOT get verbatim alignment checks — marketing's job is transformation. Apply these checks instead:
+
+If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+
+1. **Traceability check:** Every learning promise in the marketing copy must link to an outcome ID that exists in `curriculum-registry.json` under `outcome_wording`. Verify each `<!-- internal: outcome_id=... -->` comment references a real outcome ID in the registry. If any referenced outcome ID does not exist, flag as an unsupported claim. This is a blocking failure.
+
+2. **Qualifier stripping (still applies):** Marketing cannot claim outcomes the evidence does not support. Apply the qualifier stripping detection rules from alignment-check-reference.md Section 3 to any factual claims about the program (duration, audience fit, expected results). If source material says "research suggests X tends to happen" and marketing says "X is guaranteed," flag as qualifier stripped. This is a blocking failure.
+
+3. **Range narrowing (still applies):** If source material provides a range and marketing narrows it to a single value, flag as range narrowed. Apply detection rules from alignment-check-reference.md Section 3. This is a blocking failure.
+
+4. **Over-claiming grounding (still applies):** If the audit trail's "Grounded In" section claims a source backs a marketing claim, verify the source actually supports that claim. Apply detection rules from alignment-check-reference.md Section 3. This is a blocking failure.
+
+5. **NOT checked:** VOC language adaptation, PAS/DOS framework choice, headline formula application, emotional language derived from outcomes — these are expected marketing transformations.
+
+Report using the format in alignment-check-reference.md Section 6.
+
+This is a blocking failure — alignment issues cannot be auto-fixed. They require re-generation.
+
 ### Verification Integrity
 
 A check either passes its defined criteria or it fails. No middle ground.
@@ -298,13 +320,13 @@ approximately, mostly, essentially, close enough, acceptable, nearly, substantia
 
 **Audit Result:**
 
-If all 7 checks pass: promote `marketing-package.md` from `workspace/{project}/07-marketing/_drafts/` to `workspace/{project}/07-marketing/marketing-package.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the Conversation Display section below.
+If all 8 checks pass: promote `marketing-package.md` from `workspace/{project}/07-marketing/_drafts/` to `workspace/{project}/07-marketing/marketing-package.md` (move, not copy). Delete the `_drafts/` directory after successful promotion. Then proceed to the Conversation Display section below.
 
 If any check fails:
 1. Attempt auto-fix for simple failures:
    - Vocabulary violations (Check 3): substitute with the plain-language replacement from curriculum-voice.md. Remove any marketing-specific prohibited terms from prose (they are metadata only).
 2. Re-run the failing check(s) after auto-fix.
-3. If content checks (Checks 5–7) still fail after auto-fix: regenerate the marketing package. Re-run all 7 checks on the new draft. Track this as attempt 2.
+3. If content checks (Checks 5–8) still fail after auto-fix: regenerate the marketing package. Re-run all 8 checks on the new draft. Track this as attempt 2.
 
    **Retry constraint injection:** Each retry must add cumulative constraints to the regeneration prompt:
    - Attempt 2: inject the specific failing check criteria as explicit generation constraints
@@ -403,9 +425,19 @@ Write the Stage 8 section following the format in `.claude/reference/audit-trail
 
 **Read but Not Referenced:** List any source material files that were loaded but not incorporated into marketing copy. If all loaded files were referenced, write: All loaded files were referenced above. If no source files were loaded, omit this subsection.
 
+**Alignment Check (Traceability Variant):** (write only if alignment check passed — omit this subsection if check was skipped or if stage escalated before passing)
+- **Result:** PASS
+- **Variant:** Traceability variant (marketing does not use verbatim alignment)
+- **Outcome IDs verified:** {count of outcome IDs whose `<!-- internal: outcome_id=... -->` references were confirmed in the registry}
+- **Distortions checked:** Qualifier stripping and range narrowing applied to factual claims
+- **Over-claiming checked:** Audit trail "Grounded In" entries verified against source files
+- **Issues found:** {0 or count of issues that were resolved through retry}
+- **Attempts:** {1 if passed on first try, 2 or 3 if retries were needed}
+
 Update the Build Summary block at the top of the trail:
 - Add "Stage 8: Marketing" to the Stages completed list
 - Recalculate grounding percentage
+- Increment alignment checks counter by 1 (or note "skipped" if no source material)
 
 Do this silently — no announcement to the user.
 
