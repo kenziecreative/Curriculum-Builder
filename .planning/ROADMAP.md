@@ -125,8 +125,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 27-01-PLAN.md -- Domain research SKILL.md command with hypothesis gathering, web research, evidence tagging, SME review, and grounding document output
-- [ ] 27-02-PLAN.md -- Pipeline integration: intake chaining to research for from-scratch builds, resume routing, skip logic for existing source materials
+- [x] 27-01-PLAN.md -- Domain research SKILL.md command with hypothesis gathering, web research, evidence tagging, SME review, and grounding document output
+- [x] 27-02-PLAN.md -- Pipeline integration: intake chaining to research for from-scratch builds, resume routing, skip logic for existing source materials
 
 ### Phase 28: Alignment Verification
 **Goal**: Generated content is checked against source material after every stage -- so the pipeline cannot silently ignore, distort, or strip nuance from the evidence it was given
@@ -138,11 +138,11 @@ Plans:
   3. When source material says "in some contexts" but the output says "always," the qualifier stripping is detected and reported
   4. When source material gives a range but the output narrows it to a single value, the range narrowing is detected and reported
   5. Alignment issues block draft promotion to final -- the same hard-gate pattern as other quality checks
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 28-01: TBD
-- [ ] 28-02: TBD
+- [ ] 28-01-PLAN.md -- Alignment check reference document and audit trail format update for alignment results
+- [ ] 28-02-PLAN.md -- Alignment checks wired into all 7 generation stage commands with marketing traceability variant
 
 ### Phase 29: Cross-Stage Consistency
 **Goal**: Automated checks catch contradictions between pipeline stages before the user approves -- so sessions match module specs, marketing matches outcomes, and nothing slips through the cracks
@@ -172,6 +172,6 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 17-24 (archived) | v4.0 | 20/20 | Complete | 2026-03-28 |
 | 25. Audit Trail Infrastructure | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
-| 27. Domain Research | 2/2 | Complete   | 2026-03-29 | - |
-| 28. Alignment Verification | v5.0 | 0/0 | Not started | - |
+| 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
+| 28. Alignment Verification | v5.0 | 0/2 | Not started | - |
 | 29. Cross-Stage Consistency | v5.0 | 0/0 | Not started | - |
