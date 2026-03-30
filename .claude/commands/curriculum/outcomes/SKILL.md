@@ -214,11 +214,11 @@ Track: were any verbs replaced? Were any objectives added? Were any transfer con
 
 ## Alignment Check (runs after constraint enforcement, before display)
 
-If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip the alignment check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available." Proceed directly to Output Presentation.
+If no files exist in `workspace/{project}/source-material/` AND no `workspace/{project}/source-material/domain-research-findings.md` exists, skip the alignment check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available." Proceed directly to Output Presentation.
 
 Using the logic in `.claude/reference/alignment-check-reference.md`:
 
-1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+1. Read source material files from `workspace/{project}/source-material/` (including `domain-research-findings.md` if present).
 2. Compare the generated outcome set against source material. Grounding-required areas for this stage: program outcomes, module outcomes, session outcomes, enduring understandings, essential questions.
 3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
 4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.

@@ -12,7 +12,7 @@ Alignment verification confirms that generated output faithfully uses source mat
 
 **What counts as source material:**
 - Files in `workspace/{project}/source-material/` (SME-provided documents)
-- `domain-research-findings.md` (the grounding document produced by Stage 1.5 domain research)
+- `workspace/{project}/source-material/domain-research-findings.md` (the grounding document produced by Stage 1.5 domain research)
 
 **When it is skipped:** If no source material files exist AND no grounding document exists, the alignment check is omitted for that stage. There is nothing to align against. The audit trail Alignment Check subsection is also omitted.
 

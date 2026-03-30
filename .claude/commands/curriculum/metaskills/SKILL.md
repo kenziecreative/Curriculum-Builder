@@ -291,11 +291,11 @@ This is a blocking failure — generic content cannot be auto-fixed. It requires
 
 **Check 7: Source Material Alignment**
 
-If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+If no files exist in `workspace/{project}/source-material/` AND no `workspace/{project}/source-material/domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
 
 Using the logic in `.claude/reference/alignment-check-reference.md`:
 
-1. Read source material files from `workspace/source-material/` and `domain-research-findings.md` if present.
+1. Read source material files from `workspace/{project}/source-material/` (including `domain-research-findings.md` if present).
 2. Compare the draft metaskill map against source material. Grounding-required areas for this stage: thinking skill activation rationale, domain-specific examples. NOT checked: activation activity structure, facilitation logistics.
 3. Check for all three distortion types: qualifier stripping, range narrowing, over-claiming grounding.
 4. Flag any assumed content (content in grounding-required areas with no source backing) — this is a warning, not a block.

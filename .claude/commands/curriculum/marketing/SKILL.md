@@ -288,7 +288,7 @@ This is a blocking failure — trim learning promises first (keeping most tracea
 
 This check uses the traceability variant from `.claude/reference/alignment-check-reference.md` Section 5. Marketing does NOT get verbatim alignment checks — marketing's job is transformation. Apply these checks instead:
 
-If no files exist in `workspace/source-material/` AND no `domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
+If no files exist in `workspace/{project}/source-material/` AND no `workspace/{project}/source-material/domain-research-findings.md` exists, skip this check — there is nothing to align against. Record in the trail: "Alignment Check: Skipped — no source material available."
 
 1. **Traceability check:** Every learning promise in the marketing copy must link to an outcome ID that exists in `curriculum-registry.json` under `outcome_wording`. Verify each `<!-- internal: outcome_id=... -->` comment references a real outcome ID in the registry. If any referenced outcome ID does not exist, flag as an unsupported claim. This is a blocking failure.
 
