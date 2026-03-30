@@ -374,6 +374,8 @@ Use `AskUserQuestion` with these three options:
    - **Stages completed:** Stage 1: Intake
    - **Source materials:** 0 files loaded
    - **Grounding:** 0% of content sections grounded in source material
+   - **Alignment checks:** 0 passed, 0 issues resolved
+   - **Consistency checks:** 0 passed, 0 issues resolved
    - **SME checkpoints:** 1 confirmation recorded
    - **Modifications:** {0, or count of edits made at the review gate}
    - **Revisions:** 0 post-delivery revisions
@@ -912,6 +914,8 @@ Do this silently — no announcement to the user.
    - **Stages completed:** Stage 1: Intake
    - **Source materials:** {count of files read in Step 1} files loaded
    - **Grounding:** {rough percentage — grounded intake decisions / total intake decisions × 100}% of content sections grounded in source material
+   - **Alignment checks:** 0 passed, 0 issues resolved
+   - **Consistency checks:** 0 passed, 0 issues resolved
    - **SME checkpoints:** 1 confirmation recorded
    - **Modifications:** {0, or count of edits made at the Step 7 review gate}
    - **Revisions:** 0 post-delivery revisions

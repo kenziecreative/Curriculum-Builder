@@ -80,7 +80,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | AUDIT-02 | Phase 25 | Complete |
 | AUDIT-03 | Phase 25 | Complete |
 | AUDIT-04 | Phase 25 | Complete |
-| AUDIT-05 | Phase 25 | Complete |
+| AUDIT-05 | Phase 25, 30 | Complete |
 | CANON-01 | Phase 26 | Complete |
 | CANON-02 | Phase 26 | Complete |
 | CANON-03 | Phase 26 | Complete |
@@ -89,9 +89,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | RSRCH-02 | Phase 27 | Complete |
 | RSRCH-03 | Phase 27 | Complete |
 | RSRCH-04 | Phase 27 | Complete |
-| RSRCH-05 | Phase 27 | Complete |
+| RSRCH-05 | Phase 27, 30 | Complete |
 | RSRCH-06 | Phase 27 | Complete |
-| ALIGN-01 | Phase 28 | Complete |
+| ALIGN-01 | Phase 28, 30 | Complete |
 | ALIGN-02 | Phase 28 | Complete |
 | ALIGN-03 | Phase 28 | Complete |
 | ALIGN-04 | Phase 28 | Complete |

@@ -6,7 +6,7 @@
 - v2.0 Existing Curriculum Support (Phases 8-10) -- shipped 2026-03-24
 - v3.0 Output Quality (Phases 11-16) -- shipped 2026-03-25
 - v4.0 SME-Ready (Phases 17-24) -- shipped 2026-03-28
-- v5.0 Generation Integrity (Phases 25-29) -- in progress
+- v5.0 Generation Integrity (Phases 25-30) -- in progress
 
 ## Phases
 
@@ -78,6 +78,7 @@ See [v4.0 archive](milestones/v4.0-ROADMAP.md) for full phase details.
 - [x] **Phase 27: Domain Research** - New pipeline stage between intake and outcomes that grounds from-scratch builds in verified evidence (completed 2026-03-29)
 - [x] **Phase 28: Alignment Verification** - Post-generation checks that output actually uses source material and does not distort findings (completed 2026-03-30)
 - [x] **Phase 29: Cross-Stage Consistency** - Automated contradiction detection across pipeline stages before approve gates (completed 2026-03-30)
+- [ ] **Phase 30: Tech Debt Cleanup** - Fix audit-identified integration gaps: missing Build Summary counters and imprecise skip guard paths
 
 ## Phase Details
 
@@ -159,10 +160,23 @@ Plans:
 - [ ] 29-01-PLAN.md -- Consistency check reference document and audit trail format update for consistency results
 - [ ] 29-02-PLAN.md -- Consistency checks wired into sessions and marketing commands, approve gate refactored to use shared reference
 
+### Phase 30: Tech Debt Cleanup
+**Goal**: Close the two low-severity integration gaps identified by the v5.0 milestone audit -- structurally complete the Build Summary initialization and anchor imprecise file paths in skip guards
+**Depends on**: Phase 25 (intake trail init), Phase 28 (alignment skip guards)
+**Requirements**: AUDIT-05, RSRCH-05, ALIGN-01
+**Gap Closure:** Closes MISSING-01 and MISSING-02 from v5.0 milestone audit
+**Success Criteria** (what must be TRUE):
+  1. Intake's Build Summary initialization includes Alignment checks and Consistency checks counter fields matching audit-trail-format.md template
+  2. Alignment skip guards in alignment-check-reference.md use fully anchored paths for domain-research-findings.md
+**Plans**: 1 plan
+
+Plans:
+- [ ] 30-01-PLAN.md -- Fix intake Build Summary init counters and anchor alignment skip guard paths
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
+Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29 -> 30
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -174,4 +188,5 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 28. Alignment Verification | v5.0 | 2/2 | Complete | 2026-03-30 |
-| 29. Cross-Stage Consistency | 2/2 | Complete   | 2026-03-30 | - |
+| 29. Cross-Stage Consistency | v5.0 | 2/2 | Complete | 2026-03-30 |
+| 30. Tech Debt Cleanup | v5.0 | 0/1 | Pending | - |
