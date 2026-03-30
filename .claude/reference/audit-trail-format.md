@@ -26,6 +26,7 @@ Generated: {ISO timestamp}
 - **Source materials:** {count} files loaded
 - **Grounding:** {percentage}% of content sections grounded in source material
 - **Alignment checks:** {count} passed, {count} issues resolved
+- **Consistency checks:** {count} passed, {count} issues resolved
 - **SME checkpoints:** {count} confirmations recorded
 - **Modifications:** {count} changes at review gates
 - **Revisions:** {count} post-delivery revisions
@@ -66,6 +67,14 @@ Generated: {ISO timestamp}
 - **Distortions detected:** {list each: type, source quote, output text — or None}
 - **Assumed content:** {list areas where grounding-required output was not backed by source material — or None}
 - **Attempts:** {1, 2, or 3 — how many generation attempts before passing}
+
+### Consistency Check
+{Present for Stage 5 (Sessions) and Stage 8 (Marketing) when upstream stages exist. Omit for stages without per-stage consistency checks (Stages 2, 3, 4, 6, 7). Written after the consistency check passes — if the check never passes and the stage escalates, this subsection is not written.}
+- **Result:** {PASS or FAIL}
+- **Checks run:** {list, e.g., "Time math, Prerequisite ordering, Outcome coverage" for Stage 5; "Claim-to-assessment chain" for Stage 8}
+- **Issues found:** {count, or 0}
+- **Contradictions:** {list each: type, source value, output value, files — or None}
+- **Attempts:** {1, 2, or 3}
 
 ### SME Confirmation
 {Only present if this stage has a human review gate}
@@ -113,6 +122,8 @@ Used by `/curriculum:revise` after post-delivery feedback. Revision entries are 
 - Trail terms ("Grounded In", "Agent-Generated", "Read but Not Referenced") are internal vocabulary — acceptable to use as-is in the trail file since it is not user-facing content delivered to learners
 - Alignment Check subsection appears after "Read but Not Referenced" and before "SME Confirmation" in each stage section
 - Alignment Check subsection is only written when the alignment check actually runs (source material present) and only after it passes
+- Consistency Check subsection appears after Alignment Check and before SME Confirmation in each stage section
+- Consistency Check subsection is only written when the consistency check actually runs (upstream stages present) and only after it passes
 
 ---
 
