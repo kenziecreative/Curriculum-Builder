@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 29-02-PLAN.md
-last_updated: "2026-03-30T03:07:14.112Z"
+stopped_at: Completed 30-01-PLAN.md
+last_updated: "2026-03-30T03:32:29.262Z"
 last_activity: 2026-03-29 -- Phase 27 Plan 02 complete
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 11
-  completed_plans: 10
+  completed_plans: 11
   percent: 60
 ---
 
@@ -71,6 +71,8 @@ Recent decisions affecting current work:
 - [Phase 29-cross-stage-consistency]: consistency-check-reference.md established as shared reference for both per-stage checks and final gate sweep (parallel to alignment-check-reference.md)
 - [Phase 29-cross-stage-consistency]: Time math mismatch shows two fix paths without prescribing direction; marketing consistency is structural only (claim -> outcome ID -> assessment chain)
 - [Phase 29-cross-stage-consistency]: Consistency check is always the final draft audit check (Check 10 in sessions, Check 9 in marketing); approve gate delegates to consistency-check-reference.md Section 5 instead of inline Trace logic
+- [Phase 30-tech-debt-cleanup]: Build Summary counters for Alignment checks and Consistency checks initialize to 0 at intake; downstream stages increment on pass
+- [Phase 30-tech-debt-cleanup]: domain-research-findings.md skip guards use workspace/{project}/source-material/ for both halves of AND condition; file is inside source-material/ not a separate path
 
 ### Pending Todos
 
@@ -105,7 +107,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-30T03:03:02.271Z
-Stopped at: Completed 29-02-PLAN.md
+Last session: 2026-03-30T03:32:29.259Z
+Stopped at: Completed 30-01-PLAN.md
 Resume file: None
 Next Action: /gsd:plan-phase 30

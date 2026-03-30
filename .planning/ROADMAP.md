@@ -78,7 +78,7 @@ See [v4.0 archive](milestones/v4.0-ROADMAP.md) for full phase details.
 - [x] **Phase 27: Domain Research** - New pipeline stage between intake and outcomes that grounds from-scratch builds in verified evidence (completed 2026-03-29)
 - [x] **Phase 28: Alignment Verification** - Post-generation checks that output actually uses source material and does not distort findings (completed 2026-03-30)
 - [x] **Phase 29: Cross-Stage Consistency** - Automated contradiction detection across pipeline stages before approve gates (completed 2026-03-30)
-- [ ] **Phase 30: Tech Debt Cleanup** - Fix audit-identified integration gaps: missing Build Summary counters and imprecise skip guard paths
+- [x] **Phase 30: Tech Debt Cleanup** - Fix audit-identified integration gaps: missing Build Summary counters and imprecise skip guard paths (completed 2026-03-30)
 
 ## Phase Details
 
@@ -189,4 +189,4 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29 -> 30
 | 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 28. Alignment Verification | v5.0 | 2/2 | Complete | 2026-03-30 |
 | 29. Cross-Stage Consistency | v5.0 | 2/2 | Complete | 2026-03-30 |
-| 30. Tech Debt Cleanup | v5.0 | 0/1 | Pending | - |
+| 30. Tech Debt Cleanup | 1/1 | Complete   | 2026-03-30 | - |
