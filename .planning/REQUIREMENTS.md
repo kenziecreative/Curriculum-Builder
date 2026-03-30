@@ -44,7 +44,7 @@ Requirements for Generation Integrity milestone. Each maps to roadmap phases.
 
 - [x] **XSTAGE-01**: After sessions are generated, automated check verifies session content aligns with module specs (outcomes referenced, time allocations, prerequisite chains)
 - [x] **XSTAGE-02**: After marketing is generated, automated check verifies every claim traces to a specific outcome or assessment
-- [ ] **XSTAGE-03**: Cross-stage consistency check runs automatically before the approve gate
+- [x] **XSTAGE-03**: Cross-stage consistency check runs automatically before the approve gate
 - [x] **XSTAGE-04**: Specific contradictions are surfaced with file references and the conflicting values shown side by side
 
 ## v6.0 Requirements
@@ -99,7 +99,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | ALIGN-06 | Phase 28 | Complete |
 | XSTAGE-01 | Phase 29 | Complete |
 | XSTAGE-02 | Phase 29 | Complete |
-| XSTAGE-03 | Phase 29 | Pending |
+| XSTAGE-03 | Phase 29 | Complete |
 | XSTAGE-04 | Phase 29 | Complete |
 
 **Coverage:**

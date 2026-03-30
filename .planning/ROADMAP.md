@@ -77,7 +77,7 @@ See [v4.0 archive](milestones/v4.0-ROADMAP.md) for full phase details.
 - [x] **Phase 26: Canonical Outcome Registry** - Single source of truth for learning outcomes and intake decisions that all stages reference -- completed 2026-03-29
 - [x] **Phase 27: Domain Research** - New pipeline stage between intake and outcomes that grounds from-scratch builds in verified evidence (completed 2026-03-29)
 - [x] **Phase 28: Alignment Verification** - Post-generation checks that output actually uses source material and does not distort findings (completed 2026-03-30)
-- [ ] **Phase 29: Cross-Stage Consistency** - Automated contradiction detection across pipeline stages before approve gates
+- [x] **Phase 29: Cross-Stage Consistency** - Automated contradiction detection across pipeline stages before approve gates (completed 2026-03-30)
 
 ## Phase Details
 
@@ -174,4 +174,4 @@ Phases execute in numeric order: 25 -> 26 -> 27 -> 28 -> 29
 | 26. Canonical Outcome Registry | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 27. Domain Research | v5.0 | 2/2 | Complete | 2026-03-29 |
 | 28. Alignment Verification | v5.0 | 2/2 | Complete | 2026-03-30 |
-| 29. Cross-Stage Consistency | 1/2 | In Progress|  | - |
+| 29. Cross-Stage Consistency | 2/2 | Complete   | 2026-03-30 | - |

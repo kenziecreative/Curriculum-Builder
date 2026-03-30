@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v5.0
 milestone_name: Generation Integrity
 status: completed
-stopped_at: Completed 29-01-PLAN.md
-last_updated: "2026-03-30T02:56:11.614Z"
+stopped_at: Completed 29-02-PLAN.md
+last_updated: "2026-03-30T03:03:11.720Z"
 last_activity: 2026-03-29 -- Phase 27 Plan 02 complete
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
   percent: 60
 ---
 
@@ -70,6 +70,7 @@ Recent decisions affecting current work:
 - [Phase 28]: Alignment check skip guard consistent across all 7 stages: no source-material/ files AND no domain-research-findings.md = skip, trail records Skipped
 - [Phase 29-cross-stage-consistency]: consistency-check-reference.md established as shared reference for both per-stage checks and final gate sweep (parallel to alignment-check-reference.md)
 - [Phase 29-cross-stage-consistency]: Time math mismatch shows two fix paths without prescribing direction; marketing consistency is structural only (claim -> outcome ID -> assessment chain)
+- [Phase 29-cross-stage-consistency]: Consistency check is always the final draft audit check (Check 10 in sessions, Check 9 in marketing); approve gate delegates to consistency-check-reference.md Section 5 instead of inline Trace logic
 
 ### Pending Todos
 
@@ -104,7 +105,7 @@ Agent ignored direct instruction to reference source material during outcomes ge
 
 ## Session Continuity
 
-Last session: 2026-03-30T02:56:11.611Z
-Stopped at: Completed 29-01-PLAN.md
+Last session: 2026-03-30T03:03:02.271Z
+Stopped at: Completed 29-02-PLAN.md
 Resume file: None
 Next Action: /gsd:execute-phase 28
