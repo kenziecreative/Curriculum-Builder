@@ -25,6 +25,7 @@ Generated: {ISO timestamp}
 - **Stages completed:** {list — e.g., Stage 1: Intake, Stage 2: Outcomes}
 - **Source materials:** {count} files loaded
 - **Grounding:** {percentage}% of content sections grounded in source material
+- **Alignment checks:** {count} passed, {count} issues resolved
 - **SME checkpoints:** {count} confirmations recorded
 - **Modifications:** {count} changes at review gates
 - **Revisions:** {count} post-delivery revisions
@@ -57,6 +58,14 @@ Generated: {ISO timestamp}
 - {source files that were loaded but not used by this stage — surfaces ignored evidence for alignment verification}
 - {If all loaded files were referenced, write: All loaded files were referenced above.}
 - {If no source files were loaded, omit this subsection entirely.}
+
+### Alignment Check
+{Present for all generation stages (2–8) when source material exists. Omit when no source material AND no grounding document exists. Written after the alignment check passes — if the check never passes and the stage escalates, this subsection is not written.}
+- **Result:** {PASS or FAIL}
+- **Issues found:** {count, or 0}
+- **Distortions detected:** {list each: type, source quote, output text — or None}
+- **Assumed content:** {list areas where grounding-required output was not backed by source material — or None}
+- **Attempts:** {1, 2, or 3 — how many generation attempts before passing}
 
 ### SME Confirmation
 {Only present if this stage has a human review gate}
@@ -102,6 +111,8 @@ Used by `/curriculum:revise` after post-delivery feedback. Revision entries are 
 - ISO timestamps use the format `YYYY-MM-DDTHH:MM:SSZ`
 - Grounding percentage in the Build Summary is a rough estimate — exact per-section math is not required
 - Trail terms ("Grounded In", "Agent-Generated", "Read but Not Referenced") are internal vocabulary — acceptable to use as-is in the trail file since it is not user-facing content delivered to learners
+- Alignment Check subsection appears after "Read but Not Referenced" and before "SME Confirmation" in each stage section
+- Alignment Check subsection is only written when the alignment check actually runs (source material present) and only after it passes
 
 ---
 
