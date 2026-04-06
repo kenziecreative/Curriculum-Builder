@@ -5,7 +5,7 @@ milestone_name: Generation Integrity
 status: shipped
 stopped_at: Milestone v5.0 shipped
 last_updated: "2026-03-30T06:00:00Z"
-last_activity: 2026-03-30 -- v5.0 milestone shipped
+last_activity: 2026-04-06 -- Completed quick task 1: Update BACKLOG.md with Boost Camp post-build feedback
 progress:
   total_phases: 6
   completed_phases: 6
@@ -46,6 +46,12 @@ v5.0 decisions archived — see milestones/v5.0-ROADMAP.md for full history.
 ### Blockers/Concerns
 
 - [Phase 4/7 flag] @react-pdf/renderer React 19 compatibility unverified
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | Update BACKLOG.md with Boost Camp post-build feedback | 2026-04-06 | ea3c208 | [1-update-backlog-md-with-boost-camp-post-b](./quick/1-update-backlog-md-with-boost-camp-post-b/) |
 
 ### Tech Debt (accumulated across milestones)
 
