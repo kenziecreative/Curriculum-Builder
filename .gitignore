@@ -16,8 +16,7 @@ Thumbs.db
 .env.local
 .env.*.local
 
-# Planning artifacts (security reports may contain sensitive paths)
-.planning/
+# Planning security reports (may contain sensitive paths)
 .planning/security/
 
 # Node
@@ -28,6 +27,10 @@ dashboard/build/
 
 # Claude Code runtime
 .claude/worktrees/
+.claude/projects/
+
+# MCP server logs
+.playwright-mcp/
 
 # Dev CLAUDE.md — project version is created by /curriculum:init
 /CLAUDE.md
